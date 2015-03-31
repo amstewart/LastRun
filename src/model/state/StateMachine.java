@@ -10,8 +10,8 @@ import view.window.GameWindow;
  */
 public class StateMachine {
 
-    Map<String, iState> states;
-    iState currentState;
+    // Stack of loaded States (created at StateMachine initialization)
+    Stack<iState> currentState = new Stack<iState>();
     GameWindow window;
 
     public StateMachine() {
