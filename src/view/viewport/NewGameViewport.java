@@ -9,15 +9,14 @@ package view.viewport;
  *
  * @author darien
  */
-public class MenuViewport extends Viewport {
+public class NewGameViewport extends Viewport {
 
     /**
-     * Creates new form MenuViewport
+     * Creates new form NewGameViewport
      */
-    public MenuViewport() {
+    public NewGameViewport() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,33 +27,33 @@ public class MenuViewport extends Viewport {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        continueButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(226, 124, 21));
+        setBackground(new java.awt.Color(125, 246, 34));
 
-        continueButton.setText("Continue");
+        backButton.setText("Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
-                .addComponent(continueButton)
-                .addGap(162, 162, 162))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(continueButton)
-                .addGap(99, 99, 99))
+                .addContainerGap(142, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(128, 128, 128))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton continueButton;
+    public javax.swing.JButton backButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

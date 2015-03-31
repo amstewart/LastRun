@@ -2,6 +2,7 @@
 package view.window;
 
 import javax.swing.JFrame;
+import view.viewport.Viewport;
 
 /**
  *
@@ -14,4 +15,12 @@ public class GameWindow extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+    
+   public void displayState(Viewport viewPort){
+          
+          System.out.println("Painting Viewport");
+          this.getContentPane().removeAll();
+          this.getContentPane().add(viewPort);
+          viewPort.updateUI();
+   }
 }

@@ -2,7 +2,9 @@
 package model.state;
 
 import controller.MenuController;
+import model.GameBundle;
 import view.viewport.MenuViewport;
+import view.viewport.Meu;
 import view.viewport.Viewport;
 
 /**
@@ -14,9 +16,9 @@ public class MenuState implements iState{
     MenuViewport view; 
     MenuController controller;
     
-    public MenuState(){
+    public MenuState(GameBundle bundle, StateMachine stateMachine){
         view = new MenuViewport();
-        controller = new MenuController();
+        controller = new MenuController(bundle,stateMachine,view);
     }
     
     @Override

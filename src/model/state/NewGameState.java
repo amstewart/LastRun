@@ -1,27 +1,30 @@
 
 package model.state;
 
-import controller.GameController;
+import controller.NewGameController;
+import model.GameBundle;
 import view.viewport.GameViewport;
+import view.viewport.NewGameViewport;
 import view.viewport.Viewport;
 
 /**
  *
  * @author ChrisMoscoso
  */
-public class GameState implements iState{
+public class NewGameState implements iState{
 
-    GameViewport view;
-    GameController controller;
+    NewGameViewport view;
+    NewGameController controller;
     
-    public GameState(){
-        view =  new GameViewport();
-        controller = new GameController();
+    public NewGameState(GameBundle bundle, StateMachine stateMachine){
+        view =  new NewGameViewport();
+        controller = new NewGameController(bundle, stateMachine, view);
     }
     
     @Override
     public void update() {
         
+       
     }
 
     @Override
@@ -41,7 +44,7 @@ public class GameState implements iState{
 
     @Override
     public Viewport getViewport() {
-        return null;
+        return view;
     }
     
 }

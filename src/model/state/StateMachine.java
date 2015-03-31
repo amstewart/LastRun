@@ -2,6 +2,7 @@ package model.state;
 
 import java.util.HashMap;
 import java.util.Map;
+import model.GameBundle;
 import view.window.GameWindow;
 
 /**
@@ -13,8 +14,10 @@ public class StateMachine {
     Map<String, iState> states;
     iState currentState;
     GameWindow window;
+    GameBundle bundle;
 
     public StateMachine() {
+        
         states = new HashMap<>();
         window = new GameWindow();
     }
@@ -55,11 +58,17 @@ public class StateMachine {
     }
 
     private void setCurrentState(String stateName) {
+       
         currentState = states.get(stateName);
         currentState.onEnter();
-        System.out.println("Current state is " + stateName + " " + window.getContentPane());
-        window.getContentPane().add(currentState.getViewport());
-        window.repaint();
-        System.out.println("2Current state is " + stateName);
+        window.displayState( currentState.getViewport());
+    }
+    
+    public void setCurrentState(iState state){
+        
+        currentState = state;
+        currentState.onEnter();
+       
+        window.displayState(currentState.getViewport());
     }
 }
