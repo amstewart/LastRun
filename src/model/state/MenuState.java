@@ -11,14 +11,12 @@ import view.viewport.Viewport;
  *
  * @author ChrisMoscoso
  */
-public class MenuState implements iState{
+public class MenuState extends State{
 
-    MenuViewport view; 
-    MenuController controller;
     
     public MenuState(GameBundle bundle, StateMachine stateMachine){
-        view = new MenuViewport();
-        controller = new MenuController(bundle,stateMachine,view);
+        viewPort = new MenuViewport();
+        controller = new MenuController(bundle,stateMachine,viewPort);
     }
     
     @Override
@@ -28,7 +26,7 @@ public class MenuState implements iState{
 
     @Override
     public void render() {
-        view.render();
+        viewPort.render();
     }
 
     @Override
@@ -43,6 +41,6 @@ public class MenuState implements iState{
 
     @Override
     public Viewport getViewport() {
-        return view;
+        return viewPort;
     }
 }

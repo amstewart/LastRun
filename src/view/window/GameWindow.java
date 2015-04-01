@@ -18,7 +18,6 @@ public class GameWindow extends JFrame{
     
    public void displayState(Viewport viewPort){
           
-          System.out.println("Painting Viewport");
           this.getContentPane().removeAll();
           this.getContentPane().add(viewPort);
           viewPort.updateUI();

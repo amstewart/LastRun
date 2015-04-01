@@ -11,10 +11,10 @@ import view.window.GameWindow;
  */
 public class StateMachine {
 
-    Map<String, iState> states;
-    iState currentState;
-    GameWindow window;
-    GameBundle bundle;
+    private Map<String, State> states;
+    private State currentState;
+    private GameWindow window;
+    private GameBundle bundle;
 
     public StateMachine() {
         
@@ -28,7 +28,7 @@ public class StateMachine {
      * @param stateName
      * @param i
      */
-    public void add(String stateName, iState i) {
+    public void add(String stateName, State i) {
         states.put(stateName, i);
     }
 
@@ -64,7 +64,7 @@ public class StateMachine {
         window.displayState( currentState.getViewport());
     }
     
-    public void setCurrentState(iState state){
+    public void setCurrentState(State state){
         
         currentState = state;
         currentState.onEnter();

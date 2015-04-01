@@ -26,7 +26,6 @@ public class MenuController extends Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                
-                System.out.println("Inside Action Listener");
                 stateMachine.setCurrentState( new NewGameState(bundle,stateMachine));
         }
     };

@@ -11,14 +11,12 @@ import view.viewport.Viewport;
  *
  * @author ChrisMoscoso
  */
-public class NewGameState implements iState{
+public class NewGameState extends State{
 
-    NewGameViewport view;
-    NewGameController controller;
     
     public NewGameState(GameBundle bundle, StateMachine stateMachine){
-        view =  new NewGameViewport();
-        controller = new NewGameController(bundle, stateMachine, view);
+        viewPort =  new NewGameViewport();
+        controller = new NewGameController(bundle, stateMachine, viewPort);
     }
     
     @Override
@@ -29,7 +27,7 @@ public class NewGameState implements iState{
 
     @Override
     public void render() {
-        view.render();
+        viewPort.render();
     }
 
     @Override
@@ -44,7 +42,7 @@ public class NewGameState implements iState{
 
     @Override
     public Viewport getViewport() {
-        return view;
+        return viewPort;
     }
     
 }
