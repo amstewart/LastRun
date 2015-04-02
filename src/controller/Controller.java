@@ -13,30 +13,34 @@ import model.state.NewGameState;
 import model.state.StateMachine;
 import view.viewport.Viewport;
 
-/**
- *
- * @author darien
+/*
+ * Abstract controller because all controllers work
+ * with the same state machine and game bundle
  */
+
 public abstract class Controller {
     
-    protected GameBundle bundle;
-    protected Viewport viewPort;
-    protected StateMachine stateMachine;
+    private GameBundle bundle;
+    private StateMachine stateMachine;
     
-    Controller(GameBundle bundle, StateMachine stateMachine, Viewport viewPort){
-        
+    public Controller(GameBundle bundle, StateMachine stateMachine){
         this.stateMachine = stateMachine;
         this.bundle = bundle;
-        this.viewPort = viewPort;
     }
-    
-    
+
     protected ActionListener goToMainMenu = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                
-                stateMachine.setCurrentState( new MenuState(bundle,stateMachine));
+                stateMachine.changeToState("menuState", bundle);
         }
     };
-   
+
+    public void updateBundle(GameBundle bundle) {
+        this.bundle = bundle;
+    }
+
+    protected GameBundle getBundle() { return bundle; }
+
+    protected StateMachine getStateMachine() { return stateMachine; }
 }

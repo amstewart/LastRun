@@ -9,32 +9,28 @@ import model.state.StateMachine;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
-/**
- *
- * @author ChrisMoscoso
- */
+
 public class MenuController extends Controller {
-    
-    
-    public MenuController(GameBundle bundle, StateMachine stateMachine, Viewport viewPort){
-        
-        super(bundle, stateMachine,viewPort);
+
+    private MenuViewport view;
+
+    public MenuController(GameBundle bundle, StateMachine stateMachine, MenuViewport viewPort){
+        super(bundle, stateMachine);
+        view = viewPort;
         addActionListeners();
     }
     
-   private ActionListener goToNewGame = new ActionListener() {
+    private ActionListener goToNewGame = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               
-                stateMachine.setCurrentState( new NewGameState(bundle,stateMachine));
+                System.out.println("Continue Button Clicked");
+                getStateMachine().changeToState("newGameState", getBundle());
         }
     };
    
   
-   private void addActionListeners(){
-       
-       MenuViewport menuView = (MenuViewport)viewPort;
-       menuView.continueButton.addActionListener(goToNewGame);
-   }
+    private void addActionListeners(){
+        view.continueButton.addActionListener(goToNewGame);
+    }
     
 }

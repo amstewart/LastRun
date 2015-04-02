@@ -9,22 +9,18 @@ import view.viewport.MenuViewport;
 import view.viewport.NewGameViewport;
 import view.viewport.Viewport;
 
-/**
- *
- * @author ChrisMoscoso
- */
+
 public class NewGameController extends Controller{
-      
-    public NewGameController(GameBundle bundle, StateMachine stateMachine, Viewport viewPort){
-        
-        super(bundle, stateMachine, viewPort);
-        
+
+    private NewGameViewport view;
+
+    public NewGameController(GameBundle bundle, StateMachine stateMachine, NewGameViewport viewPort){
+        super(bundle, stateMachine);
+        view = viewPort;
         addActionListeners();
     }
     
-      private void addActionListeners(){
-       
-       NewGameViewport view = (NewGameViewport)viewPort;
-       view.backButton.addActionListener(goToMainMenu);
+    private void addActionListeners(){
+        view.backButton.addActionListener(goToMainMenu);
    }
 }

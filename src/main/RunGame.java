@@ -5,6 +5,11 @@ import model.state.NewGameState;
 import model.state.MenuState;
 import model.state.StateMachine;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Time;
+
 /**
  *
  * @author ChrisMoscoso
@@ -12,10 +17,15 @@ import model.state.StateMachine;
 public class RunGame {
 
     public static void main(String[] args) {
-        
+
+
+
         GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
-        s.setCurrentState( new MenuState(bundle,s));
+        s.add("menuState", new MenuState(bundle, s));
+        s.add("newGameState", new NewGameState(bundle, s));
+
+        s.changeToState("menuState", bundle);
         
         while(true){
             s.update();
@@ -25,6 +35,7 @@ public class RunGame {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {}
         }
+
     }
 
 }

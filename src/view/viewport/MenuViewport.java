@@ -17,7 +17,6 @@ public class MenuViewport extends Viewport {
     public MenuViewport() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +58,6 @@ public class MenuViewport extends Viewport {
 
     @Override
     public void render() {
-        this.repaint();
+        this.revalidate();
     }
 }
