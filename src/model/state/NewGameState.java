@@ -7,13 +7,11 @@ import view.viewport.GameViewport;
 import view.viewport.NewGameViewport;
 import view.viewport.Viewport;
 
-/**
- *
- * @author ChrisMoscoso
- */
-public class NewGameState extends State{
+public class NewGameState implements State{
 
-    
+    private NewGameViewport viewPort;
+    private NewGameController controller;
+
     public NewGameState(GameBundle bundle, StateMachine stateMachine){
         viewPort =  new NewGameViewport();
         controller = new NewGameController(bundle, stateMachine, viewPort);
@@ -21,8 +19,7 @@ public class NewGameState extends State{
     
     @Override
     public void update() {
-        
-       
+
     }
 
     @Override
@@ -31,12 +28,12 @@ public class NewGameState extends State{
     }
 
     @Override
-    public void onExit() {
-        
+    public void onEnter(GameBundle bundle) {
+        controller.updateBundle(bundle);
     }
 
     @Override
-    public void onEnter() {
+    public void onExit() {
         
     }
 

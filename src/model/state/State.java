@@ -11,24 +11,16 @@ import model.GameBundle;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
-/**
- *
- * @author darien
- */
-public abstract class State {
-   
-    protected Viewport viewPort;
-    protected Controller controller;
-    StateMachine stateMachine;
-       
-   
-    public abstract void update();
+public interface State {
 
-    public abstract void render();
+    void update();
 
-    public abstract void onExit();
-    
-    public abstract void onEnter();
+    void render();
 
-    public abstract Viewport getViewport();
+    void onEnter(GameBundle bundle);
+
+    void onExit();
+
+    Viewport getViewport();
+
 }

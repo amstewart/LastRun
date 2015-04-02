@@ -4,19 +4,16 @@ package model.state;
 import controller.MenuController;
 import model.GameBundle;
 import view.viewport.MenuViewport;
-import view.viewport.Meu;
 import view.viewport.Viewport;
 
-/**
- *
- * @author ChrisMoscoso
- */
-public class MenuState extends State{
+public class MenuState implements State{
 
-    
+    private MenuViewport viewPort;
+    private MenuController controller;
+
     public MenuState(GameBundle bundle, StateMachine stateMachine){
         viewPort = new MenuViewport();
-        controller = new MenuController(bundle,stateMachine,viewPort);
+        controller = new MenuController(bundle, stateMachine, viewPort);
     }
     
     @Override
@@ -30,12 +27,12 @@ public class MenuState extends State{
     }
 
     @Override
-    public void onExit() {
-        
+    public void onEnter(GameBundle bundle) {
+        controller.updateBundle(bundle);
     }
 
     @Override
-    public void onEnter() {
+    public void onExit() {
         
     }
 

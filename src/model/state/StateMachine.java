@@ -1,24 +1,23 @@
 package model.state;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Time;
+import java.util.*;
+
 import model.GameBundle;
 import view.window.GameWindow;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class StateMachine {
 
     private Map<String, State> states;
-    private State currentState;
+    private Stack<State> stateStack;
+
     private GameWindow window;
     private GameBundle bundle;
 
     public StateMachine() {
         
         states = new HashMap<>();
+        stateStack = new Stack<State>();
         window = new GameWindow();
     }
 
@@ -36,6 +35,8 @@ public class StateMachine {
      * PRECONDITIONS: States.size > 0
      */
     public void update() {
+        State currentState = stateStack.peek();
+        // TODO: Come back and integrate time into update
         currentState.update();
     }
 
@@ -43,20 +44,42 @@ public class StateMachine {
      * PRECONDITIONS: States.size > 0
      */
     public void render() {
-        currentState.render();
+        if (!stateStack.isEmpty()) {
+            State currentState = stateStack.peek();
+            window.displayState(currentState.getViewport());
+            currentState.render();
+        }
     }
 
+    public void push(String state) {
+        State newState = states.get(state);
+        stateStack.push(newState);
+
+    }
+
+    public State pop() {
+        return stateStack.pop();
+    }
     /**
      *
      * @param stateName
      */
-    public void change(String stateName) {
-        if(currentState != null){
+
+    public void changeToState(String stateName, GameBundle bundle) {
+        if(!stateStack.isEmpty()) {
+            State currentState = this.pop();
+            System.out.println("State popped: " + currentState);
             currentState.onExit();
         }
-        setCurrentState(stateName);
-    }
 
+        State nextState = states.get(stateName);
+        nextState.onEnter(bundle);
+        this.push(stateName);
+
+
+
+    }
+/*
     private void setCurrentState(String stateName) {
        
         currentState = states.get(stateName);
@@ -71,4 +94,5 @@ public class StateMachine {
        
         window.displayState(currentState.getViewport());
     }
+*/
 }
