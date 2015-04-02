@@ -1,13 +1,12 @@
 
 package controller;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import model.GameBundle;
-import model.state.StateMachine;
-import view.viewport.MenuViewport;
+import state.StateMachine;
 import view.viewport.NewGameViewport;
-import view.viewport.Viewport;
 
 
 public class NewGameController extends Controller{
@@ -19,8 +18,14 @@ public class NewGameController extends Controller{
         view = viewPort;
         addActionListeners();
     }
-    
+    private ActionListener goBack = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            getStateMachine().pop();
+        }
+    };
+
     private void addActionListeners(){
-        view.backButton.addActionListener(goToMainMenu);
+        view.backButton.addActionListener(goBack);
    }
 }

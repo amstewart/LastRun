@@ -5,10 +5,6 @@
  */
 package view.viewport;
 
-/**
- *
- * @author darien
- */
 public class MenuViewport extends Viewport {
 
     /**

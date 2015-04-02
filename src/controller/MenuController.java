@@ -4,10 +4,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.GameBundle;
-import model.state.NewGameState;
-import model.state.StateMachine;
+import state.StateMachine;
 import view.viewport.MenuViewport;
-import view.viewport.Viewport;
 
 
 public class MenuController extends Controller {

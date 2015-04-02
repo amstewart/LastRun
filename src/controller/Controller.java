@@ -8,10 +8,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.GameBundle;
-import model.state.MenuState;
-import model.state.NewGameState;
-import model.state.StateMachine;
-import view.viewport.Viewport;
+import state.StateMachine;
 
 /*
  * Abstract controller because all controllers work

@@ -1,19 +1,10 @@
 package main;
 
 import model.GameBundle;
-import model.state.NewGameState;
-import model.state.MenuState;
-import model.state.StateMachine;
+import state.NewGameState;
+import state.MenuState;
+import state.StateMachine;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Time;
-
-/**
- *
- * @author ChrisMoscoso
- */
 public class RunGame {
 
     public static void main(String[] args) {

@@ -1,24 +1,24 @@
 
-package model.state;
+package state;
 
-import controller.MenuController;
+import controller.NewGameController;
 import model.GameBundle;
-import view.viewport.MenuViewport;
+import view.viewport.NewGameViewport;
 import view.viewport.Viewport;
 
-public class MenuState implements State{
+public class NewGameState implements State{
 
-    private MenuViewport viewPort;
-    private MenuController controller;
+    private NewGameViewport viewPort;
+    private NewGameController controller;
 
-    public MenuState(GameBundle bundle, StateMachine stateMachine){
-        viewPort = new MenuViewport();
-        controller = new MenuController(bundle, stateMachine, viewPort);
+    public NewGameState(GameBundle bundle, StateMachine stateMachine){
+        viewPort =  new NewGameViewport();
+        controller = new NewGameController(bundle, stateMachine, viewPort);
     }
     
     @Override
     public void update() {
-        
+
     }
 
     @Override
@@ -40,4 +40,5 @@ public class MenuState implements State{
     public Viewport getViewport() {
         return viewPort;
     }
+    
 }

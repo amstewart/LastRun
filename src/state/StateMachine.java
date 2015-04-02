@@ -1,6 +1,5 @@
-package model.state;
+package state;
 
-import java.sql.Time;
 import java.util.*;
 
 import model.GameBundle;
@@ -54,10 +53,12 @@ public class StateMachine {
     public void push(String state) {
         State newState = states.get(state);
         stateStack.push(newState);
+        System.out.println("State pushed: " + newState);
 
     }
 
     public State pop() {
+        System.out.println("State popped: " + stateStack.peek());
         return stateStack.pop();
     }
     /**
@@ -67,8 +68,7 @@ public class StateMachine {
 
     public void changeToState(String stateName, GameBundle bundle) {
         if(!stateStack.isEmpty()) {
-            State currentState = this.pop();
-            System.out.println("State popped: " + currentState);
+            State currentState = stateStack.peek();
             currentState.onExit();
         }
 
