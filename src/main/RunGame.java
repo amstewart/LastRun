@@ -1,5 +1,6 @@
 package main;
 
+import controller.KeyBinding;
 import model.GameBundle;
 import state.NewGameState;
 import state.MenuState;
@@ -10,7 +11,7 @@ public class RunGame {
     public static void main(String[] args) {
 
 
-
+    	KeyBinding keyBinding = new KeyBinding();
         GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
         s.add("menuState", new MenuState(bundle, s));
