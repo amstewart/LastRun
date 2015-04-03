@@ -1,19 +1,19 @@
 
 package state;
 
-import controller.NewGameController;
+import controller.LoadSaveController;
 import model.GameBundle;
-import view.viewport.NewGameViewport;
+import view.viewport.LoadSaveViewport;
 import view.viewport.Viewport;
 
-public class NewGameState implements State{
+public class LoadSaveState implements State{
 
-    private NewGameViewport viewPort;
-    private NewGameController controller;
+    private LoadSaveViewport viewPort;
+    private LoadSaveController controller;
 
-    public NewGameState(GameBundle bundle, StateMachine stateMachine){
-        viewPort =  new NewGameViewport();
-        controller = new NewGameController(bundle, stateMachine, viewPort);
+    public LoadSaveState(GameBundle bundle, StateMachine stateMachine){
+        viewPort =  new LoadSaveViewport();
+        controller = new LoadSaveController(bundle, stateMachine, viewPort);
     }
     
     @Override

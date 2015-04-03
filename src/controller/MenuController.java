@@ -24,25 +24,18 @@ public class MenuController extends Controller{
         viewPort = v;
         addActionListeners();
     }
-    
-    private ActionListener goToNewGame = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getStateMachine().changeToState("newGameState", getBundle());
-        }
-    };
    
   
     private void addActionListeners(){
 
-        // viewPort.continueButton.addActionListener(goToNewGame);
+        // viewPort.continueButton.addActionListener(goToCharacterSelection);
 
-        viewPort.continueButton.addActionListener(goToNewGame);
+        viewPort.continueButton.addActionListener(goToCharacterSelection);
         viewPort.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0), "forward");
         viewPort.getActionMap().put("forward", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("test");
+                
             }
         });
     }

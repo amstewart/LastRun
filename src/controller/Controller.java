@@ -32,12 +32,41 @@ public abstract class Controller {
                 stateMachine.changeToState("menuState", bundle);
         }
     };
-
-    public void updateBundle(GameBundle bundle) {
+    
+    
+     public void updateBundle(GameBundle bundle) {
+        
         this.bundle = bundle;
     }
+    protected GameBundle getBundle() { 
+        
+        return bundle; 
+    }
 
-    protected GameBundle getBundle() { return bundle; }
+    protected StateMachine getStateMachine() { 
+        
+        return stateMachine;
+    }
+    
+    protected ActionListener resumeGame = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            getStateMachine().changeToState("gameState", getBundle());
+        }
+    };
+    
+    protected ActionListener goToCharacterSelection = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getStateMachine().changeToState("characterSelectionState", getBundle());
+        }
+    };
+    
+    protected ActionListener goToLoadSave = new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+              getStateMachine().changeToState("loadSaveState", getBundle());
+      }
+    };
 
-    protected StateMachine getStateMachine() { return stateMachine; }
 }

@@ -11,5 +11,15 @@ public class PauseGameController extends Controller {
     public PauseGameController(GameBundle bundle, StateMachine stateMachine, PauseGameViewport v) {
         super(bundle, stateMachine);
         viewPort = v;
+        addActionListeners();
     }
+    
+
+    private void addActionListeners(){
+        
+        viewPort.getLoadSaveButton().addActionListener(goToLoadSave);
+        viewPort.getBackToGameButton().addActionListener(resumeGame);
+        viewPort.getBackToMenuButton().addActionListener(goToMainMenu);
+    }
+
 }

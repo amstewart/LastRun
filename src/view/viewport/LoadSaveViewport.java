@@ -7,27 +7,23 @@ package view.viewport;
 
 import javax.swing.JButton;
 
-/**
- *
- * @author darien
- */
-public class CharacterSelectionViewport extends Viewport {
+public class LoadSaveViewport extends Viewport {
 
     /**
-     * Creates new form NewGameViewport
+     * Creates new form MenuViewport
      */
-    public CharacterSelectionViewport() {
+    public LoadSaveViewport() {
         initComponents();
     }
     
-    public JButton getGoToPetSelectionButton(){
+    public JButton getBackToMenuButton(){
         
-        return petSelectionButton;
+        return backToMenuButton;
     }
     
-    public JButton getGoToMenuButton(){
+    public JButton getresumeGameButton(){
         
-        return backButton;
+        return resumeGameButton;
     }
 
     /**
@@ -39,45 +35,45 @@ public class CharacterSelectionViewport extends Viewport {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backButton = new javax.swing.JButton();
-        petSelectionButton = new javax.swing.JButton();
+        resumeGameButton = new javax.swing.JButton();
+        backToMenuButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(125, 246, 34));
+        setBackground(new java.awt.Color(53, 17, 172));
 
-        backButton.setText("Back");
+        resumeGameButton.setText("Resume Game");
 
-        petSelectionButton.setText("Go To Pet Selection");
+        backToMenuButton.setText("Menu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(petSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(backToMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(resumeGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
+                .addContainerGap(238, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(petSelectionButton))
+                    .addComponent(backToMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resumeGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton petSelectionButton;
+    public javax.swing.JButton backToMenuButton;
+    public javax.swing.JButton resumeGameButton;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void render() {
-        this.repaint();
+        this.revalidate();
     }
 }

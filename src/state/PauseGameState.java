@@ -2,6 +2,7 @@ package state;
 
 import controller.PauseGameController;
 import model.GameBundle;
+import view.viewport.CharacterSelectionViewport;
 import view.viewport.PauseGameViewport;
 import view.viewport.Viewport;
 
@@ -17,7 +18,7 @@ public class PauseGameState implements State {
 
     @Override
     public Viewport getViewport() {
-        return null;
+        return viewPort;
     }
 
     @Override

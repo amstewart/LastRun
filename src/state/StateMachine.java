@@ -3,6 +3,7 @@ package state;
 import java.util.*;
 
 import model.GameBundle;
+import view.viewport.Viewport;
 import view.window.GameWindow;
 
 public class StateMachine {
@@ -45,6 +46,8 @@ public class StateMachine {
     public void render() {
         if (!stateStack.isEmpty()) {
             State currentState = stateStack.peek();
+            
+            Viewport view = currentState.getViewport();
             window.displayState(currentState.getViewport());
             currentState.render();
         }
@@ -65,7 +68,7 @@ public class StateMachine {
      *
      * @param stateName
      */
-
+    /*
     public void changeToState(String stateName, GameBundle bundle) {
         if(!stateStack.isEmpty()) {
             State currentState = stateStack.peek();
@@ -75,9 +78,20 @@ public class StateMachine {
         State nextState = states.get(stateName);
         nextState.onEnter(bundle);
         this.push(stateName);
+        
+    }
+    */
+     public void changeToState(String stateName, GameBundle bundle) {
+        
+         if(!stateStack.isEmpty()) {
+            State currentState = stateStack.peek();
+            currentState.onExit();
+        }
 
-
-
+        State nextState = states.get(stateName);
+        nextState.onEnter(bundle);
+        this.push(stateName);
+        
     }
 /*
     private void setCurrentState(String stateName) {
