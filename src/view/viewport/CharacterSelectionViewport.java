@@ -5,17 +5,29 @@
  */
 package view.viewport;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author darien
  */
-public class NewGameViewport extends Viewport {
+public class CharacterSelectionViewport extends Viewport {
 
     /**
      * Creates new form NewGameViewport
      */
-    public NewGameViewport() {
+    public CharacterSelectionViewport() {
         initComponents();
+    }
+    
+    public JButton getGoToPetSelectionButton(){
+        
+        return petSelectionButton;
+    }
+    
+    public JButton getGoToMenuButton(){
+        
+        return backButton;
     }
 
     /**
@@ -28,32 +40,40 @@ public class NewGameViewport extends Viewport {
     private void initComponents() {
 
         backButton = new javax.swing.JButton();
+        petSelectionButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(125, 246, 34));
 
         backButton.setText("Back");
+
+        petSelectionButton.setText("Go To Pet Selection");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addContainerGap()
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(petSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(128, 128, 128))
+                .addContainerGap(258, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton)
+                    .addComponent(petSelectionButton))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton backButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton petSelectionButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

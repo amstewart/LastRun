@@ -2,8 +2,12 @@ package main;
 
 import controller.KeyBinding;
 import model.GameBundle;
-import state.NewGameState;
+import state.CharacterSelectionState;
+import state.GameState;
+import state.LoadSaveState;
 import state.MenuState;
+import state.PauseGameState;
+import state.PetSelectionState;
 import state.StateMachine;
 
 public class RunGame {
@@ -15,8 +19,12 @@ public class RunGame {
         GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
         s.add("menuState", new MenuState(bundle, s));
-        s.add("newGameState", new NewGameState(bundle, s));
-
+        s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
+        s.add("petSelectionState", new PetSelectionState(bundle,s));
+        s.add("gameState", new GameState(bundle,s));
+        s.add("pauseGameState", new PauseGameState(bundle,s));
+        s.add("loadSaveState", new LoadSaveState(bundle,s));
+        
         s.changeToState("menuState", bundle);
         
         while(true){

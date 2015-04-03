@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -18,13 +17,16 @@ import view.viewport.MenuViewport;
 
 public class MenuController extends Controller{
 
-    private MenuViewport view;
+
     private AbstractAction north;
     private AbstractAction south;
+    private MenuViewport viewPort;
 
-    public MenuController(GameBundle bundle, StateMachine stateMachine, MenuViewport viewPort){
+
+    public MenuController(GameBundle bundle, StateMachine stateMachine, MenuViewport v){
         super(bundle, stateMachine);
-        view = viewPort;
+
+        viewPort = v;
         createActions();
         addActionListeners();
     }
@@ -49,7 +51,7 @@ public class MenuController extends Controller{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Continue Button Clicked");
-                getStateMachine().changeToState("newGameState", getBundle());
+                getStateMachine().changeToState("gameState", getBundle());
         }
     };
     
@@ -57,13 +59,17 @@ public class MenuController extends Controller{
 
   
     private void addActionListeners(){
-        view.continueButton.addActionListener(goToNewGame);
-        view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0),KeyBinding.get(KeyEvent.VK_W));
-        view.getActionMap().put(KeyBinding.get(KeyEvent.VK_W),getAction(KeyBinding.get(KeyEvent.VK_W)));
+        viewPort.continueButton.addActionListener(goToNewGame);
+        viewPort.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_W, 0),KeyBinding.get(KeyEvent.VK_W));
+        viewPort.getActionMap().put(KeyBinding.get(KeyEvent.VK_W),getAction(KeyBinding.get(KeyEvent.VK_W)));
         
-        view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_X, 0),KeyBinding.get(KeyEvent.VK_X));
-        view.getActionMap().put(KeyBinding.get(KeyEvent.VK_X),getAction(KeyBinding.get(KeyEvent.VK_X)));
+        viewPort.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_X, 0),KeyBinding.get(KeyEvent.VK_X));
+        viewPort.getActionMap().put(KeyBinding.get(KeyEvent.VK_X),getAction(KeyBinding.get(KeyEvent.VK_X)));
+   
     }
+   
+  
+  
 
 	private AbstractAction getAction(Command command) {
 		switch(command){
