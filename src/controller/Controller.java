@@ -24,7 +24,7 @@ public abstract class Controller {
         this.stateMachine = stateMachine;
         this.bundle = bundle;
     }
-
+    //TODO: add a listener for the pause button since most states can pause
     protected ActionListener goToMainMenu = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

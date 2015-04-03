@@ -10,11 +10,11 @@ import view.viewport.MenuViewport;
 
 public class MenuController extends Controller {
 
-    private MenuViewport view;
+    private MenuViewport viewPort;
 
     public MenuController(GameBundle bundle, StateMachine stateMachine, MenuViewport viewPort){
         super(bundle, stateMachine);
-        view = viewPort;
+        this.viewPort = viewPort;
         addActionListeners();
     }
     
@@ -28,7 +28,7 @@ public class MenuController extends Controller {
    
   
     private void addActionListeners(){
-        view.continueButton.addActionListener(goToNewGame);
+        viewPort.continueButton.addActionListener(goToNewGame);
     }
     
 }
