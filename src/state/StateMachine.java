@@ -2,7 +2,7 @@ package state;
 
 import java.util.*;
 
-import model.GameBundle;
+import src.model.entity.GameBundle;
 import view.viewport.Viewport;
 import view.window.GameWindow;
 

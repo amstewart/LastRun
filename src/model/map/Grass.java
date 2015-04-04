@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.model.entity;
+package src.model.map;
 
 /**
  *
- * @author darien
+ * @author
  */
-public class GameBundle {
+public class Grass extends Terrain{
     
 }

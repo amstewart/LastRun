@@ -5,10 +5,7 @@
  */
 package src.model.entity;
 
-/**
- *
- * @author darien
- */
-public class GameBundle {
+
+public class NPC extends Entity {
     
 }

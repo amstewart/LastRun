@@ -7,8 +7,8 @@ package src.model.entity;
 
 /**
  *
- * @author darien
+ * @author
  */
-public class GameBundle {
+public class Villager extends NPC {
     
 }

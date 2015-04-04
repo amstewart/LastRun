@@ -5,10 +5,6 @@
  */
 package src.model.entity;
 
-/**
- *
- * @author darien
- */
-public class GameBundle {
+public class Avatar extends Entity {
     
 }
