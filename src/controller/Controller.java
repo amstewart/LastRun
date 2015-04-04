@@ -7,7 +7,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import model.GameBundle;
+import src.model.entity.GameBundle;
 import state.StateMachine;
 
 /*
