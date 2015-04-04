@@ -1,7 +1,12 @@
 package view.viewport;
 
+import controller.stateController.StateController;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,6 +17,10 @@ public class GameViewport extends Viewport{
     public GameViewport() {
     }
 
+    private void initComponents() {
+       
+    }
+    
     
     @Override
     public void paintComponent(Graphics g){
@@ -26,6 +35,4 @@ public class GameViewport extends Viewport{
     public void render() {
         
     }
-    
-    
 }

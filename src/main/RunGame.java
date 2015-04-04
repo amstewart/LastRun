@@ -1,9 +1,6 @@
 package main;
 
-import model.GameBundle;
-import state.NewGameState;
-import state.MenuState;
-import state.StateMachine;
+import state.stateMachine.RPGStateMachine;
 
 public class RunGame {
 
@@ -11,17 +8,12 @@ public class RunGame {
 
 
 
-        GameBundle bundle = new GameBundle();
-        StateMachine s = new StateMachine();
-        s.add("menuState", new MenuState(bundle, s));
-        s.add("newGameState", new NewGameState(bundle, s));
-
-        s.changeToState("menuState", bundle);
+        RPGStateMachine s = new RPGStateMachine();
+        
         
         while(true){
             s.update();
             s.render();
-            //System.out.println(System.currentTimeMillis());
             try {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {}

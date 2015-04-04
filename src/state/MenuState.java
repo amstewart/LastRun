@@ -1,43 +1,25 @@
-
 package state;
 
-import controller.MenuController;
+import controller.stateController.StateController;
+import controller.stateController.stateListeners.ExitGameListener;
+import controller.stateController.stateListeners.NewGameListener;
+import state.stateMachine.RPGStateMachine;
 import model.GameBundle;
 import view.viewport.MenuViewport;
-import view.viewport.Viewport;
 
-public class MenuState implements State{
+public class MenuState extends RPGState {
 
-    private MenuViewport viewPort;
-    private MenuController controller;
+    StateController controller;
+    MenuViewport menuViewport;
 
-    public MenuState(GameBundle bundle, StateMachine stateMachine){
-        viewPort = new MenuViewport();
-        controller = new MenuController(bundle, stateMachine, viewPort);
-    }
-    
-    @Override
-    public void update() {
+    public MenuState(GameBundle bundle, RPGStateMachine stateMachine) {
+        this.controller = new StateController(bundle, stateMachine);
+        menuViewport = new MenuViewport();
+        viewport = menuViewport;
         
-    }
-
-    @Override
-    public void render() {
-        viewPort.render();
-    }
-
-    @Override
-    public void onEnter(GameBundle bundle) {
-        controller.updateBundle(bundle);
-    }
-
-    @Override
-    public void onExit() {
+        menuViewport.setNewGameListener(new NewGameListener(controller));
+        menuViewport.setExitGameListener(new ExitGameListener(controller));
+         
         
-    }
-
-    @Override
-    public Viewport getViewport() {
-        return viewPort;
     }
 }

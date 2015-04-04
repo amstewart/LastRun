@@ -1,19 +1,16 @@
 
 package view.viewport;
 
+import controller.stateController.StateController;
 import javax.swing.JPanel;
-import java.awt.Graphics;
 /**
  *
  * @author ChrisMoscoso
  */
 public abstract class Viewport extends JPanel{
-    //Controller controller;
     
-    public abstract void render();
-    
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
+    public void render(){
+        this.revalidate(); //Will invoke paint component
     }
+    
 }
