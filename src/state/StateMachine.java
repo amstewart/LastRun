@@ -16,7 +16,7 @@ public class StateMachine {
 
     public StateMachine() {
         
-        states = new HashMap<>();
+        states = new HashMap<String, State>();
         stateStack = new Stack<State>();
         window = new GameWindow();
     }
