@@ -10,7 +10,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import state.StateMachine;
 import view.viewport.MenuViewport;
 import view.viewport.PetSelectionViewport;

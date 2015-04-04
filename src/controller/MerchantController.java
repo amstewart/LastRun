@@ -1,6 +1,6 @@
 package controller;
 
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import state.StateMachine;
 import view.viewport.MerchantViewport;
 

@@ -2,7 +2,7 @@
 package state;
 
 import controller.MenuController;
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 

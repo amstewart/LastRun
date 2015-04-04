@@ -1,6 +1,6 @@
 package state;
 
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.Viewport;
 
 public class StatusState implements State {

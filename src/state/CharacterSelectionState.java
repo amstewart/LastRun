@@ -2,7 +2,7 @@
 package state;
 
 import controller.CharacterSelectionController;
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 

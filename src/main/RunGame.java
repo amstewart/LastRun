@@ -1,7 +1,7 @@
 package main;
 
 import controller.KeyBinding;
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import state.CharacterSelectionState;
 import state.GameState;
 import state.LoadSaveState;

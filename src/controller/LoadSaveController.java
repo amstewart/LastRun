@@ -4,7 +4,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import state.StateMachine;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.LoadSaveViewport;

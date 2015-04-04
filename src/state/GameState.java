@@ -1,7 +1,7 @@
 package state;
 
 import controller.GameController;
-import src.model.entity.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.GameViewport;
 import view.viewport.Viewport;
 
