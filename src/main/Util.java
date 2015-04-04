@@ -12,8 +12,8 @@ public class Util {
     public static int debugLevel = 0;
     private static SimpleDateFormat errDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
 
-    public static void dbgOut(String s) {
-        if (debugLevel > 0) {
+    public static void dbgOut(String s, int mLevel) {
+        if (debugLevel > 0 && debugLevel >= mLevel) {
             System.out.println(printTime() + " (DBG|" + Integer.toString(debugLevel) + ") " + s);
         }
     }
