@@ -1,31 +1,41 @@
 package main;
 
-import model.state.GameState;
-import model.state.MenuState;
-import model.state.StateMachine;
+import controller.KeyBinding;
+import model.GameBundle;
+import state.CharacterSelectionState;
+import state.GameState;
+import state.LoadSaveState;
+import state.MenuState;
+import state.PauseGameState;
+import state.PetSelectionState;
+import state.StateMachine;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class RunGame {
 
     public static void main(String[] args) {
+
+
+    	KeyBinding keyBinding = new KeyBinding();
+        GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
+        s.add("menuState", new MenuState(bundle, s));
+        s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
+        s.add("petSelectionState", new PetSelectionState(bundle,s));
+        s.add("gameState", new GameState(bundle,s));
+        s.add("pauseGameState", new PauseGameState(bundle,s));
+        s.add("loadSaveState", new LoadSaveState(bundle,s));
         
-        s.add("Menu", new MenuState());
-        s.add("Game", new GameState());
-        
-        s.change("Menu");
+        s.changeToState("menuState", bundle);
         
         while(true){
             s.update();
             s.render();
-            System.out.println(System.currentTimeMillis());
+            //System.out.println(System.currentTimeMillis());
             try {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {}
         }
+
     }
 
 }
