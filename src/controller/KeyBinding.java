@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
 public class KeyBinding {
-	private static HashMap<Commnad, Integer> controls;
+	private static HashMap<Integer,Command> controls;
 	
 	public KeyBinding(){
 		controls = new HashMap<>();
