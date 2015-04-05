@@ -5,6 +5,13 @@
  */
 package model.entity;
 
+import model.items.EquippedItems;
+
 public class Avatar extends Entity {
+	Pet pet;
+	EquippedItems equippedItems;
+	Occupation occupation;
+
+	
     
 }

@@ -4,10 +4,10 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
 public class KeyBinding {
-	private static HashMap<Integer, Command> controls;
+	private static HashMap<Commnad, Integer> controls;
 	
 	public KeyBinding(){
-		controls = new HashMap<Integer, Command>();
+		controls = new HashMap<>();
 		controls.put(KeyEvent.VK_W, Command.NORTH);
 		controls.put(KeyEvent.VK_X, Command.SOUTH);
 	}

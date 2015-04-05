@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.map;
+package model.map.terrain;
 
 /**
  *
  * @author
  */
-public class Tile {
+public class Grass extends Terrain{
     
 }

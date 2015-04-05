@@ -5,10 +5,13 @@
  */
 package model.map;
 
+import model.map.tile.Tile;
+
 /**
  *
  * @author
  */
 public class Map {
+	Tile tiles[][];
     
 }

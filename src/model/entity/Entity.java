@@ -5,7 +5,15 @@
  */
 package model.entity;
 
+import model.items.EquippedItems;
+import model.items.Inventory;
+
 
 public class Entity {
+	BagOfMoney bagOfMoney;
+	Status status;
+	Inventory inventory;
+
+	
     
 }

@@ -10,5 +10,9 @@ package model.entity;
  * @author
  */
 public class BagOfMoney {
+	
+	public void makeItRain(){
+		
+	}
     
 }
