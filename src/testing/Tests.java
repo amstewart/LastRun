@@ -21,7 +21,7 @@ public class Tests {
         int c_suites = 0;
 
         // Add tests here:
-        tests.push(new ModelTest());
+        tests.push(new InventoryTest());
 
         Util.dbgOut("Running All (" + tests.size() + ") Tests...", 1);
 
