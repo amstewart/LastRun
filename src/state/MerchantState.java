@@ -1,7 +1,7 @@
 package state;
 
 import controller.MerchantController;
-import model.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.MerchantViewport;
 import view.viewport.Viewport;
 

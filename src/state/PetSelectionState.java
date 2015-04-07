@@ -3,7 +3,7 @@ package state;
 
 import controller.MenuController;
 import controller.PetSelectionController;
-import model.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.PetSelectionViewport;
 import view.viewport.Viewport;
 

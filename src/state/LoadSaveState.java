@@ -2,7 +2,7 @@
 package state;
 
 import controller.LoadSaveController;
-import model.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.LoadSaveViewport;
 import view.viewport.Viewport;
 

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.entity;
 
 /**
  *
- * @author darien
+ * @author
  */
-public class GameBundle {
+public class BagOfMoney {
+	
+	public void makeItRain(){
+		
+	}
     
 }

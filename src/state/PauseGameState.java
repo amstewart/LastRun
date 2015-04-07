@@ -1,7 +1,7 @@
 package state;
 
 import controller.PauseGameController;
-import model.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.PauseGameViewport;
 import view.viewport.Viewport;

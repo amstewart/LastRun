@@ -2,7 +2,7 @@ package state;
 
 import java.util.*;
 
-import model.GameBundle;
+import model.entity.GameBundle;
 import view.viewport.Viewport;
 import view.window.GameWindow;
 
@@ -16,7 +16,7 @@ public class StateMachine {
 
     public StateMachine() {
         
-        states = new HashMap<>();
+        states = new HashMap<String, State>();
         stateStack = new Stack<State>();
         window = new GameWindow();
     }

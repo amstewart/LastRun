@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
-import model.GameBundle;
+import model.entity.GameBundle;
 import state.StateMachine;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.GameViewport;

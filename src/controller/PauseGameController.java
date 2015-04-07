@@ -1,6 +1,6 @@
 package controller;
 
-import model.GameBundle;
+import model.entity.GameBundle;
 import state.StateMachine;
 import view.viewport.PauseGameViewport;
 
