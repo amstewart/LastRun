@@ -19,6 +19,7 @@ public class Tests {
 
     public static void runAll() {
         int c_suites = 0;
+
         // Add tests here:
         tests.push(new ModelTest());
 
