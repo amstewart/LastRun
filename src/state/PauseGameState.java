@@ -1,19 +1,14 @@
 package state;
 
-import controller.PauseGameController;
-import model.entity.GameBundle;
-import view.viewport.CharacterSelectionViewport;
 import view.viewport.PauseGameViewport;
 import view.viewport.Viewport;
 
-public class PauseGameState implements State {
+public class PauseGameState extends State {
 
     private PauseGameViewport viewPort;
-    private PauseGameController controller;
 
-    public PauseGameState(GameBundle bundle, StateMachine stateMachine) {
+    public PauseGameState() {
         viewPort = new PauseGameViewport();
-        controller = new PauseGameController(bundle, stateMachine, viewPort);
     }
 
     @Override
@@ -27,7 +22,7 @@ public class PauseGameState implements State {
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
+    public void onEnter() {
 
     }
 

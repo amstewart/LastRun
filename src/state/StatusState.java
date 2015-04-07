@@ -1,11 +1,11 @@
 package state;
 
-import model.entity.GameBundle;
+
 import view.viewport.Viewport;
 
-public class StatusState implements State {
+public class StatusState extends State {
     // TODO: Set all pertaining views and controllers
-    public StatusState(GameBundle bundle, StateMachine stateMachine) {
+    public StatusState() {
 
     }
 
@@ -20,7 +20,7 @@ public class StatusState implements State {
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
+    public void onEnter() {
 
     }
 

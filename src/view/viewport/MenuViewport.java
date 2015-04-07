@@ -5,10 +5,16 @@
  */
 package view.viewport;
 
+<<<<<<< Updated upstream
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import utility.ImageUtil;
+=======
+import state.Action;
+
+import java.util.ArrayList;
+>>>>>>> Stashed changes
 
 public class MenuViewport extends Viewport {
 
@@ -68,5 +74,9 @@ public class MenuViewport extends Viewport {
     @Override
     public void render() {
         this.revalidate();
+    }
+
+    public void setListeners(ArrayList<Action> a){
+        continueButton.addActionListener(a.get(0).getActionListener());
     }
 }

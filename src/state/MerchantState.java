@@ -1,18 +1,14 @@
 package state;
 
-import controller.MerchantController;
-import model.entity.GameBundle;
 import view.viewport.MerchantViewport;
 import view.viewport.Viewport;
 
-public class MerchantState implements State {
+public class MerchantState extends State {
 
     private MerchantViewport viewPort;
-    private MerchantController controller;
 
-    public MerchantState(GameBundle bundle, StateMachine stateMachine) {
+    public MerchantState() {
         viewPort = new MerchantViewport();
-        controller = new MerchantController(bundle, stateMachine, viewPort);
     }
 
     @Override
@@ -26,7 +22,7 @@ public class MerchantState implements State {
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
+    public void onEnter() {
 
     }
 

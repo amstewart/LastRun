@@ -5,7 +5,10 @@
  */
 package view.viewport;
 
+import state.Action;
+
 import javax.swing.JButton;
+import java.util.ArrayList;
 
 public class LoadSaveViewport extends Viewport {
 
@@ -75,5 +78,10 @@ public class LoadSaveViewport extends Viewport {
     @Override
     public void render() {
         this.revalidate();
+    }
+
+    @Override
+    public void setListeners(ArrayList<Action> a) {
+
     }
 }

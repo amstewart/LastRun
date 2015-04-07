@@ -5,7 +5,9 @@
  */
 package view.viewport;
 
-import javax.swing.JButton;
+import state.Action;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -128,5 +130,10 @@ public class GameViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+    }
+
+    @Override
+    public void setListeners(ArrayList<Action> a) {
+
     }
 }

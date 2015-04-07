@@ -6,21 +6,19 @@
 package state;
 
 import controller.Controller;
-import controller.MenuController;
-import model.entity.GameBundle;
-import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
-public interface State {
+public abstract class State {
 
-    void update();
+    public abstract void update();
+    public abstract void render();
+    public abstract void onEnter();
+    public abstract void onExit();
+    public abstract Viewport getViewport();
 
-    void render();
+    private Controller c = new Controller();
 
-    void onEnter(GameBundle bundle);
-
-    void onExit();
-
-    Viewport getViewport();
-
+    public Controller getController(){
+        return this.c;
+    }
 }
