@@ -1,16 +1,7 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Polygon;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import controller.KeyBinding;
 import model.entity.GameBundle;
-import model.map.tile.Tile;
-import model.utils.Position;
 import state.CharacterSelectionState;
 import state.GameState;
 import state.LoadSaveState;

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity;
+package model.map;
 
-import model.items.EquippedItems;
+/**
+ *
+ * @author
+ */
+public class TileToItemVisitor{
 
-public class Avatar extends Entity {
-	Pet pet;
-	EquippedItems equippedItems;
-	Occupation occupation;
+
+	public void visit(TileToItemAssociation association){
+		association.accept(this);
+	}
 }

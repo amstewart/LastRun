@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity;
+package model.map;
 
-import model.items.EquippedItems;
+/**
+ *
+ * @author
+ */
+public class LevelUpAreaEffect extends AreaEffect{
 
-public class Avatar extends Entity {
-	Pet pet;
-	EquippedItems equippedItems;
-	Occupation occupation;
+	public void apply(){
+		//do something
+	}
 }

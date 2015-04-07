@@ -1,7 +1,7 @@
 package testing;
 
 /**
- * Created by diacopium on 15/04/04.
+ * Created by Alex Stewart on 15/04/04.
  */
 public class ModelTest extends Test {
 

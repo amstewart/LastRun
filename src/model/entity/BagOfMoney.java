@@ -11,8 +11,7 @@ package model.entity;
  */
 public class BagOfMoney {
 	
-	public void makeItRain(){
-		
-	}
-    
+	public void makeItRain() {
+
+    }
 }
