@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.map.terrain;
+package model.map;
 
 /**
  *
  * @author
  */
-public class Water extends Terrain{
+public class InstantDeathAreaEffect extends AreaEffect {
+    
+    public void apply(){
+        
+    }
     
 }
