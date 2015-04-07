@@ -1,10 +1,6 @@
 package main;
 
 import controller.KeyBinding;
-<<<<<<< Updated upstream
-import model.entity.GameBundle;
-=======
->>>>>>> Stashed changes
 import state.MenuState;
 import state.StateMachine;
 import utility.Util;
