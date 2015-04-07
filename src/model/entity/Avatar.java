@@ -11,7 +11,4 @@ public class Avatar extends Entity {
 	Pet pet;
 	EquippedItems equippedItems;
 	Occupation occupation;
-
-	
-    
 }
