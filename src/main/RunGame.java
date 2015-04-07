@@ -1,18 +1,14 @@
 package main;
 
 import controller.KeyBinding;
-import model.entity.GameBundle;
-import state.CharacterSelectionState;
-import state.GameState;
-import state.LoadSaveState;
 import state.MenuState;
-import state.PauseGameState;
-import state.PetSelectionState;
 import state.StateMachine;
+import utility.Util;
 
 public class RunGame {
 
     public static void main(String[] args) {
+        Util.setDbgLevel(6);
 //    	Tile tiles[][] = new Tile[10][10];
 //    	for(int i = 0; i!=10; ++i){
 //    		for(int j = 0; j!=10; ++j){
@@ -84,16 +80,15 @@ public class RunGame {
 //    	panel.repaint();
 
    	KeyBinding keyBinding = new KeyBinding();
-        GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
-        s.add("menuState", new MenuState(bundle, s));
-        s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
-        s.add("petSelectionState", new PetSelectionState(bundle,s));
-        s.add("gameState", new GameState(bundle,s));
-        s.add("pauseGameState", new PauseGameState(bundle,s));
-        s.add("loadSaveState", new LoadSaveState(bundle,s));
+        s.add("menuState", new MenuState());
+        //s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
+        //s.add("petSelectionState", new PetSelectionState(bundle,s));
+        //s.add("gameState", new GameState(bundle,s));
+        //s.add("pauseGameState", new PauseGameState(bundle,s));
+        //s.add("loadSaveState", new LoadSaveState(bundle,s));
         
-        s.changeToState("menuState", bundle);
+        s.changeToState("menuState");
         
         while(true){
             s.update();

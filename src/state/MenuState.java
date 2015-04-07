@@ -1,43 +1,154 @@
-
 package state;
 
-import controller.MenuController;
-import model.entity.GameBundle;
+import controller.Controller;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
-public class MenuState implements State{
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+public class MenuState extends State {
 
     private MenuViewport viewPort;
-    private MenuController controller;
 
-    public MenuState(GameBundle bundle, StateMachine stateMachine){
+    public MenuState() {
         viewPort = new MenuViewport();
-        controller = new MenuController(bundle, stateMachine, viewPort);
     }
-    
+
     @Override
     public void update() {
-        
+
     }
 
     @Override
     public void render() {
-        viewPort.render();
+
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
-        controller.updateBundle(bundle);
+    public void onEnter() {
+        //actions in action
+        ArrayList<Action> a = new ArrayList<Action>();
+        a.add(new StartGameAct());
+        a.add(new LoadGameAct());
+        a.add(new ExitGameAct());
+        //take the current state and get the controller reference then pass in array
+
+        // the array can be created as soon as you know the target state
+        getController().setMenuKLS(a);
+        getViewport().setListeners(a);
     }
 
     @Override
     public void onExit() {
-        
+
     }
 
     @Override
     public Viewport getViewport() {
         return viewPort;
+    }
+
+    public Controller getController() {
+        return super.getController();
+    }
+
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~ Actions~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    private class StartGameAct extends Action {
+
+
+        ActionListener al;
+
+        @Override
+        public void perform() {
+
+            getStateMachine().add("CharacterSelectionState", new CharacterSelectionState());
+            getStateMachine().changeToState("CharacterSelectionState");
+        }
+
+        @Override
+        public void setActionListener(ActionListener al) {
+            this.al = al;
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+        }
+
+        @Override
+        public ActionListener getActionListener() {
+            return this.al;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
+    }
+
+    private class LoadGameAct extends Action {
+
+        ActionListener al;
+
+        public LoadGameAct() {
+
+        }
+
+        @Override
+        public void perform() {
+            System.out.println("This action was taken from Load Game Action");
+        }
+
+        public ActionListener getActionListener() {
+            return this.al;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
+        public void setActionListener(ActionListener al) {
+            this.al = al;
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+        }
+    }
+
+    private class ExitGameAct extends Action {
+
+        ActionListener al;
+
+        public ExitGameAct() {
+
+        }
+
+        @Override
+        public void perform() {
+            System.out.println("This action was taken from Exit Game Action");
+        }
+
+        public ActionListener getActionListener() {
+            return this.al;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
+        public void setActionListener(ActionListener al) {
+            this.al = al;
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+        }
     }
 }

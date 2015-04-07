@@ -5,7 +5,10 @@
  */
 package view.viewport;
 
+import state.Action;
+
 import javax.swing.JButton;
+import java.util.ArrayList;
 
 public class PetSelectionViewport extends Viewport {
 
@@ -74,5 +77,10 @@ public class PetSelectionViewport extends Viewport {
     @Override
     public void render() {
         this.revalidate();
+    }
+
+    @Override
+    public void setListeners(ArrayList<Action> a) {
+
     }
 }

@@ -5,68 +5,24 @@
  */
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import model.entity.GameBundle;
-import state.StateMachine;
+import controller.ListenerSets.CharacterSelectionLS;
+import controller.ListenerSets.ListenerSet;
+import controller.ListenerSets.MenuLS;
+import state.Action;
 
-/*
- * Abstract controller because all controllers work
- * with the same state machine and game bundle
- */
+import java.util.ArrayList;
 
-public abstract class Controller {
-    
-    private GameBundle bundle;
-    private StateMachine stateMachine;
-    
-    public Controller(GameBundle bundle, StateMachine stateMachine){
-        this.stateMachine = stateMachine;
-        this.bundle = bundle;
-    }
-    //TODO: add a listener for the pause button since most states can pause
-    protected ActionListener goToMainMenu = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-                stateMachine.changeToState("menuState", bundle);
-        }
-    };
-    
-    
-     public void updateBundle(GameBundle bundle) {
-        
-        this.bundle = bundle;
-    }
-    protected GameBundle getBundle() { 
-        
-        return bundle; 
+public class Controller {
+
+    private ListenerSet MenuStateSet;
+    private ListenerSet CharacterSelectionSet;
+
+    public void setMenuKLS(ArrayList<Action> a){
+        MenuStateSet = new MenuLS(a);
     }
 
-    protected StateMachine getStateMachine() { 
-        
-        return stateMachine;
+    public void setCharacterSelectionSet(ArrayList<Action> a){
+        CharacterSelectionSet = new CharacterSelectionLS(a);
     }
-    
-    protected ActionListener resumeGame = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            getStateMachine().changeToState("gameState", getBundle());
-        }
-    };
-    
-    protected ActionListener goToCharacterSelection = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getStateMachine().changeToState("characterSelectionState", getBundle());
-        }
-    };
-    
-    protected ActionListener goToLoadSave = new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-              getStateMachine().changeToState("loadSaveState", getBundle());
-      }
-    };
 
 }

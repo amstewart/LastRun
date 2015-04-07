@@ -5,6 +5,14 @@
  */
 package view.viewport;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import utility.ImageUtil;
+import state.Action;
+
+import java.util.ArrayList;
+
 public class MenuViewport extends Viewport {
 
     /**
@@ -13,6 +21,14 @@ public class MenuViewport extends Viewport {
     public MenuViewport() {
         initComponents();
     }
+    
+    @Override 
+     public void paintComponent(Graphics g)
+     { 
+         super.paintComponent(g);
+         Image image = ImageUtil.getImage(ImageUtil.MAIN_MENU_BACKGROUND).getImage();
+         g.drawImage(image, 0,0 , this);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,5 +71,9 @@ public class MenuViewport extends Viewport {
     @Override
     public void render() {
         this.revalidate();
+    }
+
+    public void setListeners(ArrayList<Action> a){
+        continueButton.addActionListener(a.get(0).getActionListener());
     }
 }

@@ -1,19 +1,19 @@
 
 package state;
 
-import controller.CharacterSelectionController;
-import model.entity.GameBundle;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 
-public class CharacterSelectionState implements State{
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+public class CharacterSelectionState extends State{
 
     private CharacterSelectionViewport viewPort;
-    private CharacterSelectionController controller;
 
-    public CharacterSelectionState(GameBundle bundle, StateMachine stateMachine){
+    public CharacterSelectionState(){
         viewPort =  new CharacterSelectionViewport();
-        controller = new CharacterSelectionController(bundle, stateMachine, viewPort);
     }
     
     @Override
@@ -27,8 +27,13 @@ public class CharacterSelectionState implements State{
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
-        controller.updateBundle(bundle);
+    public void onEnter() {
+        ArrayList<Action> a = new ArrayList<Action>();
+        a.add(new BackAct());
+        a.add(new toPetSelectionAct());
+
+        getController().setCharacterSelectionSet(a);
+        getViewport().setListeners(a);
     }
 
     @Override
@@ -39,6 +44,71 @@ public class CharacterSelectionState implements State{
     @Override
     public Viewport getViewport() {
         return viewPort;
+    }
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~ Actions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    private class BackAct extends Action {
+
+
+        ActionListener al;
+
+        @Override
+        public void perform() {
+
+            getStateMachine().pop();
+        }
+
+        @Override
+        public void setActionListener(ActionListener al) {
+            this.al = al;
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+        }
+
+        @Override
+        public ActionListener getActionListener() {
+            return this.al;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
+    }
+
+    private class toPetSelectionAct extends Action {
+
+
+        ActionListener al;
+
+        @Override
+        public void perform() {
+
+        }
+
+        @Override
+        public void setActionListener(ActionListener al) {
+            this.al = al;
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+        }
+
+        @Override
+        public ActionListener getActionListener() {
+            return this.al;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
     }
     
 }

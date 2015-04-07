@@ -1,18 +1,14 @@
 package state;
 
-import controller.GameController;
-import model.entity.GameBundle;
 import view.viewport.GameViewport;
 import view.viewport.Viewport;
 
-public class GameState implements State {
+public class GameState extends State {
     
     private GameViewport viewPort;
-    private GameController controller;
 
-    public GameState(GameBundle bundle, StateMachine stateMachine){
+    public GameState(){
         viewPort =  new GameViewport();
-        controller = new GameController(bundle, stateMachine, viewPort);
     }
 
     @Override
@@ -26,7 +22,7 @@ public class GameState implements State {
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
+    public void onEnter() {
 
     }
 
