@@ -1,19 +1,15 @@
 
 package state;
 
-import controller.LoadSaveController;
-import model.entity.GameBundle;
 import view.viewport.LoadSaveViewport;
 import view.viewport.Viewport;
 
-public class LoadSaveState implements State{
+public class LoadSaveState extends State{
 
     private LoadSaveViewport viewPort;
-    private LoadSaveController controller;
 
-    public LoadSaveState(GameBundle bundle, StateMachine stateMachine){
+    public LoadSaveState(){
         viewPort =  new LoadSaveViewport();
-        controller = new LoadSaveController(bundle, stateMachine, viewPort);
     }
     
     @Override
@@ -27,9 +23,7 @@ public class LoadSaveState implements State{
     }
 
     @Override
-    public void onEnter(GameBundle bundle) {
-        controller.updateBundle(bundle);
-    }
+    public void onEnter() {}
 
     @Override
     public void onExit() {

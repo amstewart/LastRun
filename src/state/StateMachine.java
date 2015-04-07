@@ -2,48 +2,35 @@ package state;
 
 import java.util.*;
 
-import model.entity.GameBundle;
 import view.viewport.Viewport;
 import view.window.GameWindow;
 
 public class StateMachine {
 
-    private Map<String, State> states;
-    private Stack<State> stateStack;
+    private static HashMap<String, State> states = new HashMap<String, State>();
+    private static Stack<State> stateStack = new Stack<State>();
+    private static GameWindow window = new GameWindow();
 
-    private GameWindow window;
-    private GameBundle bundle;
-
+    /*
     public StateMachine() {
-        
+
         states = new HashMap<String, State>();
         stateStack = new Stack<State>();
         window = new GameWindow();
     }
+    */
 
-    /**
-     * Adds a state to the state machine.
-     *
-     * @param stateName
-     * @param i
-     */
-    public void add(String stateName, State i) {
+    public static void add(String stateName, State i) {
         states.put(stateName, i);
     }
 
-    /**
-     * PRECONDITIONS: States.size > 0
-     */
-    public void update() {
+    public static void update() {
         State currentState = stateStack.peek();
         // TODO: Come back and integrate time into update
         currentState.update();
     }
 
-    /**
-     * PRECONDITIONS: States.size > 0
-     */
-    public void render() {
+    public static void render() {
         if (!stateStack.isEmpty()) {
             State currentState = stateStack.peek();
             
@@ -53,35 +40,20 @@ public class StateMachine {
         }
     }
 
-    public void push(String state) {
+    public static void push(String state) {
         State newState = states.get(state);
         stateStack.push(newState);
         System.out.println("State pushed: " + newState);
 
     }
 
-    public State pop() {
+    public static State pop() {
         System.out.println("State popped: " + stateStack.peek());
+        stateStack.peek().onExit();
         return stateStack.pop();
     }
-    /**
-     *
-     * @param stateName
-     */
-    /*
-    public void changeToState(String stateName, GameBundle bundle) {
-        if(!stateStack.isEmpty()) {
-            State currentState = stateStack.peek();
-            currentState.onExit();
-        }
 
-        State nextState = states.get(stateName);
-        nextState.onEnter(bundle);
-        this.push(stateName);
-        
-    }
-    */
-     public void changeToState(String stateName, GameBundle bundle) {
+     public static void changeToState(String stateName) {
         
          if(!stateStack.isEmpty()) {
             State currentState = stateStack.peek();
@@ -89,8 +61,8 @@ public class StateMachine {
         }
 
         State nextState = states.get(stateName);
-        nextState.onEnter(bundle);
-        this.push(stateName);
+        nextState.onEnter();
+        push(stateName);
         
     }
 /*

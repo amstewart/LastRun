@@ -1,13 +1,14 @@
 package main;
 
 import controller.KeyBinding;
+<<<<<<< Updated upstream
 import model.entity.GameBundle;
 import state.CharacterSelectionState;
 import state.GameState;
 import state.LoadSaveState;
+=======
+>>>>>>> Stashed changes
 import state.MenuState;
-import state.PauseGameState;
-import state.PetSelectionState;
 import state.StateMachine;
 
 public class RunGame {
@@ -84,16 +85,15 @@ public class RunGame {
 //    	panel.repaint();
 
    	KeyBinding keyBinding = new KeyBinding();
-        GameBundle bundle = new GameBundle();
         StateMachine s = new StateMachine();
-        s.add("menuState", new MenuState(bundle, s));
-        s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
-        s.add("petSelectionState", new PetSelectionState(bundle,s));
-        s.add("gameState", new GameState(bundle,s));
-        s.add("pauseGameState", new PauseGameState(bundle,s));
-        s.add("loadSaveState", new LoadSaveState(bundle,s));
+        s.add("menuState", new MenuState());
+        //s.add("characterSelectionState", new CharacterSelectionState(bundle, s));
+        //s.add("petSelectionState", new PetSelectionState(bundle,s));
+        //s.add("gameState", new GameState(bundle,s));
+        //s.add("pauseGameState", new PauseGameState(bundle,s));
+        //s.add("loadSaveState", new LoadSaveState(bundle,s));
         
-        s.changeToState("menuState", bundle);
+        s.changeToState("menuState");
         
         while(true){
             s.update();

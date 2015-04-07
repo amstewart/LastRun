@@ -5,7 +5,10 @@
  */
 package view.viewport;
 
+import state.Action;
+
 import javax.swing.JButton;
+import java.util.ArrayList;
 
 /**
  *
@@ -79,5 +82,10 @@ public class CharacterSelectionViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+    }
+
+    @Override
+    public void setListeners(ArrayList<Action> a) {
+        backButton.addActionListener(a.get(0).getActionListener());
     }
 }
