@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Items.EquipableItem;
+package model.items.EquipableItem;
 
-import model.Items.EquipableItem.EquipableItem;
 import model.inventory.EquippedInventoryManager;
 
 /**

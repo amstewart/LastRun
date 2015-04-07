@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.Inventory;
+package testing;
 
 import model.inventory.EquippedInventoryManager;
 import model.inventory.Inventory;
-import model.Items.EquipableItem.ChestItem;
-import model.Items.EquipableItem.EquipableItem;
-import model.Items.EquipableItem.HandItem;
-import model.Items.EquipableItem.HeadItem;
-import model.Items.TakeableItem;
+import model.items.EquipableItem.ChestItem;
+import model.items.EquipableItem.EquipableItem;
+import model.items.EquipableItem.HandItem;
+import model.items.EquipableItem.HeadItem;
+import model.items.TakeableItem;
 
 /**
  *
  * @author darien
  */
-public class InventoryTest {
+public class InventoryTest extends Test {
     
-    public static void main(String[] args){
+    public void run() {
         
         // Createing items:
         EquipableItem hat = new HeadItem("Hat");
@@ -30,7 +30,6 @@ public class InventoryTest {
         // Create Inventories
         Inventory inventory = new Inventory();
         EquippedInventoryManager equippedInventory = new EquippedInventoryManager();
-        
         
         inventory.storeItem(hat);
         inventory.storeItem(sword);

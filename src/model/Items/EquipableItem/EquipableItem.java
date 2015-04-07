@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Items.EquipableItem;
+package model.items.EquipableItem;
 
 import model.inventory.EquippedInventoryManager;
-import model.Items.Item;
-import model.Items.TakeableItem;
+import model.items.TakeableItem;
 
 /**
  *
@@ -18,6 +17,8 @@ public abstract class EquipableItem extends TakeableItem{
     public EquipableItem(String name) {
         super(name);
     }
+
+
     
     @Override
     public abstract  boolean accept(EquippedInventoryManager eim);

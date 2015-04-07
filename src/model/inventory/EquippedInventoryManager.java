@@ -6,10 +6,10 @@
 package model.inventory;
 
 import java.util.ArrayList;
-import model.Items.EquipableItem.ChestItem;
-import model.Items.EquipableItem.EquipableItem;
-import model.Items.EquipableItem.HandItem;
-import model.Items.EquipableItem.HeadItem;
+import model.items.EquipableItem.ChestItem;
+import model.items.EquipableItem.EquipableItem;
+import model.items.EquipableItem.HandItem;
+import model.items.EquipableItem.HeadItem;
 
 
 /**
