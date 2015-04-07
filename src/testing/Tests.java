@@ -3,7 +3,7 @@ package testing;
 /**
  * Created by Alex Stewart on 15/04/04.
  */
-import main.Util;
+import utility.Util;
 import java.util.LinkedList;
 
 public class Tests {

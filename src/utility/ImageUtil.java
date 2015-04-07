@@ -5,8 +5,6 @@
  */
 package utility;
 
-import main.Util;
-
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
