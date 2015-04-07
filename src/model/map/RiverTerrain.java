@@ -5,13 +5,14 @@
  */
 package model.map;
 
-import model.map.tile.Tile;
-
 /**
  *
  * @author
  */
-public class Map {
-	Tile tiles[][];
+public class RiverTerrain extends WaterTerrain {
+    
+     public void accept(TerrainVisitor visitor){
+        //do whatever
+    }
     
 }
