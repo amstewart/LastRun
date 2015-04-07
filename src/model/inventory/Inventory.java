@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.Inventory;
+package model.inventory;
 
 import java.util.ArrayList;
 import model.Items.EquipableItem.EquipableItem;
+import model.Items.NonEquipableItem;
 import model.Items.TakeableItem;
 
 /**
@@ -42,20 +43,22 @@ public class Inventory {
         return items.remove(item);
     }
     
-    public boolean equipItem(TakeableItem item, EquippedInventoryManager  eim){
+    public boolean equipItem(EquipableItem item, EquippedInventoryManager  eim){
         
-        if ( item instanceof EquipableItem ){
-            
-            EquipableItem equipableItem = (EquipableItem)item;
-            if ( equipableItem.accept(eim) ){
+            if ( item.accept(eim) ){
                 
-                this.dropItem(equipableItem);
+                this.dropItem(item);
                 return true;
             }
-        }
         
         return false;
     }
+    
+    public boolean equipItem(NonEquipableItem item, EquippedInventoryManager  eim){
+        
+        return false;
+    }
+    
     
     
 }

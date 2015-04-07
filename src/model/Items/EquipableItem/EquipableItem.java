@@ -5,7 +5,7 @@
  */
 package model.Items.EquipableItem;
 
-import model.Inventory.EquippedInventoryManager;
+import model.inventory.EquippedInventoryManager;
 import model.Items.Item;
 import model.Items.TakeableItem;
 
@@ -19,5 +19,6 @@ public abstract class EquipableItem extends TakeableItem{
         super(name);
     }
     
+    @Override
     public abstract  boolean accept(EquippedInventoryManager eim);
 }

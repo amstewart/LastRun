@@ -6,7 +6,7 @@
 package model.Items.EquipableItem;
 
 import model.Items.EquipableItem.EquipableItem;
-import model.Inventory.EquippedInventoryManager;
+import model.inventory.EquippedInventoryManager;
 
 /**
  *

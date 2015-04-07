@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test.Inventory;
+package test.Inventory;
 
-import model.Inventory.EquippedInventoryManager;
-import model.Inventory.Inventory;
+import model.inventory.EquippedInventoryManager;
+import model.inventory.Inventory;
 import model.Items.EquipableItem.ChestItem;
+import model.Items.EquipableItem.EquipableItem;
 import model.Items.EquipableItem.HandItem;
 import model.Items.EquipableItem.HeadItem;
 import model.Items.TakeableItem;
@@ -21,10 +22,10 @@ public class InventoryTest {
     public static void main(String[] args){
         
         // Createing items:
-        TakeableItem hat = new HeadItem("Hat");
-        TakeableItem sword = new HandItem("Sword");
-        TakeableItem machete = new HandItem("Machete");
-        TakeableItem armor = new ChestItem("Armor");
+        EquipableItem hat = new HeadItem("Hat");
+        EquipableItem sword = new HandItem("Sword");
+        EquipableItem machete = new HandItem("Machete");
+        EquipableItem armor = new ChestItem("Armor");
         
         // Create Inventories
         Inventory inventory = new Inventory();

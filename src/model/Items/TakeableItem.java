@@ -5,15 +5,19 @@
  */
 package model.Items;
 
+import model.inventory.EquippedInventoryManager;
+
 /**
  *
  * @author darien
  */
-public class TakeableItem extends Item{
+public abstract class TakeableItem extends Item{
     
     
     public TakeableItem(String name){
         
         super(name);
     }
+    
+    public abstract  boolean accept(EquippedInventoryManager eim);
 }
