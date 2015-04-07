@@ -2,34 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="617e0876-9f88-4c1f-bbbc-8a9af6f187d6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/CharacterSelectionController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/GameController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/LoadSaveController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/MenuController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/MerchantController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/PauseGameController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controller/PetSelectionController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/model/entity/GameBundle.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/CharacterSelectionState.java" afterPath="$PROJECT_DIR$/src/state/CharacterSelectionState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/CharacterSelectionViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/CharacterSelectionViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/Controller.java" afterPath="$PROJECT_DIR$/src/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/GameState.java" afterPath="$PROJECT_DIR$/src/state/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/GameViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/GameViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/LoadSaveState.java" afterPath="$PROJECT_DIR$/src/state/LoadSaveState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/LoadSaveViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/LoadSaveViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/MenuState.java" afterPath="$PROJECT_DIR$/src/state/MenuState.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/Map.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/terrain/Grass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/terrain/Mountain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/terrain/Terrain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/terrain/Water.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/tile/MoveableTileStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/tile/NonMoveableTileStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/tile/Tile.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/LastRun/model/map/tile/TileStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/testing/TileTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LastRun/model/items/Inventory.class" afterPath="$PROJECT_DIR$/out/production/LastRun/model/items/Inventory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LastRun/view/viewport/MenuViewport.class" afterPath="$PROJECT_DIR$/out/production/LastRun/view/viewport/MenuViewport.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LastRun/main/RunGame.class" afterPath="$PROJECT_DIR$/out/production/LastRun/main/RunGame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LastRun/main/Util.class" afterPath="$PROJECT_DIR$/out/production/LastRun/main/Util.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/MenuViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/MenuViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/MerchantState.java" afterPath="$PROJECT_DIR$/src/state/MerchantState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/MerchantViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/MerchantViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/PauseGameState.java" afterPath="$PROJECT_DIR$/src/state/PauseGameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/PauseGameViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/PauseGameViewport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/PetSelectionState.java" afterPath="$PROJECT_DIR$/src/state/PetSelectionState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/PetSelectionViewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/PetSelectionViewport.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/RunGame.java" afterPath="$PROJECT_DIR$/src/main/RunGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/State.java" afterPath="$PROJECT_DIR$/src/state/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/StateMachine.java" afterPath="$PROJECT_DIR$/src/state/StateMachine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/state/StatusState.java" afterPath="$PROJECT_DIR$/src/state/StatusState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/viewport/Viewport.java" afterPath="$PROJECT_DIR$/src/view/viewport/Viewport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LastRun.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,24 +44,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MenuLS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ListenerSets/MenuLS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="1125">
-              <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#1194#1195#0" expanded="true" />
-                <element signature="e#1233#1234#0" expanded="true" />
-                <element signature="e#1578#1579#0" expanded="true" />
-                <element signature="e#1617#1618#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,38 +100,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CharacterSelectionViewport.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/viewport/CharacterSelectionViewport.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="855">
-              <caret line="88" column="65" selection-start-line="88" selection-start-column="65" selection-end-line="88" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2886#2887#0" expanded="true" />
-                <element signature="e#2960#2961#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MenuViewport.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/viewport/MenuViewport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="855">
-              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="139" max-vertical-offset="810">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
-                <element signature="e#2535#2536#0" expanded="true" />
-                <element signature="e#2613#2614#0" expanded="true" />
-                <marker date="1428439904000" expanded="true" signature="649:694" placeholder="/**...*/" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#490#491#0" expanded="true" />
+                <element signature="e#522#523#0" expanded="true" />
+                <element signature="e#2478#2479#0" expanded="true" />
+                <element signature="e#2556#2557#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StateMachine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImageUtil.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/utility/ImageUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.52380955" vertical-offset="624" max-vertical-offset="1065">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RunGame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/RunGame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StateMachine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/state/StateMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3537415" vertical-offset="609" max-vertical-offset="1350">
+            <state vertical-scroll-proportion="0.0" vertical-offset="609" max-vertical-offset="1350">
               <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -183,22 +172,6 @@
                 <element signature="e#339#340#0" expanded="true" />
                 <element signature="e#399#400#0" expanded="true" />
                 <element signature="e#615#623#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CharacterSelectionLS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ListenerSets/CharacterSelectionLS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="885">
-              <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
-                <element signature="e#853#854#0" expanded="true" />
-                <element signature="e#1173#1174#0" expanded="true" />
-                <element signature="e#1212#1213#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -231,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/view/viewport/Viewport.java" />
         <option value="$PROJECT_DIR$/src/controller/PauseGameController.java" />
         <option value="$PROJECT_DIR$/src/view/viewport/PauseGameViewport.java" />
-        <option value="$PROJECT_DIR$/src/view/viewport/MenuViewport.java" />
         <option value="$PROJECT_DIR$/src/view/viewport/MerchantViewport.java" />
         <option value="$PROJECT_DIR$/src/view/viewport/LoadSaveViewport.java" />
         <option value="$PROJECT_DIR$/src/view/viewport/GameViewport.java" />
@@ -247,13 +219,16 @@
         <option value="$PROJECT_DIR$/src/state/State.java" />
         <option value="$PROJECT_DIR$/src/controller/ListenerSets/MenuLS.java" />
         <option value="$PROJECT_DIR$/src/state/Action.java" />
-        <option value="$PROJECT_DIR$/src/main/RunGame.java" />
         <option value="$PROJECT_DIR$/src/state/MenuState.java" />
         <option value="$PROJECT_DIR$/src/view/viewport/CharacterSelectionViewport.java" />
         <option value="$PROJECT_DIR$/src/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/controller/ListenerSets/CharacterSelectionLS.java" />
         <option value="$PROJECT_DIR$/src/state/CharacterSelectionState.java" />
         <option value="$PROJECT_DIR$/src/state/StateMachine.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/RunGame.java" />
+        <option value="$PROJECT_DIR$/src/view/viewport/MenuViewport.java" />
+        <option value="$PROJECT_DIR$/src/testing/TileTest.java" />
       </list>
     </option>
   </component>
@@ -262,7 +237,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="42" />
-    <option name="y" value="32" />
+    <option name="y" value="26" />
     <option name="width" value="1400" />
     <option name="height" value="768" />
   </component>
@@ -327,10 +302,6 @@
               <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="window" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -382,69 +353,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="state" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
+              <option name="myItemId" value="testing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -463,46 +372,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LastRun" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ListenerSets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -554,7 +423,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="LastRun" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -823,15 +698,15 @@
       <option name="number" value="Default" />
       <updated>1428009110489</updated>
       <workItem from="1428009112373" duration="511000" />
-      <workItem from="1428009805879" duration="18600000" />
+      <workItem from="1428009805879" duration="19150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19111000" />
+    <option name="totallyTimeSpent" value="19661000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="42" y="32" width="1400" height="768" extended-state="0" />
+    <frame x="42" y="26" width="1400" height="768" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1056,28 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/RunGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="1650">
-          <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/viewport/MenuViewport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="855">
-          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-          <folding>
-            <element signature="e#2535#2536#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <marker date="1428439904000" expanded="true" signature="649:694" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/viewport/CharacterSelectionViewport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="855">
@@ -1183,7 +1036,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/state/StateMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3537415" vertical-offset="609" max-vertical-offset="1350">
+        <state vertical-scroll-proportion="0.0" vertical-offset="609" max-vertical-offset="1350">
           <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1192,6 +1045,44 @@
             <element signature="e#560#561#0" expanded="true" />
             <element signature="e#600#601#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/RunGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/viewport/MenuViewport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="139" max-vertical-offset="810">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#2478#2479#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/ImageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52380955" vertical-offset="624" max-vertical-offset="1065">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
