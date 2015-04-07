@@ -10,5 +10,5 @@ package model.entity;
  * @author
  */
 public enum Status {
-    
+    NONE
 }
