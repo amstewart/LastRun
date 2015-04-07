@@ -31,6 +31,7 @@ public class InventoryTest {
         Inventory inventory = new Inventory();
         EquippedInventoryManager equippedInventory = new EquippedInventoryManager();
         
+        
         inventory.storeItem(hat);
         inventory.storeItem(sword);
         printInventoryItems(inventory);
@@ -44,7 +45,7 @@ public class InventoryTest {
         inventory.storeItem(sword);
         
         // Hat should no be
-        inventory.equipItem(hat, equippedInventory);
+        inventory.equipItem(hat,equippedInventory);
         printEquippedInventoryItems(equippedInventory);
         printInventoryItems(inventory);
         
