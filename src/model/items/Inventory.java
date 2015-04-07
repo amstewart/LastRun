@@ -5,10 +5,6 @@
  */
 package model.items;
 
-/**
- *
- * @author
- */
 public class Inventory {
     
 }

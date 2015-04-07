@@ -7,7 +7,7 @@ public class KeyBinding {
 	private static HashMap<Integer,Command> controls;
 	
 	public KeyBinding(){
-		controls = new HashMap<>();
+		controls = new HashMap<Integer, Command>();
 		controls.put(KeyEvent.VK_W, Command.NORTH);
 		controls.put(KeyEvent.VK_X, Command.SOUTH);
 	}
