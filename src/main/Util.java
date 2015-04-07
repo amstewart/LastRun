@@ -26,14 +26,14 @@ public class Util {
      * Gets the current global debug print level
      * @return The current global debug print level as an int
      */
-    public int getDbgLevel() { return debugLevel; }
+    public static int getDbgLevel() { return debugLevel; }
 
     /**
      * Sets the global debug print level to the given value, if the value is >= 0
      * @param value The new value (must be >= 0)
      * @return The resultant value of the global debut print level
      */
-    public int setDbgLevel(int value) {
+    public static int setDbgLevel(int value) {
         if (value >= 0)
             debugLevel = value;
         return debugLevel;

@@ -7,7 +7,6 @@ import java.awt.Polygon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import controller.KeyBinding;
 import model.entity.GameBundle;
 import model.map.tile.Tile;
@@ -92,8 +91,6 @@ public class RunGame {
 //    	panel.revalidate();
 //    
 //    	panel.repaint();
-    	
-
 
    	KeyBinding keyBinding = new KeyBinding();
         GameBundle bundle = new GameBundle();
