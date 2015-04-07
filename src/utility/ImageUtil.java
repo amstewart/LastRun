@@ -5,6 +5,8 @@
  */
 package utility;
 
+import main.Util;
+
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -22,7 +24,7 @@ import javax.swing.ImageIcon;
 public class ImageUtil {
     
     
-    public static final String MAIN_MENU_BACKGROUND = "./sprites/MainMenuBackground.jpeg";
+    public static final String MAIN_MENU_BACKGROUND = "res/sprites/MainMenuBackground.jpeg";
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         
@@ -68,6 +70,7 @@ public class ImageUtil {
         try {
             return ImageIO.read(file);
         } catch (IOException e) {
+            Util.dbgOut(System.getProperty("user.dir"), 1);
             e.printStackTrace();
         }
         return null;

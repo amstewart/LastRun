@@ -13,6 +13,7 @@ import state.StateMachine;
 public class RunGame {
 
     public static void main(String[] args) {
+        Util.setDbgLevel(6);
 //    	Tile tiles[][] = new Tile[10][10];
 //    	for(int i = 0; i!=10; ++i){
 //    		for(int j = 0; j!=10; ++j){
