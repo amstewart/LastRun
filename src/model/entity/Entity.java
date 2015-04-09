@@ -10,6 +10,7 @@ import java.util.LinkedList;
 
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
+import model.item.Inventory;
 
 
 public class Entity {
