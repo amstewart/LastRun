@@ -11,6 +11,7 @@ import model.entity.Occupation;
 public abstract class TakeableItem extends Item{
 
     public TakeableItem(String name, int value){
+
         super(name, value);
     }
 
