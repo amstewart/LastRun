@@ -8,10 +8,8 @@ package model.map;
 import java.util.HashMap;
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
+// NOTICE: THIS CLASS IS DEPRECIATED AND SHOULD BE DELETED
+
 public class MovementHandler {
     
     

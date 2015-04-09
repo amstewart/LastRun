@@ -11,10 +11,12 @@ import java.util.LinkedList;
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
+import model.map.EntityMovement;
 
 public abstract class Entity extends Asset implements Describable {
     // Fields
     private CoinPouch coins = new CoinPouch();
+    private EntityMovement movement = null;
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
@@ -29,6 +31,9 @@ public abstract class Entity extends Asset implements Describable {
     public void addStatus(Status status) {
         if (!statuses.contains(status))
             statuses.push(status);
+    }
+
+    public void assignMovement(EntityMovement mov) {
     }
 
     public Inventory getInventory() { return inventory; }
