@@ -13,6 +13,8 @@ import model.inventory.EquippedInventoryManager;
  */
 public class HeadItem extends EquipableItem{
 
+    private static final String DESC = "This is an item which is equipable to your head.";
+
     public HeadItem(String name) {
         super(name);
     }
@@ -22,6 +24,10 @@ public class HeadItem extends EquipableItem{
         
         return eim.equip(this);
     }
-    
-   
+
+
+    @Override
+    public String getDescription() {
+        return this.DESC;
+    }
 }

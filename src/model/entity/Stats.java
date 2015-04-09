@@ -28,21 +28,11 @@ public class Stats {
 	int defensiveRating;
 	int armorRating;
 	
-	
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
 		super();
-		this.livesLeft = livesLeft;
-		this.strength = strength;
-		this.agility = agility;
-		this.intellect = intellect;
-		this.hardiness = hardiness;
-		this.experience = experience;
-		this.movement = movement;
-		this.equippedArmor = equippedArmor;
-		this.equippedWeapon = equippedWeapon;
-		deriveStats();
+        setStats(livesLeft, strength, agility, intellect, hardiness, experience, movement, equippedArmor, equippedWeapon);
 	}
 	
 	public void mergeStats(Stats stat){
@@ -50,6 +40,21 @@ public class Stats {
 		
 		deriveStats();
 	}
+
+    private void setStats(int livesLeft, int strength, int agility, int intellect,
+                          int hardiness, int experience, int movement, int equippedArmor,
+                          int equippedWeapon) {
+        this.livesLeft = livesLeft;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.hardiness = hardiness;
+        this.experience = experience;
+        this.movement = movement;
+        this.equippedArmor = equippedArmor;
+        this.equippedWeapon = equippedWeapon;
+        deriveStats();
+    }
 	
 	public void unMergeStats(Stats stat){
 		

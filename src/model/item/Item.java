@@ -5,12 +5,14 @@
  */
 package model.item;
 
+import model.Describable;
+
 /**
  *
  * @author darien
  */
-public abstract class Item {
-    
+public abstract class Item implements Describable {
+
     private String name;
     public Item(String name){
         
@@ -18,7 +20,6 @@ public abstract class Item {
     }
     
     public String getName(){
-        
         return name;
     }
 }

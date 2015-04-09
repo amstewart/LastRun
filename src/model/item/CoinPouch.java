@@ -10,21 +10,27 @@ import utility.Util;
 public class CoinPouch extends TakeableItem {
 
     private static final String NAME = "Coin Pouch";
+    private static final String DESC = "A pouch of gold coins.";
 	
 	private int value = 0;
 
     public CoinPouch () {
-        super(this.NAME);
+        super(NAME);
     }
 
     public CoinPouch (int starting_value) {
-        super(this.NAME);
+        super(NAME);
         setValue(starting_value);
     }
 
     @Override
     public boolean accept(EquippedInventoryManager eim) {
         return false; //TODO IMPLEMENT
+    }
+
+    @Override
+    public String getDescription() {
+        return this.DESC;
     }
 
     /**
@@ -71,4 +77,6 @@ public class CoinPouch extends TakeableItem {
             this.value = newValue;
         return getValue();
     }
+
+
 }
