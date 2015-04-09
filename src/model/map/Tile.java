@@ -20,6 +20,8 @@ public class Tile{
 	private ArrayList<TileAssociation> tileAssociation;
 	private Location location;
 	private Terrain terrain;
+        private TileStatus status;
+        
 	
 
 	public Tile(Terrain terrain,Location location){
@@ -72,6 +74,16 @@ public class Tile{
 		}
 		return null;
 	}
+        
+        public void setStatus(TileStatus status){
+            this.status=status;
+        }
+        
+        public void accept(MovementHandler movementHandler){
+            status.accept(movementHandler);
+        }
+        
+    
 
 
 

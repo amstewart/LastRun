@@ -1,4 +1,4 @@
-package model.skills;
+package model.skill;
 
 // TODO: Each skill should have its own key listener set
 public abstract class BasicSkills {

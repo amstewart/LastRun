@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity;
+package model.map;
 
-
-public class NPC extends Entity {
-    Occupation occupation;
-
-    public String getDescription() { return "I am an NPC."; } //TODO Make better.
+/**
+ *
+ * @author
+ */
+public class MovableWhenFlyingStatus {
+    
+    public void accept(MovementHandler movementHandler){
+        movementHandler.visit(this);
+    }
 }

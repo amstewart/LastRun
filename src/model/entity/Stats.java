@@ -10,5 +10,58 @@ package model.entity;
  * @author
  */
 public class Stats {
+	int livesLeft;
+	int strength;
+	int agility;
+	int intellect;
+	int hardiness;
+	int experience;
+	int movement;
+	
+	int equippedArmor;
+	int equippedWeapon;
+	
+	int level;
+	int life;
+	int mana;
+	int offensiveRating;
+	int defensiveRating;
+	int armorRating;
+	
+	
+	public Stats(int livesLeft, int strength, int agility, int intellect,
+			int hardiness, int experience, int movement, int equippedArmor,
+			int equippedWeapon) {
+		super();
+		this.livesLeft = livesLeft;
+		this.strength = strength;
+		this.agility = agility;
+		this.intellect = intellect;
+		this.hardiness = hardiness;
+		this.experience = experience;
+		this.movement = movement;
+		this.equippedArmor = equippedArmor;
+		this.equippedWeapon = equippedWeapon;
+		deriveStats();
+	}
+	
+	public void mergeStats(Stats stat){
+		
+		
+		deriveStats();
+	}
+	
+	public void unMergeStats(Stats stat){
+		
+		
+		deriveStats();
+	}
+	
+	private void deriveStats(){
+		
+	}
+	
+
+
     
 }
