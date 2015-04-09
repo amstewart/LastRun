@@ -17,7 +17,7 @@ public class TileTest {
     public static void main(String[] args){
         GameMap map= new GameMap();
 	Tile t= map.getTile(new Location(0,0,0));
-	//t.getAreaEffect().print();
-        //System.out.println("Im an areaEffect");
+
+	t.getAreaEffect();
     }
 }

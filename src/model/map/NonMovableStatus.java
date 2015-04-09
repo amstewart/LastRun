@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity;
+package model.map;
 
 /**
  *
  * @author
  */
-public enum Status {
-    NONE
+public class NonMovableStatus extends TileStatus {
+    
+    
+    public void accept(MovementHandler movementHandler){
+        movementHandler.visit(this);
+    }
+    
 }

@@ -5,9 +5,9 @@
  */
 package controller;
 
-import controller.ListenerSets.CharacterSelectionLS;
-import controller.ListenerSets.ListenerSet;
-import controller.ListenerSets.MenuLS;
+import controller.listenerSet.CharacterSelectionLS;
+import controller.listenerSet.ListenerSet;
+import controller.listenerSet.MenuLS;
 import state.Action;
 
 import java.util.ArrayList;
