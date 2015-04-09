@@ -1,9 +1,8 @@
 package model.effect;
 
-import model.Assetable;
-import model.entity.Stats;
+import model.Asset;
 
-public class Spell extends Assetable{
+public class Spell extends Asset {
 	int ManaDecrementer = 4;
 	public Spell(String id) {
 		super(id);

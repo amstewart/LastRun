@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package model.entity;
-import model.Assetable;
+import model.Asset;
 import model.Describable;
 import java.util.LinkedList;
 
@@ -12,7 +12,7 @@ import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
 
-public abstract class Entity extends Assetable implements Describable {
+public abstract class Entity extends Asset implements Describable {
     // Fields
     private CoinPouch coins = new CoinPouch();
     private String name = "NONAME";

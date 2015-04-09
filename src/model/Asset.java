@@ -1,9 +1,9 @@
 package model;
 
-public abstract class Assetable {
+public abstract class Asset {
 	String id;
 
-	public Assetable(String id) {
+	public Asset(String id) {
 		super();
 		this.id = id;
 	}
