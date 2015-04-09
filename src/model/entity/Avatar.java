@@ -8,6 +8,7 @@ package model.entity;
 
 import model.item.TakeableItem;
 import model.item.equipment.Equipment;
+import utility.ImageUtil;
 
 public class Avatar extends Entity {
 
@@ -16,7 +17,7 @@ public class Avatar extends Entity {
 	private Pet pet;
 	private Occupation occupation;
 
-	public Avatar() { super(); }
+	public Avatar() { super(ImageUtil.NULL_ASSET); }
 
 	public void beSmasher() {
 		occupation = new Smasher(getInventory());
@@ -50,8 +51,4 @@ public class Avatar extends Entity {
 	public Equipment[] getEquipment() {
 		return occupation.getEquipment();
 	}
-
-
-
-
 }

@@ -20,9 +20,13 @@ import javax.swing.ImageIcon;
  * @author darien
  */
 public class ImageUtil {
-    
-    
-    public static final String MAIN_MENU_BACKGROUND = "res/sprites/MainMenuBackground.jpeg";
+
+    private static final String DIR_RES = "res/";
+    private static final String DIR_SPRITES = DIR_RES + "sprites/";
+    //
+    public static final String NULL_ASSET = DIR_RES + "null.png";
+    //
+    public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "MainMenuBackground.jpeg";
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         

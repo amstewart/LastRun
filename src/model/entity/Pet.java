@@ -7,5 +7,8 @@ package model.entity;
 
 
 public class Pet extends NPC {
-    
+
+    public Pet(String art_asset) {
+        super(art_asset);
+    }
 }

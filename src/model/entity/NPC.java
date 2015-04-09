@@ -9,5 +9,9 @@ package model.entity;
 public class NPC extends Entity {
     Occupation occupation;
 
+    public NPC (String art_asset) {
+        super(art_asset);
+    }
+
     public String getDescription() { return "I am an NPC."; } //TODO Make better.
 }

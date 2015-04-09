@@ -10,5 +10,8 @@ package model.entity;
  * @author
  */
 public class Villager extends NPC {
-    
+
+    public Villager(String art_asset) {
+        super(art_asset);
+    }
 }

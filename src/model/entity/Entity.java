@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 package model.entity;
+import model.Assetable;
 import model.Describable;
 import java.util.LinkedList;
 
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
-import java.util.LinkedList;
 
-import model.item.Inventory;
-
-public abstract class Entity implements Describable {
+public abstract class Entity extends Assetable implements Describable {
     // Fields
     private CoinPouch coins = new CoinPouch();
     private String name = "NONAME";
@@ -23,10 +21,17 @@ public abstract class Entity implements Describable {
 	private LinkedList<Status> statuses = new LinkedList<>();
 	private Inventory inventory = new Inventory();
 
-	public Entity() {
-		super();
+	public Entity(String asset_id) {
+		super(asset_id);
 		this.stats = saving_stats;
 	}
+
+    public void addStatus(Status status) {
+        if (!statuses.contains(status))
+            statuses.push(status);
+    }
+
+    public Inventory getInventory() { return inventory; }
 
     @Override
     public String getName() {
@@ -36,35 +41,9 @@ public abstract class Entity implements Describable {
 	public void mergeStats(Stats stat) {
 		stats.mergeStats(stat);
 	}
-	public void unMergeStats(Stats stat) {
-		stats.unMergeStats(stat);
-	}
-	public void setLivesLeft(int livesLeft) {
-		stats.setLivesLeft(livesLeft);
-	}
-
-	public void setStrength(int strength) {
-		stats.setStrength(strength);
-	}
 
 	public void setAgility(int agility) {
 		stats.setAgility(agility);
-	}
-
-	public void setIntellect(int intellect) {
-		stats.setIntellect(intellect);
-	}
-
-	public void setHardiness(int hardiness) {
-		stats.setHardiness(hardiness);
-	}
-
-	public void setExperience(int experience) {
-		stats.setExperience(experience);
-	}
-
-	public void setMovement(int movement) {
-		stats.setMovement(movement);
 	}
 
 	public void setEquippedArmor(int equippedArmor) {
@@ -74,11 +53,32 @@ public abstract class Entity implements Describable {
 	public void setEquippedWeapon(int equippedWeapon) {
 		stats.setEquippedWeapon(equippedWeapon);
 	}
-	
-    public void addStatus(Status status) {
-        if (!statuses.contains(status))
-            statuses.push(status);
+
+    public void setExperience(int experience) {
+        stats.setExperience(experience);
     }
 
-    public Inventory getInventory() { return inventory; }
+    public void setHardiness(int hardiness) {
+        stats.setHardiness(hardiness);
+    }
+
+    public void setIntellect(int intellect) {
+        stats.setIntellect(intellect);
+    }
+
+    public void setLivesLeft(int livesLeft) {
+        stats.setLivesLeft(livesLeft);
+    }
+
+    public void setMovement(int movement) {
+        stats.setMovement(movement);
+    }
+
+    public void setStrength(int strength) {
+        stats.setStrength(strength);
+    }
+
+    public void unMergeStats(Stats stat) {
+        stats.unMergeStats(stat);
+    }
 }
