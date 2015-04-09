@@ -5,85 +5,31 @@
  */
 package testing;
 
-import model.inventory.EquippedInventoryManager;
-import model.inventory.Inventory;
-import model.item.equipableItem.ChestItem;
-import model.item.equipableItem.EquipableItem;
-import model.item.equipableItem.HandItem;
-import model.item.equipableItem.HeadItem;
-import model.item.TakeableItem;
+import model.item.Inventory;
+import model.item.Item;
+import model.item.SmasherEquipmentManager;
+import model.item.equipment.Chest;
+import model.item.equipment.Head;
+import model.item.equipment.Legs;
 
-/**
- *
- * @author darien
- */
 public class InventoryTest extends Test {
-    
+
     public void run() {
-        
-        // Createing items:
-        EquipableItem hat = new HeadItem("Hat");
-        EquipableItem sword = new HandItem("Sword");
-        EquipableItem machete = new HandItem("Machete");
-        EquipableItem armor = new ChestItem("Armor");
-        
-        // Create Inventories
+        Head head = new Head("Helmet", 100);
+        Chest chest = new Chest("Chest", 100);
+        Legs legs = new Legs("Legs", 200);
+
         Inventory inventory = new Inventory();
-        EquippedInventoryManager equippedInventory = new EquippedInventoryManager();
-        
-        inventory.storeItem(hat);
-        inventory.storeItem(sword);
-        printInventoryItems(inventory);
-        
-        inventory.dropItem(hat);
-        inventory.dropItem(sword);
-        inventory.dropItem(armor);
-        printInventoryItems(inventory);
-        
-        inventory.storeItem(hat);
-        inventory.storeItem(sword);
-        
-        // Hat should no be
-        inventory.equipItem(hat,equippedInventory);
-        printEquippedInventoryItems(equippedInventory);
-        printInventoryItems(inventory);
-        
-        System.out.println("\nUnequipping Item: Hat");
-        equippedInventory.unequipHeadItem(inventory);
-        printEquippedInventoryItems(equippedInventory);
-        printInventoryItems(inventory);
-        
-        equippedInventory.unequiChestItem();
+        inventory.addItem(head);
+        inventory.addItem(chest);
+        inventory.addItem(legs);
+
+        Item[] items = inventory.getItems();
+
+        for(int i = 0; i < 3; i++) {
+            System.out.println(items[i].getName());
+        }
+
+
     }
-    
-    private static void printInventoryItems(Inventory inv){
-        
-        System.out.println("Iventory: ");
-        if (inv.getItems().size() <= 0){
-            
-            System.out.println("Inventor is empty" );
-            return;
-        }
-        
-        for (TakeableItem i : inv.getItems() ){
-            
-            System.out.println("Item: " + i.getName() );
-        }
-    }
-    
-    private static void printEquippedInventoryItems(EquippedInventoryManager inv){
-        
-        System.out.println("Equipped Inventory:");
-        if (inv.getItems().size() <= 0){
-            
-            System.out.println("Equipped is empty" );
-            return;
-        }
-        for (TakeableItem i : inv.getItems() ){
-            
-            
-                System.out.println("Item: " + i.getName() );
-        }
-    }
-    
 }

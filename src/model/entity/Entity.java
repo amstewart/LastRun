@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model.entity;
 
 import model.Describable;
@@ -6,7 +11,7 @@ import model.item.CoinPouch;
 import model.item.Inventory;
 import java.util.LinkedList;
 
-public abstract class Entity implements Describable {
+import model.item.Inventory;
 
     // Fields
     private CoinPouch coins = new CoinPouch();
@@ -17,14 +22,16 @@ public abstract class Entity implements Describable {
 	private LinkedList<Status> statuses = new LinkedList<>();
 	private Inventory inventory = new Inventory();
 
-    public void addStatus(Status status) {
-        if (!statuses.contains(status))
-            statuses.push(status);
-    }
+public class Entity {
+	BagOfMoney bagOfMoney;
+	Status status;
+	private Inventory inventory;
 
-    public String getName() { return this.name; }
+	public Entity() {
+		inventory = new Inventory();
+	}
 
-    public boolean removeStatus(Status status) {
-        return statuses.remove(status);
-    }
+	public Inventory getInventory() {
+		return inventory;
+	}
 }

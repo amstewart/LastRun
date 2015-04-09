@@ -5,19 +5,18 @@
  */
 package model.item;
 
-import model.inventory.EquippedInventoryManager;
+import model.entity.Avatar;
+import model.entity.Occupation;
 
-/**
- *
- * @author darien
- */
 public abstract class TakeableItem extends Item{
-    
-    
-    public TakeableItem(String name){
-        
-        super(name);
+
+    public TakeableItem(String name, int value){
+
+        super(name, value);
     }
-    
-    public abstract  boolean accept(EquippedInventoryManager eim);
+
+    @Override
+    public boolean touch(Avatar avatar) {
+        return avatar.addToInventory(this);
+    }
 }
