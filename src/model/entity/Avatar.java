@@ -5,7 +5,7 @@
  */
 package model.entity;
 
-import model.items.EquippedItems;
+import model.item.EquippedItems;
 
 public class Avatar extends Entity {
 	Pet pet;

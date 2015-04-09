@@ -5,8 +5,6 @@
  */
 package model.map;
 
-import model.items.Item;
-
 /**
  *
  * @author

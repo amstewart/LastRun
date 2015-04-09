@@ -3,15 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity;
+package model.item;
 
-/**
- *
- * @author
- */
-public class BagOfMoney {
-	
-	public void makeItRain() {
-
-    }
+public class Inventory {
+    
 }

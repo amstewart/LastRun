@@ -7,11 +7,11 @@ package testing;
 
 import model.inventory.EquippedInventoryManager;
 import model.inventory.Inventory;
-import model.items.EquipableItem.ChestItem;
-import model.items.EquipableItem.EquipableItem;
-import model.items.EquipableItem.HandItem;
-import model.items.EquipableItem.HeadItem;
-import model.items.TakeableItem;
+import model.item.equipableItem.ChestItem;
+import model.item.equipableItem.EquipableItem;
+import model.item.equipableItem.HandItem;
+import model.item.equipableItem.HeadItem;
+import model.item.TakeableItem;
 
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.items.EquipableItem;
+package model.item;
 
 import model.inventory.EquippedInventoryManager;
 
@@ -11,16 +11,13 @@ import model.inventory.EquippedInventoryManager;
  *
  * @author darien
  */
-public class ChestItem extends EquipableItem{
-
-    public ChestItem(String name) {
+public abstract class TakeableItem extends Item{
+    
+    
+    public TakeableItem(String name){
+        
         super(name);
     }
-
-    @Override
-    public boolean accept(EquippedInventoryManager eim) {
-        
-        return eim.equip(this);
-    }
     
+    public abstract  boolean accept(EquippedInventoryManager eim);
 }

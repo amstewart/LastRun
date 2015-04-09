@@ -6,9 +6,9 @@
 package model.inventory;
 
 import java.util.ArrayList;
-import model.items.EquipableItem.EquipableItem;
-import model.items.NonEquipableItem;
-import model.items.TakeableItem;
+import model.item.equipableItem.EquipableItem;
+import model.item.NonEquipableItem;
+import model.item.TakeableItem;
 
 /**
  *

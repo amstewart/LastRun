@@ -2,7 +2,7 @@ package model.entity;
 
 import model.Describable;
 import model.inventory.EquippedInventoryManager;
-import model.items.Inventory;
+import model.item.Inventory;
 import java.util.LinkedList;
 
 public abstract class Entity implements Describable {
