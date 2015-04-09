@@ -1,6 +1,6 @@
 package model.item;
 
-import model.inventory.EquippedInventoryManager;
+import model.entity.Occupation;
 import utility.Util;
 
 /**
@@ -11,24 +11,19 @@ public class CoinPouch extends TakeableItem {
 
     private static final String NAME = "Coin Pouch";
     private static final String DESC = "A pouch of gold coins.";
+    private static final int POUCH_VALUE = 0;
 	
 	private int value = 0;
 
     public CoinPouch () {
-        super(NAME);
+        super(NAME, POUCH_VALUE);
     }
 
     public CoinPouch (int starting_value) {
-        super(NAME);
+        super(NAME, POUCH_VALUE);
         setValue(starting_value);
     }
 
-    @Override
-    public boolean accept(EquippedInventoryManager eim) {
-        return false; //TODO IMPLEMENT
-    }
-
-    @Override
     public String getDescription() {
         return this.DESC;
     }
@@ -78,5 +73,8 @@ public class CoinPouch extends TakeableItem {
         return getValue();
     }
 
-
+    @Override
+    public boolean use(Occupation occupation) {
+        return false;
+    }
 }
