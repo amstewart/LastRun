@@ -8,12 +8,23 @@ import utility.Util;
  * @author Alex Stewart
  */
 public class CoinPouch extends TakeableItem {
+
+    private static final String NAME = "Coin Pouch";
 	
 	private int value = 0;
 
+    public CoinPouch () {
+        super(this.NAME);
+    }
+
+    public CoinPouch (int starting_value) {
+        super(this.NAME);
+        setValue(starting_value);
+    }
+
     @Override
     public boolean accept(EquippedInventoryManager eim) {
-        return false;
+        return false; //TODO IMPLEMENT
     }
 
     /**
@@ -60,6 +71,4 @@ public class CoinPouch extends TakeableItem {
             this.value = newValue;
         return getValue();
     }
-
-
 }
