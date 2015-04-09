@@ -86,4 +86,64 @@ public abstract class Entity extends Asset implements Describable {
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
     }
+    
+    public int getLivesLeft() {
+		return stats.getLivesLeft();
+	}
+
+	public int getStrength() {
+		return stats.getStrength();
+	}
+
+	public int getAgility() {
+		return stats.getAgility();
+	}
+
+	public int getIntellect() {
+		return stats.getIntellect();
+	}
+
+	public int getHardiness() {
+		return stats.getHardiness();
+	}
+
+	public int getExperience() {
+		return stats.getExperience();
+	}
+
+	public int getMovement() {
+		return stats.getMovement();
+	}
+
+	public int getEquippedArmor() {
+		return stats.getEquippedArmor();
+	}
+
+	public int getEquippedWeapon() {
+		return stats.getEquippedWeapon();
+	}
+
+	public int getLevel() {
+		return stats.getLevel();
+	}
+
+	public int getLife() {
+		return stats.getLife();
+	}
+
+	public int getMana() {
+		return stats.getMana();
+	}
+
+	public int getOffensiveRating() {
+		return stats.getOffensiveRating();
+	}
+
+	public int getDefensiveRating() {
+		return stats.getDefensiveRating();
+	}
+
+	public int getArmorRating() {
+		return stats.getArmorRating();
+	}
 }
