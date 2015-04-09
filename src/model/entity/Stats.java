@@ -10,23 +10,23 @@ package model.entity;
  * @author
  */
 public class Stats {
-	int livesLeft;
-	int strength;
-	int agility;
-	int intellect;
-	int hardiness;
-	int experience;
-	int movement;
+	private int livesLeft;
+	private int strength;
+	private int agility;
+	private int intellect;
+	private int hardiness;
+	private int experience;
+	private int movement;
 	
-	int equippedArmor;
-	int equippedWeapon;
+	private int equippedArmor;
+	private int equippedWeapon;
 	
-	int level;
-	int life;
-	int mana;
-	int offensiveRating;
-	int defensiveRating;
-	int armorRating;
+	private int level;
+	private int life;
+	private int mana;
+	private int offensiveRating;
+	private int defensiveRating;
+	private int armorRating;
 	
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
@@ -106,10 +106,73 @@ public class Stats {
 		this.equippedWeapon = equippedWeapon;
 		deriveStats();
 	}
-
+	
 	private void deriveStats(){
 		
 	}
+	
+
+	public int getLivesLeft() {
+		return livesLeft;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public int getAgility() {
+		return agility;
+	}
+
+	public int getIntellect() {
+		return intellect;
+	}
+
+	public int getHardiness() {
+		return hardiness;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public int getMovement() {
+		return movement;
+	}
+
+	public int getEquippedArmor() {
+		return equippedArmor;
+	}
+
+	public int getEquippedWeapon() {
+		return equippedWeapon;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public int getLife() {
+		return life;
+	}
+
+	public int getMana() {
+		return mana;
+	}
+
+	public int getOffensiveRating() {
+		return offensiveRating;
+	}
+
+	public int getDefensiveRating() {
+		return defensiveRating;
+	}
+
+	public int getArmorRating() {
+		return armorRating;
+	}
+
+	
 	
 
 
