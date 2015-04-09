@@ -10,6 +10,9 @@ import model.item.TakeableItem;
 import model.item.equipment.Equipment;
 
 public class Avatar extends Entity {
+
+    private static final String DESC = "This is the player character.";
+
 	private Pet pet;
 	private Occupation occupation;
 
@@ -27,6 +30,11 @@ public class Avatar extends Entity {
 		occupation = new Summoner(getInventory());
 	}
 
+    @Override
+    public String getDescription() {
+        return DESC;
+    }
+
 	public boolean addToInventory(TakeableItem item) {
 		return getInventory().addItem(item);
 	}
@@ -42,4 +50,8 @@ public class Avatar extends Entity {
 	public Equipment[] getEquipment() {
 		return occupation.getEquipment();
 	}
+
+
+
+
 }

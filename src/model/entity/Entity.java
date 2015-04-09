@@ -28,6 +28,11 @@ public abstract class Entity implements Describable {
 		this.stats = saving_stats;
 	}
 
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
 	public void mergeStats(Stats stat) {
 		stats.mergeStats(stat);
 	}
