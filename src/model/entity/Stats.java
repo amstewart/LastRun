@@ -62,6 +62,51 @@ public class Stats {
 		deriveStats();
 	}
 	
+	public void setLivesLeft(int livesLeft) {
+		this.livesLeft = livesLeft;
+		deriveStats();
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+		deriveStats();
+	}
+
+	public void setAgility(int agility) {
+		this.agility = agility;
+		deriveStats();
+	}
+
+	public void setIntellect(int intellect) {
+		this.intellect = intellect;
+		deriveStats();
+	}
+
+	public void setHardiness(int hardiness) {
+		this.hardiness = hardiness;
+		deriveStats();
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+		deriveStats();
+	}
+
+	public void setMovement(int movement) {
+		this.movement = movement;
+		deriveStats();
+	}
+
+	public void setEquippedArmor(int equippedArmor) {
+		this.equippedArmor = equippedArmor;
+		deriveStats();
+	}
+
+	public void setEquippedWeapon(int equippedWeapon) {
+		this.equippedWeapon = equippedWeapon;
+		deriveStats();
+	}
+
 	private void deriveStats(){
 		
 	}

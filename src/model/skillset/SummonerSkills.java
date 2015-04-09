@@ -1,4 +1,6 @@
-package model.skill;
+package model.skillset;
+
+import model.skill.Skill;
 
 public class SummonerSkills extends BasicSkills {
 
@@ -8,10 +10,10 @@ public class SummonerSkills extends BasicSkills {
     private Skill staff;
 
     public SummonerSkills() {
-        boon = new Skill("Boon", 1);
-        bane = new Skill("Bane", 1);
-        enchantment = new Skill("Enchantment", 1);
-        staff = new Skill("Staff", 1);
+        //boon = new Skill("Boon", 1);
+       // bane = new Skill("Bane", 1);
+       // enchantment = new Skill("Enchantment", 1);
+        //staff = new Skill("Staff", 1);
     }
 
     protected Skill getBoon() {

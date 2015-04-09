@@ -1,6 +1,6 @@
 package model.skill;
 
-public class Skill {
+public abstract class Skill {
     private String name;
     private int level;
 
@@ -12,4 +12,7 @@ public class Skill {
     public int getLevel() {
         return level;
     }
+    
+    public abstract void applyMultiplier();
+    //add an accept Controller
 }
