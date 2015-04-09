@@ -1,5 +1,3 @@
-
-
 Author Carlos:
 
 In order for the project to run without problems do the following:
@@ -13,10 +11,9 @@ In the properties window:
 
 In the Run wind: 
 
-Change current diectory to /../../././../LastRun
+Change current directory to /../../././../LastRun
 
 Why you should do this?
 
-Will make the running appication to read fom this diectorie files (which wil be used for pictures and decals)
-
-
+Will make the running application to read from this directory files (which will 
+be used for pictures and decals)
