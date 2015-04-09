@@ -13,18 +13,33 @@ import model.entity.Entity;
  * @author
  */
 public class MovementHandler {
+    
+    
+    private final Location NORTH = new Location(0,1,-1);
+    //Final locations here. Could just have another class that includes them.
+    
+    
     GameMap map;
     HashMap<Entity,Location> entityToLocationMap;
+    boolean movable;
+    
     
     public MovementHandler(GameMap map){
            this.map=map;
            entityToLocationMap= new HashMap<Entity,Location>();
+           movable=false;
     }
     
     public void move(Entity e,Location loc){
        Location newEntityLocation=getLocation(e).add(loc); //need to have some sort of check
-       
-       updateLocation(e,newEntityLocation);
+       Tile t= map.getTile(newEntityLocation);
+       t.accept(this);
+       if(movable==true){ //good enough for now.
+           updateLocation(e,newEntityLocation);
+           map.getTile(newEntityLocation).setStatus(new NonMovableStatus());
+           map.getTile(loc).setStatus(new MovableStatus());
+       }
+       movable=false;
     }
     
     public void addEntity(Entity e,Location loc){
@@ -37,6 +52,18 @@ public class MovementHandler {
     
     public void updateLocation(Entity e, Location loc){
         entityToLocationMap.put(e,loc);
+    }
+    
+    public void visit(MovableStatus status){
+       movable=true;
+    }
+    
+    public void visit(NonMovableStatus status){
+        movable=false;
+    }
+    
+    public void visit(MovableWhenFlyingStatus status){
+       movable=true;
     }
     
 }

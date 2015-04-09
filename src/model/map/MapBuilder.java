@@ -31,12 +31,14 @@ public class MapBuilder {
                 for(int k=0;k<height;k++){
                     Location loc= new Location(i,j,k);
                     tiles[i][j][k]= new Tile(new GrassTerrain(),loc);
+                    tiles[i][j][k].setStatus(new MovableStatus());
                 }
             }
         }
 
         //tiles[0][0][0].setItem(new Item()); a type of item
         tiles[0][0][0].setAreaEffect(new LevelUpAreaEffect());
+        tiles[0][0][0].setStatus(new NonMovableStatus());
     }
 
     public Tile[][][] getMap(){
