@@ -7,5 +7,7 @@ package model.entity;
 
 
 public class NPC extends Entity {
-    Occupation npcOccupation;
+    Occupation occupation;
+
+    public String getDescription() { return "I am an NPC."; } //TODO Make better.
 }

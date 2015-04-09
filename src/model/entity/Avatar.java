@@ -11,4 +11,6 @@ public class Avatar extends Entity {
 	Pet pet;
 	EquippedItems equippedItems;
 	Occupation occupation;
+
+    public String getDescription() { return "I am an avatar."; } //TODO Make better.
 }
