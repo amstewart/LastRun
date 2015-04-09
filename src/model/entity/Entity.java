@@ -5,15 +5,20 @@
  */
 package model.entity;
 
-import model.items.EquippedItems;
-import model.items.Inventory;
+
+import model.item.Inventory;
 
 
 public class Entity {
 	BagOfMoney bagOfMoney;
 	Status status;
-	Inventory inventory;
+	private Inventory inventory;
 
-	
-    
+	public Entity() {
+		inventory = new Inventory();
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
 }

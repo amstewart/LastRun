@@ -5,7 +5,7 @@
  */
 package model.map;
 
-import model.items.Item;
+import model.item.Item;
 
 /**
  *

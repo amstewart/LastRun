@@ -11,7 +11,7 @@ package model.map;
  */
 import java.util.*;
 
-import model.items.Item;
+import model.item.Item;
 
 public class Tile{
 	private TerrainVisitor visitor;
