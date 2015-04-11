@@ -10,7 +10,7 @@ public class RunGame {
         Util.setDbgLevel(6); // Set debug to maximum verbosity
 
         KeyBinding keyBinding = new KeyBinding();
-        RPGStateMachine s = new RPGStateMachine();
+        RPGStateMachine s = RPGStateMachine.getInstance();
         s.changeToMenuState();
 
         while(true){

@@ -189,4 +189,8 @@ public class GameMap {
     public int getHeight() {
         return map[0].length;
     }
+
+    public Iterable<EntityMovement> getEntityMovements() {
+        return entityMovements;
+    }
 }
