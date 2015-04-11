@@ -27,4 +27,13 @@ public class TerrainOwner {
     public int getNumberOwned(){
         return slaves.size();
     }
+    
+    /* TODO: This returns a random terrain if numOwner > 1 */
+    public Terrain getTerrain(){
+        Terrain terrain = null; 
+        for(Terrain t : slaves){
+            terrain = t;
+        }
+        return terrain;
+    }
 }

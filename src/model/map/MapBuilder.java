@@ -10,6 +10,8 @@ import model.areaEffect.LevelUpAreaEffect;
 import model.terrain.GrassTerrain;
 import model.movement.NonMovableStatus;
 import model.movement.MovableStatus;
+import model.terrain.MountainTerrain;
+import model.terrain.RiverTerrain;
 
 /**
  *
@@ -34,7 +36,14 @@ public class MapBuilder {
                 for(int k=0;k<height;k++){
                     Location loc= new Location(i,j,k);
                     tiles[i][j]= new Tile(loc);
-                    tiles[i][j].addTerrain(new GrassTerrain());
+                    double randomTerrain = Math.random();
+                    if(randomTerrain < 0.60){
+                        tiles[i][j].addTerrain(new GrassTerrain());
+                    }else if(randomTerrain < 0.85){
+                        tiles[i][j].addTerrain(new RiverTerrain());
+                    }else{
+                        tiles[i][j].addTerrain(new MountainTerrain());
+                    }
                 }
             }
         }

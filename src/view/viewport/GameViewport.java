@@ -20,6 +20,7 @@ public class GameViewport extends Viewport {
      */
     public GameViewport() {
         initComponents();
+        jPanel2 = new MenuViewport();
     }
     
 

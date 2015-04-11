@@ -167,4 +167,12 @@ public class Tile {
         return myVehicles != null;
     }
 
+    public Location getLocation() {
+        return address;
+    }
+
+    
+    public Terrain getTerrain(){
+        return myTerrains.getTerrain();
+    }
 }

@@ -2,15 +2,16 @@ package state;
 
 import model.map.GameMap;
 import view.viewport.GameViewport;
+import view.viewport.MapViewport;
 import view.viewport.Viewport;
 
 public class GameState extends State {
     
-    private GameViewport viewPort;
+    private Viewport viewPort;
 
     public GameState(){
         GameMap map = new GameMap(); 
-        viewPort =  new GameViewport();
+        viewPort =  new MapViewport(map);
     }
 
     @Override

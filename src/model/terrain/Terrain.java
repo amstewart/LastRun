@@ -5,6 +5,8 @@
  */
 package model.terrain;
 
+import java.awt.Color;
+
 /**
  *
  * @author
@@ -12,5 +14,5 @@ package model.terrain;
 public abstract class Terrain{ 
 
 	public abstract void accept(TerrainVisitor visitor);
-	
+	public abstract Color getColor();
 }
