@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.movement;
+//package model.movement;
 
 import java.util.HashMap;
 import model.entity.Entity;
@@ -34,11 +34,11 @@ public class MovementHandler {
     public void move(Entity e,Location loc){
        Location newEntityLocation=getLocation(e).add(loc); //need to have some sort of check
        Tile t= map.getTile(newEntityLocation);
-       t.accept(this);
+       //t.accept(this);
        if(movable==true){ //good enough for now.
            updateLocation(e,newEntityLocation);
-           map.getTile(newEntityLocation).setStatus(new NonMovableStatus());
-           map.getTile(loc).setStatus(new MovableStatus());
+           //map.getTile(newEntityLocation).setStatus(new NonMovableStatus());
+           //map.getTile(loc).setStatus(new MovableStatus());
        }
        movable=false;
     }
@@ -54,7 +54,8 @@ public class MovementHandler {
     public void updateLocation(Entity e, Location loc){
         entityToLocationMap.put(e,loc);
     }
-    
+
+    /*
     public void visit(MovableStatus status){
        movable=true;
     }
@@ -66,6 +67,6 @@ public class MovementHandler {
     public void visit(MovableWhenFlyingStatus status){
        movable=true;
     }
-    
+    */
 }
 
