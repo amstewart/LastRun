@@ -68,8 +68,7 @@ public class MenuState extends State {
         @Override
         public void perform() {
 
-            RPGStateMachine.getInstance().add("CharacterSelectionState", new CharacterSelectionState());
-            RPGStateMachine.getInstance().changeToState("CharacterSelectionState");
+            RPGStateMachine.getInstance().changeToCharSelectState();
         }
 
         @Override
