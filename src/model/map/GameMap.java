@@ -2,6 +2,7 @@ package model.map;
 
 import model.Vector3;
 import model.entity.Entity;
+import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
 import model.tile.Tile;
@@ -33,6 +34,11 @@ public class GameMap {
     public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
         entities.add(new EntityMovement(e, location));
+    }
+
+    public void addItem(Item item, Vector3 location) {
+        getTile(location).addItem(item);
+        items.add(new ItemMovement(item, location));
     }
 
     public Tile getTileToTheNorth(Vector3 location) {
@@ -103,6 +109,12 @@ public class GameMap {
         return map[i][j];
     }
 
+    public boolean removeEntity(EntityMovement ent_mov) {
+        return entities.remove(ent_mov);
+    }
+
+    public boolean removeItem(ItemMovement item_mov) { return items.remove(item_mov); }
+
     private int applyBoundaryX(int x) {
         switch (boundaryMode) {
             case WARP_MODE:
@@ -168,6 +180,4 @@ public class GameMap {
     public int getHeight() {
         return map[0].length;
     }
-
-    
 }
