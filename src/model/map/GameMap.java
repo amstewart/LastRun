@@ -3,6 +3,7 @@ package model.map;
 import java.util.ArrayList;
 import model.Vector3;
 import model.entity.Entity;
+import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
 import model.tile.Tile;
@@ -112,6 +113,12 @@ public class GameMap {
         return map[i][j];
     }
 
+    public boolean removeEntity(EntityMovement ent_mov) {
+        return entities.remove(ent_mov);
+    }
+
+    public boolean removeItem(ItemMovement item_mov) { return items.remove(item_mov); }
+
     private int applyBoundaryX(int x) {
         switch (boundaryMode) {
             case WARP_MODE:
@@ -177,6 +184,4 @@ public class GameMap {
     public int getHeight() {
         return map[0].length;
     }
-
-    
 }

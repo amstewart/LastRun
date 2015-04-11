@@ -32,6 +32,11 @@ public class EntityMovement extends Movement {
         initialize(entity, starting_position, Vector3.zero());
     }
 
+    public void changeEntity(Entity new_ent) {
+        if (new_ent == null) { Util.errOut(new Exception("EntityMovement set to null entity.")); }
+        entity = new_ent;
+    }
+
     public Vector3 getFacingDir() { return facing_dir; }
 
     private void initialize(Entity ent, Vector3 pos_init, Vector3 facing_dir) {
