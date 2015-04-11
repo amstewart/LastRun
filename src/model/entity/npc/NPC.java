@@ -10,7 +10,6 @@ import model.entity.occupation.Occupation;
 
 
 public class NPC extends Entity {
-    Occupation occupation;
 
     public NPC (String art_asset) {
         super(art_asset);
