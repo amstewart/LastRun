@@ -1,11 +1,11 @@
 package model.tile;
 
+import model.Vector3;
 import model.areaEffect.AreaEffect;
 import model.entity.Entity;
 import model.entity.npc.pet.Pet;
 import model.entity.vehicle.Vehicle;
 import model.item.Item;
-import model.map.Location;
 import model.owner.AreaEffectOwner;
 import model.owner.EntityOwner;
 import model.owner.ItemOwner;
@@ -21,7 +21,7 @@ import utility.Util;
  */
 public class Tile {
 
-    private Location address;
+    private Vector3 address;
 
     private AreaEffectOwner myAreaEffects;
     private EntityOwner myEntities;
@@ -30,7 +30,7 @@ public class Tile {
     private TerrainOwner myTerrains;
     private VehicleOwner myVehicles;
 
-    public Tile(Location l) {
+    public Tile(Vector3 l) {
         address = l;
     }
     
@@ -167,10 +167,9 @@ public class Tile {
         return myVehicles != null;
     }
 
-    public Location getLocation() {
+    public Vector3 getLocation() {
         return address;
     }
-
     
     public Terrain getTerrain(){
         return myTerrains.getTerrain();

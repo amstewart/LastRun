@@ -1,5 +1,6 @@
 package model.map;
 
+import model.Vector3;
 import model.entity.Entity;
 import model.tile.Tile;
 
@@ -22,13 +23,13 @@ public class GameMap {
         map = m.getMap();
     }
 
-    public void addEntity(Entity e, Location location) {
+    public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
     }
 
-    public Tile getTileToTheNorth(Location location) {
-        int newX = location.getX();
-        int newY = location.getY() - 1;
+    public Tile getTileToTheNorth(Vector3 location) {
+        int newX = location.X;
+        int newY = location.Y - 1;
         return map[newX][newY];
     }
 
@@ -36,9 +37,9 @@ public class GameMap {
         return getTileToTheNorth(t.getLocation());
     }
 
-    public Tile getTileToTheNorthEast(Location location) {
-        int newX = location.getX() + 1;
-        int newY = location.getY() - 1;
+    public Tile getTileToTheNorthEast(Vector3 location) {
+        int newX = location.X + 1;
+        int newY = location.Y - 1;
         return map[newX][newY];
     }
 
@@ -46,9 +47,9 @@ public class GameMap {
         return getTileToTheNorthEast(t.getLocation());
     }
 
-    public Tile getTileToTheNorthWest(Location location) {
-        int newX = location.getX() - 1;
-        int newY = location.getY() - 1;
+    public Tile getTileToTheNorthWest(Vector3 location) {
+        int newX = location.X - 1;
+        int newY = location.Y - 1;
         return map[newX][newY];
     }
 
@@ -56,9 +57,9 @@ public class GameMap {
         return getTileToTheNorthWest(t.getLocation());
     }
 
-    public Tile getTileToTheSouth(Location location) {
-        int newX = location.getX();
-        int newY = location.getY() + 1;
+    public Tile getTileToTheSouth(Vector3 location) {
+        int newX = location.X;
+        int newY = location.Y + 1;
         return map[newX][newY];
     }
 
@@ -66,9 +67,9 @@ public class GameMap {
         return getTileToTheSouth(t.getLocation());
     }
 
-    public Tile getTileToTheSouthEast(Location location) {
-        int newX = location.getX();
-        int newY = location.getY() + 1;
+    public Tile getTileToTheSouthEast(Vector3 location) {
+        int newX = location.X;
+        int newY = location.Y + 1;
         return map[newX][newY];
     }
 
@@ -76,9 +77,9 @@ public class GameMap {
         return getTileToTheSouthEast(t.getLocation());
     }
 
-    public Tile getTileToTheSouthwest(Location location) {
-        int newX = location.getX() - 1;
-        int newY = location.getY() + 1;
+    public Tile getTileToTheSouthwest(Vector3 location) {
+        int newX = location.X - 1;
+        int newY = location.Y + 1;
         return map[newX][newY];
     }
 
@@ -86,9 +87,10 @@ public class GameMap {
         return getTileToTheSouthwest(t.getLocation());
     }
 
-    public Tile getTile(Location location) {
-        return map[location.getX()][location.getY()];
+    public Tile getTile(Vector3 location) {
+        return map[location.X][location.Y];
     }
+
     public Tile getTile(int i, int j) {
         return map[i][j];
     }
