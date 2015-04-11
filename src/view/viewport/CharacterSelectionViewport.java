@@ -82,10 +82,17 @@ public class CharacterSelectionViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 
     @Override
     public void setListeners(ArrayList<Action> a) {
         backButton.addActionListener(a.get(0).getActionListener());
+        this.addKeyListener(a.get(2).getKeyListener());
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 }

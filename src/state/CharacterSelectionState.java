@@ -29,9 +29,11 @@ public class CharacterSelectionState extends State{
 
     @Override
     public void onEnter() {
+        render();
         ArrayList<Action> a = new ArrayList<Action>();
         a.add(new BackAct());
         a.add(new toPetSelectionAct());
+        a.add(new testKeyAct());
 
         getController().setCharacterSelectionSet(a);
         getViewport().setListeners(a);
@@ -108,6 +110,36 @@ public class CharacterSelectionState extends State{
         @Override
         public KeyListener getKeyListener() {
             return null;
+        }
+
+    }
+
+    private class testKeyAct extends Action {
+
+
+        KeyListener kl;
+
+        @Override
+        public void perform() {
+            System.out.println("huzzah");
+        }
+
+        @Override
+        public void setActionListener(ActionListener al) {}
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+            this.kl = kl;
+        }
+
+        @Override
+        public ActionListener getActionListener() {
+            return null;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return this.kl;
         }
 
     }

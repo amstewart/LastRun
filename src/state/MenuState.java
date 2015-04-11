@@ -30,6 +30,7 @@ public class MenuState extends State {
     @Override
     public void onEnter() {
         //actions in action
+        render();
         ArrayList<Action> a = new ArrayList<Action>();
         a.add(new StartGameAct());
         a.add(new LoadGameAct());
