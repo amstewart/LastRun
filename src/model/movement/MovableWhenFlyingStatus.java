@@ -10,8 +10,8 @@ package model.movement;
  * @author
  */
 public class MovableWhenFlyingStatus {
-    
+    /* //TODO FIX
     public void accept(MovementHandler movementHandler){
         movementHandler.visit(this);
-    }
+    }*/
 }
