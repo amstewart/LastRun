@@ -75,5 +75,8 @@ public class MenuViewport extends Viewport {
 
     public void setListeners(ArrayList<Action> a){
         continueButton.addActionListener(a.get(0).getActionListener());
+
+        this.setFocusable(true);
+        this.requestFocusInWindow();
     }
 }

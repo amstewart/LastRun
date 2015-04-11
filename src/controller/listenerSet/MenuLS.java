@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class MenuLS extends ListenerSet {
 
     StartGame sg;
-    ActionListener lg;
-    ActionListener eg;
+    LoadGame lg;
+    ExitGame eg;
 
     public MenuLS(ArrayList<Action> a){
         eg = new ExitGame(a.get(0));
