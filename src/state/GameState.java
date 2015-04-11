@@ -1,5 +1,6 @@
 package state;
 
+import model.map.GameMap;
 import view.viewport.GameViewport;
 import view.viewport.Viewport;
 
@@ -8,6 +9,7 @@ public class GameState extends State {
     private GameViewport viewPort;
 
     public GameState(){
+        GameMap map = new GameMap(); 
         viewPort =  new GameViewport();
     }
 

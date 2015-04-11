@@ -1,6 +1,7 @@
 
 package state;
 
+import model.action.Action;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 

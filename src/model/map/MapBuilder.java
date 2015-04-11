@@ -33,15 +33,14 @@ public class MapBuilder {
             for(int j=0;j<width;j++){
                 for(int k=0;k<height;k++){
                     Location loc= new Location(i,j,k);
-                    tiles[i][j]= new Tile(new GrassTerrain(),loc);
-                    tiles[i][j].setStatus(new MovableStatus());
+                    tiles[i][j]= new Tile(loc);
+                    tiles[i][j].addTerrain(new GrassTerrain());
                 }
             }
         }
 
         //tiles[0][0][0].setItem(new Item()); a type of item
-        tiles[0][0].setAreaEffect(new LevelUpAreaEffect());
-        tiles[0][0].setStatus(new NonMovableStatus());
+        tiles[0][0].addAreaEffect(new LevelUpAreaEffect());
     }
 
     public Tile[][] getMap(){

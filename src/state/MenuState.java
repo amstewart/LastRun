@@ -1,5 +1,6 @@
 package state;
 
+import model.action.Action;
 import controller.Controller;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;

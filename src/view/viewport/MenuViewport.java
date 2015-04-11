@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import utility.ImageUtil;
-import state.Action;
+import model.action.Action;
 
 import java.util.ArrayList;
 

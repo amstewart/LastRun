@@ -1,5 +1,6 @@
-package state;
+package model.action;
 
+import state.stateMachine.StateMachine;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 

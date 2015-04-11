@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import model.entity.Entity;
 import model.tile.Tile;
 
 /**
@@ -19,8 +20,14 @@ public class GameMap{
 	public GameMap(){
 		m= new MapBuilder();
 		map=m.getMap();
+                
 	}
 
+        
+        public void addEntity(Entity e, Location location){
+            //getTile(location).setEntity(e);
+        }
+        
 	public Tile getTile(Location location){
 		return map[location.getX()][location.getY()];
 	}

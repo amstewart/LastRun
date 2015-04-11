@@ -5,7 +5,7 @@
  */
 package view.viewport;
 
-import state.Action;
+import model.action.Action;
 
 import javax.swing.JButton;
 import java.util.ArrayList;

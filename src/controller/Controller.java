@@ -5,10 +5,10 @@
  */
 package controller;
 
+import model.action.Action;
 import controller.listenerSet.CharacterSelectionLS;
 import controller.listenerSet.ListenerSet;
 import controller.listenerSet.MenuLS;
-import state.Action;
 
 import java.util.ArrayList;
 
