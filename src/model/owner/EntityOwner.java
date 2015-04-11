@@ -14,7 +14,7 @@ public class EntityOwner {
     private Set<Entity> slaves;
     
     public EntityOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<Entity>();
     }
     
     public void adopt(Entity e){

@@ -1,21 +1,18 @@
 package model.item;
 
-import model.entity.Avatar;
-import model.entity.occupation.Occupation;
+import model.item.ability.ItemAbility;
 
-public class OneShotItem extends Item {
+public abstract class OneShotItem extends Item {
+
+    private ItemAbility ability;
 
     public OneShotItem(String name, int value) {
         super(name, value);
     }
 
-    @Override
-    public boolean use(Occupation occupation) {
-        return false;
+    protected void setAbility(ItemAbility ability) {
+        this.ability = ability;
     }
 
-    @Override
-    public boolean touch(Avatar avatar) {
-        return false;
-    }
+    protected ItemAbility getAbility() { return ability; }
 }

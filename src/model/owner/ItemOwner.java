@@ -14,7 +14,7 @@ public class ItemOwner {
     public Set<Item> slaves;
     
     public ItemOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<Item>();
     }
     
     public int getNumberOwned(){

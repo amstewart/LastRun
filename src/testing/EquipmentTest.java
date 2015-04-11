@@ -1,8 +1,9 @@
 package testing;
 
+import model.item.TakeableItem;
+
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
-import model.item.TakeableItem;
 import model.item.equipment.*;
 
 public class EquipmentTest extends Test {
@@ -51,6 +52,9 @@ public class EquipmentTest extends Test {
             System.out.println(items2[i].getName());
         }
 
+
         report("Equipment check", true);
+
+
     }
 }
