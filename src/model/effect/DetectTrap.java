@@ -1,7 +1,7 @@
 package model.effect;
 
 import model.entity.Entity;
-import model.map.MiniMap;
+import model.map.LocalArea;
 
 public class DetectTrap implements ExternalEffect{
 	private int baseProbability = 0;
@@ -16,7 +16,7 @@ public class DetectTrap implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void applyEffect(LocalArea map, Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

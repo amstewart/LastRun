@@ -1,7 +1,7 @@
 package model.effect;
 
 import model.entity.Entity;
-import model.map.MiniMap;
+import model.map.LocalArea;
 
 public class Observe implements ExternalEffect{
 	private int baseHowWrong = 100;
@@ -14,7 +14,7 @@ public class Observe implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void applyEffect(LocalArea map, Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

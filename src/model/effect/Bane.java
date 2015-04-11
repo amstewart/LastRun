@@ -2,7 +2,7 @@ package model.effect;
 
 import model.entity.Entity;
 import model.stat.Stats;
-import model.map.MiniMap;
+import model.map.LocalArea;
 
 public class Bane extends Spell implements ExternalEffect{
 	
@@ -21,7 +21,7 @@ public class Bane extends Spell implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void applyEffect(LocalArea map, Entity entity) {
 		if(canPerform(entity)){
 			decrementMana();
 			//TODO do this 

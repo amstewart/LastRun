@@ -4,16 +4,13 @@
  * and open the template in the editor.
  */
 package model.entity;
-import model.entity.occupation.Occupation;
 import model.stat.Stats;
 import model.Asset;
 import model.Describable;
 import java.util.LinkedList;
-
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
-import model.movement.EntityMovement;
 
 public abstract class Entity extends Asset implements Describable {
     // Fields
@@ -33,9 +30,6 @@ public abstract class Entity extends Asset implements Describable {
     public void addStatus(Status status) {
         if (!statuses.contains(status))
             statuses.push(status);
-    }
-
-    public void assignMovement(EntityMovement mov) {
     }
 
     public int getAgility() {

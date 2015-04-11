@@ -5,8 +5,6 @@
  */
 package model.entity;
 
-
-import model.entity.Entity;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Smasher;
 import model.entity.occupation.Sneak;

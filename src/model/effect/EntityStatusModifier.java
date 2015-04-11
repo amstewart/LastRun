@@ -2,7 +2,7 @@ package model.effect;
 
 import model.entity.Entity;
 import model.entity.Status;
-import model.map.MiniMap;
+import model.map.LocalArea;
 
 public class EntityStatusModifier extends Spell implements ExternalEffect{
 	private int baseLength;
@@ -20,7 +20,7 @@ public class EntityStatusModifier extends Spell implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void applyEffect(LocalArea map, Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

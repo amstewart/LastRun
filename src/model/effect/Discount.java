@@ -1,7 +1,7 @@
 package model.effect;
 
 import model.entity.Entity;
-import model.map.MiniMap;
+import model.map.LocalArea;
 
 public class Discount implements ExternalEffect{
 	private double baseDiscount = .05;
@@ -13,7 +13,7 @@ public class Discount implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void applyEffect(LocalArea map, Entity entity) {
 		// TODO Auto-generated method stub
 		
 	}

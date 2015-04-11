@@ -2,7 +2,11 @@ package model.map;
 
 import model.Vector3;
 import model.entity.Entity;
+import model.movement.EntityMovement;
+import model.movement.ItemMovement;
 import model.tile.Tile;
+
+import java.util.LinkedList;
 
 /**
  *
@@ -11,6 +15,9 @@ import model.tile.Tile;
 public class GameMap {
 
     private Tile[][] map;
+    private LinkedList<EntityMovement> entities = new LinkedList<>();
+    private LinkedList<ItemMovement> items = new LinkedList<>();
+
     private MapBuilder m;
 
     public static final int WARP_MODE = 0;
