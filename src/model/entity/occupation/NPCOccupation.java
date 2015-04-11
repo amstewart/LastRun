@@ -4,7 +4,7 @@ import model.item.Inventory;
 import model.item.equipment.*;
 
 /**
- * Created by diacopium on 15/04/11.
+ * Created by Alex Stewart on 15/04/11.
  */
 public class NPCOccupation extends Occupation {
 

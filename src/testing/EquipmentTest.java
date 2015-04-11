@@ -50,5 +50,7 @@ public class EquipmentTest extends Test {
         for(int i = 0; i < items2.length; i++) {
             System.out.println(items2[i].getName());
         }
+
+        report("Equipment check", true);
     }
 }

@@ -10,7 +10,11 @@ public abstract class Test {
     public abstract void run() throws NoSuchMethodException;
 
     public void report(Method method, boolean result) {
-        Tests.Reporter.print("TEST: " + method.getName() + " = " + Boolean.toString(result));
+        report(method.getName(), result);
+    }
+
+    public void report(String test_name, boolean result) {
+        Tests.Reporter.print("TEST: " + test_name + " = " + Boolean.toString(result));
         Tests.Reporter.result(result);
     }
 }
