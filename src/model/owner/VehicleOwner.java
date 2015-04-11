@@ -15,7 +15,7 @@ public class VehicleOwner {
     public Set<Vehicle> slaves;
     
     public VehicleOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<Vehicle>();
     }
     
     public int getNumberOwned(){

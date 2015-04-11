@@ -12,6 +12,7 @@ import model.entity.avatar.occupation.Smasher;
 import model.entity.avatar.occupation.Sneak;
 import model.entity.avatar.occupation.Summoner;
 import model.entity.npc.pet.Pet;
+import model.item.OneShotItem;
 import model.item.TakeableItem;
 import model.item.equipment.Equipment;
 import utility.ImageUtil;
@@ -42,19 +43,12 @@ public class Avatar extends Entity {
         return DESC;
     }
 
-	public boolean addToInventory(TakeableItem item) {
-		return getInventory().addItem(item);
-	}
-
 	public Occupation getOccupation() {
 		return occupation;
-	}
-
-	public TakeableItem[] getInventoryItems() {
-		return getInventory().getItems();
 	}
 
 	public Equipment[] getEquipment() {
 		return occupation.getEquipment();
 	}
+
 }

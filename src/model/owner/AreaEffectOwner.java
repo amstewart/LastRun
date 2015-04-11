@@ -13,7 +13,7 @@ public class AreaEffectOwner {
     public Set<AreaEffect> slaves;
     
     public AreaEffectOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<AreaEffect>();
     }
     
     public int getNumberOwned(){

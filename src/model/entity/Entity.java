@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.entity;
+import model.item.TakeableItem;
 import model.stat.Stats;
 import model.Asset;
 import model.Describable;
@@ -21,7 +22,7 @@ public abstract class Entity extends Asset implements Describable {
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
-	private LinkedList<Status> statuses = new LinkedList<>();
+	private LinkedList<Status> statuses = new LinkedList<Status>();
 	private Inventory inventory = new Inventory();
 
 	public Entity(String asset_id) {
@@ -146,5 +147,13 @@ public abstract class Entity extends Asset implements Describable {
 
 	public int getArmorRating() {
 		return stats.getArmorRating();
+	}
+
+	public boolean addToInventory(TakeableItem item) {
+		return getInventory().addItem(item);
+	}
+
+	public TakeableItem[] getInventoryItems() {
+		return getInventory().getItems();
 	}
 }

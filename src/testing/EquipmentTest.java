@@ -1,7 +1,10 @@
 package testing;
 
+import model.entity.Entity;
 import model.entity.avatar.Avatar;
 import model.entity.avatar.occupation.Occupation;
+import model.item.HealItem;
+import model.item.OneShotItem;
 import model.item.TakeableItem;
 import model.item.equipment.*;
 
@@ -50,5 +53,11 @@ public class EquipmentTest extends Test {
         for(int i = 0; i < items2.length; i++) {
             System.out.println(items2[i].getName());
         }
+
+        OneShotItem heal = new HealItem("Potion", 10, 10);
+        Entity temp = new Avatar();
+        System.out.println(temp.getLivesLeft());
+        heal.touch(temp);
+        System.out.println(temp.getLivesLeft());
     }
 }

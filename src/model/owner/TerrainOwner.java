@@ -13,7 +13,7 @@ public class TerrainOwner {
     private Set<Terrain> slaves;
     
     public TerrainOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<Terrain>();
     }
     
     public void adopt(Terrain t){

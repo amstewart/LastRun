@@ -1,5 +1,6 @@
 package model.item;
 
+import model.entity.Entity;
 import model.entity.avatar.Avatar;
 import model.entity.avatar.occupation.Occupation;
 
@@ -16,7 +17,6 @@ public abstract class Item {
         return name;
     }
 
-    public abstract boolean touch(Avatar avatar);
+    public abstract boolean touch(Entity entity);
 
-    public abstract boolean use(Occupation occupation);
 }

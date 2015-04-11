@@ -1,5 +1,6 @@
 package model.item;
 
+import model.entity.Entity;
 import model.entity.avatar.Avatar;
 import model.entity.avatar.occupation.Occupation;
 
@@ -10,12 +11,7 @@ public class InteractiveItem extends Item {
     }
 
     @Override
-    public boolean use(Occupation occupation) {
-        return false;
-    }
-
-    @Override
-    public boolean touch(Avatar avatar) {
+    public boolean touch(Entity entity) {
         return false;
     }
 }

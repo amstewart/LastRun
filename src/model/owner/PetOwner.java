@@ -15,7 +15,7 @@ public class PetOwner {
     public Set<Pet> slaves;
     
     public PetOwner(){
-        slaves = new HashSet<>();
+        slaves = new HashSet<Pet>();
     }
     
     public int getNumberOwned(){
