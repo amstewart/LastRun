@@ -14,7 +14,7 @@ import view.window.GameWindow;
  * @author ChrisMoscoso
  */
 public class RPGStateMachine extends StateMachine{
-    
+    private static RPGStateMachine RPGsm;
     private GameWindow window = new GameWindow();
     
     State menu, charSelect, petSelect, game;
@@ -55,5 +55,12 @@ public class RPGStateMachine extends StateMachine{
     
     public void changeToPetSelectSate(){
         this.changeToState("petSelect");
+    }
+    
+    public RPGStateMachine getInstance(){
+        if(RPGsm == null){
+            RPGsm = new RPGStateMachine();
+        }
+        return RPGsm;
     }
 }

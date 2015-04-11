@@ -4,7 +4,7 @@ import java.util.*;
 import state.State;
 import utility.Util;
 
-public class StateMachine {
+public abstract class StateMachine {
 
     protected HashMap<String, State> states = new HashMap<String, State>();
     protected Stack<State> stateStack = new Stack<State>();
