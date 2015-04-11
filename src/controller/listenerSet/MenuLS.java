@@ -1,6 +1,6 @@
 package controller.listenerSet;
 
-import state.Action;
+import model.action.Action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

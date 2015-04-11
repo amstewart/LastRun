@@ -1,7 +1,7 @@
 package model.item.equipment;
 
-import model.entity.Avatar;
-import model.entity.Occupation;
+import model.entity.avatar.Avatar;
+import model.entity.avatar.occupation.Occupation;
 import model.item.EquipmentManager;
 //TODO: Add level checking of occupation
 public abstract class BasicEquipment extends Equipment  {

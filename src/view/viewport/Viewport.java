@@ -1,7 +1,7 @@
 
 package view.viewport;
 
-import state.Action;
+import model.action.Action;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
