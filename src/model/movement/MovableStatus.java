@@ -5,15 +5,14 @@
  */
 package model.movement;
 
-import model.tile.TileStatus;
-
 /**
  *
  * @author
  */
-public class MovableStatus extends TileStatus {
-    
+public class MovableStatus {
+
+    /* //TODO FIX
     public void accept(MovementHandler movementHandler){
         movementHandler.visit(this);
-    }
+    }*/
 }

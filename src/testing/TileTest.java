@@ -18,6 +18,6 @@ public class TileTest {
         GameMap map= new GameMap();
 	Tile t= map.getTile(new Location(0,0,0));
 
-	t.getAreaEffect();
+	//t.getAreaEffect();
     }
 }
