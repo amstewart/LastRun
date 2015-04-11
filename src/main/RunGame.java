@@ -10,8 +10,8 @@ public class RunGame {
         Util.setDbgLevel(6);
 
    	KeyBinding keyBinding = new KeyBinding();
-        RPGStateMachine s = new RPGStateMachine();        
-        s.changeToGameState();
+        RPGStateMachine s = new RPGStateMachine();
+        s.changeToMenuState();
 
         while(true){
             s.update();
