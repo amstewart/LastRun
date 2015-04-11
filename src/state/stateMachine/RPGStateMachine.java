@@ -19,7 +19,7 @@ public class RPGStateMachine extends StateMachine{
     
     State menu, charSelect, petSelect, game;
     
-    public RPGStateMachine(){
+    private RPGStateMachine(){
         menu = new MenuState();
         charSelect = new CharacterSelectionState();
         petSelect = new PetSelectionState();
