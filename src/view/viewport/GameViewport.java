@@ -34,8 +34,8 @@ public class GameViewport extends Viewport {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        areaViewPanel = new javax.swing.JPanel();
         pauseMenuButton = new javax.swing.JButton();
+        areaViewPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(125, 246, 34));
@@ -48,46 +48,45 @@ public class GameViewport extends Viewport {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 18, Short.MAX_VALUE)
         );
 
         jPanel3.setMaximumSize(new java.awt.Dimension(2000, 200));
+
+        pauseMenuButton.setText("Go to Pause Menu");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pauseMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(pauseMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        pauseMenuButton.setText("Go to Pause Menu");
 
         javax.swing.GroupLayout areaViewPanelLayout = new javax.swing.GroupLayout(areaViewPanel);
         areaViewPanel.setLayout(areaViewPanelLayout);
         areaViewPanelLayout.setHorizontalGroup(
             areaViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(areaViewPanelLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(pauseMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+            .addGap(0, 437, Short.MAX_VALUE)
         );
         areaViewPanelLayout.setVerticalGroup(
             areaViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(areaViewPanelLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(pauseMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+            .addGap(0, 262, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
+            .addGap(0, 37, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

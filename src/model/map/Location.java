@@ -16,7 +16,7 @@ public class Location {
     private int z;
     
     public Location(){
-        
+        this(0,0,0);
     }
     
     public Location(int x, int y, int z){

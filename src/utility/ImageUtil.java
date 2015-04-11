@@ -26,7 +26,7 @@ public class ImageUtil {
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
-    public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "MainMenuBackground.jpeg";
+    public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "menu_bg_2.jpg";
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         

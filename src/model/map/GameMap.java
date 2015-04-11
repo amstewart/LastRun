@@ -12,7 +12,7 @@ import model.tile.Tile;
  * @author
  */
 public class GameMap{
-	private Tile[][][] map;
+	private Tile[][] map;
 	private MapBuilder m;
 
 
@@ -22,7 +22,7 @@ public class GameMap{
 	}
 
 	public Tile getTile(Location location){
-		return map[location.getX()][location.getY()][location.getZ()];
+		return map[location.getX()][location.getY()];
 	}
 
 }
