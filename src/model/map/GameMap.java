@@ -44,6 +44,11 @@ public class GameMap {
         }
         return arrayList;
     }
+    
+    public void addItem(Item item, Vector3 location) {
+        getTile(location).addItem(item);
+        itemMovements.add(new ItemMovement(item, location));
+    }
 
     public Tile getTileToTheNorth(Vector3 location) {
         int newX = location.X;
@@ -114,10 +119,10 @@ public class GameMap {
     }
 
     public boolean removeEntity(EntityMovement ent_mov) {
-        return entities.remove(ent_mov);
+        return entityMovements.remove(ent_mov);
     }
 
-    public boolean removeItem(ItemMovement item_mov) { return items.remove(item_mov); }
+    public boolean removeItem(ItemMovement item_mov) { return itemMovements.remove(item_mov); }
 
     private int applyBoundaryX(int x) {
         switch (boundaryMode) {
