@@ -8,6 +8,7 @@ import view.viewport.Viewport;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import state.stateMachine.RPGStateMachine;
 
 public class MenuState extends State {
 
@@ -67,8 +68,8 @@ public class MenuState extends State {
         @Override
         public void perform() {
 
-            getStateMachine().add("CharacterSelectionState", new CharacterSelectionState());
-            getStateMachine().changeToState("CharacterSelectionState");
+            RPGStateMachine.getInstance().add("CharacterSelectionState", new CharacterSelectionState());
+            RPGStateMachine.getInstance().changeToState("CharacterSelectionState");
         }
 
         @Override
