@@ -5,7 +5,8 @@
  */
 package model.item;
 
-import model.entity.Avatar;
+import model.entity.Entity;
+import model.entity.occupation.Occupation;
 
 public abstract class TakeableItem extends Item{
 
@@ -15,7 +16,9 @@ public abstract class TakeableItem extends Item{
     }
 
     @Override
-    public boolean touch(Avatar avatar) {
-        return avatar.addToInventory(this);
+    public boolean touch(Entity entity) {
+        return entity.addToInventory(this);
     }
+
+    public abstract boolean use(Occupation occupation);
 }

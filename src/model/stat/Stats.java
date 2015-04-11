@@ -5,10 +5,6 @@
  */
 package model.stat;
 
-/**
- *
- * @author
- */
 public class Stats {
 	private int livesLeft;
 	private int strength;

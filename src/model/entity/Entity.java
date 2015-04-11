@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.entity;
+import model.item.TakeableItem;
 import model.stat.Stats;
 import model.Asset;
 import model.Describable;
@@ -19,7 +20,7 @@ public abstract class Entity extends Asset implements Describable {
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
-	private LinkedList<Status> statuses = new LinkedList<>();
+	private LinkedList<Status> statuses = new LinkedList<Status>();
 	private Inventory inventory = new Inventory();
 
 	public Entity(String asset_id) {
@@ -142,4 +143,75 @@ public abstract class Entity extends Asset implements Describable {
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
     }
+<<<<<<< HEAD
+=======
+    
+    public int getLivesLeft() {
+		return stats.getLivesLeft();
+	}
+
+	public int getStrength() {
+		return stats.getStrength();
+	}
+
+	public int getAgility() {
+		return stats.getAgility();
+	}
+
+	public int getIntellect() {
+		return stats.getIntellect();
+	}
+
+	public int getHardiness() {
+		return stats.getHardiness();
+	}
+
+	public int getExperience() {
+		return stats.getExperience();
+	}
+
+	public int getMovement() {
+		return stats.getMovement();
+	}
+
+	public int getEquippedArmor() {
+		return stats.getEquippedArmor();
+	}
+
+	public int getEquippedWeapon() {
+		return stats.getEquippedWeapon();
+	}
+
+	public int getLevel() {
+		return stats.getLevel();
+	}
+
+	public int getLife() {
+		return stats.getLife();
+	}
+
+	public int getMana() {
+		return stats.getMana();
+	}
+
+	public int getOffensiveRating() {
+		return stats.getOffensiveRating();
+	}
+
+	public int getDefensiveRating() {
+		return stats.getDefensiveRating();
+	}
+
+	public int getArmorRating() {
+		return stats.getArmorRating();
+	}
+
+	public boolean addToInventory(TakeableItem item) {
+		return getInventory().addItem(item);
+	}
+
+	public TakeableItem[] getInventoryItems() {
+		return getInventory().getItems();
+	}
+>>>>>>> ron
 }
