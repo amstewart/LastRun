@@ -33,68 +33,6 @@ public abstract class Entity extends Asset implements Describable {
             statuses.push(status);
     }
 
-    public int getAgility() {
-        return stats.getAgility();
-    }
-
-    public int getArmorRating() {
-        return stats.getArmorRating();
-    }
-
-    public int getDefensiveRating() {
-        return stats.getDefensiveRating();
-    }
-
-    public int getEquippedArmor() {
-        return stats.getEquippedArmor();
-    }
-
-    public int getEquippedWeapon() {
-        return stats.getEquippedWeapon();
-    }
-
-    public int getExperience() {
-        return stats.getExperience();
-    }
-
-    public int getHardiness() {
-        return stats.getHardiness();
-    }
-
-    public int getIntellect() {
-        return stats.getIntellect();
-    }
-
-    public Inventory getInventory() { return inventory; }
-
-    public int getLevel() {
-        return stats.getLevel();
-    }
-
-    public int getLife() {
-        return stats.getLife();
-    }
-
-    public int getLivesLeft() {
-        return stats.getLivesLeft();
-    }
-
-    public int getMana() {
-        return stats.getMana();
-    }
-
-    public int getOffensiveRating() {
-        return stats.getOffensiveRating();
-    }
-
-    public int getMovement() {
-        return stats.getMovement();
-    }
-
-    public int getStrength() {
-        return stats.getStrength();
-    }
-
     @Override
     public String getName() {
         return this.name;
@@ -143,9 +81,7 @@ public abstract class Entity extends Asset implements Describable {
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
     }
-<<<<<<< HEAD
-=======
-    
+
     public int getLivesLeft() {
 		return stats.getLivesLeft();
 	}
@@ -207,11 +143,12 @@ public abstract class Entity extends Asset implements Describable {
 	}
 
 	public boolean addToInventory(TakeableItem item) {
-		return getInventory().addItem(item);
+		return inventory.addItem(item);
 	}
 
 	public TakeableItem[] getInventoryItems() {
-		return getInventory().getItems();
+		return inventory.getItems();
 	}
->>>>>>> ron
+
+	protected Inventory getInventory() { return inventory; }
 }
