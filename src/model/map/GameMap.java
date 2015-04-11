@@ -32,6 +32,7 @@ public class GameMap {
 
     public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
+        entities.add(new EntityMovement(e, location));
     }
 
     public Tile getTileToTheNorth(Vector3 location) {
