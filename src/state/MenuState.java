@@ -39,7 +39,7 @@ public class MenuState extends State {
         //take the current state and get the controller reference then pass in array
 
         // the array can be created as soon as you know the target state
-        getController().setMenuKLS(a);
+        getController().setMenuLS(a);
         getViewport().setListeners(a);
     }
 
