@@ -1,7 +1,7 @@
 package testing;
 
-import model.entity.Avatar;
-import model.entity.Occupation;
+import model.entity.avatar.Avatar;
+import model.entity.avatar.occupation.Occupation;
 import model.item.TakeableItem;
 import model.item.equipment.*;
 

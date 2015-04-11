@@ -7,7 +7,7 @@ package testing;
 
 import model.map.GameMap;
 import model.map.Location;
-import model.map.Tile;
+import model.tile.Tile;
 
 /**
  *

@@ -1,6 +1,6 @@
 package model.enums;
 
-import model.entity.Stats;
+import model.stat.Stats;
 
 public enum DefinedStats {
 	//

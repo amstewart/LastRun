@@ -5,6 +5,12 @@
  */
 package model.map;
 
+import model.tile.Tile;
+import model.areaEffect.LevelUpAreaEffect;
+import model.terrain.GrassTerrain;
+import model.movement.NonMovableStatus;
+import model.movement.MovableStatus;
+
 /**
  *
  * @author

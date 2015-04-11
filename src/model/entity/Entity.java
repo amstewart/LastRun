@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.entity;
+import model.stat.Stats;
 import model.Asset;
 import model.Describable;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ import java.util.LinkedList;
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
-import model.map.EntityMovement;
+import model.movement.EntityMovement;
 
 public abstract class Entity extends Asset implements Describable {
     // Fields

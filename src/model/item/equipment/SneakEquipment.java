@@ -1,6 +1,6 @@
 package model.item.equipment;
 
-import model.entity.Occupation;
+import model.entity.avatar.occupation.Occupation;
 import model.item.SneakEquipmentManager;
 
 public abstract class SneakEquipment extends Equipment {
