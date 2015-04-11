@@ -21,6 +21,6 @@ public class ItemMovement extends Movement {
 
     private void initialize(Item item, Vector3 position) {
         this.item = item;
-        this.moveTo(position);
+        this.changePosition(position);
     }
 }

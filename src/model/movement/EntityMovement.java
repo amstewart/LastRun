@@ -1,6 +1,5 @@
 package model.movement;
 
-import model.movement.Movement;
 import model.Vector3;
 import model.entity.Entity;
 import utility.Util;
@@ -37,7 +36,7 @@ public class EntityMovement extends Movement {
 
     private void initialize(Entity ent, Vector3 pos_init, Vector3 facing_dir) {
         this.entity = ent;
-        this.moveTo(pos_init);
+        this.changePosition(pos_init);
         this.facing_dir = facing_dir;
     }
 }

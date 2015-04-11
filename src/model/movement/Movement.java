@@ -13,7 +13,7 @@ public class Movement {
 
     public Vector3 getPosition() { return position; }
 
-    public void moveTo(Vector3 newPosition) {
+    public void changePosition(Vector3 newPosition) {
         position = newPosition;
     }
 }

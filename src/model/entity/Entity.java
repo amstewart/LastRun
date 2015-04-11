@@ -17,7 +17,7 @@ import model.movement.EntityMovement;
 public abstract class Entity extends Asset implements Describable {
     // Fields
     private CoinPouch coins = new CoinPouch();
-    private EntityMovement movement = null;
+    //private EntityMovement movement = null; //TODO REMOVE
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
