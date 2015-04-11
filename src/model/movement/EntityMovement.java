@@ -44,4 +44,8 @@ public class EntityMovement extends Movement {
         this.changePosition(pos_init);
         this.facing_dir = facing_dir;
     }
+    
+    public Entity getEntity(){
+        return entity;
+    }
 }

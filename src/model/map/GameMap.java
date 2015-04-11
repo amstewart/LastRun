@@ -1,5 +1,6 @@
 package model.map;
 
+import java.util.ArrayList;
 import model.Vector3;
 import model.entity.Entity;
 import model.item.Item;
@@ -16,8 +17,8 @@ import java.util.LinkedList;
 public class GameMap {
 
     private Tile[][] map;
-    private LinkedList<EntityMovement> entities = new LinkedList<>();
-    private LinkedList<ItemMovement> items = new LinkedList<>();
+    private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
+    private LinkedList<ItemMovement> itemMovements = new LinkedList<>();
 
     private MapBuilder m;
 
@@ -33,12 +34,15 @@ public class GameMap {
 
     public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
-        entities.add(new EntityMovement(e, location));
+        entityMovements.add(new EntityMovement(e, location));
     }
-
-    public void addItem(Item item, Vector3 location) {
-        getTile(location).addItem(item);
-        items.add(new ItemMovement(item, location));
+    
+    public ArrayList<Entity> getEntities(){
+        ArrayList<Entity> arrayList = new ArrayList<>(); 
+        for(EntityMovement e : entityMovements){
+            arrayList.add(e.getEntity());
+        }
+        return arrayList;
     }
 
     public Tile getTileToTheNorth(Vector3 location) {

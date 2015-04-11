@@ -57,7 +57,7 @@ public class RPGStateMachine extends StateMachine{
         this.changeToState("petSelect");
     }
     
-    public RPGStateMachine getInstance(){
+    public static RPGStateMachine getInstance(){
         if(RPGsm == null){
             RPGsm = new RPGStateMachine();
         }

@@ -16,10 +16,6 @@ public abstract class Action {
     public abstract ActionListener getActionListener();
     public abstract KeyListener getKeyListener();
 
-    private StateMachine sm = new StateMachine();
-
-    public StateMachine getStateMachine(){
-        return this.sm;
-    }
+   
 
 }

@@ -20,7 +20,12 @@ public class MapViewport extends Viewport{
     }
 
     public void paintComponent(Graphics g){
-        g.setColor(java.awt.Color.WHITE);
+       drawTiles(g);
+       drawEntities(g);
+    }
+    
+    private void drawTiles(Graphics g){
+         g.setColor(java.awt.Color.WHITE);
     			//g.fillRect(0, 0, 100, 100);
 
         for (int i = 0; i < map.getWidth(); ++i) {
@@ -63,6 +68,10 @@ public class MapViewport extends Viewport{
         }
     }
     
+    private void drawEntities(Graphics g) {
+        
+    }
+    
     @Override
     public void render() {
         this.repaint();
@@ -72,4 +81,6 @@ public class MapViewport extends Viewport{
     public void setListeners(ArrayList<Action> a) {
         
     }
+
+    
 }

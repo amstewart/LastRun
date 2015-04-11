@@ -8,6 +8,7 @@ import view.viewport.Viewport;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import state.stateMachine.RPGStateMachine;
 
 public class CharacterSelectionState extends State{
 
@@ -58,8 +59,7 @@ public class CharacterSelectionState extends State{
 
         @Override
         public void perform() {
-
-            getStateMachine().pop();
+            RPGStateMachine.getInstance().pop();
         }
 
         @Override
