@@ -1,4 +1,4 @@
-package model.entity.avatar.occupation;
+package model.entity.occupation;
 
 import model.item.Inventory;
 import model.item.equipment.*;

@@ -3,7 +3,7 @@ package model.action;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
-import model.entity.avatar.Avatar;
+import model.entity.Avatar;
 
 /**
  *

@@ -1,16 +1,16 @@
-package model.entity.avatar.occupation;
+package model.entity.occupation;
 
 import model.item.Inventory;
-import model.item.SneakEquipmentManager;
+import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
 
-public class Sneak extends Occupation {
+public class Smasher extends Occupation {
 
-    private SneakEquipmentManager equipmentManager;
+    private SmasherEquipmentManager equipmentManager;
 
-    public Sneak(Inventory inventory) {
+    public Smasher(Inventory inventory) {
         super(inventory);
-        equipmentManager = new SneakEquipmentManager(inventory);
+        equipmentManager = new SmasherEquipmentManager(inventory);
     }
 
     @Override
@@ -20,12 +20,12 @@ public class Sneak extends Occupation {
 
     @Override
     public boolean addToEquipment(SmasherEquipment equipment) {
-        return false;
+        return equipment.doEquip(equipmentManager);
     }
 
     @Override
     public boolean addToEquipment(SneakEquipment equipment) {
-        return equipment.doEquip(equipmentManager);
+        return false;
     }
 
     @Override

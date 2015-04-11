@@ -1,6 +1,6 @@
 package model.item;
 
-import model.entity.avatar.occupation.Occupation;
+import model.entity.occupation.Occupation;
 import utility.Util;
 
 /**

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.entity.avatar;
+package model.entity;
 
 
 import model.entity.Entity;
-import model.entity.avatar.occupation.Occupation;
-import model.entity.avatar.occupation.Smasher;
-import model.entity.avatar.occupation.Sneak;
-import model.entity.avatar.occupation.Summoner;
+import model.entity.occupation.Occupation;
+import model.entity.occupation.Smasher;
+import model.entity.occupation.Sneak;
+import model.entity.occupation.Summoner;
 import model.entity.npc.pet.Pet;
 import model.item.TakeableItem;
 import model.item.equipment.Equipment;

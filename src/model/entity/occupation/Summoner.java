@@ -1,6 +1,5 @@
-package model.entity.avatar.occupation;
+package model.entity.occupation;
 
-import model.entity.avatar.occupation.Occupation;
 import model.item.Inventory;
 import model.item.SummonerEquipmentManager;
 import model.item.equipment.*;

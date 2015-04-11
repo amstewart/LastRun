@@ -6,7 +6,7 @@
 package model.entity.npc;
 
 import model.entity.Entity;
-import model.entity.avatar.occupation.Occupation;
+import model.entity.occupation.Occupation;
 
 
 public class NPC extends Entity {

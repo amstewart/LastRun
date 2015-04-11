@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.entity;
+import model.entity.occupation.Occupation;
 import model.stat.Stats;
 import model.Asset;
 import model.Describable;
@@ -19,6 +20,7 @@ public abstract class Entity extends Asset implements Describable {
     private CoinPouch coins = new CoinPouch();
     //private EntityMovement movement = null; //TODO REMOVE
     private String name = "NONAME";
+    private Occupation occ;
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
 	private LinkedList<Status> statuses = new LinkedList<>();

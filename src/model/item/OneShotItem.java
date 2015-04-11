@@ -1,7 +1,7 @@
 package model.item;
 
-import model.entity.avatar.Avatar;
-import model.entity.avatar.occupation.Occupation;
+import model.entity.Avatar;
+import model.entity.occupation.Occupation;
 
 public class OneShotItem extends Item {
 

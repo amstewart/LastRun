@@ -5,8 +5,7 @@
  */
 package model.item;
 
-import model.entity.avatar.Avatar;
-import model.entity.avatar.occupation.Occupation;
+import model.entity.Avatar;
 
 public abstract class TakeableItem extends Item{
 

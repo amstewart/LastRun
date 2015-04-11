@@ -1,6 +1,6 @@
 package model.item.equipment;
 
-import model.entity.avatar.occupation.Occupation;
+import model.entity.occupation.Occupation;
 import model.item.SmasherEquipmentManager;
 
 public abstract class SmasherEquipment extends Equipment {

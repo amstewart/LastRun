@@ -1,6 +1,6 @@
 package model.item.equipment;
 
-import model.entity.avatar.occupation.Occupation;
+import model.entity.occupation.Occupation;
 import model.item.SummonerEquipmentManager;
 
 public abstract class SummonerEquipment extends Equipment {
