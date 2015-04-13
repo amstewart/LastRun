@@ -15,35 +15,41 @@ import model.item.Inventory;
 import model.item.Item;
 import model.item.TakeableItem;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class InventoryViewport extends Viewport{
-    private Inventory inventory;
+
     private JPopupMenu menu = new JPopupMenu("Popup");
     private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop"), cancel = new JMenuItem("Cancel");
-    
-    public InventoryViewport(Inventory i){
-        inventory = i;
+
+    public InventoryViewport(Inventory inventory){
+        inventory.registerView(this);
         menu.add(useItem);
         menu.add(dropItem);
         menu.addSeparator();
         menu.add(cancel);
+        TakeableItem[] items = inventory.getItems();
+        add(new JLabel("Inventory"));
+        for(int i = 0; i < items.length; i++){
+            add(new ItemButton(items[i]));
+        }
     }
-    
-    @Override
-    public void render() {
+
+    public void receive(TakeableItem[] items) {
         this.removeAll();
         add(new JLabel("Inventory"));
-        for(Item item : inventory.getItems()){
-            add(new ItemButton(item));
+        for(int i = 0; i < items.length; i++){
+            add(new ItemButton(items[i]));
         }
+
+    }
+
+    @Override
+    public void render() {
+
     }
 
     @Override
     public void setListeners(ArrayList<Action> a) {
-        
+
     }
 
     private class ItemButton extends JButton {
@@ -67,7 +73,7 @@ public class InventoryViewport extends Viewport{
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            
+
         }
 
         @Override
