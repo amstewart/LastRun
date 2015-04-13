@@ -7,6 +7,7 @@ import view.viewport.Viewport;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class HUDState extends State {
@@ -71,12 +72,21 @@ public class HUDState extends State {
         }
 
         @Override
+        public void setMouseListener(MouseListener ml) {
+        }
+
+        @Override
         public ActionListener getActionListener(){
             return this.al;
         }
 
         @Override
         public KeyListener getKeyListener(){
+            return null;
+        }
+
+        @Override
+        public MouseListener getMouseListener() {
             return null;
         }
     }
@@ -101,12 +111,21 @@ public class HUDState extends State {
         }
 
         @Override
+        public void setMouseListener(MouseListener ml) {
+        }
+
+        @Override
         public ActionListener getActionListener(){
             return this.al;
         }
 
         @Override
         public KeyListener getKeyListener(){
+            return null;
+        }
+
+        @Override
+        public MouseListener getMouseListener() {
             return null;
         }
     }

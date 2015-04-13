@@ -24,6 +24,10 @@ public class Vector3 implements Comparable {
         Z = parent.Z;
     }
 
+    public String toString(){
+        return "(" + X + "," + Y + ")";
+    }
+
     //<editor-fold desc="PUBLIC METHODS" defaultstate="collapsed">
     public void add (Vector3 delta) {
         if (delta == null)

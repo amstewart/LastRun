@@ -50,4 +50,7 @@ public class Avatar extends Entity {
 		return occupation.getEquipment();
 	}
 
+    public void dropItem(TakeableItem ti) {
+        this.getInventory().removeItem(ti);
+    }
 }

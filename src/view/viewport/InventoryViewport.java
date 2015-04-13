@@ -23,6 +23,7 @@ public class InventoryViewport extends Viewport{
     private Inventory inventory;
     private JPopupMenu menu = new JPopupMenu("Popup");
     private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop"), cancel = new JMenuItem("Cancel");
+    private TakeableItem ti;
     
     public InventoryViewport(Inventory i){
         inventory = i;
@@ -43,10 +44,12 @@ public class InventoryViewport extends Viewport{
 
     @Override
     public void setListeners(ArrayList<Action> a) {
-        
+        //menu.addMenuKeyListener(a.get(0));
+        dropItem.addActionListener(a.get(0).getActionListener());
+
     }
 
-    private class ItemButton extends JButton {
+    public class ItemButton extends JButton {
         private Item item;
         
         public ItemButton(Item i) {
@@ -73,7 +76,9 @@ public class InventoryViewport extends Viewport{
         @Override
         public void mousePressed(MouseEvent e) {
             try{
-           menu.show(e.getComponent(), e.getX(), e.getY());
+                ti =  (TakeableItem)((ItemButton) e.getSource()).getItem();
+                menu.show(e.getComponent(), e.getX(), e.getY());
+
             }catch(IllegalComponentStateException ex){}
         }
 
