@@ -29,16 +29,99 @@ public abstract class Entity extends Asset implements Describable {
 		this.stats = saving_stats;
 	}
 
+	/**
+	 * Adds a new status effect to this entity, if it does not already have the
+	 * status applied.
+	 * @param status
+	 */
     public void addStatus(Status status) {
         if (!statuses.contains(status))
             statuses.push(status);
     }
 
+	public boolean addToInventory(TakeableItem item) {
+		return inventory.addItem(item);
+	}
+
+	public int getAgility() {
+		return stats.getAgility();
+	}
+
+	public int getArmorRating() {
+		return stats.getArmorRating();
+	}
+
+	public int getDefensiveRating() {
+		return stats.getDefensiveRating();
+	}
+
+	public int getEquippedArmor() {
+		return stats.getEquippedArmor();
+	}
+
+	public int getEquippedWeapon() {
+		return stats.getEquippedWeapon();
+	}
+
+	public int getExperience() {
+		return stats.getExperience();
+	}
+
+	public int getHardiness() {
+		return stats.getHardiness();
+	}
+
+	public int getIntellect() {
+		return stats.getIntellect();
+	}
+
+	/**
+	 * Gets this entity's inventory of unequipped items
+	 * @return This entity's inventory as an Inventory reference
+	 */
+	public Inventory getInventory() { return inventory; }
+
+	public int getMovement() {
+		return stats.getMovement();
+	}
+
+	/**
+	 * Gets the name of this entity.
+	 * @return The entity's name as a String.
+	 */
     @Override
     public String getName() {
         return this.name;
     }
 
+	public int getLevel() {
+		return stats.getLevel();
+	}
+
+	public int getLife() {
+		return stats.getLife();
+	}
+
+	public int getLivesLeft() {
+		return stats.getLivesLeft();
+	}
+
+	public int getMana() {
+		return stats.getMana();
+	}
+
+	public int getOffensiveRating() {
+		return stats.getOffensiveRating();
+	}
+
+	public int getStrength() {
+		return stats.getStrength();
+	}
+
+	/**
+	 * Merges a new stats set into this entity's collection of stats.
+	 * @param stat The new set of stats to be merged
+	 */
 	public void mergeStats(Stats stat) {
 		stats.mergeStats(stat);
 	}
@@ -83,73 +166,7 @@ public abstract class Entity extends Asset implements Describable {
         stats.unMergeStats(stat);
     }
 
-    public int getLivesLeft() {
-		return stats.getLivesLeft();
-	}
-
-	public int getStrength() {
-		return stats.getStrength();
-	}
-
-	public int getAgility() {
-		return stats.getAgility();
-	}
-
-	public int getIntellect() {
-		return stats.getIntellect();
-	}
-
-	public int getHardiness() {
-		return stats.getHardiness();
-	}
-
-	public int getExperience() {
-		return stats.getExperience();
-	}
-
-	public int getMovement() {
-		return stats.getMovement();
-	}
-
-	public int getEquippedArmor() {
-		return stats.getEquippedArmor();
-	}
-
-	public int getEquippedWeapon() {
-		return stats.getEquippedWeapon();
-	}
-
-	public int getLevel() {
-		return stats.getLevel();
-	}
-
-	public int getLife() {
-		return stats.getLife();
-	}
-
-	public int getMana() {
-		return stats.getMana();
-	}
-
-	public int getOffensiveRating() {
-		return stats.getOffensiveRating();
-	}
-
-	public int getDefensiveRating() {
-		return stats.getDefensiveRating();
-	}
-
-	public int getArmorRating() {
-		return stats.getArmorRating();
-	}
-
-	public boolean addToInventory(TakeableItem item) {
-		return inventory.addItem(item);
-	}
-
 	public TakeableItem[] getInventoryItems() {
 		return inventory.getItems();
 	}
-
-	public Inventory getInventory() { return inventory; }
 }
