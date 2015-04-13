@@ -9,6 +9,7 @@ import model.movement.ItemMovement;
 import model.tile.Tile;
 
 import java.util.LinkedList;
+import model.entity.Avatar;
 
 /**
  *
@@ -26,12 +27,25 @@ public class GameMap {
     public static final int BOUND_MODE = 1;
 
     private int boundaryMode = 0;
+    private EntityMovement avatarMovement;
 
     public GameMap() {
         m = new MapBuilder();
         map = m.getMap();
     }
 
+    
+    
+    public void addEntity(Avatar a){
+        this.addEntity(a, new Vector3());
+    }
+    
+    public void addEntity(Avatar a, Vector3 location){
+        getTile(location).addEntity(a);
+        avatarMovement = new EntityMovement(a, location);
+        entityMovements.add(avatarMovement);
+    }
+    
     public void addEntity(Entity e){
         this.addEntity(e, new Vector3());
     }
@@ -54,6 +68,10 @@ public class GameMap {
         itemMovements.add(new ItemMovement(item, location));
     }
 
+    public EntityMovement getAvatarMovement(){
+        return avatarMovement;
+    }
+    
     public Tile getTileToTheNorth(Vector3 location) {
         int newX = location.X;
         int newY = location.Y - 1;
