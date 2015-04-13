@@ -16,5 +16,13 @@ public abstract class Occupation {
 
     public abstract boolean addToEquipment(SummonerEquipment equipment);
 
+    public abstract boolean removeFromEquipment(BasicEquipment equipment);
+
+    public abstract boolean removeFromEquipment(SmasherEquipment equipment);
+
+    public abstract boolean removeFromEquipment(SneakEquipment equipment);
+
+    public abstract boolean removeFromEquipment(SummonerEquipment equipment);
+
     public abstract Equipment[] getEquipment();
 }

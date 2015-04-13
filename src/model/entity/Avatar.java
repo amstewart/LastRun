@@ -12,6 +12,7 @@ import model.entity.occupation.Summoner;
 import model.entity.npc.pet.Pet;
 import model.item.OneShotItem;
 import model.item.TakeableItem;
+import model.item.equipment.BasicEquipment;
 import model.item.equipment.Equipment;
 import utility.ImageUtil;
 
@@ -49,4 +50,7 @@ public class Avatar extends Entity {
 		return occupation.getEquipment();
 	}
 
+    public void dropItem(TakeableItem ti) {
+        this.getInventory().removeItem(ti);
+    }
 }

@@ -75,6 +75,8 @@ public class GameMap {
     public Tile getTileToTheNorth(Vector3 location) {
         int newX = location.X;
         int newY = location.Y - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -85,6 +87,8 @@ public class GameMap {
     public Tile getTileToTheNorthEast(Vector3 location) {
         int newX = location.X + 1;
         int newY = location.Y - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -95,6 +99,8 @@ public class GameMap {
     public Tile getTileToTheNorthWest(Vector3 location) {
         int newX = location.X - 1;
         int newY = location.Y - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -105,6 +111,8 @@ public class GameMap {
     public Tile getTileToTheSouth(Vector3 location) {
         int newX = location.X;
         int newY = location.Y + 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -115,6 +123,8 @@ public class GameMap {
     public Tile getTileToTheSouthEast(Vector3 location) {
         int newX = location.X;
         int newY = location.Y + 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -125,6 +135,8 @@ public class GameMap {
     public Tile getTileToTheSouthwest(Vector3 location) {
         int newX = location.X - 1;
         int newY = location.Y + 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -216,4 +228,7 @@ public class GameMap {
         return entityMovements;
     }
 
+    public void moveAvatarTo(Vector3 v3) {
+        avatarMovement.changePosition(v3);
+    }
 }

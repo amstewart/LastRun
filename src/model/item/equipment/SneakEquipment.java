@@ -1,5 +1,6 @@
 package model.item.equipment;
 
+import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.SneakEquipmentManager;
 
@@ -17,4 +18,10 @@ public abstract class SneakEquipment extends Equipment {
     public boolean use(Occupation occupation) {
         return occupation.addToEquipment(this);
     }
+
+    @Override
+    public boolean unUse(Occupation occupation) {
+        return occupation.removeFromEquipment(this);
+    }
+
 }

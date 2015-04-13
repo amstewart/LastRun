@@ -82,8 +82,6 @@ public class CharacterSelectionViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
-
-        this.setFocusable(true);
         this.requestFocusInWindow();
     }
 
