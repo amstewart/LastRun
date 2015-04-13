@@ -2,7 +2,12 @@ package model.entity.npc;
 
 public class Monster extends NPC {
 
-    public Monster(String art_asset) {
+    private static final String DESC = "FAWYRYSYR!";
+
+    public Monster(String art_asset, String name) {
         super(art_asset);
+        setName(name);
     }
+
+    public String getDescription() { return getName() + ": " + DESC; }
 }

@@ -158,6 +158,8 @@ public abstract class Entity extends Asset implements Describable {
         stats.setMovement(movement);
     }
 
+	protected void setName(String name) { this.name = name; }
+
     public void setStrength(int strength) {
         stats.setStrength(strength);
     }
