@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 //package model.movement;
-
+/*
 import java.util.HashMap;
 import model.entity.Entity;
 import model.map.GameMap;
@@ -67,6 +67,5 @@ public class MovementHandler {
     public void visit(MovableWhenFlyingStatus status){
        movable=true;
     }
-    */
 }
-
+*/
