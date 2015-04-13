@@ -85,15 +85,6 @@ public abstract class Entity extends Asset implements Describable {
 		return stats.getMovement();
 	}
 
-	/**
-	 * Gets the name of this entity.
-	 * @return The entity's name as a String.
-	 */
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
 	public int getLevel() {
 		return stats.getLevel();
 	}
@@ -108,6 +99,15 @@ public abstract class Entity extends Asset implements Describable {
 
 	public int getMana() {
 		return stats.getMana();
+	}
+
+	/**
+	 * Gets the name of this entity.
+	 * @return The entity's name as a String.
+	 */
+	@Override
+	public String getName() {
+		return this.name;
 	}
 
 	public int getOffensiveRating() {
