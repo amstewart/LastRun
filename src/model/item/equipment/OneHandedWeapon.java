@@ -7,6 +7,10 @@ public class OneHandedWeapon extends SmasherEquipment {
     public OneHandedWeapon(String name, int value) {
         super(name, value);
     }
+    
+    public OneHandedWeapon() {
+        super("Sword", 50);
+    }
 
     @Override
     public boolean doEquip(SmasherEquipmentManager smasherEM) {

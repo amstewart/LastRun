@@ -150,5 +150,5 @@ public abstract class Entity extends Asset implements Describable {
 		return inventory.getItems();
 	}
 
-	protected Inventory getInventory() { return inventory; }
+	public Inventory getInventory() { return inventory; }
 }

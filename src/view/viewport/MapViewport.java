@@ -1,10 +1,11 @@
-
 package view.viewport;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
+import model.Vector3;
 import model.action.Action;
 import model.map.GameMap;
 import model.movement.EntityMovement;
@@ -13,27 +14,29 @@ import model.movement.EntityMovement;
  *
  * @author ChrisMoscoso
  */
-public class MapViewport extends Viewport{
+public class MapViewport extends Viewport {
+
     GameMap map;
-    
-    public MapViewport(GameMap m){
+    int tileWidth = 50;
+    int tileHeight = 50;
+
+    public MapViewport(GameMap m) {
         map = m;
     }
 
-    public void paintComponent(Graphics g){
-       drawTiles(g);
-       drawEntities(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        drawTiles(g);
+        drawEntities(g);
     }
-    
-    private void drawTiles(Graphics g){
-         g.setColor(java.awt.Color.WHITE);
-    			//g.fillRect(0, 0, 100, 100);
+
+    private void drawTiles(Graphics g) {
+        g.setColor(java.awt.Color.WHITE);
+        //g.fillRect(0, 0, 100, 100);
 
         for (int i = 0; i < map.getWidth(); ++i) {
             for (int j = 0; j < map.getHeight(); ++j) {
 
-                int tileWidth = 50;
-                int tileHeight = 50;
                 int offsetX = 50;
                 int offsetY = 40;
 
@@ -57,7 +60,7 @@ public class MapViewport extends Viewport{
 
                 }
 
-                Color c = map.getTile(i , j).getTerrain().getColor();
+                Color c = map.getTile(i, j).getTerrain().getColor();
                 g.setColor(c);
                 g.fillPolygon(p);
 
@@ -68,13 +71,32 @@ public class MapViewport extends Viewport{
             }
         }
     }
-    
+
     private void drawEntities(Graphics g) {
-        for(EntityMovement e : map.getEntityMovements()){
-            
+        for (EntityMovement e : map.getEntityMovements()) {
+            for (int i = 0; i < map.getWidth(); ++i) {
+                for (int j = 0; j < map.getHeight(); ++j) {
+                    if (e.getPosition().X == i && e.getPosition().Y == j) {
+
+                        int offsetX = 50;
+                        int offsetY = 40;
+
+                        if (i % 2 != 0) {
+                            offsetY += 45;
+                        }
+
+                        int positionX = i * tileWidth * 2;
+                        int positionY = (int) (j * tileHeight * 1.748);
+
+                        positionX -= i * tileWidth / 2;
+                        g.setColor(Color.ORANGE);
+                        g.fillRect(offsetX + positionX - tileWidth/2, offsetY + positionY - tileHeight/2, tileWidth, tileHeight);
+                    }
+                }
+            }
         }
     }
-    
+
     @Override
     public void render() {
         this.repaint();
@@ -82,8 +104,7 @@ public class MapViewport extends Viewport{
 
     @Override
     public void setListeners(ArrayList<Action> a) {
-        
+
     }
 
-    
 }

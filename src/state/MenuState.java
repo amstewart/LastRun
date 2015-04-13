@@ -12,7 +12,6 @@ import state.stateMachine.RPGStateMachine;
 
 public class MenuState extends State {
 
-    private MenuViewport viewPort;
 
     public MenuState() {
         viewPort = new MenuViewport();
@@ -23,10 +22,7 @@ public class MenuState extends State {
 
     }
 
-    @Override
-    public void render() {
-
-    }
+    
 
     @Override
     public void onEnter() {

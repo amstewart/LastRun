@@ -34,9 +34,6 @@ public class RPGStateMachine extends StateMachine{
      public void render() {
         if (!stateStack.isEmpty()) {
             State currentState = stateStack.peek();
-            
-            Viewport view = currentState.getViewport();
-            window.displayState(currentState.getViewport());
             currentState.render();
         }
     }
@@ -62,5 +59,11 @@ public class RPGStateMachine extends StateMachine{
             RPGsm = new RPGStateMachine();
         }
         return RPGsm;
+    }
+    
+    @Override
+    protected void changeToState(String stateName){
+        super.changeToState(stateName);
+        window.displayState(stateStack.peek().getViewport());
     }
 }

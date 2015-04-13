@@ -32,6 +32,10 @@ public class GameMap {
         map = m.getMap();
     }
 
+    public void addEntity(Entity e){
+        this.addEntity(e, new Vector3());
+    }
+    
     public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, location));
@@ -193,4 +197,5 @@ public class GameMap {
     public Iterable<EntityMovement> getEntityMovements() {
         return entityMovements;
     }
+
 }

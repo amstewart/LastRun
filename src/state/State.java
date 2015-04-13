@@ -10,11 +10,18 @@ import view.viewport.Viewport;
 
 public abstract class State {
 
+    protected Viewport viewPort;
+    
     public abstract void update();
-    public abstract void render();
+    public void render(){
+        viewPort.render();
+        viewPort.updateUI();
+    }
     public abstract void onEnter();
     public abstract void onExit();
-    public abstract Viewport getViewport();
+    public Viewport getViewport(){
+        return viewPort;
+    }
 
     private Controller c = new Controller();
 
