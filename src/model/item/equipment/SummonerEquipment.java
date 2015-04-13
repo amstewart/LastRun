@@ -17,4 +17,9 @@ public abstract class SummonerEquipment extends Equipment {
     public boolean use(Occupation occupation) {
         return occupation.addToEquipment(this);
     }
+
+    @Override
+    public boolean unUse(Occupation occupation) {
+        return occupation.removeFromEquipment(this);
+    }
 }

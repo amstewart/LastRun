@@ -1,8 +1,9 @@
 package model.item.equipment;
 
+import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentManager;
-//TODO: Add level checking of occupation
+
 public abstract class BasicEquipment extends Equipment  {
     public BasicEquipment(String name, int value) {
         super(name, value);
@@ -14,6 +15,12 @@ public abstract class BasicEquipment extends Equipment  {
 
     @Override
     public boolean use(Occupation occupation) {
+
         return occupation.addToEquipment(this);
+    }
+
+    @Override
+    public boolean unUse(Occupation occupation) {
+        return occupation.removeFromEquipment(this);
     }
 }

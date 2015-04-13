@@ -77,4 +77,7 @@ public class CoinPouch extends TakeableItem {
     public boolean use(Occupation occupation) {
         return false;
     }
+
+    @Override
+    public boolean unUse(Occupation occupation) { return false;}
 }

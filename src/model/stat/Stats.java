@@ -32,8 +32,6 @@ public class Stats {
 	}
 	
 	public void mergeStats(Stats stat){
-		
-		
 		deriveStats();
 	}
 
@@ -167,10 +165,4 @@ public class Stats {
 	public int getArmorRating() {
 		return armorRating;
 	}
-
-	
-	
-
-
-    
 }
