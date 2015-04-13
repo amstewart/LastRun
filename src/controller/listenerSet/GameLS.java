@@ -198,7 +198,7 @@ public class GameLS extends ListenerSet {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode() == KeyEvent.VK_W) {
+            if(e.getKeyCode() == KeyEvent.VK_D) {
                 axion.perform();
             }
         }
