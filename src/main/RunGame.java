@@ -11,7 +11,7 @@ public class RunGame {
 
         KeyBinding keyBinding = new KeyBinding();
         RPGStateMachine s = RPGStateMachine.getInstance();
-        s.changeToMenuState();
+        s.changeToGameState();
 
         while(true){
             s.update();

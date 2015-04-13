@@ -1,41 +1,32 @@
 package state;
 
+import model.entity.Avatar;
 import model.map.GameMap;
 import view.viewport.GameViewport;
-import view.viewport.MapViewport;
-import view.viewport.Viewport;
 
 public class GameState extends State {
     
-    private Viewport viewPort;
 
     public GameState(){
         GameMap map = new GameMap(); 
-        viewPort =  new MapViewport(map);
+        Avatar a = new Avatar();
+        map.addEntity(a);
+        viewPort =  new GameViewport(map, a.getInventory());
     }
 
     @Override
     public void update() {
-
-    }
-
-    @Override
-    public void render() {
-
+        //MAP MOVEMENT LOGIC
     }
 
     @Override
     public void onEnter() {
-
+        
     }
 
     @Override
     public void onExit() {
-
+        
     }
 
-    @Override
-    public Viewport getViewport() {
-        return viewPort;
-    }
 }

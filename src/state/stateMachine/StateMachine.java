@@ -34,7 +34,7 @@ public abstract class StateMachine {
         return stateStack.pop();
     }
 
-     public void changeToState(String stateName) {
+    protected void changeToState(String stateName) {
         
          if(!stateStack.isEmpty()) {
             State currentState = stateStack.peek();

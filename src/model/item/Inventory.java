@@ -3,12 +3,20 @@ package model.item;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import model.item.equipment.OneHandedWeapon;
+import model.item.equipment.Shield;
+import model.item.equipment.Staff;
+import model.item.equipment.TwoHandedWeapon;
 
 public class Inventory {
     private ArrayList<TakeableItem> items;
 
     public Inventory() {
         items = new ArrayList<TakeableItem>();
+        items.add(new Shield());
+        items.add(new OneHandedWeapon());
+        items.add(new Staff());
+        items.add(new TwoHandedWeapon());
     }
 
     public boolean addItem(TakeableItem item) {

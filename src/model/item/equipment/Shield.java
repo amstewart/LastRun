@@ -7,6 +7,10 @@ public class Shield extends SmasherEquipment {
     public Shield(String name, int value) {
         super(name, value);
     }
+    
+    public Shield() {
+        super("Shield", 30);
+    }
 
     @Override
     public boolean doEquip(SmasherEquipmentManager smasherEM) {
