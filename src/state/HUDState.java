@@ -57,9 +57,8 @@ public class HUDState extends State {
         ActionListener al;
 
         @Override
-        public void perform(){
-            RPGStateMachine.getInstance().add("CharacterSelectionState", new CharacterSelectionState());
-            RPGStateMachine.getInstance().changeToState("CharacterSelectionState");
+        public void perform() {
+            RPGStateMachine.getInstance().changeToCharSelectState();
         }
 
         @Override

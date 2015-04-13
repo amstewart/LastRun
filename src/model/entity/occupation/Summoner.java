@@ -32,6 +32,18 @@ public class Summoner extends Occupation {
     public boolean addToEquipment(SummonerEquipment equipment) {
         return equipment.doEquip(equipmentManager);
     }
+    //================================Unequipping===================================
+    @Override
+    public boolean removeFromEquipment(BasicEquipment equipment) { return equipment.doUnequip(equipmentManager); }
+
+    @Override
+    public boolean removeFromEquipment(SmasherEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SneakEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SummonerEquipment equipment) { return equipment.doUnEquip(equipmentManager); }
 
     @Override
     public Equipment[] getEquipment() {

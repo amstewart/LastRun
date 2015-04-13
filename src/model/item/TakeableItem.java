@@ -5,6 +5,7 @@
  */
 package model.item;
 
+import model.entity.Avatar;
 import model.entity.Entity;
 import model.entity.occupation.Occupation;
 
@@ -21,4 +22,7 @@ public abstract class TakeableItem extends Item{
     }
 
     public abstract boolean use(Occupation occupation);
+
+    public abstract boolean unUse(Occupation occupation);
+
 }
