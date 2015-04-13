@@ -1,6 +1,7 @@
 
 package view.viewport;
 
+import java.awt.IllegalComponentStateException;
 import java.awt.PopupMenu;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -21,12 +22,14 @@ import model.item.TakeableItem;
 public class InventoryViewport extends Viewport{
     private Inventory inventory;
     private JPopupMenu menu = new JPopupMenu("Popup");
-    private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop");
+    private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop"), cancel = new JMenuItem("Cancel");
     
     public InventoryViewport(Inventory i){
         inventory = i;
         menu.add(useItem);
         menu.add(dropItem);
+        menu.addSeparator();
+        menu.add(cancel);
     }
     
     @Override
@@ -69,7 +72,9 @@ public class InventoryViewport extends Viewport{
 
         @Override
         public void mousePressed(MouseEvent e) {
+            try{
            menu.show(e.getComponent(), e.getX(), e.getY());
+            }catch(IllegalComponentStateException ex){}
         }
 
         @Override
