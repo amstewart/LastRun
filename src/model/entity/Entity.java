@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entity;
+
 import model.item.TakeableItem;
 import model.stat.Stats;
 import model.Asset;
@@ -13,10 +9,15 @@ import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
 
+/**
+ * Entities are all game objects which have the ability to move and manipulate
+ * items on the map. Entities have simple skills which they can use, can
+ * attack, and use other abilities. Entities all have a coin pouch which holds
+ * their money.
+ */
 public abstract class Entity extends Asset implements Describable {
     // Fields
     private CoinPouch coins = new CoinPouch();
-    //private EntityMovement movement = null; //TODO REMOVE
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();

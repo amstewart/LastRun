@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utility;
 
 import java.awt.Graphics2D;
@@ -14,19 +9,20 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
 /**
  *
  * @author darien
  */
 public class ImageUtil {
 
+    //<editor-fold desc="ASSET PATHS" defaultstate="collapsed">
     private static final String DIR_RES = "res/";
     private static final String DIR_SPRITES = DIR_RES + "sprites/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "menu_bg_2.jpg";
+    //</editor-fold>
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         
@@ -77,5 +73,4 @@ public class ImageUtil {
         }
         return null;
     }
-
 }

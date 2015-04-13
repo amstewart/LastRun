@@ -1,6 +1,5 @@
 package model.action;
 
-import state.stateMachine.StateMachine;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 
@@ -9,13 +8,9 @@ import java.awt.event.KeyListener;
  */
 public abstract class Action {
 
-
     public abstract void perform();
     public abstract void setActionListener(ActionListener al);
     public abstract void setKeyListener(KeyListener kl);
     public abstract ActionListener getActionListener();
     public abstract KeyListener getKeyListener();
-
-   
-
 }
