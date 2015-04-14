@@ -39,7 +39,7 @@ public class Avatar extends Entity {
 	}
 
 	public void changeName(String new_name) {
-		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value.")); }
+		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
 		setName(new_name);
 	}
 
