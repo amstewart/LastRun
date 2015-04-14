@@ -200,7 +200,7 @@ public class GameMap {
     private int boundX(int x) {
         if (x < 0) {
             x = 0;
-        } else if (x > map.length) {
+        } else if (x >= map.length) {
             x = map.length - 1;
         }
         return x;
@@ -209,7 +209,7 @@ public class GameMap {
     private int boundY(int y) {
         if (y < 0) {
             y = 0;
-        } else if (y > map[0].length) {
+        } else if (y >= map[0].length) {
             y = map[0].length - 1;
         }
         return y;
@@ -218,7 +218,7 @@ public class GameMap {
     private int warpX(int x) {
         if (x < 0) {
             x = map.length - 1;
-        } else if (x > map.length) {
+        } else if (x >= map.length) {
             x = 0;
         }
         return x;
@@ -227,7 +227,7 @@ public class GameMap {
     private int warpY(int y) {
         if (y < 0) {
             y = map[0].length - 1;
-        } else if (y > map[0].length) {
+        } else if (y >= map[0].length) {
             y = 0;
         }
         return y;
