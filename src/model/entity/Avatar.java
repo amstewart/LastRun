@@ -15,6 +15,7 @@ import model.item.TakeableItem;
 import model.item.equipment.BasicEquipment;
 import model.item.equipment.Equipment;
 import utility.ImageUtil;
+import utility.Util;
 
 public class Avatar extends Entity {
 
@@ -37,6 +38,15 @@ public class Avatar extends Entity {
 		occupation = new Summoner(getInventory());
 	}
 
+	public void changeName(String new_name) {
+		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value.")); }
+		setName(new_name);
+	}
+
+	public void dropItem(TakeableItem ti) {
+		this.getInventory().removeItem(ti);
+	}
+
     @Override
     public String getDescription() {
         return DESC;
@@ -49,8 +59,4 @@ public class Avatar extends Entity {
 	public Equipment[] getEquipment() {
 		return occupation.getEquipment();
 	}
-
-    public void dropItem(TakeableItem ti) {
-        this.getInventory().removeItem(ti);
-    }
 }
