@@ -32,7 +32,6 @@ public class GameState extends State {
         inventory = player.getInventory();
         occupation = player.getOccupation();
         viewPort =  new GameViewport(map, inventory);
-
     }
 
     @Override
@@ -184,7 +183,7 @@ public class GameState extends State {
         @Override
         public void perform(){
             Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheSouthwest(v3).getLocation();
+            v3 = map.getTileToTheSouthWest(v3).getLocation();
             map.moveAvatarTo(v3);
         }
         @Override

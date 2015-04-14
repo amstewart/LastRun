@@ -17,6 +17,8 @@ import model.entity.Avatar;
  */
 public class GameMap {
 
+    private static int DELTA_ODD_Y = 1;
+
     private Tile[][] map;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
     private LinkedList<ItemMovement> itemMovements = new LinkedList<>();
@@ -34,8 +36,6 @@ public class GameMap {
         map = m.getMap();
     }
 
-    
-    
     public void addEntity(Avatar a){
         this.addEntity(a, new Vector3());
     }
@@ -87,6 +87,9 @@ public class GameMap {
     public Tile getTileToTheNorthEast(Vector3 location) {
         int newX = location.X + 1;
         int newY = location.Y - 1;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
         return map[newX][newY];
@@ -99,6 +102,9 @@ public class GameMap {
     public Tile getTileToTheNorthWest(Vector3 location) {
         int newX = location.X - 1;
         int newY = location.Y - 1;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
         return map[newX][newY];
@@ -121,8 +127,11 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthEast(Vector3 location) {
-        int newX = location.X;
-        int newY = location.Y + 1;
+        int newX = location.X + 1;
+        int newY = location.Y;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
         return map[newX][newY];
@@ -132,16 +141,19 @@ public class GameMap {
         return getTileToTheSouthEast(t.getLocation());
     }
 
-    public Tile getTileToTheSouthwest(Vector3 location) {
+    public Tile getTileToTheSouthWest(Vector3 location) {
         int newX = location.X - 1;
-        int newY = location.Y + 1;
+        int newY = location.Y;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
-    public Tile getTileToTheSouthwest(Tile t) {
-        return getTileToTheSouthwest(t.getLocation());
+    public Tile getTileToTheSouthWest(Tile t) {
+        return getTileToTheSouthWest(t.getLocation());
     }
 
     public Tile getTile(Vector3 location) {
@@ -150,6 +162,11 @@ public class GameMap {
 
     public Tile getTile(int i, int j) {
         return map[i][j];
+    }
+
+    private boolean isOdd(int num) {
+        if (num % 2 == 0) return false;
+        else return true;
     }
 
     public boolean removeEntity(EntityMovement ent_mov) {
