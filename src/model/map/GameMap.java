@@ -9,12 +9,11 @@ import model.movement.ItemMovement;
 import model.tile.Tile;
 
 import java.util.LinkedList;
+import model.entity.Avatar;
 
-/**
- *
- * @author
- */
 public class GameMap {
+
+    private static int DELTA_ODD_Y = 1;
 
     private Tile[][] map;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
@@ -26,12 +25,23 @@ public class GameMap {
     public static final int BOUND_MODE = 1;
 
     private int boundaryMode = 0;
+    private EntityMovement avatarMovement;
 
     public GameMap() {
         m = new MapBuilder();
         map = m.getMap();
     }
 
+    public void addEntity(Avatar a){
+        this.addEntity(a, new Vector3());
+    }
+    
+    public void addEntity(Avatar a, Vector3 location){
+        getTile(location).addEntity(a);
+        avatarMovement = new EntityMovement(a, location);
+        entityMovements.add(avatarMovement);
+    }
+    
     public void addEntity(Entity e){
         this.addEntity(e, new Vector3());
     }
@@ -54,9 +64,15 @@ public class GameMap {
         itemMovements.add(new ItemMovement(item, location));
     }
 
+    public EntityMovement getAvatarMovement(){
+        return avatarMovement;
+    }
+    
     public Tile getTileToTheNorth(Vector3 location) {
         int newX = location.X;
         int newY = location.Y - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -67,6 +83,11 @@ public class GameMap {
     public Tile getTileToTheNorthEast(Vector3 location) {
         int newX = location.X + 1;
         int newY = location.Y - 1;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -77,6 +98,11 @@ public class GameMap {
     public Tile getTileToTheNorthWest(Vector3 location) {
         int newX = location.X - 1;
         int newY = location.Y - 1;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -87,6 +113,8 @@ public class GameMap {
     public Tile getTileToTheSouth(Vector3 location) {
         int newX = location.X;
         int newY = location.Y + 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -95,8 +123,13 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthEast(Vector3 location) {
-        int newX = location.X;
-        int newY = location.Y + 1;
+        int newX = location.X + 1;
+        int newY = location.Y;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
@@ -104,14 +137,19 @@ public class GameMap {
         return getTileToTheSouthEast(t.getLocation());
     }
 
-    public Tile getTileToTheSouthwest(Vector3 location) {
+    public Tile getTileToTheSouthWest(Vector3 location) {
         int newX = location.X - 1;
-        int newY = location.Y + 1;
+        int newY = location.Y;
+
+        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
 
-    public Tile getTileToTheSouthwest(Tile t) {
-        return getTileToTheSouthwest(t.getLocation());
+    public Tile getTileToTheSouthWest(Tile t) {
+        return getTileToTheSouthWest(t.getLocation());
     }
 
     public Tile getTile(Vector3 location) {
@@ -120,6 +158,11 @@ public class GameMap {
 
     public Tile getTile(int i, int j) {
         return map[i][j];
+    }
+
+    private boolean isOdd(int num) {
+        if (num % 2 == 0) return false;
+        else return true;
     }
 
     public boolean removeEntity(EntityMovement ent_mov) {
@@ -153,7 +196,7 @@ public class GameMap {
     private int boundX(int x) {
         if (x < 0) {
             x = 0;
-        } else if (x > map.length) {
+        } else if (x >= map.length) {
             x = map.length - 1;
         }
         return x;
@@ -162,7 +205,7 @@ public class GameMap {
     private int boundY(int y) {
         if (y < 0) {
             y = 0;
-        } else if (y > map[0].length) {
+        } else if (y >= map[0].length) {
             y = map[0].length - 1;
         }
         return y;
@@ -171,7 +214,7 @@ public class GameMap {
     private int warpX(int x) {
         if (x < 0) {
             x = map.length - 1;
-        } else if (x > map.length) {
+        } else if (x >= map.length) {
             x = 0;
         }
         return x;
@@ -180,7 +223,7 @@ public class GameMap {
     private int warpY(int y) {
         if (y < 0) {
             y = map[0].length - 1;
-        } else if (y > map[0].length) {
+        } else if (y >= map[0].length) {
             y = 0;
         }
         return y;
@@ -198,4 +241,7 @@ public class GameMap {
         return entityMovements;
     }
 
+    public void moveAvatarTo(Vector3 v3) {
+        avatarMovement.changePosition(v3);
+    }
 }

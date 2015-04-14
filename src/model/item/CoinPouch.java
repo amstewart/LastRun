@@ -4,7 +4,8 @@ import model.entity.occupation.Occupation;
 import utility.Util;
 
 /**
- * This class represents a 'coin pouch' within the game world. Coin pouches are usually carried by entities.
+ * This class represents a 'coin pouch' within the game world. Coin pouches are
+ * usually carried by entities.
  * @author Alex Stewart
  */
 public class CoinPouch extends TakeableItem {
@@ -35,9 +36,10 @@ public class CoinPouch extends TakeableItem {
     public int getValue() { return value; }
 
     /**
-     * Modifies the value of the coin purse by the amount specified. If the modified value is less than 0, the coin
-     * purse will be bounded to 0.
-     * @param addition The change to the value of the coin purse (positive values increase, negatives decrease)
+     * Modifies the value of the coin purse by the amount specified. If the
+     * modified value is less than 0, the coin pouch will be bounded to 0.
+     * @param addition The change to the value of the coin purse (positive
+     * values increase, negatives decrease)
      * @return The resultant value of the coin purse, after the modification.
      */
     public int modValue(int addition) {
@@ -77,4 +79,7 @@ public class CoinPouch extends TakeableItem {
     public boolean use(Occupation occupation) {
         return false;
     }
+
+    @Override
+    public boolean unUse(Occupation occupation) { return false;}
 }

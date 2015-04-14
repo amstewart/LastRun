@@ -33,6 +33,19 @@ public class Sneak extends Occupation {
         return false;
     }
 
+    //================================Unequipping===================================
+    @Override
+    public boolean removeFromEquipment(BasicEquipment equipment) { return equipment.doUnequip(equipmentManager); }
+
+    @Override
+    public boolean removeFromEquipment(SmasherEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SneakEquipment equipment) { return equipment.doUnEquip(equipmentManager); }
+
+    @Override
+    public boolean removeFromEquipment(SummonerEquipment equipment) { return false; }
+
     @Override
     public Equipment[] getEquipment() {
         return equipmentManager.getEquippedItems();

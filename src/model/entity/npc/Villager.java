@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entity.npc;
 
-
-/**
- *
- * @author
- */
 public class Villager extends NPC {
 
-    public Villager(String art_asset) {
+    private static final String DESC = "Hello!";
+
+    public Villager(String art_asset, String name) {
         super(art_asset);
+        setName(name);
     }
+
+    public String getDescription() { return getName() + ": " + DESC; }
 }

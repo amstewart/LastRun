@@ -33,6 +33,18 @@ public class NPCOccupation extends Occupation {
     }
 
     @Override
+    public boolean removeFromEquipment(BasicEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SmasherEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SneakEquipment equipment) { return false; }
+
+    @Override
+    public boolean removeFromEquipment(SummonerEquipment equipment) { return false; }
+
+    @Override
     public Equipment[] getEquipment() {
         return new Equipment[0];
     }

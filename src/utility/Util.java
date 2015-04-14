@@ -61,6 +61,14 @@ public class Util {
         e.printStackTrace(System.err);
     }
 
+    public static void errOut(Exception e, boolean fatal) {
+        errOut(e);
+        if (fatal) {
+            System.err.println("LAST ERROR WAS FATAL. PROGRAM ENDING.");
+            System.exit(1);
+        }
+    }
+
     public static void setDbgOut(File file) {
         try {
             if (file == null) { throw new Exception("DBGOUT file is null"); }

@@ -12,8 +12,10 @@ import model.entity.occupation.Summoner;
 import model.entity.npc.pet.Pet;
 import model.item.OneShotItem;
 import model.item.TakeableItem;
+import model.item.equipment.BasicEquipment;
 import model.item.equipment.Equipment;
 import utility.ImageUtil;
+import utility.Util;
 
 public class Avatar extends Entity {
 
@@ -23,6 +25,12 @@ public class Avatar extends Entity {
 	private Occupation occupation;
 
 	public Avatar() { super(ImageUtil.NULL_ASSET); }
+
+	public void addEquipment(BasicEquipment eqp_basic) {
+		occupation.addToEquipment(eqp_basic);
+	}
+
+
 
 	public void beSmasher() {
 		occupation = new Smasher(getInventory());
@@ -34,6 +42,15 @@ public class Avatar extends Entity {
 
 	public void beSummoner() {
 		occupation = new Summoner(getInventory());
+	}
+
+	public void changeName(String new_name) {
+		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
+		setName(new_name);
+	}
+
+	public void dropItem(TakeableItem ti) {
+		this.getInventory().removeItem(ti);
 	}
 
     @Override
@@ -49,4 +66,7 @@ public class Avatar extends Entity {
 		return occupation.getEquipment();
 	}
 
+	public void setOccupation(Occupation new_occupation) {
+		this.occupation = new_occupation;
+	}
 }

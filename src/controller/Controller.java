@@ -5,11 +5,8 @@
  */
 package controller;
 
+import controller.listenerSet.*;
 import model.action.Action;
-import controller.listenerSet.CharacterSelectionLS;
-import controller.listenerSet.ListenerSet;
-import controller.listenerSet.MenuLS;
-import controller.listenerSet.HUDLS;
 
 import java.util.ArrayList;
 
@@ -18,6 +15,7 @@ public class Controller {
     private ListenerSet MenuStateSet;
     private ListenerSet CharacterSelectionSet;
     private ListenerSet HUDLS;
+    private ListenerSet GameLS;
 
     public void setMenuLS(ArrayList<Action> a){
         MenuStateSet = new MenuLS(a);
@@ -28,5 +26,7 @@ public class Controller {
     }
 
     public void setHUDSelectionSet(ArrayList<Action> a){ HUDLS = new HUDLS(a); }
+
+    public void setGameSet(ArrayList<Action> a){GameLS = new GameLS(a);}
 
 }
