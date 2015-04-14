@@ -26,6 +26,12 @@ public class Avatar extends Entity {
 
 	public Avatar() { super(ImageUtil.NULL_ASSET); }
 
+	public void addEquipment(BasicEquipment eqp_basic) {
+		occupation.addToEquipment(eqp_basic);
+	}
+
+
+
 	public void beSmasher() {
 		occupation = new Smasher(getInventory());
 	}
@@ -58,5 +64,9 @@ public class Avatar extends Entity {
 
 	public Equipment[] getEquipment() {
 		return occupation.getEquipment();
+	}
+
+	public void setOccupation(Occupation new_occupation) {
+		this.occupation = new_occupation;
 	}
 }

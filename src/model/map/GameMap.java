@@ -11,10 +11,6 @@ import model.tile.Tile;
 import java.util.LinkedList;
 import model.entity.Avatar;
 
-/**
- *
- * @author
- */
 public class GameMap {
 
     private static int DELTA_ODD_Y = 1;
