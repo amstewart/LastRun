@@ -3,6 +3,9 @@ package state;
 import model.Vector3;
 import model.action.Action;
 import model.entity.Avatar;
+import model.entity.occupation.Occupation;
+import model.item.Inventory;
+
 import model.item.TakeableItem;
 import model.map.GameMap;
 import state.stateMachine.RPGStateMachine;
@@ -16,15 +19,19 @@ import java.util.ArrayList;
 
 public class GameState extends State {
 
-    Avatar av;
-    GameMap map;
+    
+    private Inventory inventory;
+    private Avatar player;
+    private Occupation occupation;
+    private GameMap map;
 
     public GameState(){
         map = new GameMap();
-        av = new Avatar();
-        map.addEntity(av);
-        //viewPort = new MapViewport(map);
-        viewPort =  new GameViewport(map, av.getInventory());
+        player = new Avatar();
+        map.addEntity(player);
+        inventory = player.getInventory();
+        occupation = player.getOccupation();
+        viewPort =  new GameViewport(map, inventory);
 
     }
 
@@ -283,7 +290,7 @@ public class GameState extends State {
 
         }
         public void perform(TakeableItem ti){
-            av.dropItem(ti);
+            player.dropItem(ti);
         }
         @Override
         public void setActionListener(ActionListener al) {
