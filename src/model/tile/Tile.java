@@ -34,6 +34,10 @@ public class Tile {
         address = l;
     }
     
+    public Tile(Tile tile){
+        //deep copy of tile
+    }
+    
     public void addAreaEffect(AreaEffect a) {
         if (!isAreaEffectOwner()) {
             myAreaEffects = new AreaEffectOwner();

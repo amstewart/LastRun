@@ -5,11 +5,13 @@
  */
 package model.areaEffect;
 
+import model.entity.Entity;
+
 /**
  *
  * @author
  */
 public abstract class AreaEffect{
 
-	public abstract void apply();
+	public abstract void apply(Entity e);
 }

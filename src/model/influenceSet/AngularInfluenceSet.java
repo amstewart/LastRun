@@ -3,20 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.areaEffect;
-
-import model.entity.Entity;
+package model.influenceSet;
 
 /**
  *
  * @author
  */
-public class HealDamageAreaEffect extends AreaEffect {
-    
-    public void apply(Entity e){
-        //e. whatever
-    }
-
- 
+public class AngularInfluenceSet {
     
 }

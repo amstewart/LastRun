@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model.areaEffect;
+import model.entity.Entity;
 
 /**
  *
@@ -11,7 +12,7 @@ package model.areaEffect;
  */
 public class InstantDeathAreaEffect extends AreaEffect {
     
-    public void apply(){
+    public void apply(Entity e){
         
     }
     

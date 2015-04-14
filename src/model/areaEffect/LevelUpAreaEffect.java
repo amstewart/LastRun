@@ -5,13 +5,15 @@
  */
 package model.areaEffect;
 
+import model.entity.Entity;
+
 /**
  *
  * @author
  */
 public class LevelUpAreaEffect extends AreaEffect{
 
-	public void apply(){
+	public void apply(Entity e){
 		//do something
 	}
 }

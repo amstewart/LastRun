@@ -5,6 +5,8 @@
  */
 package model.areaEffect;
 
+import model.entity.Entity;
+
 /**
  *
  * @author
@@ -12,8 +14,12 @@ package model.areaEffect;
 public class TakeDamageAreaEffect extends AreaEffect {
     private int damage=10;
     
-    public void apply(){
+    public void apply(Entity e){
         
     }
+
+ 
+
+  
     
 }
