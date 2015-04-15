@@ -1,7 +1,7 @@
 package controller2.action.moveAvatarAction;
 
 import controller2.action.Action2;
-import model.Vector3;
+import model.Vector2;
 import model.map.GameMap;
 import utility.Util;
 
@@ -27,9 +27,8 @@ public class MoveUpAction extends Action2 {
 
     @Override
     public void perform() {
-        Vector3 v3 = map.getAvatarMovement().getPosition();
-        v3 = map.getTileToTheNorth(v3).getLocation();
-        map.moveAvatarTo(v3);
+        Vector2 v2 = map.getAvatarMovement().getPosition();
+        v2 = map.getTileToTheNorth(v2).getLocation();
+        map.moveAvatarTo(v2);
     }
-
 }
