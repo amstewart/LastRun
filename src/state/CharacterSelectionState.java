@@ -2,6 +2,8 @@
 package state;
 
 import model.action.Action;
+import model.entity.Avatar;
+import model.entity.OccupationChooser;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 
@@ -14,11 +16,18 @@ import state.stateMachine.RPGStateMachine;
 public class CharacterSelectionState extends State{
 
     private CharacterSelectionViewport viewPort;
+    private Avatar avatar;
 
     public CharacterSelectionState(){
+        avatar = new Avatar();
+
         viewPort =  new CharacterSelectionViewport();
     }
-    
+
+    public void setOccupationChooser(OccupationChooser occupationChooser) {
+
+    }
+
     @Override
     public void update() {
 

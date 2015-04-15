@@ -6,13 +6,7 @@
 package model.entity;
 
 import model.entity.occupation.Occupation;
-import model.entity.occupation.Smasher;
-import model.entity.occupation.Sneak;
-import model.entity.occupation.Summoner;
 import model.entity.npc.pet.Pet;
-import model.item.OneShotItem;
-import model.item.TakeableItem;
-import model.item.equipment.BasicEquipment;
 import model.item.equipment.Equipment;
 import utility.ImageUtil;
 import utility.Util;
@@ -22,26 +16,11 @@ public class Avatar extends Entity {
     private static final String DESC = "This is the player character.";
 
 	private Pet pet;
-	private Occupation occupation;
+	private OccupationChooser occupationChooser;
 
-	public Avatar() { super(ImageUtil.NULL_ASSET); }
-
-	public void addEquipment(BasicEquipment eqp_basic) {
-		occupation.addToEquipment(eqp_basic);
-	}
-
-
-
-	public void beSmasher() {
-		occupation = new Smasher(getInventory());
-	}
-
-	public void beSneak() {
-		occupation = new Sneak(getInventory());
-	}
-
-	public void beSummoner() {
-		occupation = new Summoner(getInventory());
+	public Avatar() {
+		super(ImageUtil.NULL_ASSET);
+		occupationChooser = new OccupationChooser(this);
 	}
 
 	public void changeName(String new_name) {
@@ -49,24 +28,19 @@ public class Avatar extends Entity {
 		setName(new_name);
 	}
 
-	public void dropItem(TakeableItem ti) {
-		this.getInventory().removeItem(ti);
-	}
-
     @Override
     public String getDescription() {
         return DESC;
     }
-
+	// Pre condition, getting the occupationChooser only happens in states where occupationChooser was initialized
 	public Occupation getOccupation() {
-		return occupation;
+		return occupationChooser.getOccupation();
 	}
 
+	public OccupationChooser getOccupationChooser() {
+		return occupationChooser;
+	}
 	public Equipment[] getEquipment() {
-		return occupation.getEquipment();
-	}
-
-	public void setOccupation(Occupation new_occupation) {
-		this.occupation = new_occupation;
+		return getOccupation().getEquipment();
 	}
 }

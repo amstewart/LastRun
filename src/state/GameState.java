@@ -20,7 +20,7 @@ public class GameState extends State {
     
     private Inventory inventory;
     private Avatar player;
-    private Occupation occupation;
+ //   private Occupation occupation;
     private GameMap map;
 
     public GameState(GameMap map, Avatar player){
@@ -28,7 +28,7 @@ public class GameState extends State {
         this.player = player;
         map.addEntity(player);
         inventory = player.getInventory();
-        occupation = player.getOccupation();
+
         viewPort =  new GameViewport(map, inventory);
     }
 
@@ -287,7 +287,7 @@ public class GameState extends State {
 
         }
         public void perform(TakeableItem ti){
-            player.dropItem(ti);
+            inventory.removeItem(ti);
         }
         @Override
         public void setActionListener(ActionListener al) {
