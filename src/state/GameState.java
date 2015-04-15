@@ -313,4 +313,46 @@ public class GameState extends State {
         }
 
     }
+
+    private class Use extends Action {
+
+        @Override
+        public void perform() {
+
+        }
+
+        public void perform(TakeableItem item, Occupation occupation) {
+            item.use(occupation);
+        }
+
+        @Override
+        public void setActionListener(ActionListener al) {
+
+        }
+
+        @Override
+        public void setKeyListener(KeyListener kl) {
+
+        }
+
+        @Override
+        public void setMouseListener(MouseListener ml) {
+
+        }
+
+        @Override
+        public ActionListener getActionListener() {
+            return null;
+        }
+
+        @Override
+        public KeyListener getKeyListener() {
+            return null;
+        }
+
+        @Override
+        public MouseListener getMouseListener() {
+            return null;
+        }
+    }
 }

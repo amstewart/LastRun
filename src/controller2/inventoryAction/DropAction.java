@@ -8,10 +8,6 @@ import java.awt.event.MouseListener;
 import model.item.Inventory;
 import model.item.TakeableItem;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class DropAction extends Action2{
 
     Inventory inventory;

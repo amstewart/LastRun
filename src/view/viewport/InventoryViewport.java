@@ -12,33 +12,42 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+
+import controller2.inventoryAction.UseAction;
 import model.action.Action;
+import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.item.Item;
 import model.item.TakeableItem;
 
 public class InventoryViewport extends Viewport{
 
-    private Inventory inventory;
-
     private DropAction dropAction;
+    private UseAction useAction;
+
     private JPopupMenu menu = new JPopupMenu("Popup");
     private JMenuItem useItem = new JMenuItem("Use");
     private JMenuItem dropItem = new JMenuItem("Drop");
     private JMenuItem cancel = new JMenuItem("Cancel");
 
-    public InventoryViewport(Inventory inventory){
-        this.inventory = inventory;
+    public InventoryViewport(Inventory inventory, Occupation occupation){
         inventory.registerView(this);
         setUpMenu();
-        
+        initView(inventory);
+
+        dropAction = new DropAction(inventory);
+        dropItem.addActionListener(Action2.getActionListener(dropAction));
+
+        useAction = new UseAction(occupation);
+        useItem.addActionListener(Action2.getActionListener(useAction));
+    }
+
+    public void initView(Inventory inventory) {
         TakeableItem[] items = inventory.getItems();
         add(new JLabel("Inventory"));
         for(int i = 0; i < items.length; i++){
             add(new ItemButton(items[i]));
         }
-        dropAction = new DropAction(inventory);
-        dropItem.addActionListener(Action2.getActionListener(dropAction));
     }
 
     public void receive(TakeableItem[] items) {
@@ -59,6 +68,7 @@ public class InventoryViewport extends Viewport{
 
     @Override
     public void render() {
+
 
     }
 
@@ -100,6 +110,7 @@ public class InventoryViewport extends Viewport{
                TakeableItem ti =  (TakeableItem)((ItemButton) e.getSource()).getItem();
                menu.show(e.getComponent(), e.getX(), e.getY());
                dropAction.setCurrentItem(ti);
+               useAction.setCurrentItem(ti);
 
             }catch(IllegalComponentStateException ex){}
         }

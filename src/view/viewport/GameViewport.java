@@ -8,6 +8,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import model.action.Action;
+import model.entity.occupation.Occupation;
+import model.entity.occupation.Smasher;
 import model.item.Inventory;
 import model.map.GameMap;
 
@@ -23,7 +25,9 @@ public class GameViewport extends Viewport{
     
     public GameViewport(GameMap map, Inventory inventory){
         mapVP = new MapViewport(map);
-        inventoryVP = new InventoryViewport(inventory);
+        // TEMP TEST
+        Occupation smasher = new Smasher(inventory);
+        inventoryVP = new InventoryViewport(inventory, smasher);
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);
         mapVP.setBackground(Color.lightGray);
