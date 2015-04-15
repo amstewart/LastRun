@@ -7,6 +7,8 @@ public abstract class Occupation {
 
     public Occupation(Inventory inventory) {}
 
+
+    // blah this comment is to commit a change
     // Subclasses responsible for overriding items that can equip
     public abstract boolean addToEquipment(BasicEquipment equipment);
 
