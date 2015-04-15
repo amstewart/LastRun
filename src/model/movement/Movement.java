@@ -8,13 +8,12 @@ import model.map.GameMap;
  */
 public class Movement {
 
-    private Vector2 position;
+    private Vector2 position = Vector2.zero();
     private GameMap map;
 
     public Vector2 getPosition() { return position; }
 
-    public Vector2 changePosition(Vector2 newPosition) {
+    public void changePosition(Vector2 newPosition) {
         position = new Vector2(newPosition);
-        return Vector2.subtract(newPosition, position); // return the delta
     }
 }

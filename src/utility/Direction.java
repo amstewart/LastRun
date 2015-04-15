@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utility;
 
-/**
- *
- * @author
- */
+import model.Vector2;
+
 public class Direction {
-    /*
-    public static final NORTH=
-    public static final NORTHEAST=
-    public static final SOUTHEAST=
-    public static final SOUTH=
-    public static final SOUTHWEST=
-    public static final NORTHWEST=
-    */
+    public static final Vector2 DELTA_ODD = new Vector2(0, -1);
+
+    public static final Vector2 NORTH =     new Vector2(0,-1);
+    public static final Vector2 NORTHEAST = new Vector2(1,0);
+    public static final Vector2 NORTHWEST = new Vector2(-1,0);
+    public static final Vector2 SOUTH =     new Vector2(0,1);
+    public static final Vector2 SOUTHEAST = new Vector2(1,1);
+    public static final Vector2 SOUTHWEST = new Vector2(-1,1);
 }

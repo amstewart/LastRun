@@ -11,11 +11,10 @@ import model.tile.Tile;
 
 import java.util.LinkedList;
 import model.entity.Avatar;
+import utility.Direction;
 import utility.Util;
 
 public class GameMap {
-
-    private static int DELTA_ODD_Y = 1;
 
     private Tile[][] map;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
@@ -71,7 +70,7 @@ public class GameMap {
     }
     
     public Tile getTileToTheNorth(Vector2 location) {
-        location.Y  -= 1;
+        location.add(Direction.NORTH);
         location = this.applyBoundaryV(location);
         return map[location.X][location.Y];
     }
@@ -81,12 +80,10 @@ public class GameMap {
     }
 
     public Tile getTileToTheNorthEast(Vector2 location) {
-        location.X += 1;
-        location.Y -= 1;
-
-        if (isOdd(location.X)) location.Y += DELTA_ODD_Y;
-
+        location.add(Direction.NORTHEAST);
+        if (isOdd(location)) location.add(Direction.DELTA_ODD);
         location = applyBoundaryV(location);
+
         return map[location.X][location.Y];
     }
 
@@ -95,14 +92,11 @@ public class GameMap {
     }
 
     public Tile getTileToTheNorthWest(Vector2 location) {
-        int newX = location.X - 1;
-        int newY = location.Y - 1;
+        location.add(Direction.NORTHWEST);
+        if (isOdd(location)) location.add(Direction.DELTA_ODD);
+        location = applyBoundaryV(location);
 
-        if (isOdd(location.X)) newY += DELTA_ODD_Y;
-
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheNorthWest(Tile t) {
@@ -110,11 +104,10 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouth(Vector2 location) {
-        int newX = location.X;
-        int newY = location.Y + 1;
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+        location.add(Direction.SOUTH);
+        location = applyBoundaryV(location);
+
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheSouth(Tile t) {
@@ -122,14 +115,11 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthEast(Vector2 location) {
-        int newX = location.X + 1;
-        int newY = location.Y;
+        location.add(Direction.SOUTHEAST);
+        if (isOdd(location)) location.add(Direction.DELTA_ODD);
+        location = applyBoundaryV(location);
 
-        if (isOdd(location.X)) newY += DELTA_ODD_Y;
-
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheSouthEast(Tile t) {
@@ -137,14 +127,11 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthWest(Vector2 location) {
-        int newX = location.X - 1;
-        int newY = location.Y;
+        location.add(Direction.SOUTHWEST);
+        if (isOdd(location)) location.add(Direction.DELTA_ODD);
+        location = applyBoundaryV(location);
 
-        if (isOdd(location.X)) newY += DELTA_ODD_Y;
-
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheSouthWest(Tile t) {
@@ -159,8 +146,13 @@ public class GameMap {
         return map[i][j];
     }
 
-    private boolean isOdd(int num) {
-        if (num % 2 == 0) return false;
+    /**
+     * Determines if the given location vector is located in an odd column
+     * @param location The Vector2 location to evaluate
+     * @return True, if the column is odd; false, otherwise
+     */
+    private boolean isOdd(Vector2 location) {
+        if (location.X % 2 == 0) return false;
         else return true;
     }
 
@@ -254,7 +246,7 @@ public class GameMap {
 
     public void moveAvatarTo(Vector2 v2) {
         Util.dbgOut("GameMap: Move avatar to " + v2.toString(), 4);
-        Vector2 delta = avatarMovement.changePosition(v2);
-        avatarMovement.reface(delta);
+        avatarMovement.changePosition(v2);
+        //avatarMovement.reface(delta);
     }
 }

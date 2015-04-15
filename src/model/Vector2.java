@@ -21,9 +21,7 @@ public class Vector2 implements Comparable {
         Y = parent.Y;
     }
 
-    public String toString(){
-        return "(" + X + "," + Y + ")";
-    }
+
 
     //<editor-fold desc="PUBLIC METHODS" defaultstate="collapsed">
     public void add (Vector2 delta) {
@@ -96,6 +94,10 @@ public class Vector2 implements Comparable {
             return 0;
         else
             return 1;
+    }
+
+    public String toString(){
+        return "<" + X + "," + Y + ">";
     }
     // </editor-fold>
 }
