@@ -41,9 +41,11 @@ public class Inventory {
 
     public boolean removeItem(TakeableItem item) {
         if(items.contains(item)) {
+            items.remove(item);
             notifyViews();
-            return items.remove(item);
+            return true;
         }
+        
         return false;
     }
 
@@ -53,7 +55,6 @@ public class Inventory {
                 return item1.getName().compareTo(item2.getName());
             }
         });
-
         return items.toArray(new TakeableItem[items.size()]);
     }
 }

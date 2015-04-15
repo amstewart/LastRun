@@ -29,4 +29,12 @@ public class VehicleOwner {
     public void release(Vehicle v){
         slaves.remove(v);
     }
+    
+    public Vehicle getVehicle(){
+        Vehicle v=null;
+        for(Vehicle vehicle : slaves){
+            v=vehicle;
+        }
+        return v;
+    }
 }

@@ -29,4 +29,12 @@ public class PetOwner {
     public void release(Pet p){
         slaves.remove(p);
     }
+    
+    public Pet getPet(){
+        Pet p=null;
+        for(Pet pet : slaves){
+            p=pet;
+        }
+        return p;
+    }
 }

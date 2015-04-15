@@ -2,6 +2,7 @@ package model.movement;
 
 import model.Vector2;
 import model.entity.Entity;
+import model.map.GameMap;
 import utility.Util;
 
 /**
@@ -13,11 +14,12 @@ public class EntityMovement extends Movement {
     private Vector2 facing_dir;
 
     public EntityMovement(Entity entity) {
-        if (entity == null) {
-            Util.errOut(new Exception("EntityMovement association initialized with a null entity."));
-        }
-
-        initialize(entity, Vector2.zero(), Vector2.zero());
+        this(entity, Vector2.zero());
+    }
+    
+    public EntityMovement(Entity entity, GameMap map, Vector2 starting_position){
+        this(entity, starting_position);
+        this.setMap(map);
     }
 
     public EntityMovement(Entity entity, Vector2 starting_position) {

@@ -27,4 +27,12 @@ public class AreaEffectOwner {
     public void release(AreaEffect a){
         slaves.remove(a);
     }
+    
+    public AreaEffect getAreaEffect(){
+        AreaEffect areaEffect= null;
+        for(AreaEffect effect : slaves){
+            areaEffect=effect;
+        }
+        return areaEffect;
+    }
 }

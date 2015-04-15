@@ -1,6 +1,8 @@
 
 package view.viewport;
 
+import controller2.action.Action2;
+import controller2.inventoryAction.DropAction;
 import java.awt.IllegalComponentStateException;
 import java.awt.PopupMenu;
 import java.awt.event.MouseEvent;
@@ -17,10 +19,14 @@ import model.item.TakeableItem;
 
 public class InventoryViewport extends Viewport{
 
+    private Inventory inventory;
+    
+    private DropAction dropAction;
     private JPopupMenu menu = new JPopupMenu("Popup");
     private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop"), cancel = new JMenuItem("Cancel");
 
     public InventoryViewport(Inventory inventory){
+        this.inventory = inventory;
         inventory.registerView(this);
         menu.add(useItem);
         menu.add(dropItem);
@@ -31,6 +37,8 @@ public class InventoryViewport extends Viewport{
         for(int i = 0; i < items.length; i++){
             add(new ItemButton(items[i]));
         }
+        dropAction = new DropAction(inventory);
+        dropItem.addActionListener(Action2.getActionListener(dropAction));
     }
 
     public void receive(TakeableItem[] items) {
@@ -47,12 +55,11 @@ public class InventoryViewport extends Viewport{
 
     }
 
+   
+
     @Override
     public void setListeners(ArrayList<Action> a) {
-
-        //menu.addMenuKeyListener(a.get(0));
-        dropItem.addActionListener(a.get(0).getActionListener());
-
+        
     }
 
     public class ItemButton extends JButton {
@@ -82,8 +89,10 @@ public class InventoryViewport extends Viewport{
         @Override
         public void mousePressed(MouseEvent e) {
             try{
-               // ti =  (TakeableItem)((ItemButton) e.getSource()).getItem();
-                menu.show(e.getComponent(), e.getX(), e.getY());
+                
+               TakeableItem ti =  (TakeableItem)((ItemButton) e.getSource()).getItem();
+               menu.show(e.getComponent(), e.getX(), e.getY());
+               dropAction.setCurrentItem(ti);
 
             }catch(IllegalComponentStateException ex){}
         }

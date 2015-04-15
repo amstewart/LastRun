@@ -1,6 +1,7 @@
 
 package state.stateMachine;
 
+import model.gameBundle.GameBundle;
 import state.*;
 import view.viewport.Viewport;
 import view.window.GameWindow;
@@ -11,15 +12,18 @@ import view.window.GameWindow;
  */
 public class RPGStateMachine extends StateMachine{
     private static RPGStateMachine RPGsm;
+    private GameBundle gameBundle;
     private GameWindow window = new GameWindow();
     
     State menu, charSelect, petSelect, game, HUD;
     
     private RPGStateMachine(){
+        gameBundle = new GameBundle();
+        
         menu = new MenuState();
         charSelect = new CharacterSelectionState();
         petSelect = new PetSelectionState();
-        game = new GameState();
+        game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
         HUD = new HUDState();
         
         this.add("menu", menu);

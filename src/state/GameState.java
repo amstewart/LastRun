@@ -23,9 +23,9 @@ public class GameState extends State {
     private Occupation occupation;
     private GameMap map;
 
-    public GameState(){
-        map = new GameMap();
-        player = new Avatar();
+    public GameState(GameMap map, Avatar player){
+        this.map = map;
+        this.player = player;
         map.addEntity(player);
         inventory = player.getInventory();
         occupation = player.getOccupation();
