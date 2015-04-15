@@ -60,6 +60,16 @@ public class Stats {
 		this.livesLeft = livesLeft;
 		deriveStats();
 	}
+        
+        public void setLife(int life){
+            this.life=life;
+            deriveStats();
+        }
+        
+        public void setLevel(int level){
+            this.level=level;
+            deriveStats();
+        }
 
 	public void setStrength(int strength) {
 		this.strength = strength;

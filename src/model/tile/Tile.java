@@ -178,4 +178,25 @@ public class Tile {
     public Terrain getTerrain(){
         return myTerrains.getTerrain();
     }
+    
+    public AreaEffect getAreaEffect(){
+        return myAreaEffects.getAreaEffect();
+    }
+    
+    public Entity getEntity(){
+        return myEntities.getEntity();
+    }
+    
+    public Vehicle getVehicle(){
+        return myVehicles.getVehicle();
+    }
+    
+    public Item getItem(){
+        return myItems.getItem();
+    }
+    
+    public Pet getPet(){
+        return myPets.getPet();
+    }
+    
 }

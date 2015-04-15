@@ -13,7 +13,7 @@ import model.entity.Entity;
 public class InstantDeathAreaEffect extends AreaEffect {
     
     public void apply(Entity e){
-        
+       e.setLivesLeft(e.getLivesLeft()-1);
     }
     
 }
