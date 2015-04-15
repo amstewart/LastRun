@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import model.action.Action;
-import model.entity.Occupation.Occupation;
+import model.entity.occupation.Occupation;
 
 /**
  *
@@ -38,7 +38,9 @@ public class CharacterSelectionViewport extends Viewport{
         back.addActionListener(Action2.getActionListener(new GoBackAction()));
         
         this.add(back, BorderLayout.EAST);
-        
+
+         currentOccupation = new JLabel("Current Occupation: ");
+    this.add(currentOccupation);
         JButton summoner = new JButton("summoner");
         JButton smasher = new JButton("smasher");
         JButton sneak = new JButton("sneak");
@@ -55,7 +57,7 @@ public class CharacterSelectionViewport extends Viewport{
     
 
     public void receiveSelection(Occupation occupation) {
-        
+        currentOccupation.setText(occupation.toString());
     }
 
     
