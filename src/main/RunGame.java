@@ -12,7 +12,7 @@ public class RunGame {
         KeyBinding keyBinding = new KeyBinding();
         RPGStateMachine s = RPGStateMachine.getInstance();
         s.changeToGameState();
-
+        //s.changeToCharSelectState();
         while(true){
             s.update();
             s.render();

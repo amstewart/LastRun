@@ -1,6 +1,5 @@
 package model.item.equipment;
 
-import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.SmasherEquipmentManager;
 

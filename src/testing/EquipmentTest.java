@@ -1,9 +1,10 @@
 package testing;
 
+import model.entity.occupation.Occupation;
+import model.entity.occupation.Smasher;
 import model.item.TakeableItem;
 
 import model.entity.Avatar;
-import model.entity.occupation.Occupation;
 import model.item.equipment.*;
 
 public class EquipmentTest extends Test {
@@ -11,7 +12,9 @@ public class EquipmentTest extends Test {
     @Override
     public void run() throws NoSuchMethodException {
         Avatar avatar = new Avatar();
-        avatar.beSmasher();
+        // only used like this for testing purposes
+        avatar.getOccupationChooser().selectSmasher();
+        //avatar.beSmasher();
 
         Head head = new Head("Head", 100);
         Chest chest = new Chest("Chest", 100);
