@@ -12,13 +12,13 @@ public class Vector2 implements Comparable {
     }
 
     public Vector2(Integer x, Integer y) {
-        X = x;
-        Y = y;
+        X = x.intValue();
+        Y = y.intValue();
     }
 
     public Vector2(Vector2 parent) {
-        X = parent.X;
-        Y = parent.Y;
+        X = parent.X.intValue();
+        Y = parent.Y.intValue();
     }
 
 
@@ -37,7 +37,9 @@ public class Vector2 implements Comparable {
     }
 
     public static double angle(Vector2 a, Vector2 b) {
-        return Math.acos(dot(a, b) / (a.magnitude() * b.magnitude()));
+        //return Math.acos(dot(a, b) / (a.magnitude() * b.magnitude()));
+        Vector2 delta = Vector2.subtract(a, b);
+        return Math.atan((double)delta.Y / (double)delta.X);
     }
 
     public static Long dot(Vector2 a, Vector2 b) {

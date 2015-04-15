@@ -11,7 +11,7 @@ public class Movement {
     private Vector2 position = Vector2.zero();
     private GameMap map;
 
-    public Vector2 getPosition() { return position; }
+    public Vector2 getPosition() { return new Vector2(position); }
 
     public void changePosition(Vector2 newPosition) {
         position = new Vector2(newPosition);
