@@ -33,8 +33,9 @@ public class Inventory {
     }
     public boolean addItem(TakeableItem item) {
         if(item != null) {
+            items.add(item);
             notifyViews();
-            return items.add(item);
+            return true;
         }
         return false;
     }

@@ -50,4 +50,8 @@ public class Sneak extends Occupation {
     public Equipment[] getEquipment() {
         return equipmentManager.getEquippedItems();
     }
+
+    public SneakEquipmentManager getEquipmentManager() {
+        return equipmentManager;
+    }
 }

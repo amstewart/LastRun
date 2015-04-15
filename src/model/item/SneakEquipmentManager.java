@@ -16,13 +16,16 @@ public class SneakEquipmentManager extends EquipmentManager {
         unequipRange();
         removeFromInventory(range);
         setRangeSlot(range);
+        notifyViews();
         return true;
     }
 
     public boolean unequipRange() {
         Range range = rangeSlot;
         setRangeSlotEmpty();
-        return addBackToInventory(range);
+        addBackToInventory(range);
+        notifyViews();
+        return true;
     }
 
     @Override

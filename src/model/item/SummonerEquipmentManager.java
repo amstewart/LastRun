@@ -18,6 +18,7 @@ public class SummonerEquipmentManager extends EquipmentManager {
         unequipStaff();
         removeFromInventory(staff);
         setStaff(staff);
+        notifyViews();
         return true;
     }
 
@@ -25,19 +26,24 @@ public class SummonerEquipmentManager extends EquipmentManager {
         unequipSpellBook();
         removeFromInventory(spellBook);
         setSpellBookSlot(spellBook);
+        notifyViews();
         return true;
     }
 
     public boolean unequipStaff() {
         Staff staff = staffSlot;
         setStaffEmpty();
-        return addBackToInventory(staff);
+        addBackToInventory(staff);
+        notifyViews();
+        return true;
     }
 
     public boolean unequipSpellBook() {
         SpellBook spellBook = spellBookSlot;
         setSpellBookEmpty();
-        return addBackToInventory(spellBook);
+        addBackToInventory(spellBook);
+        notifyViews();
+        return true;
     }
 
     @Override

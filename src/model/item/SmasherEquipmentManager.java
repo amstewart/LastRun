@@ -1,6 +1,9 @@
 package model.item;
 
 import model.item.equipment.*;
+import view.viewport.EquipmentViewport;
+
+import java.util.ArrayList;
 
 public class SmasherEquipmentManager extends EquipmentManager {
 
@@ -17,6 +20,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
         unequipTwoHandedWeapon();
         removeFromInventory(weapon);
         setOneHandedWeapon(weapon);
+        notifyViews();
         return true;
     }
 
@@ -25,6 +29,7 @@ public class SmasherEquipmentManager extends EquipmentManager {
         unequipShield();
         removeFromInventory(weapon);
         setTwoHandedWeapon(weapon);
+        notifyViews();
         return true;
     }
 
@@ -33,25 +38,32 @@ public class SmasherEquipmentManager extends EquipmentManager {
         unequipShield();
         removeFromInventory(shield);
         setShield(shield);
+        notifyViews();
         return true;
     }
 
     public boolean unequipOneHandedWeapon() {
         OneHandedWeapon oneHandWeapon = oneHandedWeapon;
         oneHandedWeapon = null;
-        return addBackToInventory(oneHandWeapon);
+        addBackToInventory(oneHandWeapon);
+        notifyViews();
+        return true;
     }
 
     public boolean unequipTwoHandedWeapon() {
         TwoHandedWeapon twoHandWeapon = twoHandedWeapon;
         twoHandedWeapon = null;
-        return addBackToInventory(twoHandWeapon);
+        addBackToInventory(twoHandWeapon);
+        notifyViews();
+        return true;
     }
 
     public boolean unequipShield() {
         Shield shield = shieldSlot;
         shieldSlot = null;
-        return addBackToInventory(shield);
+        addBackToInventory(shield);
+        notifyViews();
+        return true;
     }
 
     @Override

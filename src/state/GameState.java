@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class GameState extends State {
 
-    
+    // All temporary because stats will get the stuff from game bundle later
     private Inventory inventory;
     private Avatar player;
- //   private occupation occupation;
+    private Occupation occupation;
     private GameMap map;
 
     public GameState(GameMap map, Avatar player){

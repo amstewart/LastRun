@@ -49,4 +49,8 @@ public class Summoner extends Occupation {
     public Equipment[] getEquipment() {
         return equipmentManager.getEquippedItems();
     }
+
+    public SummonerEquipmentManager getEquipmentManager() {
+        return equipmentManager;
+    }
 }
