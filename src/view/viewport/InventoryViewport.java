@@ -30,7 +30,8 @@ public class InventoryViewport extends Viewport{
     public InventoryViewport(Inventory inventory){
         this.inventory = inventory;
         inventory.registerView(this);
-
+        setUpMenu();
+        
         TakeableItem[] items = inventory.getItems();
         add(new JLabel("Inventory"));
         for(int i = 0; i < items.length; i++){
