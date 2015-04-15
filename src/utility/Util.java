@@ -48,7 +48,7 @@ public class Util {
      */
     public static void dbgOut(String s, int mLevel) {
         if (debugLevel > 0 && debugLevel >= mLevel) {
-            System.out.println(printTime() + " (DBG|" + Integer.toString(debugLevel) + ") " + s);
+            System.out.println(printTime() + " (DBG|" + Integer.toString(mLevel) + ") " + s);
         }
     }
 

@@ -253,6 +253,7 @@ public class GameMap {
     }
 
     public void moveAvatarTo(Vector2 v2) {
+        Util.dbgOut("GameMap: Move avatar to " + v2.toString(), 4);
         Vector2 delta = avatarMovement.changePosition(v2);
         avatarMovement.reface(delta);
     }

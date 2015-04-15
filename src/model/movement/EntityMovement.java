@@ -51,5 +51,6 @@ public class EntityMovement extends Movement {
 
     public void reface(Vector2 new_facing) {
         this.facing_dir = new Vector2(new_facing);
+        Util.dbgOut("Entity " + entity.getName() + " facing = " + facing_dir.toString(), 4);
     }
 }
