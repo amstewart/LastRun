@@ -8,9 +8,7 @@ import model.item.Inventory;
 
 import model.item.TakeableItem;
 import model.map.GameMap;
-import state.stateMachine.RPGStateMachine;
 import view.viewport.GameViewport;
-import view.viewport.MapViewport;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -22,7 +20,7 @@ public class GameState extends State {
     
     private Inventory inventory;
     private Avatar player;
-    private Occupation occupation;
+ //   private Occupation occupation;
     private GameMap map;
 
     public GameState(){
@@ -30,7 +28,7 @@ public class GameState extends State {
         player = new Avatar();
         map.addEntity(player);
         inventory = player.getInventory();
-        occupation = player.getOccupation();
+
         viewPort =  new GameViewport(map, inventory);
     }
 
@@ -289,7 +287,7 @@ public class GameState extends State {
 
         }
         public void perform(TakeableItem ti){
-            player.dropItem(ti);
+            inventory.removeItem(ti);
         }
         @Override
         public void setActionListener(ActionListener al) {

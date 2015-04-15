@@ -6,6 +6,7 @@
 package view.viewport;
 
 import model.action.Action;
+import model.entity.occupation.Occupation;
 
 import javax.swing.JButton;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class CharacterSelectionViewport extends Viewport {
      * Creates new form NewGameViewport
      */
     public CharacterSelectionViewport() {
+        // get OccupationChooser from Avatar from global access
+        // occupationChooser.registerView(this);
         initComponents();
     }
     
@@ -92,5 +95,9 @@ public class CharacterSelectionViewport extends Viewport {
 
         this.setFocusable(true);
         this.requestFocusInWindow();
+    }
+
+    public void receiveSelection(Occupation o) {
+        // do something with this information
     }
 }

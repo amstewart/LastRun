@@ -5,7 +5,6 @@
  */
 package model.item;
 
-import model.entity.Avatar;
 import model.entity.Entity;
 import model.entity.occupation.Occupation;
 
