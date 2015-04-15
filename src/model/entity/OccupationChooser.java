@@ -8,6 +8,9 @@ import view.viewport.CharacterSelectionViewport;
 
 import java.util.ArrayList;
 // Handles responsibility of selecting an occupation
+// Association class, reduces encumbering Avatar with
+// responsibilities to selecting occupation
+
 public class OccupationChooser {
 
     private Avatar avatar;
