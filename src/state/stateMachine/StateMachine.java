@@ -28,10 +28,10 @@ public abstract class StateMachine {
         
     }
 
-    public State pop() {
+    public void pop() {
         Util.dbgOut("State popped: " + stateStack.peek(), 1);
         stateStack.peek().onExit();
-        return stateStack.pop();
+        stateStack.pop();
     }
 
     protected void changeToState(String stateName) {
