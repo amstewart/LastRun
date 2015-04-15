@@ -1,11 +1,9 @@
 package view.viewport;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
-import model.Vector3;
 import model.action.Action;
 import model.map.GameMap;
 import model.movement.EntityMovement;

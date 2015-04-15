@@ -5,7 +5,7 @@
  */
 package model.map;
 
-import model.Vector3;
+import model.Vector2;
 import model.tile.Tile;
 import model.areaEffect.LevelUpAreaEffect;
 import model.terrain.GrassTerrain;
@@ -30,10 +30,9 @@ public class MapBuilder {
     
     public void generateMap(){
         tiles= new Tile[width][height];
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
-                for(int k=0;k<height;k++){
-                    Vector3 loc= new Vector3(i,j,k);
+        for(int i=0;i<width;i++){
+            for(int j=0;j<height;j++){
+                    Vector2 loc= new Vector2(i,j);
                     tiles[i][j]= new Tile(loc);
                     double randomTerrain = Math.random();
                     if(randomTerrain < 0.60){
@@ -43,7 +42,6 @@ public class MapBuilder {
                     }else{
                         tiles[i][j].addTerrain(new MountainTerrain());
                     }
-                }
             }
         }
 

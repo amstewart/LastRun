@@ -1,6 +1,6 @@
 package model.movement;
 
-import model.Vector3;
+import model.Vector2;
 import model.entity.Entity;
 import utility.Util;
 
@@ -10,26 +10,26 @@ import utility.Util;
 public class EntityMovement extends Movement {
 
     private Entity entity;
-    private Vector3 facing_dir;
+    private Vector2 facing_dir;
 
     public EntityMovement(Entity entity) {
         if (entity == null) {
             Util.errOut(new Exception("EntityMovement association initialized with a null entity."));
         }
 
-        initialize(entity, Vector3.zero(), Vector3.zero());
+        initialize(entity, Vector2.zero(), Vector2.zero());
     }
 
-    public EntityMovement(Entity entity, Vector3 starting_position) {
+    public EntityMovement(Entity entity, Vector2 starting_position) {
         if (entity == null) {
             Util.errOut(new Exception("EntityMovement association initialized with a null entity."));
         }
         if (starting_position == null) {
             Util.errOut(new Exception("EntityMovement association initialized with a null starting position. Defaulting to ZERO vector."));
-            starting_position = Vector3.zero();
+            starting_position = Vector2.zero();
         }
 
-        initialize(entity, starting_position, Vector3.zero());
+        initialize(entity, starting_position, Vector2.zero());
     }
 
     public void changeEntity(Entity new_ent) {
@@ -37,15 +37,19 @@ public class EntityMovement extends Movement {
         entity = new_ent;
     }
 
-    public Vector3 getFacingDir() { return facing_dir; }
+    public Vector2 getFacingDir() { return facing_dir; }
 
-    private void initialize(Entity ent, Vector3 pos_init, Vector3 facing_dir) {
+    public Entity getEntity(){
+        return entity;
+    }
+
+    private void initialize(Entity ent, Vector2 pos_init, Vector2 facing_dir) {
         this.entity = ent;
         this.changePosition(pos_init);
         this.facing_dir = facing_dir;
     }
-    
-    public Entity getEntity(){
-        return entity;
+
+    public void reface(Vector2 new_facing) {
+        this.facing_dir = new Vector2(new_facing);
     }
 }
