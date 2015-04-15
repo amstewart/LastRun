@@ -5,7 +5,7 @@
  */
 package testing;
 
-import model.Vector3;
+import model.Vector2;
 import model.map.GameMap;
 import model.tile.Tile;
 
@@ -16,7 +16,7 @@ import model.tile.Tile;
 public class TileTest {
     public static void main(String[] args){
         GameMap map= new GameMap();
-	Tile t= map.getTile(Vector3.zero());
+	Tile t= map.getTile(Vector2.zero());
 
 	//t.getAreaEffect();
     }

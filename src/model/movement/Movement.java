@@ -1,6 +1,6 @@
 package model.movement;
 
-import model.Vector3;
+import model.Vector2;
 import model.map.GameMap;
 
 /**
@@ -8,13 +8,14 @@ import model.map.GameMap;
  */
 public class Movement {
 
-    private Vector3 position;
+    private Vector2 position;
     private GameMap map;
 
-    public Vector3 getPosition() { return position; }
+    public Vector2 getPosition() { return position; }
 
-    public void changePosition(Vector3 newPosition) {
-        position = newPosition;
+    public Vector2 changePosition(Vector2 newPosition) {
+        position = new Vector2(newPosition);
+        return Vector2.subtract(newPosition, position); // return the delta
     }
 
     public GameMap getMap() {

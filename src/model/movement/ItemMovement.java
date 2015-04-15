@@ -1,6 +1,6 @@
 package model.movement;
 
-import model.Vector3;
+import model.Vector2;
 import model.item.Item;
 import utility.Util;
 
@@ -11,7 +11,7 @@ public class ItemMovement extends Movement {
 
     private Item item;
 
-    public ItemMovement(Item item, Vector3 position) {
+    public ItemMovement(Item item, Vector2 position) {
         if (item == null) {
             Util.errOut(new Exception("ItemMovement association created with null item reference."));
         }
@@ -19,7 +19,7 @@ public class ItemMovement extends Movement {
         initialize(item, position);
     }
 
-    private void initialize(Item item, Vector3 position) {
+    private void initialize(Item item, Vector2 position) {
         this.item = item;
         this.changePosition(position);
     }

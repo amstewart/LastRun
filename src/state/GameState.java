@@ -1,6 +1,6 @@
 package state;
 
-import model.Vector3;
+import model.Vector2;
 import model.action.Action;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
@@ -8,9 +8,7 @@ import model.item.Inventory;
 
 import model.item.TakeableItem;
 import model.map.GameMap;
-import state.stateMachine.RPGStateMachine;
 import view.viewport.GameViewport;
-import view.viewport.MapViewport;
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -77,9 +75,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheNorth(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheNorth(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {
@@ -112,9 +110,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheSouth(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheSouth(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {
@@ -147,9 +145,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheNorthWest(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheNorthWest(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {
@@ -182,9 +180,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheSouthWest(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheSouthWest(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {
@@ -217,9 +215,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheNorthEast(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheNorthEast(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {
@@ -252,9 +250,9 @@ public class GameState extends State {
 
         @Override
         public void perform(){
-            Vector3 v3 = map.getAvatarMovement().getPosition();
-            v3 = map.getTileToTheSouthEast(v3).getLocation();
-            map.moveAvatarTo(v3);
+            Vector2 v2 = map.getAvatarMovement().getPosition();
+            v2 = map.getTileToTheSouthEast(v2).getLocation();
+            map.moveAvatarTo(v2);
         }
         @Override
         public void setActionListener(ActionListener al) {

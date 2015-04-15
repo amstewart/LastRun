@@ -1,6 +1,6 @@
 package model.tile;
 
-import model.Vector3;
+import model.Vector2;
 import model.areaEffect.AreaEffect;
 import model.entity.Entity;
 import model.entity.npc.pet.Pet;
@@ -21,7 +21,7 @@ import utility.Util;
  */
 public class Tile {
 
-    private Vector3 address;
+    private Vector2 address;
 
     private AreaEffectOwner myAreaEffects;
     private EntityOwner myEntities;
@@ -30,8 +30,8 @@ public class Tile {
     private TerrainOwner myTerrains;
     private VehicleOwner myVehicles;
 
-    public Tile(Vector3 l) {
-        address = l;
+    public Tile(Vector2 location) {
+        address = location;
     }
     
     public Tile(Tile tile){
@@ -171,7 +171,7 @@ public class Tile {
         return myVehicles != null;
     }
 
-    public Vector3 getLocation() {
+    public Vector2 getLocation() {
         return address;
     }
     

@@ -1,7 +1,8 @@
 package model.map;
 
 import java.util.ArrayList;
-import model.Vector3;
+
+import model.Vector2;
 import model.entity.Entity;
 import model.item.Item;
 import model.movement.EntityMovement;
@@ -10,6 +11,7 @@ import model.tile.Tile;
 
 import java.util.LinkedList;
 import model.entity.Avatar;
+import utility.Util;
 
 public class GameMap {
 
@@ -33,20 +35,20 @@ public class GameMap {
     }
 
     public void addEntity(Avatar a){
-        this.addEntity(a, new Vector3());
+        this.addEntity(a, new Vector2());
     }
     
-    public void addEntity(Avatar a, Vector3 location){
+    public void addEntity(Avatar a, Vector2 location){
         getTile(location).addEntity(a);
         avatarMovement = new EntityMovement(a, this, location);
         entityMovements.add(avatarMovement);
     }
     
     public void addEntity(Entity e){
-        this.addEntity(e, new Vector3());
+        this.addEntity(e, new Vector2());
     }
     
-    public void addEntity(Entity e, Vector3 location) {
+    public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
     }
@@ -59,7 +61,7 @@ public class GameMap {
         return arrayList;
     }
     
-    public void addItem(Item item, Vector3 location) {
+    public void addItem(Item item, Vector2 location) {
         getTile(location).addItem(item);
         itemMovements.add(new ItemMovement(item, location));
     }
@@ -68,34 +70,31 @@ public class GameMap {
         return avatarMovement;
     }
     
-    public Tile getTileToTheNorth(Vector3 location) {
-        int newX = location.X;
-        int newY = location.Y - 1;
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+    public Tile getTileToTheNorth(Vector2 location) {
+        location.Y  -= 1;
+        location = this.applyBoundaryV(location);
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheNorth(Tile t) {
         return getTileToTheNorth(t.getLocation());
     }
 
-    public Tile getTileToTheNorthEast(Vector3 location) {
-        int newX = location.X + 1;
-        int newY = location.Y - 1;
+    public Tile getTileToTheNorthEast(Vector2 location) {
+        location.X += 1;
+        location.Y -= 1;
 
-        if (isOdd(location.X)) newY += DELTA_ODD_Y;
+        if (isOdd(location.X)) location.Y += DELTA_ODD_Y;
 
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
+        location = applyBoundaryV(location);
+        return map[location.X][location.Y];
     }
 
     public Tile getTileToTheNorthEast(Tile t) {
         return getTileToTheNorthEast(t.getLocation());
     }
 
-    public Tile getTileToTheNorthWest(Vector3 location) {
+    public Tile getTileToTheNorthWest(Vector2 location) {
         int newX = location.X - 1;
         int newY = location.Y - 1;
 
@@ -110,7 +109,7 @@ public class GameMap {
         return getTileToTheNorthWest(t.getLocation());
     }
 
-    public Tile getTileToTheSouth(Vector3 location) {
+    public Tile getTileToTheSouth(Vector2 location) {
         int newX = location.X;
         int newY = location.Y + 1;
         newX = this.applyBoundaryX(newX);
@@ -122,7 +121,7 @@ public class GameMap {
         return getTileToTheSouth(t.getLocation());
     }
 
-    public Tile getTileToTheSouthEast(Vector3 location) {
+    public Tile getTileToTheSouthEast(Vector2 location) {
         int newX = location.X + 1;
         int newY = location.Y;
 
@@ -137,7 +136,7 @@ public class GameMap {
         return getTileToTheSouthEast(t.getLocation());
     }
 
-    public Tile getTileToTheSouthWest(Vector3 location) {
+    public Tile getTileToTheSouthWest(Vector2 location) {
         int newX = location.X - 1;
         int newY = location.Y;
 
@@ -152,7 +151,7 @@ public class GameMap {
         return getTileToTheSouthWest(t.getLocation());
     }
 
-    public Tile getTile(Vector3 location) {
+    public Tile getTile(Vector2 location) {
         return map[location.X][location.Y];
     }
 
@@ -170,6 +169,18 @@ public class GameMap {
     }
 
     public boolean removeItem(ItemMovement item_mov) { return itemMovements.remove(item_mov); }
+
+    private Vector2 applyBoundaryV(Vector2 location) {
+        switch (boundaryMode) {
+            case WARP_MODE:
+                return new Vector2(warpX(location.X), warpY(location.Y));
+            case BOUND_MODE:
+                return new Vector2(boundX(location.X), boundY(location.Y));
+            default:
+                Util.errOut(new Exception("Invalid boundary mode"), false);
+                return location;
+        }
+    }
 
     private int applyBoundaryX(int x) {
         switch (boundaryMode) {
@@ -241,7 +252,8 @@ public class GameMap {
         return entityMovements;
     }
 
-    public void moveAvatarTo(Vector3 v3) {
-        avatarMovement.changePosition(v3);
+    public void moveAvatarTo(Vector2 v2) {
+        Vector2 delta = avatarMovement.changePosition(v2);
+        avatarMovement.reface(delta);
     }
 }
