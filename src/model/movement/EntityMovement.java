@@ -14,10 +14,10 @@ public class EntityMovement extends Movement {
     private Vector2 facing_dir;
 
     public EntityMovement(Entity entity) {
-        this(entity, Vector3.zero());
+        this(entity, Vector2.zero());
     }
     
-    public EntityMovement(Entity entity, GameMap map, Vector3 starting_position){
+    public EntityMovement(Entity entity, GameMap map, Vector2 starting_position){
         this(entity, starting_position);
         this.setMap(map);
     }
