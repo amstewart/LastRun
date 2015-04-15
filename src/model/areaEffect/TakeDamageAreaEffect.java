@@ -12,10 +12,20 @@ import model.entity.Entity;
  * @author
  */
 public class TakeDamageAreaEffect extends AreaEffect {
-    private int damage=10;
+    private double damage;
+    
+    public TakeDamageAreaEffect(){
+        damage=.50;
+    }
     
     public void apply(Entity e){
-        
+        e.setLife(newHealth(e));
+    }
+    
+    public int newHealth(Entity e){
+        int avatarCurrLife=e.getLife();
+        int remove= (int)(avatarCurrLife*damage);
+        return avatarCurrLife-remove;
     }
 
  

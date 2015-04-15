@@ -14,6 +14,6 @@ import model.entity.Entity;
 public class LevelUpAreaEffect extends AreaEffect{
 
 	public void apply(Entity e){
-		//do something
+		e.setLevel(e.getLevel()+1);
 	}
 }

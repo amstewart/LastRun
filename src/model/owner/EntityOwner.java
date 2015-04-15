@@ -28,4 +28,12 @@ public class EntityOwner {
     public int getNumberOwned(){
         return slaves.size();
     }
+    
+    public Entity getEntity(){
+        Entity e=null;
+        for(Entity entity : slaves){
+            e=entity;
+        }
+        return e;
+    }
 }

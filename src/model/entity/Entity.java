@@ -153,6 +153,14 @@ public abstract class Entity extends Asset implements Describable {
     public void setLivesLeft(int livesLeft) {
         stats.setLivesLeft(livesLeft);
     }
+    
+    public void setLife(int life){
+        stats.setLife(life);
+    }
+    
+    public void setLevel(int level){
+        stats.setLevel(level);
+    }
 
     public void setMovement(int movement) {
         stats.setMovement(movement);

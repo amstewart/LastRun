@@ -28,4 +28,12 @@ public class ItemOwner {
     public void release(Item i){
         slaves.remove(i);
     }
+    
+      public Item getItem(){
+         Item item= null;
+        for(Item i: slaves){
+            item=i;
+        }
+        return item;
+    }
 }
