@@ -17,7 +17,7 @@ import model.tile.Tile;
 
 public class LinearInfluenceSet extends InfluenceSet {
 	
-	public LinearInfluenceSet(GameMap map, Tile source, int radius, int direction) {
+	public LinearInfluenceSet(GameMap map, Tile source,int direction) {
 		setMap(map);
 		setSource(source);
 		setRadius(radius);
@@ -27,6 +27,7 @@ public class LinearInfluenceSet extends InfluenceSet {
 	@Override
 	public Collection<InfluenceTile> getInfluenceSet() {
             ArrayList<InfluenceTile> list = new ArrayList<InfluenceTile>();
+                
 		return list;
 	}
 	

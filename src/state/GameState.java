@@ -59,7 +59,7 @@ public class GameState extends State {
         
     }
 
-    private void setAlowedMoves(){
+    private void setAllowedMoves(){
         //if(map.getTileToTheNorth().getTerrain().equals(grass)){
           //  mu.
         //}
