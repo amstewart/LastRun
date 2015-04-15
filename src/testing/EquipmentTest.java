@@ -1,7 +1,5 @@
 package testing;
 
-import model.entity.occupation.Occupation;
-import model.entity.occupation.Smasher;
 import model.item.TakeableItem;
 
 import model.entity.Avatar;
@@ -35,10 +33,10 @@ public class EquipmentTest extends Test {
         avatar.addToInventory(range);
 
         TakeableItem[] items = avatar.getInventoryItems();
-        Occupation occupation = avatar.getOccupation();
+       //Occupation occupation = avatar.getOccupation();
 
         for(int i = 0; i < items.length; i++ ) {
-            System.out.println("Success?: " + items[i].use(occupation));
+            //System.out.println("Success?: " + items[i].use(occupation));
         }
 
         System.out.println("=========Items Equipped=======");
@@ -54,10 +52,7 @@ public class EquipmentTest extends Test {
         for(int i = 0; i < items2.length; i++) {
             System.out.println(items2[i].getName());
         }
-
-
+        
         report("Equipment check", true);
-
-
     }
 }
