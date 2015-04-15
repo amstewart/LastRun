@@ -38,7 +38,7 @@ public class GameMap {
     
     public void addEntity(Avatar a, Vector3 location){
         getTile(location).addEntity(a);
-        avatarMovement = new EntityMovement(a, location);
+        avatarMovement = new EntityMovement(a, this, location);
         entityMovements.add(avatarMovement);
     }
     
@@ -48,7 +48,7 @@ public class GameMap {
     
     public void addEntity(Entity e, Vector3 location) {
         getTile(location).addEntity(e);
-        entityMovements.add(new EntityMovement(e, location));
+        entityMovements.add(new EntityMovement(e, this, location));
     }
     
     public ArrayList<Entity> getEntities(){

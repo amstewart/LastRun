@@ -16,4 +16,14 @@ public class Movement {
     public void changePosition(Vector3 newPosition) {
         position = newPosition;
     }
+
+    public GameMap getMap() {
+        return map;
+    }
+
+    public void setMap(GameMap map) {
+        this.map = map;
+    }
+    
+    
 }

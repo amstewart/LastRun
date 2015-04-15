@@ -11,21 +11,27 @@ import view.viewport.Viewport;
 public abstract class State {
 
     protected Viewport viewPort;
-    
+
     public abstract void update();
-    public void render(){
-        viewPort.render();
-        viewPort.updateUI();
+
+    public void render() {
+        if (viewPort != null) {
+            viewPort.render();
+            viewPort.updateUI();
+        }
     }
+
     public abstract void onEnter();
+
     public abstract void onExit();
-    public Viewport getViewport(){
+
+    public Viewport getViewport() {
         return viewPort;
     }
 
     private Controller c = new Controller();
 
-    public Controller getController(){
+    public Controller getController() {
         return this.c;
     }
 }
