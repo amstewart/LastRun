@@ -32,6 +32,4 @@ public class CharSelectViewport extends Viewport{
         JButton petSelect = new JButton("Go to Pet Select");
        // petSelect.addActionListener(Controller.getActionListener());
     }
-
-    
 }
