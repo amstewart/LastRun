@@ -17,4 +17,14 @@ public class Movement {
         position = new Vector2(newPosition);
         return Vector2.subtract(newPosition, position); // return the delta
     }
+
+    public GameMap getMap() {
+        return map;
+    }
+
+    public void setMap(GameMap map) {
+        this.map = map;
+    }
+    
+    
 }
