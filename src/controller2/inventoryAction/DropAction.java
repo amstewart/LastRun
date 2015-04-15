@@ -20,9 +20,7 @@ public class DropAction extends Action2{
     public void setCurrentItem(TakeableItem currentItem) {
         this.currentItem = currentItem;
     }
-    
-    
-    
+
     @Override
     public void perform() {
         if(currentItem != null){

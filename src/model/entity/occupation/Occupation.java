@@ -1,6 +1,7 @@
 package model.entity.occupation;
 
 import model.item.Inventory;
+import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
 
 public abstract class Occupation {

@@ -33,21 +33,13 @@ public class InventoryViewport extends Viewport{
     public InventoryViewport(Inventory inventory, Occupation occupation){
         inventory.registerView(this);
         setUpMenu();
-        initView(inventory);
+        receive(inventory.getItems());
 
         dropAction = new DropAction(inventory);
         dropItem.addActionListener(Action2.getActionListener(dropAction));
 
         useAction = new UseAction(occupation);
         useItem.addActionListener(Action2.getActionListener(useAction));
-    }
-
-    public void initView(Inventory inventory) {
-        TakeableItem[] items = inventory.getItems();
-        add(new JLabel("Inventory"));
-        for(int i = 0; i < items.length; i++){
-            add(new ItemButton(items[i]));
-        }
     }
 
     public void receive(TakeableItem[] items) {

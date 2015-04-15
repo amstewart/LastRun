@@ -50,4 +50,8 @@ public class Smasher extends Occupation {
     public Equipment[] getEquipment() {
         return equipmentManager.getEquippedItems();
     }
+
+    public SmasherEquipmentManager getEquipmentManager() {
+        return equipmentManager;
+    }
 }

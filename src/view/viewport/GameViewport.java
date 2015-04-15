@@ -11,6 +11,7 @@ import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Smasher;
 import model.item.Inventory;
+import model.item.equipment.Equipment;
 import model.map.GameMap;
 
 import javax.swing.*;
@@ -21,31 +22,42 @@ import javax.swing.*;
  */
 public class GameViewport extends Viewport{
     
-    private Viewport mapVP,inventoryVP;
+    private Viewport mapVP;
+    private Viewport inventoryVP;
+    private EquipmentViewport equipmentVP;
     
     public GameViewport(GameMap map, Inventory inventory){
         mapVP = new MapViewport(map);
         // TEMP TEST
-        Occupation smasher = new Smasher(inventory);
+        Smasher smasher = new Smasher(inventory);
         inventoryVP = new InventoryViewport(inventory, smasher);
+        equipmentVP = new EquipmentViewport(smasher);
+        equipmentVP.registerViewTo(smasher.getEquipmentManager());
+
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);
         mapVP.setBackground(Color.lightGray);
+        equipmentVP.setBackground(Color.blue);
+
         this.add(mapVP);
         this.add(inventoryVP);
+        this.add(equipmentVP);
     }
 
     @Override
     public void render() {
         int width = this.getSize().width;
         int height = this.getSize().height;
+
         mapVP.setPreferredSize(new Dimension((int) (width * 0.40), (int) (height * 0.70)));
         inventoryVP.setPreferredSize(new Dimension((int) (width * 0.10), (int) (height * 0.70)));
+        equipmentVP.setPreferredSize(new Dimension((int) (width * 0.10), (int) (height * 0.70)));
 
         revalidate();
         this.repaint();
         mapVP.render();
         inventoryVP.render();
+        equipmentVP.render();
 
         this.requestFocusInWindow();
     }
