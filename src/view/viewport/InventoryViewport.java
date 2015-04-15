@@ -20,18 +20,18 @@ import model.item.TakeableItem;
 public class InventoryViewport extends Viewport{
 
     private Inventory inventory;
-    
+
     private DropAction dropAction;
     private JPopupMenu menu = new JPopupMenu("Popup");
-    private JMenuItem useItem = new JMenuItem("Use"), dropItem = new JMenuItem("Drop"), cancel = new JMenuItem("Cancel");
+    private JMenuItem useItem = new JMenuItem("Use");
+    private JMenuItem dropItem = new JMenuItem("Drop");
+    private JMenuItem cancel = new JMenuItem("Cancel");
 
     public InventoryViewport(Inventory inventory){
         this.inventory = inventory;
         inventory.registerView(this);
-        menu.add(useItem);
-        menu.add(dropItem);
-        menu.addSeparator();
-        menu.add(cancel);
+        setUpMenu();
+        
         TakeableItem[] items = inventory.getItems();
         add(new JLabel("Inventory"));
         for(int i = 0; i < items.length; i++){
@@ -48,6 +48,13 @@ public class InventoryViewport extends Viewport{
             add(new ItemButton(items[i]));
         }
 
+    }
+
+    private void setUpMenu() {
+        menu.add(useItem);
+        menu.add(dropItem);
+        menu.addSeparator();
+        menu.add(cancel);
     }
 
     @Override

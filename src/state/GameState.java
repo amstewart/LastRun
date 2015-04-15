@@ -20,7 +20,7 @@ public class GameState extends State {
     
     private Inventory inventory;
     private Avatar player;
- //   private Occupation occupation;
+ //   private occupation occupation;
     private GameMap map;
 
     public GameState(GameMap map, Avatar player){
