@@ -29,14 +29,16 @@ public class Tile {
     private PetOwner myPets;
     private TerrainOwner myTerrains;
     private VehicleOwner myVehicles;
+    
+    public Tile(){
+        
+    }
 
     public Tile(Vector2 location) {
         address = location;
     }
     
-    public Tile(Tile tile){
-        //deep copy of tile
-    }
+
     
     public void addAreaEffect(AreaEffect a) {
         if (!isAreaEffectOwner()) {
@@ -197,6 +199,30 @@ public class Tile {
     
     public Pet getPet(){
         return myPets.getPet();
+    }
+    
+    protected PetOwner getPetOwner(){
+        return myPets;
+    }
+    
+    protected AreaEffectOwner getAreaEffectOwner(){
+        return myAreaEffects;
+    }
+    
+    protected TerrainOwner getTerrainOwner(){
+         return myTerrains;
+    }
+     
+    protected VehicleOwner getVehicleOwner(){
+          return myVehicles;
+    }
+      
+    protected ItemOwner getItemOwner(){
+          return myItems;
+    }
+       
+    protected EntityOwner getEntityOwner(){
+          return myEntities;
     }
     
 }
