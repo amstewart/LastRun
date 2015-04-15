@@ -22,6 +22,13 @@ public class ImageUtil {
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "menu_bg_2.jpg";
+    /* ENTITIES */
+    public static final String EN_SKEL_N = DIR_SPRITES + "en_skel_0.png";
+    public static final String EN_SKEL_NE = DIR_SPRITES + "en_skel_1.png";
+    public static final String EN_SKEL_E = DIR_SPRITES + "en_skel_2.png";
+    public static final String EN_SKEL_SE = DIR_SPRITES + "en_skel_3.png";
+    public static final String EN_SKEL_S = DIR_SPRITES + "en_skel_4.png";
+    public static final String EN_SKEL_NW = DIR_SPRITES + "en_skel_5.png";
     //</editor-fold>
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){

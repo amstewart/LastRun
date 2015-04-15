@@ -22,7 +22,6 @@ public class RPGStateMachine extends StateMachine{
         
         menu = new MenuState();
         charSelect = new CharacterSelectionState();
-        petSelect = new PetSelectionState();
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
         HUD = new HUDState();
         
@@ -63,6 +62,12 @@ public class RPGStateMachine extends StateMachine{
             RPGsm = new RPGStateMachine();
         }
         return RPGsm;
+    }
+    
+    @Override
+    public void pop(){
+        super.pop();
+        window.displayState(stateStack.peek().getViewport());
     }
     
     @Override

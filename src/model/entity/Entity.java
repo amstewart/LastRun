@@ -81,6 +81,10 @@ public abstract class Entity extends Asset implements Describable {
 	 */
 	public Inventory getInventory() { return inventory; }
 
+	public TakeableItem[] getInventoryItems() {
+		return inventory.getItems();
+	}
+
 	public int getMovement() {
 		return stats.getMovement();
 	}
@@ -175,8 +179,4 @@ public abstract class Entity extends Asset implements Describable {
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
     }
-
-	public TakeableItem[] getInventoryItems() {
-		return inventory.getItems();
-	}
 }
