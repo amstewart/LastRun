@@ -3,6 +3,7 @@ package model.entity.occupation;
 import model.item.Inventory;
 import model.item.SummonerEquipmentManager;
 import model.item.equipment.*;
+import model.skill.Skill;
 import model.skillset.SummonerSkills;
 
 public class Summoner extends Occupation {
@@ -14,6 +15,11 @@ public class Summoner extends Occupation {
         super(inventory);
         equipmentManager = new SummonerEquipmentManager(inventory);
         skills = new SummonerSkills();
+    }
+
+    @Override
+    public Skill[] getSkills() {
+        return skills.getSkills();
     }
 
     //=====TEST======

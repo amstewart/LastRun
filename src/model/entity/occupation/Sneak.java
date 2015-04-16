@@ -3,18 +3,23 @@ package model.entity.occupation;
 import model.item.Inventory;
 import model.item.SneakEquipmentManager;
 import model.item.equipment.*;
+import model.skill.Skill;
 import model.skillset.SneakSkills;
 
 public class Sneak extends Occupation {
 
     private SneakEquipmentManager equipmentManager;
     private SneakSkills skills;
-    
 
     public Sneak(Inventory inventory) {
         super(inventory);
         equipmentManager = new SneakEquipmentManager(inventory);
         skills = new SneakSkills();
+    }
+
+    @Override
+    public Skill[] getSkills() {
+        return skills.getSkills();
     }
 
     //=====TEST TEMP==========

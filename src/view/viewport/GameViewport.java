@@ -37,7 +37,7 @@ public class GameViewport extends Viewport{
         EquipmentManager equipmentManager = smasher.getEquipmentManager();
         inventoryVP = new InventoryViewport(inventory, smasher);
         equipmentVP = new EquipmentViewport(equipmentManager, smasher);
-
+        
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);
         mapVP.setBackground(Color.lightGray);

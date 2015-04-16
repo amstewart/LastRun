@@ -65,7 +65,7 @@ public class CharacterSelectionViewport extends Viewport{
     
 
     public void receiveSelection(String occupationName) {
-        currentOccupation.setText(occupationName);
+        currentOccupation.setText("Current occupation selected: " +  occupationName);
     }
 
     
