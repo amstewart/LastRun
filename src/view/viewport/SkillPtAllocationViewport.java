@@ -43,7 +43,7 @@ public class SkillPtAllocationViewport extends Viewport {
     public void render() {
 
     }
-    
+
 
     public class SkillIncrementButton extends JButton {
         private Skill skill;

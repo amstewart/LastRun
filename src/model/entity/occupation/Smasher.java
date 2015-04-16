@@ -16,6 +16,7 @@ public class Smasher extends Occupation {
         super(inventory);
         equipmentManager = new SmasherEquipmentManager(inventory);
         skills = new SmasherSkills();
+        buildSkillPtAllocator(getSkills());
     }
 
     @Override

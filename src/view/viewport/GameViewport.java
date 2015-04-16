@@ -31,7 +31,8 @@ public class GameViewport extends Viewport{
     private Viewport inventoryVP;
     private EquipmentViewport equipmentVP;
     private StatsViewport statsVP;
-    
+    private SkillPtAllocationViewport skillPtAllocationVP;
+
     public GameViewport(GameMap map, Inventory inventory, Stats stats){
         mapVP = new MapViewport(map);
         // TEMP TEST
@@ -40,17 +41,20 @@ public class GameViewport extends Viewport{
         inventoryVP = new InventoryViewport(inventory, smasher);
         equipmentVP = new EquipmentViewport(equipmentManager, smasher);
         statsVP = new StatsViewport(stats);
+        skillPtAllocationVP = new SkillPtAllocationViewport(smasher.getSkillPtAllocator());
 
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);
         mapVP.setBackground(Color.lightGray);
         equipmentVP.setBackground(Color.blue);
         statsVP.setBackground(Color.lightGray);
+        skillPtAllocationVP.setBackground(Color.yellow);
 
         this.add(mapVP);
         this.add(inventoryVP);
         this.add(equipmentVP);
         this.add(statsVP);
+        this.add(skillPtAllocationVP);
     }
 
     @Override
@@ -62,6 +66,7 @@ public class GameViewport extends Viewport{
         inventoryVP.setPreferredSize(new Dimension((int) (width * 0.10), (int) (height * 0.70)));
         equipmentVP.setPreferredSize(new Dimension((int) (width * 0.10), (int) (height * 0.70)));
         statsVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
+        skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
 
         revalidate();
         this.repaint();
@@ -69,6 +74,7 @@ public class GameViewport extends Viewport{
         inventoryVP.render();
         equipmentVP.render();
         statsVP.render();
+        skillPtAllocationVP.render();
 
         this.requestFocusInWindow();
     }

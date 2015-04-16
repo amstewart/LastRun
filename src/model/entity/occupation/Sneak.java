@@ -15,6 +15,7 @@ public class Sneak extends Occupation {
         super(inventory);
         equipmentManager = new SneakEquipmentManager(inventory);
         skills = new SneakSkills();
+        buildSkillPtAllocator(getSkills());
     }
 
     @Override

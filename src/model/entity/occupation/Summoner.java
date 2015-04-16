@@ -15,6 +15,7 @@ public class Summoner extends Occupation {
         super(inventory);
         equipmentManager = new SummonerEquipmentManager(inventory);
         skills = new SummonerSkills();
+        buildSkillPtAllocator(getSkills());
     }
 
     @Override

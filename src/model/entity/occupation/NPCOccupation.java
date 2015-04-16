@@ -3,12 +3,19 @@ package model.entity.occupation;
 import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.item.equipment.*;
+import model.skill.Skill;
 
 public class NPCOccupation extends Occupation {
 
     public NPCOccupation(Inventory inventory) {
         super(inventory);
     }
+
+    @Override
+    public Skill[] getSkills() {
+        return new Skill[0];
+    }
+
     // ====TEMP TEST=====
     @Override
     public String getName() {

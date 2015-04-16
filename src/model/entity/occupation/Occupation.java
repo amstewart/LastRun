@@ -16,7 +16,10 @@ public abstract class Occupation {
     public Occupation(Inventory inventory) {
         // points is hardcoded until we figure out where to get it
         initialSkillPoints = 5;
-        skillPtAllocator = new SkillPtAllocator(initialSkillPoints, getSkills());
+    }
+
+    protected void buildSkillPtAllocator(Skill[] skills) {
+        skillPtAllocator = new SkillPtAllocator(initialSkillPoints, skills);
     }
 
     public SkillPtAllocator getSkillPtAllocator() {
