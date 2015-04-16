@@ -1,7 +1,8 @@
 package model.effect;
 
 import model.entity.Entity;
-import model.map.MiniMap;
+import model.map.LocalArea;
+
 import model.stat.Stats;
 import model.enums.DefinedStats;
 
@@ -21,16 +22,17 @@ public class Boon extends Spell implements SpellEffect{
 	}
 
 	@Override
-	public void applyEffect(MiniMap map, Entity entity) {
+	public void setCanPerform(int mana) {
+		super.setCanPerform(mana);
+		
+	}
+
+	@Override
+	public void applyEffect(LocalArea map, Entity entity) {
 		if(canPerform()){
 			decrementMana(entity);
 			entity.mergeStats(currentStats);
 		}
-		
-	}
-	@Override
-	public void setCanPerform(int mana) {
-		super.setCanPerform(mana);
 		
 	}
 

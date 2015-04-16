@@ -1,5 +1,5 @@
 package model.map;
-
+/*
 import model.Vector3;
 
 public enum HexEdge {
@@ -20,3 +20,4 @@ public enum HexEdge {
 	}
 
 }
+*/
