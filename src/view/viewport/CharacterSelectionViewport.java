@@ -1,4 +1,3 @@
-
 package view.viewport;
 
 import controller.action.Action;
@@ -12,28 +11,29 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import model.entity.OccupationChooser;
-import model.entity.occupation.Occupation;
 
-public class CharacterSelectionViewport extends Viewport{
-    
+/**
+ *
+ * @author ChrisMoscoso
+ */
+public class CharacterSelectionViewport extends Viewport {
+
     public JLabel currentOccupation;
-    
-    public CharacterSelectionViewport(OccupationChooser occupationChooser){
+
+    public CharacterSelectionViewport(OccupationChooser occupationChooser) {
         occupationChooser.registerView(this);
         initComponents(occupationChooser);
     }
 
     @Override
     public void render() {
-        
-    }
 
-    
+    }
 
     private void initComponents(OccupationChooser occupationChooser) {
         JButton back = new JButton("Go Back");
         back.addActionListener(Action.getActionListener(new GoBackAction()));
-        
+
         this.add(back, BorderLayout.EAST);
 
         currentOccupation = new JLabel("Current Occupation: ");
@@ -48,21 +48,17 @@ public class CharacterSelectionViewport extends Viewport{
 
         JButton sneak = new JButton("sneak");
         sneak.addActionListener(Action.getActionListener(new SelectSneakAction(occupationChooser)));
-        
+
         this.add(summoner);
         this.add(smasher);
         this.add(sneak);
-        
+
         JButton goToGame = new JButton("Go to Game");
         goToGame.addActionListener(Action.getActionListener(new GoToGameAction()));
         this.add(goToGame, BorderLayout.WEST);
     }
 
-    
-
     public void receiveSelection(String occupationName) {
         currentOccupation.setText(occupationName);
     }
-
-    
 }
