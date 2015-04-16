@@ -8,11 +8,15 @@ import controller.action.moveAvatarAction.MoveDownRightAction;
 import controller.action.moveAvatarAction.MoveUpAction;
 import controller.action.moveAvatarAction.MoveUpLeftAction;
 import controller.action.moveAvatarAction.MoveUpRightAction;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
+
+import model.entity.Avatar;
 import model.map.GameMap;
+import model.skill.Skill;
 
 /**
  *
@@ -22,7 +26,7 @@ public class KeyController implements KeyListener{
     
     Map<Integer, Action> actionSet;
 
-    public KeyController(GameMap map){
+    public KeyController(GameMap map, Avatar avatar){
         actionSet = new HashMap();
         
         actionSet.put(KeyEvent.VK_W, new MoveUpAction(map));
@@ -31,6 +35,8 @@ public class KeyController implements KeyListener{
         actionSet.put(KeyEvent.VK_A, new MoveDownLeftAction(map));
         actionSet.put(KeyEvent.VK_S, new MoveDownAction(map));
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
+        
+        Skill[] skills = avatar.getSkills();
     }
     
     @Override

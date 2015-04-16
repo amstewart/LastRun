@@ -68,4 +68,9 @@ public class NPCOccupation extends Occupation {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Skill[] getSkills() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,6 +1,8 @@
 package model.skill;
 
 import model.effect.InternalEffect;
+import model.entity.Entity;
+import model.map.LocalArea;
 
 public class InternalSkill extends Skill{
 	InternalEffect effect;
@@ -11,5 +13,9 @@ public class InternalSkill extends Skill{
 	@Override
 	public void applyMultiplier() {
 		effect.applyMultiplier(getLevel());
+	}
+	
+	public void perfromSkill(Entity entity){
+		effect.applyEffect(entity);
 	}
 }

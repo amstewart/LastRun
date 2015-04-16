@@ -7,7 +7,9 @@ package model.entity;
 
 import model.entity.occupation.Occupation;
 import model.entity.npc.pet.Pet;
+import model.item.TakeableItem;
 import model.item.equipment.Equipment;
+import model.skill.Skill;
 import utility.ImageUtil;
 import utility.Util;
 
@@ -42,5 +44,25 @@ public class Avatar extends Entity {
 	}
 	public Equipment[] getEquipment() {
 		return getOccupation().getEquipment();
+	}
+
+	public Skill[] getSkills() {
+		return getOccupation().getSkills();
+	}
+    
+    @Override
+    public void setMana(int mana){
+    	super.setMana(mana);
+    	getOccupation().notifySkills(mana);
+    	
+    }
+
+	public boolean addToInventory(TakeableItem item) {
+		return getInventory().addItem(item);
+	}
+
+
+	public TakeableItem[] getInventoryItems() {
+		return getInventory().getItems();
 	}
 }

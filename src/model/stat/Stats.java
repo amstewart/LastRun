@@ -192,10 +192,11 @@ public class Stats {
 
 	public void setMana(int mana) {
 		this.mana += mana;
+		notifyViews();
 	}
 
 	private void deriveStats() {
-
+		notifyViews();
 	}
 
 	public int getLivesLeft() {
