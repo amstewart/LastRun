@@ -30,7 +30,7 @@ public class GameState extends State {
         map.addEntity(player);
         inventory = player.getInventory();
 
-        viewPort =  new GameViewport(map, inventory);
+        viewPort =  new GameViewport(map, inventory,player.getStats());
     }
 
     @Override
