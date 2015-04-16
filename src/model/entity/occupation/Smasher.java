@@ -3,6 +3,8 @@ package model.entity.occupation;
 import model.item.Inventory;
 import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
+import model.skill.Skill;
+import model.skillset.SkillPtAllocator;
 import model.skillset.SmasherSkills;
 
 public class Smasher extends Occupation {
@@ -15,6 +17,12 @@ public class Smasher extends Occupation {
         equipmentManager = new SmasherEquipmentManager(inventory);
         skills = new SmasherSkills();
     }
+
+    @Override
+    public Skill[] getSkills() {
+        return skills.getSkills();
+    }
+
     //=====TEST TEMP==========
     @Override
     public String getName() {

@@ -9,10 +9,18 @@ public abstract class Skill {
         this.level = level;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getLevel() {
         return level;
     }
-    
+
+    public void increment() {
+        level++;
+    }
+
     public abstract void applyMultiplier();
     
     //add an accept Controller
