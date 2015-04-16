@@ -32,6 +32,17 @@ public class Stats {
 	}
 	
 	public void mergeStats(Stats stat){
+
+		this.livesLeft += stat.getLivesLeft();
+		this.strength += stat.getStrength();
+		this.agility += stat.getAgility();
+		this.intellect += stat.getIntellect();
+		this.hardiness += stat.getHardiness();
+		this.experience += stat.getExperience();
+		this.movement += stat.getMovement();
+		this.equippedArmor += stat.getEquippedArmor();
+		this.equippedWeapon += stat.getEquippedWeapon();
+
 		deriveStats();
 	}
 
@@ -51,13 +62,34 @@ public class Stats {
     }
 	
 	public void unMergeStats(Stats stat){
-		
-		
+		this.livesLeft -= stat.getLivesLeft();
+		this.strength -= stat.getStrength();
+		this.agility -= stat.getAgility();
+		this.intellect -= stat.getIntellect();
+		this.hardiness -= stat.getHardiness();
+		this.experience -= stat.getExperience();
+		this.movement -= stat.getMovement();
+		this.equippedArmor -= stat.getEquippedArmor();
+		this.equippedWeapon -= stat.getEquippedWeapon();
 		deriveStats();
+
+	}
+	
+	public void multiplyStats(Stats stats, int m){
+		this.livesLeft *= stats.getLivesLeft();
+		this.strength *= stats.getStrength();
+		this.agility *= stats.getAgility();
+		this.intellect *= stats.getIntellect();
+		this.hardiness *= stats.getHardiness();
+		this.experience *= stats.getExperience();
+		this.movement *= stats.getMovement();
+		this.equippedArmor *= stats.getEquippedArmor();
+		this.equippedWeapon *= stats.getEquippedWeapon();
+		this.deriveStats();	
 	}
 	
 	public void setLivesLeft(int livesLeft) {
-		this.livesLeft = livesLeft;
+		this.livesLeft += livesLeft;
 		deriveStats();
 	}
         
@@ -72,43 +104,48 @@ public class Stats {
         }
 
 	public void setStrength(int strength) {
-		this.strength = strength;
+		this.strength += strength;
 		deriveStats();
 	}
 
 	public void setAgility(int agility) {
-		this.agility = agility;
+		this.agility += agility;
 		deriveStats();
 	}
 
 	public void setIntellect(int intellect) {
-		this.intellect = intellect;
+		this.intellect += intellect;
 		deriveStats();
 	}
 
 	public void setHardiness(int hardiness) {
-		this.hardiness = hardiness;
+		this.hardiness += hardiness;
 		deriveStats();
 	}
 
 	public void setExperience(int experience) {
-		this.experience = experience;
+		this.experience += experience;
 		deriveStats();
 	}
 
 	public void setMovement(int movement) {
-		this.movement = movement;
+		this.movement += movement;
 		deriveStats();
 	}
 
 	public void setEquippedArmor(int equippedArmor) {
-		this.equippedArmor = equippedArmor;
+		this.equippedArmor += equippedArmor;
 		deriveStats();
 	}
 
 	public void setEquippedWeapon(int equippedWeapon) {
-		this.equippedWeapon = equippedWeapon;
+		this.equippedWeapon += equippedWeapon;
 		deriveStats();
+	}
+	
+	
+	public void setMana(int mana) {
+		this.mana += mana;
 	}
 	
 	private void deriveStats(){

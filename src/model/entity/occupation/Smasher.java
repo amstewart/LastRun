@@ -3,14 +3,17 @@ package model.entity.occupation;
 import model.item.Inventory;
 import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
+import model.skillset.SmasherSkills;
 
 public class Smasher extends Occupation {
 
     private SmasherEquipmentManager equipmentManager;
+    private SmasherSkills skills;
 
     public Smasher(Inventory inventory) {
         super(inventory);
         equipmentManager = new SmasherEquipmentManager(inventory);
+        skills = new SmasherSkills();
     }
 
     @Override
@@ -54,4 +57,11 @@ public class Smasher extends Occupation {
     public SmasherEquipmentManager getEquipmentManager() {
         return equipmentManager;
     }
+    
+	@Override
+	public void notifySkills(int mana) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

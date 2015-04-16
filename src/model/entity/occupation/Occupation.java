@@ -28,4 +28,6 @@ public abstract class Occupation {
     public abstract boolean removeFromEquipment(SummonerEquipment equipment);
 
     public abstract Equipment[] getEquipment();
+
+	public abstract void notifySkills(int mana);
 }

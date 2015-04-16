@@ -1,12 +1,13 @@
 package model.skill;
 
 import model.effect.ExternalEffect;
+import model.effect.SpellEffect;
 
-public class ExternalSkill extends Skill{
-	ExternalEffect effect;
+public class SpellSkill extends Skill{
+	SpellEffect effect;
 	int baseRadius;
 	int radius;
-	public ExternalSkill(String name, int level,ExternalEffect effect, int radius) {
+	public SpellSkill(String name, int level,SpellEffect effect, int radius) {
 		super(name, level);
 		this.effect = effect;
 		this.baseRadius = radius;
@@ -16,5 +17,8 @@ public class ExternalSkill extends Skill{
 		this.radius = baseRadius * getLevel();
 		effect.applyMultiplier(getLevel());
 	}
-	
+	public void setCanPeform(int mana) {
+		effect.setCanPerform(mana);
+	}
+
 }

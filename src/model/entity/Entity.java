@@ -38,13 +38,23 @@ public abstract class Entity extends Asset implements Describable {
         if (!statuses.contains(status))
             statuses.push(status);
     }
+    
+    public void removeStatus(Status status){
+    	statuses.remove(status);
+    }
 
 	public boolean addToInventory(TakeableItem item) {
 		return inventory.addItem(item);
 	}
 
+
 	public int getAgility() {
 		return stats.getAgility();
+	}
+
+    
+    public Stats getStats() {
+		return stats;
 	}
 
 	public int getArmorRating() {
@@ -175,6 +185,10 @@ public abstract class Entity extends Asset implements Describable {
     public void setStrength(int strength) {
         stats.setStrength(strength);
     }
+    
+    public void setMana(int mana) {
+		stats.setMana(mana);
+	}
 
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);

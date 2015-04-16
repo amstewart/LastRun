@@ -11,7 +11,5 @@ public class InternalSkill extends Skill{
 	@Override
 	public void applyMultiplier() {
 		effect.applyMultiplier(getLevel());
-		
 	}
-
 }

@@ -13,7 +13,7 @@ public class BindWounds implements InternalEffect{
 
 	@Override
 	public void applyEffect(Entity entity) {
-		// TODO Auto-generated method stub
+		entity.setStrength(baseStrengthIncrease);
 		
 	}
 

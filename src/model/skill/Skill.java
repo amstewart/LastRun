@@ -14,5 +14,6 @@ public abstract class Skill {
     }
     
     public abstract void applyMultiplier();
+    
     //add an accept Controller
 }
