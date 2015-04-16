@@ -15,6 +15,9 @@ import utility.Direction;
 import utility.Util;
 
 public class GameMap {
+    
+    
+    private static int DELTA_ODD_Y = 1;//TODO: move this encumberance to vector 2 file.
 
     private Tile[][] map;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
@@ -70,9 +73,11 @@ public class GameMap {
     }
     
     public Tile getTileToTheNorth(Vector2 location) {
-        location.add(Direction.NORTH);
-        location = this.applyBoundaryV(location);
-        return map[location.X][location.Y];
+        int newX = location.X;
+        int newY = location.Y - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheNorth(Tile t) {
@@ -80,11 +85,14 @@ public class GameMap {
     }
 
     public Tile getTileToTheNorthEast(Vector2 location) {
-        location.add(Direction.NORTHEAST);
-        if (isOdd(location)) location.add(Direction.DELTA_ODD);
-        location = applyBoundaryV(location);
+        int newX = location.X + 1;
+        int newY = location.Y - 1;
 
-        return map[location.X][location.Y];
+        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheNorthEast(Tile t) {
@@ -92,11 +100,14 @@ public class GameMap {
     }
 
     public Tile getTileToTheNorthWest(Vector2 location) {
-        location.add(Direction.NORTHWEST);
-        if (isOdd(location)) location.add(Direction.DELTA_ODD);
-        location = applyBoundaryV(location);
+        int newX = location.X - 1;
+        int newY = location.Y - 1;
 
-        return map[location.X][location.Y];
+        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheNorthWest(Tile t) {
@@ -104,10 +115,11 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouth(Vector2 location) {
-        location.add(Direction.SOUTH);
-        location = applyBoundaryV(location);
-
-        return map[location.X][location.Y];
+        int newX = location.X;
+        int newY = location.Y + 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheSouth(Tile t) {
@@ -115,11 +127,14 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthEast(Vector2 location) {
-        location.add(Direction.SOUTHEAST);
-        if (isOdd(location)) location.add(Direction.DELTA_ODD);
-        location = applyBoundaryV(location);
+        int newX = location.X + 1;
+        int newY = location.Y;
 
-        return map[location.X][location.Y];
+        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheSouthEast(Tile t) {
@@ -127,11 +142,14 @@ public class GameMap {
     }
 
     public Tile getTileToTheSouthWest(Vector2 location) {
-        location.add(Direction.SOUTHWEST);
-        if (isOdd(location)) location.add(Direction.DELTA_ODD);
-        location = applyBoundaryV(location);
+        int newX = location.X - 1;
+        int newY = location.Y;
 
-        return map[location.X][location.Y];
+        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
 
     public Tile getTileToTheSouthWest(Tile t) {
@@ -151,7 +169,7 @@ public class GameMap {
      * @param location The Vector2 location to evaluate
      * @return True, if the column is odd; false, otherwise
      */
-    private boolean isOdd(Vector2 location) {
+    private boolean isOnOddColumn(Vector2 location) {
         if (location.X % 2 == 0) return false;
         else return true;
     }
