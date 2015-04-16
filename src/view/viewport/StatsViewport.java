@@ -1,32 +1,54 @@
 package view.viewport;
 
+import java.awt.Font;
+import java.awt.Graphics;
 import java.util.ArrayList;
+
+import javax.swing.JLabel;
 
 import model.action.Action;
 import model.stat.Stats;
 
-public class StatsViewport extends Viewport{
+public class StatsViewport extends Viewport {
 	
-	public StatsViewport(Stats stats){
+	ArrayList<String> stats = new ArrayList<>();
+	public StatsViewport(Stats stats) {
 		stats.registerView(this);
 	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		drawStats(g);
+	}
+
+	private void drawStats(Graphics g) {
 	
-	public void receive(ArrayList<String> stats){
-		
+	}
+
+	public void receive(ArrayList<String> stats) {
+		this.removeAll();
+		String print = "<html><div align=center>Stats</div><div align=left>";
+		//g.drawString("Stats", 0,20);
+		int height = 20;
+		int width = 0;
+		for (String s : stats) {
+			print += s + "<br>";
+		}
+		//this.repaint();
+		print += "</div>";
+		print += "</html>";
+		add(new JLabel(print));
 	}
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void setListeners(ArrayList<Action> a) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
 
 }
