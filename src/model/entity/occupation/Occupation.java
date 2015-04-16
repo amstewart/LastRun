@@ -30,6 +30,10 @@ public abstract class Occupation {
     public abstract EquipmentManager getEquipmentManager();
 
     public abstract Equipment[] getEquipment();
+
     //=====TEMP TESTING======
     public abstract String getName();
+
+	public abstract void notifySkills(int mana);
+
 }

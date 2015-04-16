@@ -3,14 +3,17 @@ package model.entity.occupation;
 import model.item.Inventory;
 import model.item.SummonerEquipmentManager;
 import model.item.equipment.*;
+import model.skillset.SummonerSkills;
 
 public class Summoner extends Occupation {
 
     private SummonerEquipmentManager equipmentManager;
+    private SummonerSkills skills;
 
     public Summoner(Inventory inventory) {
         super(inventory);
         equipmentManager = new SummonerEquipmentManager(inventory);
+        skills = new SummonerSkills();
     }
 
     //=====TEST======
@@ -55,7 +58,15 @@ public class Summoner extends Occupation {
         return equipmentManager.getEquippedItems();
     }
 
+
     public SummonerEquipmentManager getEquipmentManager() {
         return equipmentManager;
     }
+
+	@Override
+	public void notifySkills(int mana) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

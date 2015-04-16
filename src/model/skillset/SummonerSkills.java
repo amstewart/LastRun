@@ -1,13 +1,16 @@
 package model.skillset;
 
+import model.effect.Spell;
+import model.skill.ExternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 
 public class SummonerSkills extends BasicSkills {
 
-    private Skill boon;
-    private Skill bane;
-    private Skill enchantment;
-    private Skill staff;
+    private SpellSkill boon;
+    private SpellSkill bane;
+    private SpellSkill enchantment;
+    private ExternalSkill staff;
 
     public SummonerSkills() {
         //boon = new Skill("Boon", 1);
@@ -16,20 +19,26 @@ public class SummonerSkills extends BasicSkills {
         //staff = new Skill("Staff", 1);
     }
 
-    protected Skill getBoon() {
+    protected SpellSkill getBoon() {
         return boon;
     }
 
-    protected Skill getBane() {
+    protected SpellSkill getBane() {
         return bane;
     }
 
-    protected Skill getEnchantment() {
+    protected SpellSkill getEnchantment() {
         return enchantment;
     }
 
-    protected Skill getStaff() {
+    protected ExternalSkill getStaff() {
         return staff;
+    }
+    
+    public void notifySkills(int mana){
+    	boon.setCanPeform(mana);
+    	bane.setCanPeform(mana);
+    	enchantment.setCanPeform(mana);
     }
 
     @Override
