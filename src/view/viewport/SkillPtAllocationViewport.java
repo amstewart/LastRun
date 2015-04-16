@@ -1,8 +1,8 @@
 package view.viewport;
 
-import controller2.action.Action2;
-import controller2.action.action.skillPtAction.AllocateSkillPtAction;
-import model.action.Action;
+import controller.action.Action;
+
+import controller.action.skillPtAction.AllocateSkillPtAction;
 import model.skill.Skill;
 import model.skillset.SkillPtAllocator;
 
@@ -27,7 +27,7 @@ public class SkillPtAllocationViewport extends Viewport {
 
     public void receiveSkills(Skill[] skills) {
         this.removeAll();
-        ActionListener actionListener = Action2.getActionListener(allocateSkillPtAction);
+        ActionListener actionListener = Action.getActionListener(allocateSkillPtAction);
         for(int i = 0; i < skills.length; i++) {
             SkillIncrementButton button = new SkillIncrementButton(skills[i]);
             button.addActionListener(actionListener);
@@ -43,11 +43,7 @@ public class SkillPtAllocationViewport extends Viewport {
     public void render() {
 
     }
-
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-
-    }
+    
 
     public class SkillIncrementButton extends JButton {
         private Skill skill;
