@@ -6,6 +6,11 @@ public class ExternalSkill extends Skill{
 	ExternalEffect effect;
 	int baseRadius;
 	int radius;
+
+	//====== TEMPORARY CONSTRUCTOR ======
+	public ExternalSkill(String name, int level) {
+		super(name, level);
+	}
 	public ExternalSkill(String name, int level,ExternalEffect effect, int radius) {
 		super(name, level);
 		this.effect = effect;

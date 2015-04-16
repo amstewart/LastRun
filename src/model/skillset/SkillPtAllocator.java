@@ -26,9 +26,7 @@ public class SkillPtAllocator {
 
     public void notifyViews() {
         for(SkillPtAllocationViewport view: registeredViews) {
-            view.receiveSkillPoints(skillPoints);
-            view.receiveSkills(skills);
-
+            view.receiveSkillInfo(skills, skillPoints);
         }
     }
     // some skill was incremented give all the skills to the view
@@ -42,5 +40,9 @@ public class SkillPtAllocator {
 
     public Skill[] getSkills() {
         return skills;
+    }
+
+    public int getSkillPoints() {
+        return skillPoints;
     }
 }

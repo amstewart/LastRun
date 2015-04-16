@@ -1,17 +1,19 @@
 package model.skillset;
 
+import model.skill.ExternalSkill;
+import model.skill.InternalSkill;
 import model.skill.Skill;
 
 public class SneakSkills extends BasicSkills {
 
-    private Skill creep;
-    private Skill trapDetectionRemoval;
-    private Skill range;
+    private InternalSkill creep;
+    private ExternalSkill trapDetectionRemoval;
+    private InternalSkill range;
 
     public SneakSkills() {
-        //creep = new Skill("Creep", 1);
-       // trapDetectionRemoval = new Skill("Trap Removal/Detection", 1);
-        //range = new Skill("Range", 1);
+        creep = new InternalSkill("Creep", 1);
+        trapDetectionRemoval = new ExternalSkill("Trap Removal/Detection", 1);
+        range = new InternalSkill("Range", 1);
     }
 
     protected Skill getCreep() {
