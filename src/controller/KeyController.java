@@ -26,7 +26,7 @@ public class KeyController implements KeyListener{
     
     Map<Integer, Action> actionSet;
 
-    public KeyController(GameMap map, Avatar avatar){
+    public KeyController(GameMap map){
         actionSet = new HashMap();
         
         actionSet.put(KeyEvent.VK_W, new MoveUpAction(map));
@@ -36,7 +36,7 @@ public class KeyController implements KeyListener{
         actionSet.put(KeyEvent.VK_S, new MoveDownAction(map));
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
         
-        Skill[] skills = avatar.getSkills();
+       // Skill[] skills = avatar.getSkills();
     }
     
     @Override

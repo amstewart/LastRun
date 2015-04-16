@@ -37,7 +37,7 @@ public class GameState extends State {
 
         
         
-        getViewport().addKeyListener(new KeyController(map,player));
+        getViewport().addKeyListener(new KeyController(map));
         
         /*ArrayList<Action> a = new ArrayList<Action>();
         a.add(new MoveUp());

@@ -1,9 +1,11 @@
 
 package model.gameBundle;
 
+
 import model.entity.Avatar;
 import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
+import model.enums.DefinedStats;
 import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.map.GameMap;
