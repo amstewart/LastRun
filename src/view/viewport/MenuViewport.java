@@ -5,6 +5,8 @@
  */
 package view.viewport;
 
+import controller.action.Action2;
+import controller.action.stateMachineAction.GoToCharSelectAction;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -36,7 +38,7 @@ public class MenuViewport extends Viewport {
             g2D.drawImage(menuBackground.getImage(), 0, 0, null);
             g.setFont(new Font(g.getFont().getFamily(), Font.PLAIN, 30));
         }
-
+        continueButton.addActionListener(Action2.getActionListener(new GoToCharSelectAction()));
     }
 
     /**
@@ -83,7 +85,7 @@ public class MenuViewport extends Viewport {
     }
 
     public void setListeners(ArrayList<Action> a) {
-        continueButton.addActionListener(a.get(0).getActionListener());
+        
 
         this.setFocusable(true);
         this.requestFocusInWindow();

@@ -23,13 +23,11 @@ public class RPGStateMachine extends StateMachine{
         menu = new MenuState();
         charSelect = new CharacterSelectionState();
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
-        HUD = new HUDState();
         
         this.add("menu", menu);
         this.add("charSelect", charSelect);
         this.add("petSelect", petSelect);
         this.add("game", game);
-        this.add("HUD", HUD);
     }
     
      public void render() {
@@ -43,7 +41,6 @@ public class RPGStateMachine extends StateMachine{
        this.changeToState("menu");
     }
 
-    public void changetoHUDState(){this.changeToState("HUD");}
 
     public void changeToGameState() {
         this.changeToState("game");

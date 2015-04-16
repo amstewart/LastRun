@@ -1,4 +1,4 @@
-package controller2.action;
+package controller.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

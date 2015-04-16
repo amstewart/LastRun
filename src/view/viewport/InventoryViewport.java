@@ -1,8 +1,8 @@
 
 package view.viewport;
 
-import controller2.action.Action2;
-import controller2.action.action.inventoryAction.DropAction;
+import controller.action.Action2;
+import controller.action.inventoryAction.DropAction;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import controller2.action.action.inventoryAction.UseAction;
+import controller.action.inventoryAction.UseAction;
 import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;

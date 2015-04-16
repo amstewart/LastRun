@@ -5,7 +5,6 @@
  */
 package state;
 
-import controller.Controller;
 import view.viewport.Viewport;
 
 public abstract class State {
@@ -27,11 +26,5 @@ public abstract class State {
 
     public Viewport getViewport() {
         return viewPort;
-    }
-
-    private Controller c = new Controller();
-
-    public Controller getController() {
-        return this.c;
-    }
+    }   
 }

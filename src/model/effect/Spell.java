@@ -13,7 +13,7 @@ public class Spell extends Asset{
 		super(id);
 		
 	}
-	public void decrementMana(Entity entity){
+	public void decrementMana(final Entity entity){
 		entity.setMana(-manaDecrease);
 		TimerTask timertask = new TimerTask(){
 			@Override

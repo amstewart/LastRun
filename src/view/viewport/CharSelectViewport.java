@@ -1,7 +1,7 @@
 
 package view.viewport;
 
-import controller2.action.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoBackAction;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import model.action.Action;

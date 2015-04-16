@@ -1,6 +1,6 @@
-package controller2.action.action.inventoryAction;
+package controller.action.inventoryAction;
 
-import controller2.action.Action2;
+import controller.action.Action2;
 import model.entity.occupation.Occupation;
 import model.item.TakeableItem;
 

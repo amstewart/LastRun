@@ -18,7 +18,7 @@ public class Creep implements InternalEffect{
 	}
 
 	@Override
-	public void applyEffect(Entity entity) {
+	public void applyEffect(final Entity entity) {
 		entity.addStatus(Status.INVISIBLE);
 		entity.setMovement(-movementDecrease);
 		TimerTask timertask = new TimerTask(){

@@ -1,6 +1,6 @@
-package controller2.action.action.charSelectAction;
+package controller.action.charSelectAction;
 
-import controller2.action.Action2;
+import controller.action.Action2;
 import model.entity.OccupationChooser;
 
 public class SelectSmasherAction extends Action2 {

@@ -1,7 +1,7 @@
 package view.viewport;
 
-import controller2.action.Action2;
-import controller2.action.action.equipmentAction.UnequipAction;
+import controller.action.Action2;
+import controller.action.equipmentAction.UnequipAction;
 import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentManager;

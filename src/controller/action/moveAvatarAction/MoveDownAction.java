@@ -1,6 +1,6 @@
-package controller2.action.action.moveAvatarAction;
+package controller.action.moveAvatarAction;
 
-import controller2.action.Action2;
+import controller.action.Action2;
 import model.Vector2;
 import model.map.GameMap;
 import utility.Util;
@@ -9,15 +9,15 @@ import utility.Util;
  *
  * @author ChrisMoscoso
  */
-public class MoveUpAction extends Action2 {
+public class MoveDownAction extends Action2 {
 
     private GameMap map;
     
-    public MoveUpAction(){
+    public MoveDownAction(){
         Util.dbgOut("Dont forget to set the map for the action.", 3);
     }
     
-    public MoveUpAction(GameMap m){
+    public MoveDownAction(GameMap m){
         map = m;
     }
     
@@ -28,7 +28,7 @@ public class MoveUpAction extends Action2 {
     @Override
     public void perform() {
         Vector2 v2 = map.getAvatarMovement().getPosition();
-        v2 = map.getTileToTheNorth(v2).getLocation();
+        v2 = map.getTileToTheSouth(v2).getLocation();
         map.moveAvatarTo(v2);
     }
 }

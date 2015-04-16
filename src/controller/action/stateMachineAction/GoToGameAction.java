@@ -1,7 +1,7 @@
 
-package controller2.action.action.stateMachineAction;
+package controller.action.stateMachineAction;
 
-import controller2.action.Action2;
+import controller.action.Action2;
 import state.stateMachine.RPGStateMachine;
 
 /**

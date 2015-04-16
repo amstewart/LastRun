@@ -1,5 +1,6 @@
 package state;
 
+import controller.KeyController;
 import model.Vector2;
 import model.action.Action;
 import model.entity.Avatar;
@@ -41,17 +42,21 @@ public class GameState extends State {
     public void onEnter() {
         render();
 
-        ArrayList<Action> a = new ArrayList<Action>();
+        
+        
+        getViewport().addKeyListener(new KeyController(map));
+        
+        /*ArrayList<Action> a = new ArrayList<Action>();
         a.add(new MoveUp());
         a.add(new MoveDown());
         a.add(new MoveLU());
         a.add(new MoveLD());
         a.add(new MoveRU());
-        a.add(new MoveRD());
-        a.add(new Drop());
+        a.add(new MoveRD());*/
+        
 
-        getController().setGameSet(a);
-        getViewport().setListeners(a);
+        //getController().setGameSet(a);
+        //getViewport().setListeners(a);
     }
 
     @Override
@@ -272,84 +277,6 @@ public class GameState extends State {
         public KeyListener getKeyListener() {
             return this.kl;
         }
-        @Override
-        public MouseListener getMouseListener() {
-            return null;
-        }
-    }
-
-    private class Drop extends Action {
-
-        ActionListener al;
-
-        @Override
-        public void perform(){
-
-        }
-        public void perform(TakeableItem ti){
-            inventory.removeItem(ti);
-        }
-        @Override
-        public void setActionListener(ActionListener al) {
-            this.al = al;
-        }
-        @Override
-        public void setKeyListener(KeyListener kl) {
-        }
-        @Override
-        public void setMouseListener(MouseListener ml) {
-        }
-        @Override
-        public ActionListener getActionListener() {
-            return this.al;
-        }
-        @Override
-        public KeyListener getKeyListener() {
-            return null;
-        }
-        @Override
-        public MouseListener getMouseListener() {
-            return null;
-        }
-
-    }
-
-    private class Use extends Action {
-
-        @Override
-        public void perform() {
-
-        }
-
-        public void perform(TakeableItem item, Occupation occupation) {
-            item.use(occupation);
-        }
-
-        @Override
-        public void setActionListener(ActionListener al) {
-
-        }
-
-        @Override
-        public void setKeyListener(KeyListener kl) {
-
-        }
-
-        @Override
-        public void setMouseListener(MouseListener ml) {
-
-        }
-
-        @Override
-        public ActionListener getActionListener() {
-            return null;
-        }
-
-        @Override
-        public KeyListener getKeyListener() {
-            return null;
-        }
-
         @Override
         public MouseListener getMouseListener() {
             return null;

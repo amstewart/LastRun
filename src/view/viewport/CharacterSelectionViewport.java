@@ -1,12 +1,12 @@
 
 package view.viewport;
 
-import controller2.action.Action2;
-import controller2.action.action.charSelectAction.SelectSmasherAction;
-import controller2.action.action.charSelectAction.SelectSneakAction;
-import controller2.action.action.charSelectAction.SelectSummonerAction;
-import controller2.action.action.stateMachineAction.GoBackAction;
-import controller2.action.action.stateMachineAction.GoToGameAction;
+import controller.action.Action2;
+import controller.action.charSelectAction.SelectSmasherAction;
+import controller.action.charSelectAction.SelectSneakAction;
+import controller.action.charSelectAction.SelectSummonerAction;
+import controller.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
