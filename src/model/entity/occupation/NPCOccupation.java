@@ -56,4 +56,9 @@ public class NPCOccupation extends Occupation {
     public EquipmentManager getEquipmentManager() {
         return null;
     }
+	@Override
+	public void notifySkills(int mana) {
+		// TODO Auto-generated method stub
+		
+	}
 }
