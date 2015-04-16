@@ -90,11 +90,11 @@ public class InventoryViewport extends Viewport{
         @Override
         public void mousePressed(MouseEvent e) {
             try{
-                
-               TakeableItem ti =  (TakeableItem)((ItemButton) e.getSource()).getItem();
-               menu.show(e.getComponent(), e.getX(), e.getY());
-               dropAction.setCurrentItem(ti);
-               useAction.setCurrentItem(ti);
+
+                TakeableItem takeableItem =  (TakeableItem)((ItemButton) e.getSource()).getItem();
+                menu.show(e.getComponent(), e.getX(), e.getY());
+                dropAction.setCurrentItem(takeableItem);
+                useAction.setCurrentItem(takeableItem);
 
             }catch(IllegalComponentStateException ex){}
         }

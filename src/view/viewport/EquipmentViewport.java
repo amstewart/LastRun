@@ -61,6 +61,7 @@ public class EquipmentViewport extends Viewport {
             return equipment;
         }
     }
+
     private class ItemMouseListener implements MouseListener {
 
         public ItemMouseListener() {

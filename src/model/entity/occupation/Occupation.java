@@ -4,10 +4,29 @@ import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
+import model.skill.Skill;
+import model.skillset.BasicSkills;
+import model.skillset.SkillPtAllocator;
 
 public abstract class Occupation {
 
-    public Occupation(Inventory inventory) {}
+    private SkillPtAllocator skillPtAllocator;
+    private final int initialSkillPoints;
+
+    public Occupation(Inventory inventory) {
+        // points is hardcoded until we figure out where to get it
+        initialSkillPoints = 5;
+    }
+
+    protected void buildSkillPtAllocator(Skill[] skills) {
+        skillPtAllocator = new SkillPtAllocator(initialSkillPoints, skills);
+    }
+
+    public SkillPtAllocator getSkillPtAllocator() {
+        return skillPtAllocator;
+    }
+
+    public abstract Skill[] getSkills();
 
     // God this is horrible, but I can't think of another way right now
     // Subclasses responsible for overriding items that can equip
