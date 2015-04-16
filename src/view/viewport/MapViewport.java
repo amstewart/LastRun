@@ -1,9 +1,11 @@
 package view.viewport;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
+import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
 
@@ -13,6 +15,9 @@ import model.movement.EntityMovement;
  */
 public class MapViewport extends Viewport {
 
+    static double cantMoveTimer = 0;
+    static Vector2 cantMoveLocation = Vector2.zero();
+    
     GameMap map;
     int tileWidth = 50;
     int tileHeight = 50;
@@ -62,8 +67,17 @@ public class MapViewport extends Viewport {
                 g.fillPolygon(p);
 
                 g.setColor(java.awt.Color.WHITE);
+                g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
                 String coordinate = "(" + i + "," + j + ")";
-                g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                if(i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0){
+                    g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
+                    coordinate = "Cant Go Here";
+                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                    cantMoveTimer -= 0.02;
+                }else{
+                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                }
+                
 
             }
         }
@@ -99,6 +113,9 @@ public class MapViewport extends Viewport {
         this.repaint();
     }
 
-    
+    public static void drawCantMove(Vector2 v2){
+        cantMoveLocation = v2;
+        cantMoveTimer = 1.0;
+    }
 
 }

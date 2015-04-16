@@ -6,6 +6,7 @@ import model.Vector2;
 import model.map.GameMap;
 import model.terrain.Terrain;
 import utility.Util;
+import view.viewport.MapViewport;
 
 /**
  *
@@ -38,7 +39,7 @@ public class MoveDownAction extends Action {
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
             map.moveAvatarTo(destLocation);
         }else{
-            
+            MapViewport.drawCantMove(destLocation);
         }
     }
 }

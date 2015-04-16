@@ -9,6 +9,7 @@ import model.map.GameMap;
 import model.movement.EntityMovement;
 import model.terrain.Terrain.TerrainType;
 import utility.Util;
+import view.viewport.MapViewport;
 
 /**
  *
@@ -43,7 +44,7 @@ public class MoveUpAction extends Action{
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
             map.moveAvatarTo(destLocation);
         }else{
-            
+            MapViewport.drawCantMove(destLocation);
         }
         
     }    

@@ -25,7 +25,7 @@ public class EntityStatusModifier extends Spell implements SpellEffect{
 	@Override
 	public void applyEffect(LocalArea map, Entity entity) {
 		if(canPerform()){
-			Entity affectedEntity = map.getEntityLinear();
+			final Entity affectedEntity = map.getEntityLinear();
 			affectedEntity.addStatus(changeTo);
 			TimerTask timertask = new TimerTask(){
 				@Override
