@@ -244,10 +244,10 @@ public class GameMap {
         return entityMovements;
     }
 
-    public void moveAvatarTo(Vector2 v2) {
-        Util.dbgOut("GameMap: Move avatar to " + v2.toString(), 4);
-        Vector2 source = avatarMovement.getPosition();
-        avatarMovement.changePosition(v2);
-        avatarMovement.reface(Direction.getDirection(source, v2));
+    public void moveAvatarTo(Vector2 dest) {
+        Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 4);
+        Vector2 source = avatarMovement.getPosition();            
+        avatarMovement.changePosition(dest);
+        avatarMovement.reface(Direction.getDirection(source, dest));
     }
 }

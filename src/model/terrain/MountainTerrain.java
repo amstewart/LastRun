@@ -13,6 +13,10 @@ import java.awt.Color;
  */
 public class MountainTerrain extends Terrain{
     
+    public MountainTerrain() {
+        this.terrainType = TerrainType.Mountain;
+    }
+    
     private int shadeOfRed = (int) (Math.random() * 250 + 50);
 
 	public void accept(TerrainVisitor visitor){
@@ -23,5 +27,9 @@ public class MountainTerrain extends Terrain{
     public Color getColor() {
         if(shadeOfRed > 255) shadeOfRed = 255;
         return new Color(shadeOfRed, 0, 0);
+    }
+    
+    public String toString(){
+        return "mountain";
     }
 }

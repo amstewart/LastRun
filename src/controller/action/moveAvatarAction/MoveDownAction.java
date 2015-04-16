@@ -1,8 +1,10 @@
 package controller.action.moveAvatarAction;
 
 import controller.action.Action;
+import java.util.ArrayList;
 import model.Vector2;
 import model.map.GameMap;
+import model.terrain.Terrain;
 import utility.Util;
 
 /**
@@ -27,8 +29,16 @@ public class MoveDownAction extends Action {
 
     @Override
     public void perform() {
-        Vector2 v2 = map.getAvatarMovement().getPosition();
-        v2 = map.getTileToTheSouth(v2).getLocation();
-        map.moveAvatarTo(v2);
+        Vector2 sourceLocation = map.getAvatarMovement().getPosition();
+        Vector2 destLocation = map.getTileToTheSouth(sourceLocation).getLocation();
+        
+        ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
+        Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
+        
+        if(avatarsAllowableTerrainTypes.contains(destTerrain)){
+            map.moveAvatarTo(destLocation);
+        }else{
+            
+        }
     }
 }

@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.util.ArrayList;
 import model.item.TakeableItem;
 import model.stat.Stats;
 import model.Asset;
@@ -8,6 +9,7 @@ import java.util.LinkedList;
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
+import model.terrain.Terrain.TerrainType;
 
 /**
  * Entities are all game objects which have the ability to move and manipulate
@@ -17,6 +19,8 @@ import model.item.Inventory;
  */
 public abstract class Entity extends Asset implements Describable {
     // Fields
+    private ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
+    
     private CoinPouch coins = new CoinPouch();
     private String name = "NONAME";
     private Stats stats;
@@ -27,6 +31,7 @@ public abstract class Entity extends Asset implements Describable {
 	public Entity(String asset_id) {
 		super(asset_id);
 		this.stats = saving_stats;
+                setCanMoveOnGrass(true);
 	}
 
 	/**
@@ -192,5 +197,25 @@ public abstract class Entity extends Asset implements Describable {
 
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
+    }
+    
+    public void setCanMoveOnWater(boolean b){
+        if(b){
+            terrainTypesAllowedToMoveOn.add(TerrainType.Water);
+        }else{
+            terrainTypesAllowedToMoveOn.remove(TerrainType.Water);
+        }
+    }
+    
+    public ArrayList<TerrainType> getTerrainTypesAllowedToMoveOn() {
+        return terrainTypesAllowedToMoveOn;
+    }
+
+    private void setCanMoveOnGrass(boolean b) {
+        if(b){
+            terrainTypesAllowedToMoveOn.add(TerrainType.Grass);
+        }else{
+            terrainTypesAllowedToMoveOn.remove(TerrainType.Grass);
+        }
     }
 }

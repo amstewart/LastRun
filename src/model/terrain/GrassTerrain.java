@@ -11,19 +11,28 @@ import java.awt.Color;
  *
  * @author
  */
-public class GrassTerrain extends Terrain{
-    
+public class GrassTerrain extends Terrain {
+
+    public GrassTerrain() {
+        this.terrainType = TerrainType.Grass;
+    }
+
     private int shadeOfGreen = (int) (Math.random() * 250 + 50);
-    
- 
-    public void accept(TerrainVisitor visitor){
-            System.out.println("IM GRASS");
+
+    public void accept(TerrainVisitor visitor) {
+        System.out.println("IM GRASS");
     }
 
     @Override
     public Color getColor() {
-        if(shadeOfGreen > 255) shadeOfGreen = 255;
+        if (shadeOfGreen > 255) {
+            shadeOfGreen = 255;
+        }
         return new Color(0, shadeOfGreen, 0);
+    }
+
+    public String toString() {
+        return "Grass";
     }
 
 }

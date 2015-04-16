@@ -10,7 +10,7 @@ import model.tile.Tile;
 import model.areaEffect.LevelUpAreaEffect;
 import model.terrain.GrassTerrain;
 import model.terrain.MountainTerrain;
-import model.terrain.RiverTerrain;
+import model.terrain.WaterTerrain;
 
 /**
  *
@@ -38,7 +38,7 @@ public class MapBuilder {
                     if(randomTerrain < 0.60){
                         tiles[i][j].addTerrain(new GrassTerrain());
                     }else if(randomTerrain < 0.85){
-                        tiles[i][j].addTerrain(new RiverTerrain());
+                        tiles[i][j].addTerrain(new WaterTerrain());
                     }else{
                         tiles[i][j].addTerrain(new MountainTerrain());
                     }
