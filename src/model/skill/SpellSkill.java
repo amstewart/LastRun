@@ -13,7 +13,15 @@ public class SpellSkill extends Skill{
 	SpellEffect effect3;
 	int baseRadius;
 	int radius;
-	public SpellSkill(String name, int level,SpellEffect effect1,SpellEffect effect2,SpellEffect effect3, int radius) {
+
+	//public SpellSkill(String name, int level,SpellEffect effect1,SpellEffect effect2,SpellEffect effect3, int radius) {}
+
+
+	//=====TEMPORARY CONSTRUCTOR FOR TESTING=====
+	public SpellSkill(String name, int value) {
+		super(name, value);
+	}
+	public SpellSkill(String name, int level,SpellEffect effect, int radius) {
 		super(name, level);
 		this.effect1 = effect1;
 		this.effect2 = effect2;

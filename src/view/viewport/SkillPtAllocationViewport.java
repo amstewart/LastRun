@@ -19,25 +19,25 @@ public class SkillPtAllocationViewport extends Viewport {
 
     public SkillPtAllocationViewport(SkillPtAllocator skillPtAllocator) {
         skillPtAllocator.registerView(this);
-        receiveSkills(skillPtAllocator.getSkills());
-
         allocateSkillPtAction = new AllocateSkillPtAction(skillPtAllocator);
 
+        receiveSkillInfo(skillPtAllocator.getSkills(), skillPtAllocator.getSkillPoints());
     }
 
-    public void receiveSkills(Skill[] skills) {
+    public void receiveSkillInfo(Skill[] skills, int skillPoints) {
         this.removeAll();
+        this.add(new JLabel("Skill Point Allocation"));
         ActionListener actionListener = Action.getActionListener(allocateSkillPtAction);
         for(int i = 0; i < skills.length; i++) {
             SkillIncrementButton button = new SkillIncrementButton(skills[i]);
             button.addActionListener(actionListener);
             add(button);
         }
+
+        this.add(new JLabel(String.valueOf(skillPoints)));
     }
 
-    public void receiveSkillPoints(int skillpoints) {
-        // TODO:
-    }
+
 
     @Override
     public void render() {
@@ -49,7 +49,7 @@ public class SkillPtAllocationViewport extends Viewport {
         private Skill skill;
 
         public SkillIncrementButton(Skill skill) {
-
+            super(skill.getName());
             this.skill = skill;
             this.addMouseListener(new PointAllocationListener());
         }
