@@ -8,10 +8,14 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import model.action.Action;
+import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Smasher;
+import model.item.EquipmentManager;
 import model.item.Inventory;
+import model.item.SmasherEquipmentManager;
 import model.item.equipment.Equipment;
+import model.item.equipment.SmasherEquipment;
 import model.map.GameMap;
 
 import javax.swing.*;
@@ -29,10 +33,10 @@ public class GameViewport extends Viewport{
     public GameViewport(GameMap map, Inventory inventory){
         mapVP = new MapViewport(map);
         // TEMP TEST
-        Smasher smasher = new Smasher(inventory);
+        Occupation smasher = new Smasher(inventory);
+        EquipmentManager equipmentManager = smasher.getEquipmentManager();
         inventoryVP = new InventoryViewport(inventory, smasher);
-        equipmentVP = new EquipmentViewport(smasher);
-        equipmentVP.registerViewTo(smasher.getEquipmentManager());
+        equipmentVP = new EquipmentViewport(equipmentManager, smasher);
 
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);

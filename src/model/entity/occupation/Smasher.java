@@ -12,6 +12,11 @@ public class Smasher extends Occupation {
         super(inventory);
         equipmentManager = new SmasherEquipmentManager(inventory);
     }
+    //=====TEST TEMP==========
+    @Override
+    public String getName() {
+        return "Smasher";
+    }
 
     @Override
     public boolean addToEquipment(BasicEquipment equipment) {

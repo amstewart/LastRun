@@ -1,10 +1,7 @@
 
-package controller2.inventoryAction;
+package controller2.action.action.inventoryAction;
 
 import controller2.action.Action2;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
 import model.item.Inventory;
 import model.item.TakeableItem;
 

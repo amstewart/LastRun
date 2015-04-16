@@ -1,5 +1,5 @@
 
-package controller2.action.stateMachineAction;
+package controller2.action.action.stateMachineAction;
 
 import controller2.action.Action2;
 import state.stateMachine.RPGStateMachine;

@@ -1,4 +1,4 @@
-package controller2.equipmentAction;
+package controller2.action.action.equipmentAction;
 
 import controller2.action.Action2;
 import model.entity.occupation.Occupation;

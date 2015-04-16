@@ -1,15 +1,18 @@
 package model.entity.occupation;
 
+import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.item.equipment.*;
 
-/**
- * Created by Alex Stewart on 15/04/11.
- */
 public class NPCOccupation extends Occupation {
 
     public NPCOccupation(Inventory inventory) {
         super(inventory);
+    }
+    // ====TEMP TEST=====
+    @Override
+    public String getName() {
+        return "NPC";
     }
 
     @Override
@@ -47,5 +50,10 @@ public class NPCOccupation extends Occupation {
     @Override
     public Equipment[] getEquipment() {
         return new Equipment[0];
+    }
+
+    @Override
+    public EquipmentManager getEquipmentManager() {
+        return null;
     }
 }

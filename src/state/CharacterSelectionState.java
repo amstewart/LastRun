@@ -20,12 +20,8 @@ public class CharacterSelectionState extends State{
 
     public CharacterSelectionState(){
         avatar = new Avatar();
-
-        viewPort =  new CharacterSelectionViewport();
-    }
-
-    public void setOccupationChooser(OccupationChooser occupationChooser) {
-
+        OccupationChooser occupationChooser = avatar.getOccupationChooser();
+        viewPort =  new CharacterSelectionViewport(occupationChooser);
     }
 
     @Override

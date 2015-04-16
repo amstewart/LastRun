@@ -1,15 +1,11 @@
 package view.viewport;
 
 import controller2.action.Action2;
-import controller2.equipmentAction.UnequipAction;
+import controller2.action.action.equipmentAction.UnequipAction;
 import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentManager;
-import model.item.SmasherEquipmentManager;
-import model.item.SneakEquipmentManager;
-import model.item.SummonerEquipmentManager;
 import model.item.equipment.Equipment;
-import model.item.equipment.SmasherEquipment;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +19,10 @@ public class EquipmentViewport extends Viewport {
     private JPopupMenu menu = new JPopupMenu("PopUp");
     private JMenuItem unequipItem = new JMenuItem("Unequip");
 
-    public EquipmentViewport(Occupation occupation) {
+    public EquipmentViewport(EquipmentManager equipmentManager, Occupation occupation) {
+        equipmentManager.registerView(this);
+        receiveEquipment(equipmentManager.getEquippedItems());
+
         setMenu();
         unequipAction = new UnequipAction(occupation);
         unequipItem.addActionListener(Action2.getActionListener(unequipAction));
@@ -38,27 +37,9 @@ public class EquipmentViewport extends Viewport {
             }
        }
     }
-    // =========TEMP=======
-    public void registerViewTo(SmasherEquipmentManager smasherEquipmentManager) {
-        smasherEquipmentManager.registerView(this);
-        receiveEquipment(smasherEquipmentManager.getEquippedItems());
-    }
-
-    public void registerViewTo(SneakEquipmentManager sneakEquipmentManager) {
-        sneakEquipmentManager.registerView(this);
-        receiveEquipment(sneakEquipmentManager.getEquippedItems());
-    }
-
-    public void registerViewTo(SummonerEquipmentManager summonerEquipmentManager) {
-        summonerEquipmentManager.registerView(this);
-        receiveEquipment(summonerEquipmentManager.getEquippedItems());
-    }
-
-    //  ====================
 
     private void setMenu() {
         menu.add(unequipItem);
-        menu.addSeparator();
     }
 
     @Override

@@ -44,10 +44,11 @@ public class OccupationChooser {
     public Occupation getOccupation() {
         return occupation;
     }
+
     // Views that are registered will receive information on choice
     public void notifyViews() {
         for(CharacterSelectionViewport v: views) {
-            v.receiveSelection(occupation);
+            v.receiveSelection(occupation.getName());
         }
     }
 }

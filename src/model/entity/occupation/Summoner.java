@@ -13,6 +13,11 @@ public class Summoner extends Occupation {
         equipmentManager = new SummonerEquipmentManager(inventory);
     }
 
+    //=====TEST======
+    public String getName() {
+        return "Summoner";
+    }
+
     @Override
     public boolean addToEquipment(BasicEquipment equipment) {
         return equipment.doEquip(equipmentManager);

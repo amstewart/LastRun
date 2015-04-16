@@ -1,4 +1,4 @@
-package controller2.action.moveAvatarAction;
+package controller2.action.action.moveAvatarAction;
 
 import controller2.action.Action2;
 import model.Vector2;

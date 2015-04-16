@@ -1,8 +1,7 @@
-package controller2.inventoryAction;
+package controller2.action.action.inventoryAction;
 
 import controller2.action.Action2;
 import model.entity.occupation.Occupation;
-import model.item.Inventory;
 import model.item.TakeableItem;
 
 public class UseAction extends Action2 {

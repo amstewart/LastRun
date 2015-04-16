@@ -13,6 +13,12 @@ public class Sneak extends Occupation {
         equipmentManager = new SneakEquipmentManager(inventory);
     }
 
+    //=====TEST TEMP==========
+    @Override
+    public String getName() {
+        return "Sneak";
+    }
+
     @Override
     public boolean addToEquipment(BasicEquipment equipment) {
         return equipment.doEquip(equipmentManager);

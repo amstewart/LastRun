@@ -1,6 +1,6 @@
 package model.action;
 
-import controller2.action.stateMachineAction.GoBackAction;
+import controller2.action.action.stateMachineAction.GoBackAction;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
