@@ -1,7 +1,7 @@
 
 package view.viewport;
 
-import controller.action.Action2;
+import controller.action.Action;
 import controller.action.charSelectAction.SelectSmasherAction;
 import controller.action.charSelectAction.SelectSneakAction;
 import controller.action.charSelectAction.SelectSummonerAction;
@@ -11,7 +11,6 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import model.action.Action;
 import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
 
@@ -29,14 +28,11 @@ public class CharacterSelectionViewport extends Viewport{
         
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-        
-    }
+    
 
     private void initComponents(OccupationChooser occupationChooser) {
         JButton back = new JButton("Go Back");
-        back.addActionListener(Action2.getActionListener(new GoBackAction()));
+        back.addActionListener(Action.getActionListener(new GoBackAction()));
         
         this.add(back, BorderLayout.EAST);
 
@@ -45,20 +41,20 @@ public class CharacterSelectionViewport extends Viewport{
 
         // These buttons need to add actions that call the correct select function of occupation choose
         JButton summoner = new JButton("summoner");
-        summoner.addActionListener(Action2.getActionListener(new SelectSummonerAction(occupationChooser)));
+        summoner.addActionListener(Action.getActionListener(new SelectSummonerAction(occupationChooser)));
 
         JButton smasher = new JButton("smasher");
-        smasher.addActionListener(Action2.getActionListener(new SelectSmasherAction(occupationChooser)));
+        smasher.addActionListener(Action.getActionListener(new SelectSmasherAction(occupationChooser)));
 
         JButton sneak = new JButton("sneak");
-        sneak.addActionListener(Action2.getActionListener(new SelectSneakAction(occupationChooser)));
+        sneak.addActionListener(Action.getActionListener(new SelectSneakAction(occupationChooser)));
         
         this.add(summoner);
         this.add(smasher);
         this.add(sneak);
         
         JButton goToGame = new JButton("Go to Game");
-        goToGame.addActionListener(Action2.getActionListener(new GoToGameAction()));
+        goToGame.addActionListener(Action.getActionListener(new GoToGameAction()));
         this.add(goToGame, BorderLayout.WEST);
     }
 

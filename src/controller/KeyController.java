@@ -1,7 +1,7 @@
 
 package controller;
 
-import controller.action.Action2;
+import controller.action.Action;
 import controller.action.moveAvatarAction.MoveDownAction;
 import controller.action.moveAvatarAction.MoveDownLeftAction;
 import controller.action.moveAvatarAction.MoveDownRightAction;
@@ -20,7 +20,7 @@ import model.map.GameMap;
  */
 public class KeyController implements KeyListener{
     
-    Map<Integer, Action2> actionSet;
+    Map<Integer, Action> actionSet;
 
     public KeyController(GameMap map){
         actionSet = new HashMap();

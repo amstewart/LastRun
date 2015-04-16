@@ -1,14 +1,14 @@
 
 package controller.action.stateMachineAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import state.stateMachine.RPGStateMachine;
 
 /**
  *
  * @author ChrisMoscoso
  */
-public class GoToMainMenuAction extends Action2{
+public class GoToMainMenuAction extends Action{
 
     @Override
     public void perform() {

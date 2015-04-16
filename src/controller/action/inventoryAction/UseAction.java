@@ -1,10 +1,10 @@
 package controller.action.inventoryAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.TakeableItem;
 
-public class UseAction extends Action2 {
+public class UseAction extends Action {
 
     private TakeableItem item;
     private Occupation occupation;

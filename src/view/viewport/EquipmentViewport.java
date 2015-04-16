@@ -1,8 +1,7 @@
 package view.viewport;
 
-import controller.action.Action2;
+import controller.action.Action;
 import controller.action.equipmentAction.UnequipAction;
-import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentManager;
 import model.item.equipment.Equipment;
@@ -25,7 +24,7 @@ public class EquipmentViewport extends Viewport {
 
         setMenu();
         unequipAction = new UnequipAction(occupation);
-        unequipItem.addActionListener(Action2.getActionListener(unequipAction));
+        unequipItem.addActionListener(Action.getActionListener(unequipAction));
     }
 
     public void receiveEquipment(Equipment[] equipment) {
@@ -47,10 +46,7 @@ public class EquipmentViewport extends Viewport {
 
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-
-    }
+    
 
     public class EquipmentButton extends JButton {
         private Equipment equipment;

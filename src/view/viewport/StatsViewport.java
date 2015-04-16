@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-import model.action.Action;
 import model.stat.Stats;
 
 public class StatsViewport extends Viewport {
@@ -45,10 +44,6 @@ public class StatsViewport extends Viewport {
 	
 	}
 
-	@Override
-	public void setListeners(ArrayList<Action> a) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

@@ -5,7 +5,6 @@
  */
 package view.viewport;
 
-import model.action.Action;
 
 import javax.swing.JButton;
 import java.util.ArrayList;
@@ -79,8 +78,5 @@ public class PetSelectionViewport extends Viewport {
         this.revalidate();
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-
-    }
+    
 }

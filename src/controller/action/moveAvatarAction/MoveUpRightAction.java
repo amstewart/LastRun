@@ -1,6 +1,6 @@
 package controller.action.moveAvatarAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import model.Vector2;
 import model.map.GameMap;
 import utility.Util;
@@ -9,7 +9,7 @@ import utility.Util;
  *
  * @author ChrisMoscoso
  */
-public class MoveUpRightAction extends Action2 {
+public class MoveUpRightAction extends Action {
 
     private GameMap map;
     

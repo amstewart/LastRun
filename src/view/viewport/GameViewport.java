@@ -8,7 +8,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
-import model.action.Action;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Smasher;
@@ -74,17 +73,5 @@ public class GameViewport extends Viewport{
         this.requestFocusInWindow();
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-        this.addKeyListener(a.get(0).getKeyListener());
-        this.addKeyListener(a.get(1).getKeyListener());
-        this.addKeyListener(a.get(2).getKeyListener());
-        this.addKeyListener(a.get(3).getKeyListener());
-        this.addKeyListener(a.get(4).getKeyListener());
-        this.addKeyListener(a.get(5).getKeyListener());
-
-        this.setFocusable(true);
-        this.requestFocusInWindow();
-
-    }
+    
 }

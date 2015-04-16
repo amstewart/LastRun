@@ -1,7 +1,7 @@
 
 package view.viewport;
 
-import controller.action.Action2;
+import controller.action.Action;
 import controller.action.inventoryAction.DropAction;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
@@ -13,7 +13,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import controller.action.inventoryAction.UseAction;
-import model.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.item.Item;
@@ -35,10 +34,10 @@ public class InventoryViewport extends Viewport{
         receive(inventory.getItems());
 
         dropAction = new DropAction(inventory);
-        dropItem.addActionListener(Action2.getActionListener(dropAction));
+        dropItem.addActionListener(Action.getActionListener(dropAction));
 
         useAction = new UseAction(occupation);
-        useItem.addActionListener(Action2.getActionListener(useAction));
+        useItem.addActionListener(Action.getActionListener(useAction));
     }
 
     public void receive(TakeableItem[] items) {
@@ -64,12 +63,6 @@ public class InventoryViewport extends Viewport{
     }
 
    
-
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-        
-    }
-
     public class ItemButton extends JButton {
         private Item item;
         

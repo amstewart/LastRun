@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.util.ArrayList;
-import model.action.Action;
 import model.map.GameMap;
 import model.movement.EntityMovement;
 
@@ -100,9 +99,6 @@ public class MapViewport extends Viewport {
         this.repaint();
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-
-    }
+    
 
 }

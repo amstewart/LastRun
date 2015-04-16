@@ -1,10 +1,10 @@
 package controller.action.equipmentAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import model.entity.occupation.Occupation;
 import model.item.equipment.Equipment;
 
-public class UnequipAction extends Action2 {
+public class UnequipAction extends Action {
 
     private Equipment equipment;
     private Occupation occupation;

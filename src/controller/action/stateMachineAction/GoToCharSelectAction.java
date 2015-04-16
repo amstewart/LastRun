@@ -1,14 +1,14 @@
 
 package controller.action.stateMachineAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import state.stateMachine.RPGStateMachine;
 
 /**
  *
  * @author ChrisMoscoso
  */
-public class GoToCharSelectAction extends Action2{
+public class GoToCharSelectAction extends Action{
 
     @Override
     public void perform() {

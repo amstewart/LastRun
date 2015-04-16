@@ -1,10 +1,10 @@
 
 package view.viewport;
 
+import controller.action.Action;
 import controller.action.stateMachineAction.GoBackAction;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import model.action.Action;
 
 /**
  *
@@ -20,10 +20,7 @@ public class CharSelectViewport extends Viewport{
         
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-        
-    }
+    
 
     private void initComponents() {
         JButton back = new JButton("Go Back");

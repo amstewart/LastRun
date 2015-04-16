@@ -7,11 +7,11 @@ import java.awt.event.ActionListener;
  *
  * @author ChrisMoscoso
  */
-public abstract class Action2 {
+public abstract class Action {
 
     public abstract void perform();
 
-    public static ActionListener getActionListener(final Action2 action) {
+    public static ActionListener getActionListener(final Action action) {
 
         return new ActionListener() {
 

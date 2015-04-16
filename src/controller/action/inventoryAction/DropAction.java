@@ -1,11 +1,11 @@
 
 package controller.action.inventoryAction;
 
-import controller.action.Action2;
+import controller.action.Action;
 import model.item.Inventory;
 import model.item.TakeableItem;
 
-public class DropAction extends Action2{
+public class DropAction extends Action{
 
     Inventory inventory;
     TakeableItem currentItem;

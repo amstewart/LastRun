@@ -1,14 +1,8 @@
 package state;
 
-import model.action.Action;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import state.stateMachine.RPGStateMachine;
 
 public class MenuState extends State {
 

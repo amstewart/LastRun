@@ -5,7 +5,6 @@
  */
 package view.viewport;
 
-import model.action.Action;
 
 import javax.swing.JButton;
 import java.util.ArrayList;
@@ -148,8 +147,5 @@ public class PauseGameViewport extends Viewport {
         this.repaint();
     }
 
-    @Override
-    public void setListeners(ArrayList<Action> a) {
-        //todo
-    }
+    
 }
