@@ -18,7 +18,7 @@ public abstract class BasicSkills {
         bindWound = new InternalSkill("BindWound", 1);
         observation = new ExternalSkill("Observation", 1);
     }
-    
+
     protected Skill getBargain() {
         return bargain;
     }
