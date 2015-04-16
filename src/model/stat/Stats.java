@@ -34,10 +34,9 @@ public class Stats {
 	private int defensiveRating;
 	private int armorRating;
 
-	private ArrayList<StatsViewport> registeredViews;
+	private ArrayList<StatsViewport> registeredViews = new ArrayList<>();
 
 	public void registerView(StatsViewport view) {
-		registeredViews = new ArrayList<>();
 		registeredViews.add(view);
 		notifyViews();
 	}
@@ -69,7 +68,10 @@ public class Stats {
 		string.add("Armor Rating: " +Integer.toString(armorRating));
 		return string;
 	}
-
+	
+	public Stats(){
+		
+	}
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
@@ -92,7 +94,19 @@ public class Stats {
 
 		deriveStats();
 	}
-
+	
+	public void setStats(Stats stat){
+		this.livesLeft = stat.livesLeft;
+		this.strength = stat.strength;
+		this.agility = stat.agility;
+		this.intellect = stat.intellect;
+		this.hardiness = stat.hardiness;
+		this.experience = stat.experience;
+		this.movement = stat.movement;
+		this.equippedArmor = stat.equippedArmor;
+		this.equippedWeapon = stat.equippedWeapon;
+		deriveStats();
+	}
 	private void setStats(int livesLeft, int strength, int agility,
 			int intellect, int hardiness, int experience, int movement,
 			int equippedArmor, int equippedWeapon) {
@@ -192,10 +206,11 @@ public class Stats {
 
 	public void setMana(int mana) {
 		this.mana += mana;
+		notifyViews();
 	}
 
 	private void deriveStats() {
-
+		notifyViews();
 	}
 
 	public int getLivesLeft() {

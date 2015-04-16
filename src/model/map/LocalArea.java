@@ -13,4 +13,8 @@ public class LocalArea {
 	public Trap getTrapRadial(Entity entity){
 		return null;
 	}
+
+	public Trap removeTrapLinear(Entity entity, int radius) {
+		return null;
+	}
 }

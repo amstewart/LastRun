@@ -4,6 +4,7 @@ import java.util.Random;
 
 import model.entity.Entity;
 import model.map.LocalArea;
+import model.map.Trap;
 
 public class DetectTrap implements ExternalEffect{
 	private int baseProbability = 10;
@@ -23,7 +24,7 @@ public class DetectTrap implements ExternalEffect{
 		int r = random.nextInt(100);
 		if(r < probability){
 			map.getTrapRadial(entity);
+			map.removeTrapLinear(entity, 1);
 		}
-
 	}
 }

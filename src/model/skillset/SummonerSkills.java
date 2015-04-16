@@ -13,10 +13,10 @@ public class SummonerSkills extends BasicSkills {
     private ExternalSkill staff;
 
     public SummonerSkills() {
-        //boon = new Skill("Boon", 1);
-       // bane = new Skill("Bane", 1);
-       // enchantment = new Skill("Enchantment", 1);
-        //staff = new Skill("Staff", 1);
+        boon = new SpellSkill("Boon", 1);
+        bane = new SpellSkill("Bane", 1);
+        enchantment = new SpellSkill("Enchantment", 1);
+        staff = new ExternalSkill("Staff", 1);
     }
 
     protected SpellSkill getBoon() {

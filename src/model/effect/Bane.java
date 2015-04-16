@@ -24,7 +24,7 @@ public class Bane extends Spell implements SpellEffect{
 	public void applyEffect(LocalArea map, Entity entity) {
 		if(canPerform()){
 			decrementMana(entity);
-			//TODO do this 
+			entity.mergeStats(currentStats);
 		}
 		
 	}
