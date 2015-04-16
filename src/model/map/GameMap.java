@@ -15,9 +15,8 @@ import utility.Direction;
 import utility.Util;
 
 public class GameMap {
-    
-    
-    private static int DELTA_ODD_Y = 1;//TODO: move this encumberance to vector 2 file.
+
+    private static int DELTA_ODD_Y = 1;
 
     private Tile[][] map;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
@@ -36,59 +35,55 @@ public class GameMap {
         map = m.getMap();
     }
 
-    public void addEntity(Avatar a){
+    public void addEntity(Avatar a) {
         this.addEntity(a, new Vector2());
     }
-    
-    public void addEntity(Avatar a, Vector2 location){
+
+    public void addEntity(Avatar a, Vector2 location) {
         getTile(location).addEntity(a);
         avatarMovement = new EntityMovement(a, this, location);
         entityMovements.add(avatarMovement);
     }
-    
-    public void addEntity(Entity e){
+
+    public void addEntity(Entity e) {
         this.addEntity(e, new Vector2());
     }
-    
+
     public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
     }
-    
-    public ArrayList<Entity> getEntities(){
-        ArrayList<Entity> arrayList = new ArrayList<>(); 
-        for(EntityMovement e : entityMovements){
+
+    public ArrayList<Entity> getEntities() {
+        ArrayList<Entity> arrayList = new ArrayList<>();
+        for (EntityMovement e : entityMovements) {
             arrayList.add(e.getEntity());
         }
         return arrayList;
     }
-    
+
     public void addItem(Item item, Vector2 location) {
         getTile(location).addItem(item);
         itemMovements.add(new ItemMovement(item, location));
     }
 
-    public EntityMovement getAvatarMovement(){
+    public EntityMovement getAvatarMovement() {
         return avatarMovement;
     }
+
+     public Tile getTileToTheNorth(Vector2 location) {
+        location.Y  -= 1;
+        location = this.applyBoundaryV(location);
+        return map[location.X][location.Y];
+    }
     
-    public Tile getTileToTheNorth(Vector2 location) {
-        int newX = location.X;
-        int newY = location.Y - 1;
-        newX = this.applyBoundaryX(newX);
-        newY = this.applyBoundaryY(newY);
-        return map[newX][newY];
-    }
-
-    public Tile getTileToTheNorth(Tile t) {
-        return getTileToTheNorth(t.getLocation());
-    }
-
     public Tile getTileToTheNorthEast(Vector2 location) {
         int newX = location.X + 1;
         int newY = location.Y - 1;
 
-        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+        if (isOdd(location.X)) {
+            newY += DELTA_ODD_Y;
+        }
 
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
@@ -103,7 +98,9 @@ public class GameMap {
         int newX = location.X - 1;
         int newY = location.Y - 1;
 
-        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+        if (isOdd(location.X)) {
+            newY += DELTA_ODD_Y;
+        }
 
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
@@ -130,7 +127,9 @@ public class GameMap {
         int newX = location.X + 1;
         int newY = location.Y;
 
-        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+        if (isOdd(location.X)) {
+            newY += DELTA_ODD_Y;
+        }
 
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
@@ -145,7 +144,9 @@ public class GameMap {
         int newX = location.X - 1;
         int newY = location.Y;
 
-        if (isOnOddColumn(location)) newY += DELTA_ODD_Y;
+        if (isOdd(location.X)) {
+            newY += DELTA_ODD_Y;
+        }
 
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
@@ -164,21 +165,21 @@ public class GameMap {
         return map[i][j];
     }
 
-    /**
-     * Determines if the given location vector is located in an odd column
-     * @param location The Vector2 location to evaluate
-     * @return True, if the column is odd; false, otherwise
-     */
-    private boolean isOnOddColumn(Vector2 location) {
-        if (location.X % 2 == 0) return false;
-        else return true;
+    private boolean isOdd(int num) {
+        if (num % 2 == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public boolean removeEntity(EntityMovement ent_mov) {
         return entityMovements.remove(ent_mov);
     }
 
-    public boolean removeItem(ItemMovement item_mov) { return itemMovements.remove(item_mov); }
+    public boolean removeItem(ItemMovement item_mov) {
+        return itemMovements.remove(item_mov);
+    }
 
     private Vector2 applyBoundaryV(Vector2 location) {
         switch (boundaryMode) {
@@ -264,7 +265,7 @@ public class GameMap {
 
     public void moveAvatarTo(Vector2 dest) {
         Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 4);
-        Vector2 source = avatarMovement.getPosition();            
+        Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
         avatarMovement.reface(Direction.getDirection(source, dest));
     }
