@@ -5,7 +5,13 @@
  */
 package model.stat;
 
+import view.viewport.StatsViewport;
+
+import java.util.ArrayList;
+
 public class Stats {
+
+	private ArrayList<StatsViewport> registeredViews;
 	private int livesLeft;
 	private int strength;
 	private int agility;
@@ -27,10 +33,13 @@ public class Stats {
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
-		super();
+		registeredViews = new ArrayList<StatsViewport>();
         setStats(livesLeft, strength, agility, intellect, hardiness, experience, movement, equippedArmor, equippedWeapon);
 	}
-	
+
+	public void registerView(StatsViewport statsViewport) {
+		registeredViews.add(statsViewport);
+	}
 	public void mergeStats(Stats stat){
 
 		this.livesLeft += stat.getLivesLeft();
