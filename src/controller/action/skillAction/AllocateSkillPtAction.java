@@ -2,15 +2,16 @@ package controller.action.skillAction;
 
 import controller.action.Action;
 import model.skill.Skill;
+import model.skillset.BasicSkills;
 import model.skillset.SkillPtAllocator;
 
 public class AllocateSkillPtAction extends Action {
 
     private Skill skill;
-    private SkillPtAllocator skillPtAllocator;
+    private BasicSkills basicSkills;
 
-    public AllocateSkillPtAction(SkillPtAllocator skillPtAllocator) {
-        this.skillPtAllocator = skillPtAllocator;
+    public AllocateSkillPtAction(BasicSkills basicSkills) {
+        this.basicSkills = basicSkills;
     }
 
     public void setSkill(Skill skill) {
@@ -20,7 +21,7 @@ public class AllocateSkillPtAction extends Action {
     @Override
     public void perform() {
         if(skill != null) {
-            skillPtAllocator.increment(skill);
+        	basicSkills.increment(skill);
         }
     }
 }

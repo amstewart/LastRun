@@ -1,12 +1,14 @@
 package view.viewport;
 
 import controller.action.Action;
-
 import controller.action.skillAction.AllocateSkillPtAction;
+import model.entity.occupation.Occupation;
 import model.skill.Skill;
+import model.skillset.BasicSkills;
 import model.skillset.SkillPtAllocator;
 
 import javax.swing.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -17,11 +19,18 @@ public class SkillPtAllocationViewport extends Viewport {
 
     private AllocateSkillPtAction allocateSkillPtAction;
 
-    public SkillPtAllocationViewport(SkillPtAllocator skillPtAllocator) {
-        skillPtAllocator.registerView(this);
-        allocateSkillPtAction = new AllocateSkillPtAction(skillPtAllocator);
+    public SkillPtAllocationViewport(BasicSkills basicSkills) {
+        basicSkills.registerView(this);
+        allocateSkillPtAction = new AllocateSkillPtAction(basicSkills);
 
-        receiveSkillInfo(skillPtAllocator.getSkills(), skillPtAllocator.getSkillPoints());
+        receiveSkillInfo(basicSkills.getSkills(), basicSkills.getSkillPoints());
+    }
+    
+    public void updateOccupation(BasicSkills bs){
+    	 bs.registerView(this);
+         allocateSkillPtAction = new AllocateSkillPtAction(bs);
+
+         receiveSkillInfo(bs.getSkills(), bs.getSkillPoints());
     }
 
     public void receiveSkillInfo(Skill[] skills, int skillPoints) {
@@ -95,4 +104,6 @@ public class SkillPtAllocationViewport extends Viewport {
 
         }
     }
+
+	
 }

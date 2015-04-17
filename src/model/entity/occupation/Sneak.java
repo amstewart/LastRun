@@ -20,7 +20,6 @@ public class Sneak extends Occupation {
         super(inventory);
         equipmentManager = new SneakEquipmentManager(inventory);
         skills = new SneakSkills();
-        buildSkillPtAllocator(getSkills());
     }
 
     @Override
@@ -88,6 +87,11 @@ public class Sneak extends Occupation {
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
 		skills.sortSkills(eSkills, iSkills, sSkills);
 		
+	}
+	
+	@Override
+	public SneakSkills getSkillBook() {
+		return this.skills;
 	}
 
 }

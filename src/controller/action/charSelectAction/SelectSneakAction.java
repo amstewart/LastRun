@@ -1,18 +1,20 @@
 package controller.action.charSelectAction;
 
 import controller.action.Action;
+import model.entity.Avatar;
 import model.entity.OccupationChooser;
+import model.entity.occupation.Sneak;
 
 public class SelectSneakAction extends Action {
 
-    private OccupationChooser occupationChooser;
+    private Avatar avatar;
 
-    public SelectSneakAction(OccupationChooser occupationChooser) {
-        this.occupationChooser = occupationChooser;
+    public SelectSneakAction(Avatar avatar) {
+        this.avatar = avatar;
     }
 
     @Override
     public void perform() {
-        occupationChooser.selectSneak();
+        avatar.setOccupation(new Sneak(avatar.getInventory()));
     }
 }

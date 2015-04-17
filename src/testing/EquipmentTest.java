@@ -11,7 +11,6 @@ public class EquipmentTest extends Test {
     public void run() throws NoSuchMethodException {
         Avatar avatar = new Avatar();
         // only used like this for testing purposes
-        avatar.getOccupationChooser().selectSmasher();
         //avatar.beSmasher();
 
         Head head = new Head("Head", 100);

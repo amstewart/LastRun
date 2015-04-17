@@ -12,13 +12,15 @@ public class InternalSkill extends Skill{
 	public InternalSkill(String name, int level,InternalEffect effect, boolean passive) {
 		super(name, level, passive);
 		this.effect = effect;
+		effect.applyMultiplier(getLevel());
 	}
 	@Override
 	public void applyMultiplier() {
 		effect.applyMultiplier(getLevel());
 	}
 	
-	public void perfromSkill(Entity entity){
+	public void performSkill(Entity entity){
+	
 		effect.applyEffect(entity);
 	}
 	

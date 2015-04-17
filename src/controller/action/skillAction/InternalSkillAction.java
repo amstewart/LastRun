@@ -15,7 +15,7 @@ public class InternalSkillAction extends Action{
 	
 	@Override
 	public void perform() {
-		skill.perfromSkill(entity);
+		skill.performSkill(entity);
 	}
 
 }
