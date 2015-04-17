@@ -26,7 +26,8 @@ public class Avatar extends Entity {
 	private OccupationChooser occupationChooser;
 
 	public Avatar() {
-		super(ImageUtil.NULL_ASSET);
+		//super(ImageUtil.NULL_ASSET);
+		super(ImageUtil.EN_SKEL_S);
 		occupationChooser = new OccupationChooser(this);
 	}
 

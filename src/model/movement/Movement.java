@@ -26,6 +26,4 @@ public class Movement extends Observable{
     public void setMap(GameMap map) {
         this.map = map;
     }
-    
-    
 }

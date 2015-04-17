@@ -8,11 +8,11 @@ public abstract class Asset {
 		this.id = id;
 	}
 
-	public String getId() {
+	public String getAssetID() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setAssetID(String id) {
 		this.id = id;
 	}
 }
