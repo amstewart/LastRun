@@ -20,6 +20,7 @@ public class ImageUtil {
     //<editor-fold desc="ASSET PATHS" defaultstate="collapsed">
     private static final String DIR_RES = "res/";
     private static final String DIR_SPRITES = DIR_RES + "sprites/";
+    private static final String DIR_TERRAINS= DIR_RES + "terrain/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
@@ -31,13 +32,16 @@ public class ImageUtil {
     public static final String EN_SKEL_S = DIR_SPRITES + "en_skel_S.png";
     public static final String EN_SKEL_SW = DIR_SPRITES + "en_skel_SW.png";
     public static final String EN_SKEL_NW = DIR_SPRITES + "en_skel_NW.png";
-    
     public static final String[] smasherSprites= {null,EN_SKEL_SE,EN_SKEL_S,EN_SKEL_SE,null,null,null,EN_SKEL_NW,EN_SKEL_N,EN_SKEL_NE};
     public static final String[] sneakSprites={};
     public static final String[] summonerSprites={};
+    
+    public static final String GrassTerrain= DIR_TERRAINS + "GrassTerrain.png";
+    public static final String WaterTerrain= DIR_TERRAINS + "WaterTerrain.png";
+    public static final String MountainTerrain= DIR_TERRAINS + "MountainTerrain.png";
     		
     		
-   public static String[] inEffect= new String[10];
+    public static String[] inEffect= new String[10];
     
    public static void initSmasher(){      
     	for(int i=0;i<10;++i){

@@ -3,12 +3,17 @@ package view.viewport;
 import controller.action.Action;
 import controller.action.mapAction.ZoomInMapAction;
 import controller.action.mapAction.ZoomOutMapAction;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
@@ -101,9 +106,13 @@ public class MapViewport extends Viewport {
 
                 }
 
-                Color c = map.getTile(i, j).getTerrain().getColor();
-                g.setColor(c);
-                g.fillPolygon(p);
+                //Color c = map.getTile(i, j).getTerrain().getColor();
+                //g.setColor(c);
+                //g.fillPolygon(p);
+               // g.setClip(p);
+                String terrain= map.getTile(i,j).getTerrain().getAssetID();
+                ImageIcon image= ImageUtil.getImage(terrain);
+                g.drawImage(image.getImage(), positionX+offsetX, positionY+offsetY, hexRadius, hexRadius, this);
 
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
