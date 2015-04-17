@@ -21,42 +21,43 @@ import view.viewport.MapViewport;
 public class MoveDownLeftAction extends Action {
 
     private GameMap map;
-    
-    public MoveDownLeftAction(){
+
+    public MoveDownLeftAction() {
         Util.dbgOut("Dont forget to set the map for the action.", 3);
     }
-    
-    public MoveDownLeftAction(GameMap m){
+
+    public MoveDownLeftAction(GameMap m) {
         map = m;
     }
-    
-    public void setMap(GameMap m){
+
+    public void setMap(GameMap m) {
         map = m;
     }
-    public boolean isAreaEffect(Tile tile){
-    	if(tile.isAreaEffectOwner()){
-    		return true;
-    	}
-    	return false;
+
+    public boolean isAreaEffect(Tile tile) {
+        if (tile.isAreaEffectOwner()) {
+            return true;
+        }
+        return false;
     }
-    
-    public void updateEntityTileLocation(Entity e,Tile source, Tile dest){
-    	source.removeEntity(e);
-    	dest.addEntity(e);
+
+    public void updateEntityTileLocation(Entity e, Tile source, Tile dest) {
+        source.removeEntity(e);
+        dest.addEntity(e);
     }
-    
-    public void applyAreaEffect(Entity e,Tile dest){
-    	dest.getAreaEffect().apply(e);
+
+    public void applyAreaEffect(Entity e, Tile dest) {
+        dest.getAreaEffect().apply(e);
     }
 
     @Override
     public void perform() {
         Vector2 sourceLocation = map.getAvatarMovement().getPosition();
         Vector2 destLocation = map.getTileToTheSouthWest(sourceLocation).getLocation();
-        
-        Tile source= map.getTile(sourceLocation);
-        Tile dest= map.getTile(destLocation);
-        
+
+        Tile source = map.getTile(sourceLocation);
+        Tile dest = map.getTile(destLocation);
+
         ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
         Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
         
@@ -68,8 +69,10 @@ public class MoveDownLeftAction extends Action {
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
             }
-        }else{
+        } else {
             MapViewport.drawCantMove(destLocation);
         }
+        map.refaceAvatar(Direction.SOUTHWEST, ImageUtil.EN_SKEL_SW);
+
     }
 }

@@ -2,6 +2,8 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.mapAction.ZoomInMapAction;
+import controller.action.mapAction.ZoomOutMapAction;
 import controller.action.moveAvatarAction.MoveDownAction;
 import controller.action.moveAvatarAction.MoveDownLeftAction;
 import controller.action.moveAvatarAction.MoveDownRightAction;
@@ -22,6 +24,7 @@ import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
+import view.viewport.MapViewport;
 
 /**
  *
@@ -33,7 +36,7 @@ public class KeyController implements KeyListener{
     Map<Integer, Integer> skillSet;
     int skillNumber = 0;
 
-    public KeyController(GameMap map, Avatar avatar){
+    public KeyController(GameMap map, Avatar avatar, MapViewport mapVP){
         actionSet = new HashMap();
         skillSet = new HashMap();
         skillSet.put(0, KeyEvent.VK_1);
@@ -45,6 +48,9 @@ public class KeyController implements KeyListener{
         actionSet.put(KeyEvent.VK_A, new MoveDownLeftAction(map));
         actionSet.put(KeyEvent.VK_S, new MoveDownAction(map));
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
+        
+        actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
+        actionSet.put(KeyEvent.VK_EQUALS, new ZoomInMapAction(mapVP));
         
        ArrayList <ExternalSkill> eSkills = new ArrayList();
        ArrayList <InternalSkill> iSkills = new ArrayList();
