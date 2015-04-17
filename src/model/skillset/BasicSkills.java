@@ -8,6 +8,7 @@ import model.skill.SpellSkill;
 import view.viewport.SkillPtAllocationViewport;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public abstract class BasicSkills {
 
@@ -23,9 +24,11 @@ public abstract class BasicSkills {
 	}
 
 	public void notifyViews() {
+            try{
 		for (SkillPtAllocationViewport view : registeredViews) {
 			view.receiveSkillInfo(getSkills(), skillPoints);
 		}
+            }catch(ConcurrentModificationException ex){}
 	}
 
 	// some skill was incremented give all the skills to the view
