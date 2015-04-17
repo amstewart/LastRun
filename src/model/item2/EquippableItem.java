@@ -6,18 +6,9 @@ public class EquippableItem extends TakeableItem {
 
     private ArrayList<String> slotCategories;
 
-    public EquippableItem() {
-        slotCategories = new ArrayList<String>();
-    }
-
-    public EquippableItem(String slotCategory){
-        this();
-        slotCategories.add(slotCategory);
-    }
-
-    public EquippableItem(ArrayList<String> slotCategories){
-        this();
-        this.slotCategories = slotCategories;
+    public EquippableItem(String name, ArrayList<String> slots) {
+        super(name);
+        slotCategories = slots;
     }
 
     public void equip(EquipmentHandler equipmentHandler ) {

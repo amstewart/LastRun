@@ -2,19 +2,19 @@ package model.item2;
 
 import model.observer.InventoryObserver;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class Inventory {
 
-    private ArrayList<Observer> observers;
+    private ArrayList<InventoryObserver> observers;
     private ArrayList<NonEquippableItem> nonEquippableItems;
     private ArrayList<EquippableItem> equippableItems;
 
     public Inventory() {
+        observers = new ArrayList<InventoryObserver>();
         nonEquippableItems = new ArrayList<>();
         equippableItems = new ArrayList<>();
+
     }
 
     public void add(EquippableItem equippableItem) {
@@ -37,8 +37,28 @@ public class Inventory {
         }
     }
 
-    public void registerObserver(InventoryObserver o){
+    public void registerObserver(InventoryObserver inventoryObserver){
+        observers.add(inventoryObserver);
+        // After the view is registered, update the view with your items in the end
+    }
 
+    //TODO: Give observers the items it needs
+    private EquippableItem[] getEquippableItems() {
+        Collections.sort(equippableItems, new Comparator<EquippableItem>() {
+            public int compare(EquippableItem item1, EquippableItem item2) {
+                return item1.getName().compareTo(item2.getName());
+            }
+        });
+        return equippableItems.toArray(new EquippableItem[equippableItems.size()]);
+    }
+
+    private NonEquippableItem[] getNonEquippableItems() {
+        Collections.sort(nonEquippableItems, new Comparator<NonEquippableItem>() {
+            public int compare(NonEquippableItem item1, NonEquippableItem item2) {
+                return item1.getName().compareTo(item2.getName());
+            }
+        });
+        return nonEquippableItems.toArray(new NonEquippableItem[nonEquippableItems.size()]);
     }
 }
 
