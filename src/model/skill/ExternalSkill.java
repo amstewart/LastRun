@@ -23,7 +23,7 @@ public class ExternalSkill extends Skill{
 		effect.applyMultiplier(getLevel());
 	}
 	
-	public void perfromSkill(LocalArea map, Entity entity){
+	public void performSkill(LocalArea map, Entity entity){
 		effect.applyEffect(map, entity);
 	}
 	

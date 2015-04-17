@@ -14,8 +14,7 @@ public class CharacterSelectionState extends State{
 
     public CharacterSelectionState(Avatar avatar){
         this.avatar = avatar;
-        OccupationChooser occupationChooser = this.avatar.getOccupationChooser();
-        viewPort =  new CharacterSelectionViewport(occupationChooser);
+        viewPort =  new CharacterSelectionViewport(avatar);
     }
 
     @Override

@@ -15,7 +15,6 @@ import model.skillset.SkillPtAllocator;
 
 public abstract class Occupation {
 
-    private SkillPtAllocator skillPtAllocator;
     private final int initialSkillPoints;
 
     public Occupation(Inventory inventory) {
@@ -23,15 +22,9 @@ public abstract class Occupation {
         initialSkillPoints = 5;
     }
 
-    protected void buildSkillPtAllocator(Skill[] skills) {
-        skillPtAllocator = new SkillPtAllocator(initialSkillPoints, skills);
-    }
-
-    public SkillPtAllocator getSkillPtAllocator() {
-        return skillPtAllocator;
-    }
 
     public abstract Skill[] getSkills();
+    public abstract BasicSkills getSkillBook();
 
     // God this is horrible, but I can't think of another way right now
     // Subclasses responsible for overriding items that can equip

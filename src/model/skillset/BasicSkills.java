@@ -11,31 +11,59 @@ import java.util.ArrayList;
 
 public abstract class BasicSkills {
 
-    private ExternalSkill bargain;
-    private InternalSkill bindWound;
-    private ExternalSkill observation;
+	private ExternalSkill bargain;
+	private InternalSkill bindWound;
+	private ExternalSkill observation;
 
-    public BasicSkills() {
- 
-       // bargain = new ExternalSkill("Bargain", 1);
-    	BindWounds bw = new BindWounds();
-        bindWound = new InternalSkill("BindWound",1,bw,false);
-       // observation = new ExternalSkill("Observation", 1);
-    }
+	private int skillPoints = 5;
+	private ArrayList<SkillPtAllocationViewport> registeredViews;
 
-    protected ExternalSkill getBargain() {
-        return bargain;
-    }
+	public void registerView(SkillPtAllocationViewport view) {
+		registeredViews.add(view);
+	}
 
-    protected InternalSkill getBindWound() {
-        return bindWound;
-    }
+	public void notifyViews() {
+		for (SkillPtAllocationViewport view : registeredViews) {
+			view.receiveSkillInfo(getSkills(), skillPoints);
+		}
+	}
 
-    protected ExternalSkill getObservation() {
-        return observation;
-    }
+	// some skill was incremented give all the skills to the view
+	public void increment(Skill skill) {
+		if (skillPoints > 0) {
+			skill.increment();
+			skillPoints--;
+			notifyViews();
+		}
+	}
 
-    public abstract Skill[] getSkills();
-    public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
+	public int getSkillPoints() {
+		return skillPoints;
+	}
+
+	public BasicSkills() {
+		registeredViews = new ArrayList<SkillPtAllocationViewport>();
+		// bargain = new ExternalSkill("Bargain", 1);
+		BindWounds bw = new BindWounds();
+		bindWound = new InternalSkill("BindWound", 1, bw, false);
+		// observation = new ExternalSkill("Observation", 1);
+	}
+
+	protected ExternalSkill getBargain() {
+		return bargain;
+	}
+
+	protected InternalSkill getBindWound() {
+		return bindWound;
+	}
+
+	protected ExternalSkill getObservation() {
+		return observation;
+	}
+
+	public abstract Skill[] getSkills();
+
+	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);
+
 }

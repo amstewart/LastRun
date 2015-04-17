@@ -9,6 +9,7 @@ import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
+import model.skillset.SmasherSkills;
 import model.skillset.SummonerSkills;
 
 public class Summoner extends Occupation {
@@ -20,7 +21,6 @@ public class Summoner extends Occupation {
         super(inventory);
         equipmentManager = new SummonerEquipmentManager(inventory);
         skills = new SummonerSkills();
-        buildSkillPtAllocator(getSkills());
     }
 
     @Override
@@ -86,6 +86,10 @@ public class Summoner extends Occupation {
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
 		skills.sortSkills(eSkills,iSkills,sSkills);
 		
+	}
+	@Override
+	public SummonerSkills getSkillBook() {
+		return this.skills;
 	}
 
 }

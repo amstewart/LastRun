@@ -6,10 +6,14 @@ import controller.action.charSelectAction.SelectSneakAction;
 import controller.action.charSelectAction.SelectSummonerAction;
 import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToGameAction;
+
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import model.entity.Avatar;
 import model.entity.OccupationChooser;
 
 /**
@@ -20,17 +24,16 @@ public class CharacterSelectionViewport extends Viewport {
 
     public JLabel currentOccupation;
 
-    public CharacterSelectionViewport(OccupationChooser occupationChooser) {
-        occupationChooser.registerView(this);
-        initComponents(occupationChooser);
+    public CharacterSelectionViewport(Avatar avatar) {
+        initComponents(avatar);
     }
 
     @Override
     public void render() {
 
     }
+    private void initComponents(Avatar avatar) {
 
-    private void initComponents(OccupationChooser occupationChooser) {
         JButton back = new JButton("Go Back");
         back.addActionListener(Action.getActionListener(new GoBackAction()));
 
@@ -41,13 +44,13 @@ public class CharacterSelectionViewport extends Viewport {
 
         // These buttons need to add actions that call the correct select function of occupation choose
         JButton summoner = new JButton("summoner");
-        summoner.addActionListener(Action.getActionListener(new SelectSummonerAction(occupationChooser)));
+        summoner.addActionListener(Action.getActionListener(new SelectSummonerAction(avatar)));
 
         JButton smasher = new JButton("smasher");
-        smasher.addActionListener(Action.getActionListener(new SelectSmasherAction(occupationChooser)));
+        smasher.addActionListener(Action.getActionListener(new SelectSmasherAction(avatar)));
 
-        JButton sneak = new JButton("sneak");
-        sneak.addActionListener(Action.getActionListener(new SelectSneakAction(occupationChooser)));
+        JButton sneak = new JButton("sneak"); 
+        sneak.addActionListener(Action.getActionListener(new SelectSneakAction(avatar)));
 
         this.add(summoner);
         this.add(smasher);

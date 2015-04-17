@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
+import utility.ImageUtil;
 
 /**
  *

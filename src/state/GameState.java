@@ -4,7 +4,6 @@ import controller.KeyController;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
-
 import model.map.GameMap;
 import view.viewport.GameViewport;
 
@@ -32,12 +31,14 @@ public class GameState extends State {
         GameViewport v = (GameViewport) viewPort;
         v.getInventoryViewport().setOccupation(player.getOccupation());
         v.getEquipmentViewport().setOccupation(player.getOccupation());
+        v.updateOccupation(player.getOccupation());
+        
     }
 
     @Override
     public void onEnter() {
         render();
-
+      
         
         
         getViewport().addKeyListener(new KeyController(map,player));
