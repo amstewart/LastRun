@@ -26,6 +26,10 @@ public class Avatar extends Entity {
 		this.occupation = new Sneak(getInventory());//default
 	}
 
+	public boolean addToInventory(TakeableItem item) {
+		return getInventory().addItem(item);
+	}
+
 	public void changeName(String new_name) {
 		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
 		setName(new_name);
@@ -43,8 +47,13 @@ public class Avatar extends Entity {
 	public void setOccupation(Occupation o){
 		this.occupation = o;
 	}
+
 	public Equipment[] getEquipment() {
 		return getOccupation().getEquipment();
+	}
+
+	public TakeableItem[] getInventoryItems() {
+		return getInventory().getItems();
 	}
 
 	public Skill[] getSkills() {
@@ -57,15 +66,6 @@ public class Avatar extends Entity {
     	getOccupation().notifySkills(mana);
 
     }
-
-	public boolean addToInventory(TakeableItem item) {
-		return getInventory().addItem(item);
-	}
-
-
-	public TakeableItem[] getInventoryItems() {
-		return getInventory().getItems();
-	}
 
 	public void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {

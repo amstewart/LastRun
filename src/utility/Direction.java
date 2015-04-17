@@ -12,7 +12,7 @@ public class Direction {
     public static final Vector2 SOUTHEAST = new Vector2(1,1);
     public static final Vector2 SOUTHWEST = new Vector2(-1,1);
 
-    // TODO FIX - NOT CORRECT
+    // TODO REMOVE (Depreciated)
     public static Vector2 getDirection(Vector2 source, Vector2 target) {
         Vector2 ret;
         Vector2 delta = Vector2.subtract(target, source);
