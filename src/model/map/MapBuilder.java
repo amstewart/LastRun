@@ -37,11 +37,11 @@ public class MapBuilder {
                     tiles[i][j]= new Tile(loc);
                     double randomTerrain = Math.random();
                     if(randomTerrain < 0.70){
-                        tiles[i][j].addTerrain(new GrassTerrain());
+                        tiles[i][j].addTerrain(new GrassTerrain("Grass"));
                     }else if(randomTerrain < 0.85){
-                        tiles[i][j].addTerrain(new WaterTerrain());
+                        tiles[i][j].addTerrain(new WaterTerrain("Water"));
                     }else{
-                        tiles[i][j].addTerrain(new MountainTerrain());
+                        tiles[i][j].addTerrain(new MountainTerrain("Mountain"));
                     }
             }
         }

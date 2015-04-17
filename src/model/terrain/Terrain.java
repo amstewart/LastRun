@@ -2,7 +2,14 @@ package model.terrain;
 
 import java.awt.Color;
 
-public abstract class Terrain{ 
+import model.Assetable;
+
+public abstract class Terrain implements Assetable{
+		private String id;
+		
+		public Terrain(String id){
+			setAssetID(id);
+		}
     
         protected TerrainType terrainType ;
                 
@@ -12,6 +19,14 @@ public abstract class Terrain{
 
 	public abstract void accept(TerrainVisitor visitor);
 	public abstract Color getColor();
+	
+	public String getAssetID(){
+		return id;
+	}
+	
+	public void setAssetID(String id){
+		this.id=id;
+	}
         
         public enum TerrainType{
             Water, Grass, Mountain

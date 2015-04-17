@@ -65,7 +65,7 @@ public class MoveUpRightAction extends Action {
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
         	Entity e=source.getEntity();
         	map.moveAvatarTo(destLocation);
-            map.refaceAvatar(Direction.NORTHEAST, ImageUtil.EN_SKEL_NE);
+            map.refaceAvatar(Direction.NORTHEAST, ImageUtil.inEffect[9]);
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);

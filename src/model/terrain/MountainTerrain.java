@@ -13,7 +13,8 @@ import java.awt.Color;
  */
 public class MountainTerrain extends Terrain{
     
-    public MountainTerrain() {
+    public MountainTerrain(String id) {
+    	super(id);
         this.terrainType = TerrainType.Mountain;
     }
     

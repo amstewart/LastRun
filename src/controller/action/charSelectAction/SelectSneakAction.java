@@ -1,5 +1,6 @@
 package controller.action.charSelectAction;
 
+import utility.ImageUtil;
 import controller.action.Action;
 import model.entity.Avatar;
 import model.entity.OccupationChooser;
@@ -16,5 +17,7 @@ public class SelectSneakAction extends Action {
     @Override
     public void perform() {
         avatar.setOccupation(new Sneak(avatar.getInventory()));
+        ImageUtil.initSmasher();
+        avatar.setAssetID(ImageUtil.inEffect[2]); //set sneak sprite sheet here
     }
 }

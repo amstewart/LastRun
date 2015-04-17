@@ -32,8 +32,7 @@ public abstract class Entity implements Describable, Assetable{
 	private Inventory inventory = new Inventory();
 	private String id;
 
-	public Entity(String asset_id) {
-		id=asset_id;
+	public Entity() {
 		this.stats = saving_stats;
                 setCanMoveOnGrass(true);
 	}

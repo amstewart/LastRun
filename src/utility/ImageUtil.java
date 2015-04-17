@@ -31,6 +31,31 @@ public class ImageUtil {
     public static final String EN_SKEL_S = DIR_SPRITES + "en_skel_S.png";
     public static final String EN_SKEL_SW = DIR_SPRITES + "en_skel_SW.png";
     public static final String EN_SKEL_NW = DIR_SPRITES + "en_skel_NW.png";
+    
+    public static final String[] smasherSprites= {null,EN_SKEL_SE,EN_SKEL_S,EN_SKEL_SE,null,null,null,EN_SKEL_NW,EN_SKEL_N,EN_SKEL_NE};
+    public static final String[] sneakSprites={};
+    public static final String[] summonerSprites={};
+    		
+    		
+   public static String[] inEffect= new String[10];
+    
+   public static void initSmasher(){      
+    	for(int i=0;i<10;++i){
+    		inEffect[i]=smasherSprites[i];
+    	}
+    }
+    
+    public static void initSneak(){      
+    	for(int i=0;i<10;++i){
+    		inEffect[i]=sneakSprites[i];
+    	}
+    }
+    
+    public static void initSummoner(){      
+    	for(int i=0;i<10;++i){
+    		inEffect[i]=summonerSprites[i];
+    	}
+    }
     //</editor-fold>
 
     private static boolean initialized = false;

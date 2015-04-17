@@ -19,10 +19,9 @@ public class Avatar extends Entity {
 
 	private Pet pet;
 	private Occupation occupation;
+	private String id;
 
 	public Avatar() {
-		//super(ImageUtil.NULL_ASSET);
-		super(ImageUtil.EN_SKEL_S);
 		this.occupation = new Sneak(getInventory());//default
 	}
 
