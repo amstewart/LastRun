@@ -9,6 +9,7 @@ import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
+import model.skillset.BasicSkills;
 
 public class NPCOccupation extends Occupation {
 
@@ -80,6 +81,12 @@ public class NPCOccupation extends Occupation {
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public BasicSkills getSkillBook() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

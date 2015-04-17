@@ -22,6 +22,7 @@ public abstract class Skill {
 
     public void increment() {
         level++;
+        applyMultiplier();
     }
     
     public boolean isPassive(){

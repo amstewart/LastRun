@@ -22,6 +22,7 @@ public class GameViewport extends Viewport{
     private StatsViewport statsVP;
     private SkillPtAllocationViewport skillPtAllocationVP;
 
+
     public GameViewport(GameMap map, Inventory inventory, Occupation occupation, Stats stats){
         mapVP = new MapViewport(map);
         // TEMP TEST
@@ -29,8 +30,7 @@ public class GameViewport extends Viewport{
         inventoryVP = new InventoryViewport(inventory, occupation);
         equipmentVP = new EquipmentViewport(equipmentManager, occupation);
         statsVP = new StatsViewport(stats);
-        skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillPtAllocator());
-
+        skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillBook());
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);
         mapVP.setBackground(Color.lightGray);
@@ -44,7 +44,6 @@ public class GameViewport extends Viewport{
         this.add(statsVP);
         this.add(skillPtAllocationVP);
     }
-
     @Override
     public void render() {
         int width = this.getSize().width;
@@ -63,7 +62,6 @@ public class GameViewport extends Viewport{
         equipmentVP.render();
         statsVP.render();
         skillPtAllocationVP.render();
-
         this.requestFocusInWindow();
     }
     
@@ -73,6 +71,10 @@ public class GameViewport extends Viewport{
 
     public EquipmentViewport getEquipmentViewport(){
         return equipmentVP;
+    }
+    
+    public void updateOccupation(Occupation o){
+    	skillPtAllocationVP.updateOccupation(o.getSkillBook());
     }
     
 }

@@ -32,12 +32,9 @@ public class GameBundle {
         map = new GameMap();
         avatar = new Avatar();
         map.addEntity(avatar,new Vector2(0,0));
-        occupationChooser = avatar.getOccupationChooser();
+  
     }
-    
-    public OccupationChooser getOccupationChooser() {
-        return avatar.getOccupationChooser();
-    }
+ 
 
     public Inventory getInventory() {
         return avatar.getInventory();

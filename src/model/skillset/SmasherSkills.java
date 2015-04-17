@@ -14,7 +14,8 @@ public class SmasherSkills extends BasicSkills {
     private InternalSkill brawl;
 
     public SmasherSkills() {
-      //  oneHand = new InternalSkill("OneHand", 1);
+    	
+     // oneHand = new InternalSkill("OneHand", 1);
      //   twoHand = new InternalSkill("TwoHand", 1);
       //  brawl = new InternalSkill("Brawl", 1);
     }

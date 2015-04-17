@@ -8,6 +8,7 @@ package model.entity;
 import java.util.ArrayList;
 
 import model.entity.occupation.Occupation;
+import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
 import model.item.TakeableItem;
 import model.item.equipment.Equipment;
@@ -23,11 +24,12 @@ public class Avatar extends Entity {
     private static final String DESC = "This is the player character.";
 
 	private Pet pet;
-	private OccupationChooser occupationChooser;
+	private Occupation occupation;
+	
 
 	public Avatar() {
 		super(ImageUtil.NULL_ASSET);
-		occupationChooser = new OccupationChooser(this);
+		this.occupation = new Sneak(getInventory());//default
 	}
 
 	public void changeName(String new_name) {
@@ -41,11 +43,11 @@ public class Avatar extends Entity {
     }
 	// Pre condition, getting the occupationChooser only happens in states where occupationChooser was initialized
 	public Occupation getOccupation() {
-		return occupationChooser.getOccupation();
+		return occupation;
 	}
 
-	public OccupationChooser getOccupationChooser() {
-		return occupationChooser;
+	public void setOccupation(Occupation o){
+		this.occupation = o;
 	}
 	public Equipment[] getEquipment() {
 		return getOccupation().getEquipment();
@@ -59,7 +61,7 @@ public class Avatar extends Entity {
     public void setMana(int mana){
     	super.setMana(mana);
     	getOccupation().notifySkills(mana);
-    	
+
     }
 
 	public boolean addToInventory(TakeableItem item) {
