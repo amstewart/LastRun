@@ -8,6 +8,7 @@ package model.map;
 import model.Vector2;
 import model.tile.Tile;
 import model.areaEffect.LevelUpAreaEffect;
+import model.areaEffect.TakeDamageAreaEffect;
 import model.terrain.GrassTerrain;
 import model.terrain.MountainTerrain;
 import model.terrain.WaterTerrain;
@@ -46,7 +47,7 @@ public class MapBuilder {
         }
 
         //tiles[0][0][0].setItem(new Item()); a type of item
-        tiles[0][0].addAreaEffect(new LevelUpAreaEffect());
+        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect());
     }
 
     public Tile[][] getMap(){

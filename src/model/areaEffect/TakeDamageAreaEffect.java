@@ -20,6 +20,7 @@ public class TakeDamageAreaEffect extends AreaEffect {
     
     public void apply(Entity e){
         e.setLife(newHealth(e));
+
     }
     
     public int newHealth(Entity e){

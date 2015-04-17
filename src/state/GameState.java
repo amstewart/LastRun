@@ -20,7 +20,6 @@ public class GameState extends State {
     public GameState(GameMap map, Avatar player){
         this.map = map;
         this.player = player;
-        map.addEntity(player);
         inventory = player.getInventory();
 
         viewPort =  new GameViewport(map, inventory,player.getStats());
