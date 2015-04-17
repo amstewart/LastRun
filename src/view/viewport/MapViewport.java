@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import javax.swing.JButton;
 import model.Vector2;
 import model.map.GameMap;
@@ -155,7 +156,9 @@ public class MapViewport extends Viewport {
 
                         positionX -= (i - startX) * hexRadius / 2;
                         g.setColor(Color.ORANGE);
-                        g.fillRect(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+                        //g.fillRect(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+                        Rectangle rect = new Rectangle(offsetX + positionX - hexRadius/2, offsetY + positionY - hexRadius/2, hexRadius, hexRadius);
+                        g.drawImage(ImageUtil.getImage(e.getEntity().getAssetID()).getImage(), rect.x, rect.y, rect.width, rect.height, this);
                     }
                 }
             }
@@ -173,7 +176,7 @@ public class MapViewport extends Viewport {
     public void zoomOut() {
         scale -= 0.10;
         if(scale < 0.2){
-            scale = 02;
+            scale = 0.2;
         }
         rescaleMap();
     }
