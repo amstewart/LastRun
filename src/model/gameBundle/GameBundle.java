@@ -2,6 +2,7 @@
 package model.gameBundle;
 
 
+import model.Vector2;
 import model.entity.Avatar;
 import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
@@ -30,6 +31,7 @@ public class GameBundle {
     public GameBundle(){
         map = new GameMap();
         avatar = new Avatar();
+        map.addEntity(avatar,new Vector2(0,0));
         occupationChooser = avatar.getOccupationChooser();
     }
     
