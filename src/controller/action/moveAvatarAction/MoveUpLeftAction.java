@@ -9,6 +9,7 @@ import model.entity.Entity;
 import model.map.GameMap;
 import model.terrain.Terrain;
 import model.tile.Tile;
+import utility.Direction;
 import utility.ImageUtil;
 import utility.Util;
 import view.viewport.MapViewport;
@@ -63,7 +64,7 @@ public class MoveUpLeftAction extends Action {
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
         	Entity e=source.getEntity();
         	map.moveAvatarTo(destLocation);
-            map.changeAvatarSprite(ImageUtil.EN_SKEL_NW);
+            map.refaceAvatar(Direction.NORTHWEST, ImageUtil.EN_SKEL_NW);
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
