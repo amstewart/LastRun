@@ -28,8 +28,6 @@ public class CharacterSelectionViewport extends Viewport{
         
     }
 
-    
-
     private void initComponents(OccupationChooser occupationChooser) {
         JButton back = new JButton("Go Back");
         back.addActionListener(Action.getActionListener(new GoBackAction()));
