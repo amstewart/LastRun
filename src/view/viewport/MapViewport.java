@@ -33,11 +33,13 @@ public class MapViewport extends Viewport {
 
     public MapViewport(GameMap m) {
         map = m;
+        this.setLayout(null);
         initComponents();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //validate();
         drawTiles(g);
         drawEntities(g);
     }
@@ -45,13 +47,17 @@ public class MapViewport extends Viewport {
     private void drawTiles(Graphics g) {
         g.setColor(java.awt.Color.WHITE);
 
+        g.setColor(Color.ORANGE);
+        g.fillRect(0, 00, getSize().width, getSize().height);
+        
         //Calculate which portion of the map to draw based on avatar position.
         int windowWidth = (int) (this.getSize().width);
         int windowHeight = (int) (this.getSize().height);
 
-        int windowWidthInTiles = (windowWidth / hexWidth) + 2;
+        int windowWidthInTiles = windowWidth / ((int) (Math.tan(0.5235) * hexRadius) + hexRadius);
         int windowHeightInTiles = windowHeight / hexHeight;
-
+        
+        
         int startX = map.getAvatarMovement().getPosition().X - (windowWidthInTiles / 2);
         int startY = map.getAvatarMovement().getPosition().Y - (windowHeightInTiles / 2);
 
@@ -111,6 +117,12 @@ public class MapViewport extends Viewport {
                     //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
                 }
 
+                g.setColor(Color.pink);
+                for(int kk = 0; kk < 20; kk++){
+                    //int wierd =
+                    //g.fillRect(wierd * kk, wierd * kk, wierd, wierd);
+                }
+                
             }
         }
     }
@@ -119,8 +131,8 @@ public class MapViewport extends Viewport {
         int windowWidth = (int) (this.getSize().width);
         int windowHeight = (int) (this.getSize().height);
 
-        int windowWidthInTiles = (windowWidth / (hexRadius * 2)) + 2;
-        int windowHeightInTiles = windowHeight / (int) (hexRadius * 1.748);
+        int windowWidthInTiles = windowWidth / ((int) (Math.tan(0.5235) * hexRadius) + hexRadius);
+        int windowHeightInTiles = windowHeight / (int) (hexHeight);
 
         int startX = map.getAvatarMovement().getPosition().X - (windowWidthInTiles / 2);
         int startY = map.getAvatarMovement().getPosition().Y - (windowHeightInTiles / 2);
@@ -175,8 +187,8 @@ public class MapViewport extends Viewport {
 
     public void zoomOut() {
         scale -= 0.10;
-        if(scale < 0.2){
-            scale = 0.2;
+        if(scale < 0.3){
+            scale = 0.3;
         }
         rescaleMap();
     }
@@ -206,6 +218,12 @@ public class MapViewport extends Viewport {
         JButton zoomOut = new JButton("Zoom Out");
         zoomOut.addActionListener(Action.getActionListener(new ZoomOutMapAction(this)));
 
+        zoomIn.setBounds(400,0,100,30);
+        zoomOut.setBounds(500,0,100,30);
+        
+        zoomIn.repaint();
+        zoomOut.repaint();
+        
         this.add(zoomIn);
         this.add(zoomOut);
     }
