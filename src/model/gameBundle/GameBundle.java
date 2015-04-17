@@ -6,11 +6,9 @@ import model.Vector2;
 import model.entity.Avatar;
 import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
-import model.enums.DefinedStats;
 import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.map.GameMap;
-import model.stat.Stats;
 
 /*
     Game class that holds all necessary components that
@@ -31,8 +29,8 @@ public class GameBundle {
     public GameBundle(){
         map = new GameMap();
         avatar = new Avatar();
+        avatar.setName("PLAYER");
         map.addEntity(avatar,new Vector2(0,0));
-  
     }
  
 

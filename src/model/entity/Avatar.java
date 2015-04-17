@@ -30,9 +30,10 @@ public class Avatar extends Entity {
 		return getInventory().addItem(item);
 	}
 
-	public void changeName(String new_name) {
+	@Override
+	public void setName(String new_name) {
 		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
-		setName(new_name);
+		super.setName(new_name);
 	}
 
     @Override

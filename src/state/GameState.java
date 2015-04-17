@@ -38,8 +38,6 @@ public class GameState extends State {
     @Override
     public void onEnter() {
         render();
-      
-        
         
         getViewport().addKeyListener(new KeyController(map,player));
         

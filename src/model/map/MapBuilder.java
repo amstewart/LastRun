@@ -62,6 +62,8 @@ public class MapBuilder {
         for (Vector2 loc : lww) { // Add water terrains to map
             tiles[loc.X][loc.Y].addTerrain(new WaterTerrain());
         }
+
+        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect());
     }
     
     
