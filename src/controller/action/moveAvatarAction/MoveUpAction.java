@@ -13,6 +13,7 @@ import model.movement.EntityMovement;
 import model.terrain.Terrain;
 import model.terrain.Terrain.TerrainType;
 import model.tile.Tile;
+import utility.ImageUtil;
 import utility.Util;
 import view.viewport.MapViewport;
 
@@ -67,7 +68,8 @@ public class MoveUpAction extends Action{
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
         	Entity e=source.getEntity();
         	map.moveAvatarTo(destLocation);
-        	updateEntityTileLocation(e,source,dest);
+            map.changeAvatarSprite(ImageUtil.EN_SKEL_N);
+        	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
             }

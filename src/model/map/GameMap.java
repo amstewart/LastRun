@@ -67,6 +67,10 @@ public class GameMap {
         itemMovements.add(new ItemMovement(item, location));
     }
 
+    public void changeAvatarSprite(String new_asset) {
+        avatarMovement.setAsset(new_asset);
+    }
+
     public EntityMovement getAvatarMovement() {
         return avatarMovement;
     }

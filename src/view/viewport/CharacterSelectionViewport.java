@@ -32,8 +32,8 @@ public class CharacterSelectionViewport extends Viewport {
     public void render() {
 
     }
-
     private void initComponents(Avatar avatar) {
+
         JButton back = new JButton("Go Back");
         back.addActionListener(Action.getActionListener(new GoBackAction()));
 

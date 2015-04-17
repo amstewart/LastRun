@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entity;
 
 import java.util.ArrayList;
-
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
@@ -25,10 +19,10 @@ public class Avatar extends Entity {
 
 	private Pet pet;
 	private Occupation occupation;
-	
 
 	public Avatar() {
-		super(ImageUtil.NULL_ASSET);
+		//super(ImageUtil.NULL_ASSET);
+		super(ImageUtil.EN_SKEL_S);
 		this.occupation = new Sneak(getInventory());//default
 	}
 

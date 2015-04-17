@@ -55,4 +55,8 @@ public class EntityMovement extends Movement {
         this.facing_dir = new Vector2(new_facing);
         Util.dbgOut("Entity " + entity.getName() + " facing = " + facing_dir.toString(), 4);
     }
+
+    public void setAsset(String new_asset) {
+        entity.setAssetID(new_asset);
+    }
 }

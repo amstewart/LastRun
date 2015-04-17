@@ -1,16 +1,12 @@
 package view.viewport;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Polygon;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
+import utility.ImageUtil;
 
 /**
  *
@@ -225,7 +221,8 @@ public class MapViewport extends Viewport {
 
                         positionX -= (i - startX) * tileWidth / 2;
                         g.setColor(Color.ORANGE);
-                        g.fillRect(offsetX + positionX - tileWidth/2, offsetY + positionY - tileHeight/2, tileWidth, tileHeight);
+                        Rectangle rect = new Rectangle(offsetX + positionX - tileWidth/2, offsetY + positionY - tileHeight/2, tileWidth, tileHeight);
+                        g.drawImage(ImageUtil.getImage(e.getEntity().getAssetID()).getImage(), rect.x, rect.y, rect.width, rect.height, this);
                     }
                 }
             }
