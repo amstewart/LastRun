@@ -72,9 +72,11 @@ public class GameMap {
     }
 
      public Tile getTileToTheNorth(Vector2 location) {
-        location.Y  -= 1;
-        location = this.applyBoundaryV(location);
-        return map[location.X][location.Y];
+        int newX = location.X;
+        int newY = location.Y  - 1;
+        newX = this.applyBoundaryX(newX);
+        newY = this.applyBoundaryY(newY);
+        return map[newX][newY];
     }
     
     public Tile getTileToTheNorthEast(Vector2 location) {
