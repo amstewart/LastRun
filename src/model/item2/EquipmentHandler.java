@@ -55,11 +55,11 @@ public class EquipmentHandler {
     }
 
     private void putInEquipment(String slot, EquippableItem equippableItem) {
-        equipment.replace(slot, equippableItem);
+        equipment.put(slot, equippableItem);
     }
 
     private void removeFromEquipment(String slot) {
-        equipment.replace(slot, null);
+        equipment.put(slot, null);
     }
 
     private void removeFromInventory(EquippableItem equippableItem) {

@@ -11,11 +11,14 @@ import model.tile.Tile;
 
 import java.util.LinkedList;
 import model.entity.Avatar;
+import model.observer.InventoryObserver;
+import model.observer.MapObserver;
 import utility.Direction;
 import utility.Util;
+import view.viewport.Viewport;
 
 public class GameMap {
-
+    private ArrayList<MapObserver> observers = new ArrayList<>();
     private static int DELTA_ODD_Y = 1;
 
     private Tile[][] map;
@@ -275,5 +278,16 @@ public class GameMap {
         Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
         //avatarMovement.reface(Direction.getDirection(source, dest));
+    }
+
+    public void addMapObserver(MapObserver o) {
+        observers.add(o);
+        noitfyObserversMapHasChanged();
+    }
+    
+    private void noitfyObserversMapHasChanged(){
+        for(MapObserver o : observers){
+            o.receiveMap(this);
+        }
     }
 }
