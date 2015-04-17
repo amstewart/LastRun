@@ -28,6 +28,10 @@ public class GameState extends State {
     @Override
     public void update() {
         //MAP MOVEMENT LOGIC
+        //UGLY ASS CODE THAT IS TEMPORARY UNTIL VIEWPORTS COMPLETELY IMPLEMENT OBSERVER PATTERN
+        GameViewport v = (GameViewport) viewPort;
+        v.getInventoryViewport().setOccupation(player.getOccupation());
+        v.getEquipmentViewport().setOccupation(player.getOccupation());
     }
 
     @Override

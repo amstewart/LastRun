@@ -1,25 +1,14 @@
 
 package view.viewport;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-
-import model.entity.Avatar;
 import model.entity.occupation.Occupation;
-import model.entity.occupation.Smasher;
 import model.item.EquipmentManager;
 import model.item.Inventory;
-import model.item.SmasherEquipmentManager;
-import model.item.equipment.Equipment;
-import model.item.equipment.SmasherEquipment;
 import model.map.GameMap;
 import model.stat.Stats;
 
-import javax.swing.*;
 
 /**
  *
@@ -28,7 +17,7 @@ import javax.swing.*;
 public class GameViewport extends Viewport{
     
     private Viewport mapVP;
-    private Viewport inventoryVP;
+    private InventoryViewport inventoryVP;
     private EquipmentViewport equipmentVP;
     private StatsViewport statsVP;
     private SkillPtAllocationViewport skillPtAllocationVP;
@@ -77,6 +66,13 @@ public class GameViewport extends Viewport{
 
         this.requestFocusInWindow();
     }
+    
+    public InventoryViewport getInventoryViewport(){
+        return inventoryVP;
+    }
 
+    public EquipmentViewport getEquipmentViewport(){
+        return equipmentVP;
+    }
     
 }

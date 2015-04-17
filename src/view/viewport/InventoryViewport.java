@@ -20,6 +20,7 @@ import model.item.TakeableItem;
 
 public class InventoryViewport extends Viewport{
 
+    private Occupation occupation;
     private DropAction dropAction;
     private UseAction useAction;
 
@@ -35,7 +36,7 @@ public class InventoryViewport extends Viewport{
 
         dropAction = new DropAction(inventory);
         dropItem.addActionListener(Action.getActionListener(dropAction));
-
+        this.occupation = occupation;
         useAction = new UseAction(occupation);
         useItem.addActionListener(Action.getActionListener(useAction));
     }
@@ -60,6 +61,9 @@ public class InventoryViewport extends Viewport{
     public void render() {
 
 
+    }
+    public void setOccupation(Occupation occupation){
+            useAction.setOccupation(occupation);
     }
 
    

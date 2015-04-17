@@ -19,6 +19,10 @@ public class UseAction extends Action {
         this.occupation = occupation;
     }
 
+    public Occupation getOccupation(){
+        return occupation;
+    }
+    
     public void setCurrentItem(TakeableItem item) {
         this.item = item;
     }

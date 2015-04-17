@@ -106,4 +106,8 @@ public abstract class EquipmentManager {
     }
 
     public abstract Equipment[] getEquippedItems();
+
+    public void unregiserView(EquipmentViewport view) {
+        registeredViews.remove(view);
+    }
 }

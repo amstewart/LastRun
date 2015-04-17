@@ -14,12 +14,15 @@ import java.util.ArrayList;
 
 public class EquipmentViewport extends Viewport {
 
+    EquipmentManager equipmentManager;
+    
     private UnequipAction unequipAction;
     private JPopupMenu menu = new JPopupMenu("PopUp");
     private JMenuItem unequipItem = new JMenuItem("Unequip");
 
-    public EquipmentViewport(EquipmentManager equipmentManager, Occupation occupation) {
-        equipmentManager.registerView(this);
+    public EquipmentViewport(EquipmentManager em, Occupation occupation) {
+        this.equipmentManager = em;
+        this.equipmentManager.registerView(this);
         receiveEquipment(equipmentManager.getEquippedItems());
 
         setMenu();
@@ -44,6 +47,12 @@ public class EquipmentViewport extends Viewport {
     @Override
     public void render() {
 
+    }
+    
+    public void setOccupation(Occupation occupation){
+            equipmentManager.unregiserView(this);
+            equipmentManager = occupation.getEquipmentManager();
+            receiveEquipment(equipmentManager.getEquippedItems());
     }
 
     
