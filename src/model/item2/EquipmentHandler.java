@@ -1,15 +1,18 @@
 package model.item2;
 
+import model.observer.EquipmentHandlerObserver;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 // Each specific occupation will initialize this class with slots it can use
 public class EquipmentHandler {
 
-    // TODO: Need equipmentHandler observers
+    private ArrayList<EquipmentHandlerObserver> observers;
     private HashMap<String, EquippableItem> equipment;
     private Inventory inventory;
 
     public EquipmentHandler(Inventory inventory, HashMap<String, EquippableItem> slots) {
+        observers = new ArrayList<EquipmentHandlerObserver>();
         equipment = slots;
         this.inventory = inventory;
     }
@@ -30,6 +33,21 @@ public class EquipmentHandler {
             removeFromEquipment(slot);
             addBackToInventory(equippableItem);
         }
+    }
+
+    public void registerObserver(EquipmentHandlerObserver observer) {
+        observers.add(observer);
+        notifyObserversEquipmentchanged();
+    }
+
+    private void notifyObserversEquipmentchanged() {
+        for(EquipmentHandlerObserver observer: observers) {
+            observer.receiveEquipment(getEquipment());
+        }
+    }
+
+    private EquippableItem[] getEquipment() {
+        return ((EquippableItem[])equipment.values().toArray());
     }
 
     private boolean slotExists(String slot) {
