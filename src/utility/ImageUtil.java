@@ -64,19 +64,19 @@ public class ImageUtil {
         return new ImageIcon( image );
     }
 
-    //TODO UPDATE
+    /**
+     * Get a rescaled version of an image asset.
+     * @param fileName The asset filename to get
+     * @param width The final width of the image as an integer
+     * @param height The final height of the image as an integer
+     * @return The resultant, scaled image
+     */
     public static ImageIcon getImage(String fileName, int width, int height){
-        
-         BufferedImage bufferedImage = extractImage(fileName);
-         bufferedImage = scale(width,height,bufferedImage);
-         return new ImageIcon( bufferedImage );
+        return new ImageIcon(scale(width, height, getImage(fileName).getImage()));
     }
     
-    private static BufferedImage scale(int width, int height, BufferedImage image) {
-            
-            Image i = image;
-            i = getScaledImage(i, width, height);
-            return (BufferedImage) i;
+    private static BufferedImage scale(int width, int height, Image image) {
+            return (BufferedImage)getScaledImage(image, width, height);
         }
 
     private static  Image getScaledImage(Image srcImg, int w, int h) {
