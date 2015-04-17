@@ -18,8 +18,8 @@ import model.terrain.WaterTerrain;
  */
 public class MapBuilder {
     private Tile[][] tiles;
-    private int width=5;
-    private int height=5;
+    private int width=30;
+    private int height=30;
 
 
 
@@ -35,7 +35,7 @@ public class MapBuilder {
                     Vector2 loc= new Vector2(i,j);
                     tiles[i][j]= new Tile(loc);
                     double randomTerrain = Math.random();
-                    if(randomTerrain < 0.60){
+                    if(randomTerrain < 0.70){
                         tiles[i][j].addTerrain(new GrassTerrain());
                     }else if(randomTerrain < 0.85){
                         tiles[i][j].addTerrain(new WaterTerrain());
