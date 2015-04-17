@@ -29,7 +29,7 @@ public class MapViewport extends Viewport {
     private int hexRadius = 50;
 
     private int hexWidth = hexRadius * 2;
-    private int hexHeight = (int) (hexRadius * 1.748);
+    private int hexHeight = (int) (hexRadius * 1.75);
 
     public MapViewport(GameMap m) {
         map = m;
@@ -76,7 +76,7 @@ public class MapViewport extends Viewport {
                 int offsetY = (int) (hexRadius * 0.8);
 
                 if (i % 2 != 0) {
-                    offsetY += (int) (hexRadius - .1);
+                    offsetY += (int) (hexRadius * 0.84);
                 }
 
                 int positionX = (i - startX) * hexWidth;
@@ -148,7 +148,7 @@ public class MapViewport extends Viewport {
                         int offsetY = (int) (hexRadius * 0.8);
 
                         if (i % 2 != 0) {
-                            offsetY += (int) (hexRadius - .1);
+                            offsetY += (int) (hexRadius * 0.84);
                         }
 
                         int positionX = (i - startX) * hexRadius * 2;

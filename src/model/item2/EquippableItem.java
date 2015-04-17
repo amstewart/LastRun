@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class EquippableItem extends TakeableItem {
 
-    private ArrayList<String> slotCategories;
+    private String slotCategory;
 
-    public EquippableItem(String name, ArrayList<String> slots) {
+    public EquippableItem(String name,String slot) {
         super(name);
-        slotCategories = slots;
+        slotCategory = slot;
     }
 
     public void equip(EquipmentHandler equipmentHandler ) {
-        equipmentHandler.equip(this, slotCategories);
+        equipmentHandler.equip(this, slotCategory);
     }
 
     public void unequip(EquipmentHandler equipmentHandler) {
-        equipmentHandler.equip(this, slotCategories);
+        equipmentHandler.equip(this, slotCategory);
     }
 
 }

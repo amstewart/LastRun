@@ -62,13 +62,14 @@ public class GameMap {
         return arrayList;
     }
 
+    public void refaceAvatar(Vector2 facing, String new_asset) {
+        avatarMovement.reface(facing);
+        if (new_asset != null) avatarMovement.setAsset(new_asset);
+    }
+
     public void addItem(Item item, Vector2 location) {
         getTile(location).addItem(item);
         itemMovements.add(new ItemMovement(item, location));
-    }
-
-    public void changeAvatarSprite(String new_asset) {
-        avatarMovement.setAsset(new_asset);
     }
 
     public EntityMovement getAvatarMovement() {
@@ -273,6 +274,6 @@ public class GameMap {
         Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 4);
         Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
-        avatarMovement.reface(Direction.getDirection(source, dest));
+        //avatarMovement.reface(Direction.getDirection(source, dest));
     }
 }
