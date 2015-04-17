@@ -12,7 +12,7 @@ import model.tile.Tile;
 import java.util.LinkedList;
 import model.entity.Avatar;
 import model.observer.InventoryObserver;
-import model.observer.MapObserver;
+//import model.observer.MapObserver;
 import utility.Direction;
 import utility.Util;
 import view.viewport.Viewport;
@@ -279,9 +279,9 @@ public class GameMap {
         avatarMovement.changePosition(dest);
         //avatarMovement.reface(Direction.getDirection(source, dest));
     }
-
-    public void addMapObserver(MapObserver o) {
-        observers.add(o);
+    
+   public void addMapObserver(MapObserver o) {
+       observers.add(o);
         noitfyObserversMapHasChanged();
     }
     
@@ -290,4 +290,5 @@ public class GameMap {
             o.receiveMap(this);
         }
     }
+    
 }
