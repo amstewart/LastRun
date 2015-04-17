@@ -23,8 +23,8 @@ public class GameViewport extends Viewport{
     private SkillPtAllocationViewport skillPtAllocationVP;
 
 
-    public GameViewport(GameMap map, Inventory inventory, Occupation occupation, Stats stats){
-        mapVP = new MapViewport(map);
+    public GameViewport(MapViewport mapVP, Inventory inventory, Occupation occupation, Stats stats){
+        this.mapVP = mapVP;
         // TEMP TEST
         EquipmentManager equipmentManager = occupation.getEquipmentManager();
         inventoryVP = new InventoryViewport(inventory, occupation);
