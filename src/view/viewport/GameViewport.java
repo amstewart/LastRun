@@ -33,15 +33,14 @@ public class GameViewport extends Viewport{
     private StatsViewport statsVP;
     private SkillPtAllocationViewport skillPtAllocationVP;
 
-    public GameViewport(GameMap map, Inventory inventory, Stats stats){
+    public GameViewport(GameMap map, Inventory inventory, Occupation occupation, Stats stats){
         mapVP = new MapViewport(map);
         // TEMP TEST
-        Occupation smasher = new Smasher(inventory);
-        EquipmentManager equipmentManager = smasher.getEquipmentManager();
-        inventoryVP = new InventoryViewport(inventory, smasher);
-        equipmentVP = new EquipmentViewport(equipmentManager, smasher);
+        EquipmentManager equipmentManager = occupation.getEquipmentManager();
+        inventoryVP = new InventoryViewport(inventory, occupation);
+        equipmentVP = new EquipmentViewport(equipmentManager, occupation);
         statsVP = new StatsViewport(stats);
-        skillPtAllocationVP = new SkillPtAllocationViewport(smasher.getSkillPtAllocator());
+        skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillPtAllocator());
 
         this.setBackground(Color.white);
         inventoryVP.setBackground(Color.lightGray);

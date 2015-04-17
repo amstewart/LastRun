@@ -20,10 +20,9 @@ public class GameState extends State {
     public GameState(GameMap map, Avatar player){
         this.map = map;
         this.player = player;
-        map.addEntity(player);
         inventory = player.getInventory();
 
-        viewPort =  new GameViewport(map, inventory,player.getStats());
+        viewPort =  new GameViewport(map, inventory,player.getOccupation(),player.getStats());
     }
 
     @Override
@@ -37,7 +36,7 @@ public class GameState extends State {
 
         
         
-        getViewport().addKeyListener(new KeyController(map));
+        getViewport().addKeyListener(new KeyController(map,player));
         
         /*ArrayList<Action> a = new ArrayList<Action>();
         a.add(new MoveUp());

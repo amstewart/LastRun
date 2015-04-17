@@ -20,20 +20,24 @@ public class OccupationChooser {
     public OccupationChooser(Avatar avatar) {
         this.avatar = avatar;
         views = new ArrayList<CharacterSelectionViewport>();
+        selectSneak();//by default
     }
 
     public void selectSmasher() {
         occupation = new Smasher(avatar.getInventory());
+        occupation.getSkillPtAllocator().setSkills(occupation.getSkills());
         notifyViews();
     }
 
     public void selectSneak() {
         occupation = new Sneak(avatar.getInventory());
+        occupation.getSkillPtAllocator().setSkills(occupation.getSkills());
         notifyViews();
     }
 
     public void selectSummoner() {
         occupation = new Summoner(avatar.getInventory());
+        occupation.getSkillPtAllocator().setSkills(occupation.getSkills());
         notifyViews();
     }
 

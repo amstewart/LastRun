@@ -2,7 +2,7 @@ package view.viewport;
 
 import controller.action.Action;
 
-import controller.action.skillPtAction.AllocateSkillPtAction;
+import controller.action.skillAction.AllocateSkillPtAction;
 import model.skill.Skill;
 import model.skillset.SkillPtAllocator;
 
@@ -28,11 +28,15 @@ public class SkillPtAllocationViewport extends Viewport {
         this.removeAll();
         this.add(new JLabel("Skill Point Allocation"));
         ActionListener actionListener = Action.getActionListener(allocateSkillPtAction);
-        for(int i = 0; i < skills.length; i++) {
-            SkillIncrementButton button = new SkillIncrementButton(skills[i]);
-            button.addActionListener(actionListener);
-            add(button);
+
+        for(Skill s: skills){
+        	if(s != null){
+	            SkillIncrementButton button = new SkillIncrementButton(s);
+	            button.addActionListener(actionListener);
+	            add(button);
+        	}
         }
+      
 
         this.add(new JLabel(String.valueOf(skillPoints)));
     }

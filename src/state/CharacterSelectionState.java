@@ -12,9 +12,9 @@ public class CharacterSelectionState extends State{
     private CharacterSelectionViewport viewPort;
     private Avatar avatar;
 
-    public CharacterSelectionState(){
-        avatar = new Avatar();
-        OccupationChooser occupationChooser = avatar.getOccupationChooser();
+    public CharacterSelectionState(Avatar avatar){
+        this.avatar = avatar;
+        OccupationChooser occupationChooser = this.avatar.getOccupationChooser();
         viewPort =  new CharacterSelectionViewport(occupationChooser);
     }
 

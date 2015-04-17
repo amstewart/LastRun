@@ -1,4 +1,4 @@
-package controller.action.skillPtAction;
+package controller.action.skillAction;
 
 import controller.action.Action;
 import model.skill.Skill;

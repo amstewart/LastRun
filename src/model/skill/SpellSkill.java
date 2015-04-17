@@ -2,6 +2,7 @@ package model.skill;
 
 import java.util.Random;
 
+import controller.KeyController;
 import model.effect.ExternalEffect;
 import model.effect.SpellEffect;
 import model.entity.Entity;
@@ -18,11 +19,8 @@ public class SpellSkill extends Skill{
 
 
 	//=====TEMPORARY CONSTRUCTOR FOR TESTING=====
-	public SpellSkill(String name, int value) {
-		super(name, value);
-	}
 	public SpellSkill(String name, int level,SpellEffect effect, int radius) {
-		super(name, level);
+		super(name, level, false);
 		this.effect1 = effect1;
 		this.effect2 = effect2;
 		this.effect3 = effect3; 

@@ -1,10 +1,15 @@
 package model.entity.occupation;
 
+import java.util.ArrayList;
+
 import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
+import model.skill.ExternalSkill;
+import model.skill.InternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 import model.skillset.BasicSkills;
 import model.skillset.SkillPtAllocator;
 
@@ -54,5 +59,8 @@ public abstract class Occupation {
     public abstract String getName();
 
 	public abstract void notifySkills(int mana);
+
+	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
+			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);
 
 }

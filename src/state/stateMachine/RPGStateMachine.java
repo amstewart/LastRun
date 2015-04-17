@@ -21,7 +21,7 @@ public class RPGStateMachine extends StateMachine{
         gameBundle = new GameBundle();
         
         menu = new MenuState();
-        charSelect = new CharacterSelectionState();
+        charSelect = new CharacterSelectionState(gameBundle.getAvatar());
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
         
         this.add("menu", menu);
