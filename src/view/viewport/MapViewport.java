@@ -76,7 +76,7 @@ public class MapViewport extends Viewport {
                 int offsetY = (int) (hexRadius * 0.8);
 
                 if (i % 2 != 0) {
-                    offsetY += (int) (hexRadius - .1);
+                    offsetY += (int) (hexRadius);
                 }
 
                 int positionX = (i - startX) * hexWidth;
