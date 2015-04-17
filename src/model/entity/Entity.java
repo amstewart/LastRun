@@ -1,11 +1,14 @@
 package model.entity;
 
 import java.util.ArrayList;
+
 import model.item.TakeableItem;
 import model.stat.Stats;
-import model.Asset;
+import model.Assetable;
 import model.Describable;
+
 import java.util.LinkedList;
+
 import model.enums.DefinedStats;
 import model.item.CoinPouch;
 import model.item.Inventory;
@@ -17,7 +20,7 @@ import model.terrain.Terrain.TerrainType;
  * attack, and use other abilities. Entities all have a coin pouch which holds
  * their money.
  */
-public abstract class Entity extends Asset implements Describable {
+public abstract class Entity implements Describable, Assetable{
     // Fields
     private ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
     
@@ -27,9 +30,10 @@ public abstract class Entity extends Asset implements Describable {
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
 	private LinkedList<Status> statuses = new LinkedList<Status>();
 	private Inventory inventory = new Inventory();
+	private String id;
 
 	public Entity(String asset_id) {
-		super(asset_id);
+		id=asset_id;
 		this.stats = saving_stats;
                 setCanMoveOnGrass(true);
 	}
@@ -217,5 +221,13 @@ public abstract class Entity extends Asset implements Describable {
         }else{
             terrainTypesAllowedToMoveOn.remove(TerrainType.Grass);
         }
+    }
+    
+    public String getAssetID(){
+    	return id;
+    }
+    
+    public void setAssetID(String id){
+    	this.id=id;
     }
 }
