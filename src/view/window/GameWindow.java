@@ -11,9 +11,10 @@ import view.viewport.Viewport;
 public class GameWindow extends JFrame{
     public GameWindow(){
         this.setTitle("Last Run");
-        this.setSize(1, 1);
+        this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setExtendedState(this.getExtendedState()|JFrame.MAXIMIZED_BOTH );
+        this.setExtendedState(this.getExtendedState()
+                | JFrame.NORMAL);
         this.setVisible(true);
     }
     
