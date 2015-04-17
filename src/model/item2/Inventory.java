@@ -39,8 +39,22 @@ public class Inventory {
 
     public void registerObserver(InventoryObserver inventoryObserver){
         observers.add(inventoryObserver);
-        // After the view is registered, update the view with your items in the end
+        notifyObserversNonEquippableItemsHaveChanged();
+        notifyObserversEquippableItemsHaveChanged();
     }
+
+    private void notifyObserversNonEquippableItemsHaveChanged() {
+        for(InventoryObserver observer : observers){
+            observer.receiveNonEquippableItems(getNonEquippableItems());
+        }
+    }
+
+    private void notifyObserversEquippableItemsHaveChanged() {
+        for(InventoryObserver observer : observers){
+            observer.receiveEquippableItems(getEquippableItems());
+        }
+    }
+    
 
     //TODO: Give observers the items it needs
     private EquippableItem[] getEquippableItems() {
