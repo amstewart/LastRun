@@ -7,11 +7,12 @@ package model.map;
 
 import model.Vector2;
 import model.tile.Tile;
-import model.areaEffect.LevelUpAreaEffect;
 import model.areaEffect.TakeDamageAreaEffect;
 import model.terrain.GrassTerrain;
 import model.terrain.MountainTerrain;
 import model.terrain.WaterTerrain;
+
+import java.util.LinkedList;
 
 /**
  *
@@ -22,14 +23,36 @@ public class MapBuilder {
     private int width=30;
     private int height=30;
 
-
-
     public MapBuilder(){
-    	generateMap();
+    	generateMapDebug();
+    	//generateMapRandom();
+    }
+
+    public void generateMapDebug() {
+        tiles = new Tile[width][height];
+
+        LinkedList<Vector2> lmm = new LinkedList<>(); // list of mountain tile locations
+        lmm.add(new Vector2(3,4));
+        lmm.add(new Vector2(3,5));
+        lmm.add(new Vector2(3,6));
+        lmm.add(new Vector2(0,6));
+        lmm.add(new Vector2(1,6));
+        lmm.add(new Vector2(1,5));
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                tiles[i][j] = new Tile(new Vector2(i, j));
+                tiles[i][j].addTerrain(new GrassTerrain());
+            }
+        }
+
+        for (Vector2 loc : lmm) {
+            tiles[loc.X][loc.Y].addTerrain(new MountainTerrain());
+        }
     }
     
     
-    public void generateMap(){
+    public void generateMapRandom(){
         tiles= new Tile[width][height];
         for(int i=0;i<width;i++){
             for(int j=0;j<height;j++){
