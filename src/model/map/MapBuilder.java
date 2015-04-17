@@ -39,15 +39,28 @@ public class MapBuilder {
         lmm.add(new Vector2(1,6));
         lmm.add(new Vector2(1,5));
 
-        for (int i = 0; i < width; i++) {
+        LinkedList<Vector2> lww = new LinkedList<>(); // list of water tile locations
+        lww.add(new Vector2(4,5));
+        lww.add(new Vector2(4,6));
+        lww.add(new Vector2(5,5));
+        lww.add(new Vector2(6,6));
+        lww.add(new Vector2(6,7));
+        lww.add(new Vector2(7,3));
+        lww.add(new Vector2(8,4));
+
+        for (int i = 0; i < width; i++) { // Init all tiles to grass
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(new Vector2(i, j));
                 tiles[i][j].addTerrain(new GrassTerrain());
             }
         }
 
-        for (Vector2 loc : lmm) {
+        for (Vector2 loc : lmm) { // Add mountain terrains to map
             tiles[loc.X][loc.Y].addTerrain(new MountainTerrain());
+        }
+
+        for (Vector2 loc : lww) { // Add water terrains to map
+            tiles[loc.X][loc.Y].addTerrain(new WaterTerrain());
         }
     }
     
