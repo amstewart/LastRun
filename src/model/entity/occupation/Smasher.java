@@ -1,9 +1,14 @@
 package model.entity.occupation;
 
+import java.util.ArrayList;
+
 import model.item.Inventory;
 import model.item.SmasherEquipmentManager;
 import model.item.equipment.*;
+import model.skill.ExternalSkill;
+import model.skill.InternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 import model.skillset.SkillPtAllocator;
 import model.skillset.SmasherSkills;
 
@@ -75,6 +80,13 @@ public class Smasher extends Occupation {
 	@Override
 	public void notifySkills(int mana) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sortSkills(ArrayList<ExternalSkill> eSkills,
+			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
+		skills.sortSkills(eSkills,iSkills,sSkills);
 		
 	}
 

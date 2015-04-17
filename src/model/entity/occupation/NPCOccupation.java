@@ -1,9 +1,14 @@
 package model.entity.occupation;
 
+import java.util.ArrayList;
+
 import model.item.EquipmentManager;
 import model.item.Inventory;
 import model.item.equipment.*;
+import model.skill.ExternalSkill;
+import model.skill.InternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 
 public class NPCOccupation extends Occupation {
 
@@ -13,6 +18,7 @@ public class NPCOccupation extends Occupation {
 
     @Override
     public Skill[] getSkills() {
+    	//TODO will fix later
         return new Skill[0];
     }
 
@@ -65,6 +71,13 @@ public class NPCOccupation extends Occupation {
     }
 	@Override
 	public void notifySkills(int mana) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sortSkills(ArrayList<ExternalSkill> eSkills,
+			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
 		// TODO Auto-generated method stub
 		
 	}

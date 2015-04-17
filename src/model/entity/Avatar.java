@@ -5,11 +5,16 @@
  */
 package model.entity;
 
+import java.util.ArrayList;
+
 import model.entity.occupation.Occupation;
 import model.entity.npc.pet.Pet;
 import model.item.TakeableItem;
 import model.item.equipment.Equipment;
+import model.skill.ExternalSkill;
+import model.skill.InternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 import utility.ImageUtil;
 import utility.Util;
 
@@ -64,5 +69,11 @@ public class Avatar extends Entity {
 
 	public TakeableItem[] getInventoryItems() {
 		return getInventory().getItems();
+	}
+
+	public void sortSkills(ArrayList<ExternalSkill> eSkills,
+			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
+		getOccupation().sortSkills(eSkills,iSkills,sSkills);
+		
 	}
 }

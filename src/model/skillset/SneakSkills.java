@@ -1,8 +1,11 @@
 package model.skillset;
 
+import java.util.ArrayList;
+
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
+import model.skill.SpellSkill;
 
 public class SneakSkills extends BasicSkills {
 
@@ -11,20 +14,20 @@ public class SneakSkills extends BasicSkills {
     private InternalSkill range;
 
     public SneakSkills() {
-        creep = new InternalSkill("Creep", 1);
-        trapDetectionRemoval = new ExternalSkill("Trap Removal/Detection", 1);
-        range = new InternalSkill("Range", 1);
+     //   creep = new InternalSkill("Creep", 1);
+    //    trapDetectionRemoval = new ExternalSkill("Trap Removal/Detection", 1);
+     //   range = new InternalSkill("Range", 1);
     }
 
-    protected Skill getCreep() {
+    protected InternalSkill getCreep() {
         return creep;
     }
 
-    protected Skill getTrapRemoval() {
+    protected ExternalSkill getTrapRemoval() {
         return trapDetectionRemoval;
     }
 
-    protected Skill getRange() {
+    protected InternalSkill getRange() {
         return range;
     }
 
@@ -35,4 +38,17 @@ public class SneakSkills extends BasicSkills {
 
         return list;
     }
+
+	@Override
+	public void sortSkills(ArrayList<ExternalSkill> eSkills,
+			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
+		eSkills.add(getObservation());
+		eSkills.add(getBargain());
+		iSkills.add(getBindWound());
+		iSkills.add(getRange());
+		eSkills.add(getTrapRemoval());
+		iSkills.add(getCreep());
+		
+		
+	}
 }

@@ -44,5 +44,11 @@ public class SkillPtAllocator {
 
     public int getSkillPoints() {
         return skillPoints;
+        
     }
+
+	public void setSkills(Skill[] skills) {
+		this.skills = skills;
+		notifyViews();
+	}
 }
