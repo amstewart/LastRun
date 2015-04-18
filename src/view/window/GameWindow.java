@@ -15,6 +15,7 @@ public class GameWindow extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setExtendedState(this.getExtendedState()|JFrame.MAXIMIZED_BOTH );
         this.setVisible(true);
+        javax.swing.ToolTipManager.sharedInstance().setInitialDelay(0);
     }
     
    public void displayState(Viewport viewPort){
