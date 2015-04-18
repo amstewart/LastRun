@@ -13,6 +13,10 @@ import model.skillset.BasicSkills;
 
 public abstract class Occupation {
 
+    public static final String HEAD = "Head";
+    public static final String CHEST = "Chest";
+    public static final String LEGS = "Legs";
+
     private final int initialSkillPoints;
 
     private EquipmentHandler equipmentHandler;
@@ -35,9 +39,9 @@ public abstract class Occupation {
     protected ArrayList<String> getBasicSlots(){
         ArrayList<String> list;
         list = new ArrayList<>();
-        list.add(EquipmentHandler.HEAD);
-        list.add(EquipmentHandler.CHEST);
-        list.add(EquipmentHandler.LEGS);
+        list.add(HEAD);
+        list.add(CHEST);
+        list.add(LEGS);
         return list;
     }
 

@@ -12,6 +12,8 @@ import model.skillset.SummonerSkills;
 
 public class Summoner extends Occupation {
 
+    public static final String SUMMONER_WEAPON = "SummonerWeapon";
+
     private SummonerSkills skills;
 
     public Summoner(Inventory inventory) {
@@ -23,7 +25,7 @@ public class Summoner extends Occupation {
     private void setSummonerItemSlots() {
         ArrayList<String> slots = getBasicSlots();
         
-        slots.add(EquipmentHandler.SUMMONER_WEAPON);
+        slots.add(SUMMONER_WEAPON);
 
         updateEquipmentHandler(slots);
     }

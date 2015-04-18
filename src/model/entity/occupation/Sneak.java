@@ -12,6 +12,8 @@ import model.skillset.SneakSkills;
 
 public class Sneak extends Occupation {
 
+    public static final String SNEAK_WEAPON = "SneakWeapon";
+
     private SneakSkills skills;
 
     public Sneak(Inventory inventory) {
@@ -23,7 +25,7 @@ public class Sneak extends Occupation {
     private void setSneakItemSlots() {
         ArrayList<String> slots = getBasicSlots();
         
-        slots.add(EquipmentHandler.SNEAK_WEAPON);
+        slots.add(SNEAK_WEAPON);
 
         updateEquipmentHandler(slots);
     }
