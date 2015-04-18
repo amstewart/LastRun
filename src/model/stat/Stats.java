@@ -6,8 +6,8 @@
 package model.stat;
 
 import java.util.ArrayList;
-
-import view.viewport.StatsViewport;
+import model.enums.StatsCategory;
+import view.viewport.StatisticsViewport;
 
 public class Stats {
 	private int livesLeft;
@@ -28,40 +28,41 @@ public class Stats {
 	private int defensiveRating;
 	private int armorRating;
 
-	private ArrayList<StatsViewport> registeredViews = new ArrayList<>();
+	private ArrayList<StatisticsViewport> registeredViews = new ArrayList<>();
+        private ArrayList<StatsCategory> statsCategory = new ArrayList<>();
 
-	public void registerView(StatsViewport view) {
+	public void registerView(StatisticsViewport view) {
 		registeredViews.add(view);
 		notifyViews();
 	}
 
 	private void notifyViews() {
-		for (StatsViewport views : registeredViews) {
-			views.receive(this.getStrings());
+		for (StatisticsViewport views : registeredViews) {
+			views.receive(this.getStats(), statsCategory );
 		}
 	}
 
-	private ArrayList<String> getStrings() {
-		ArrayList<String> string = new ArrayList<>();
-		string.add("Lives Left: " + Integer.toString(livesLeft));
-		string.add("Strength: " +Integer.toString(strength));
-		string.add("Agility: " +Integer.toString(agility));
-		string.add("Intellect: " +Integer.toString(intellect));
-		string.add("Hardiness: " +Integer.toString(hardiness));
-		string.add("Experience: " +Integer.toString(experience));
-		string.add("Movement: " +Integer.toString(movement));
-
-		string.add("Equipped Armor: " +Integer.toString(equippedArmor));
-		string.add("Equipped Weapon: " +Integer.toString(equippedWeapon));
-
-		string.add("Level: " +Integer.toString(level));
-		string.add("Life: " +Integer.toString(life));
-		string.add("Mana: " +Integer.toString(mana));
-		string.add("Offensive Rating: " +Integer.toString(offensiveRating));
-		string.add("Defensive Rating: " +Integer.toString(defensiveRating));
-		string.add("Armor Rating: " +Integer.toString(armorRating));
-		return string;
+	private ArrayList<Integer> getStats() {
+		ArrayList<Integer> stats = new ArrayList<>();
+		stats.add(livesLeft); statsCategory.add(StatsCategory.LIVES_LEFT);
+		stats.add(strength); statsCategory.add(StatsCategory.STRENGTH);
+		stats.add(agility); statsCategory.add(StatsCategory.AGILITY);
+		stats.add(intellect); statsCategory.add(StatsCategory.INTELLECT);
+		stats.add(hardiness); statsCategory.add(StatsCategory.HARDINESS);
+		stats.add(experience); statsCategory.add(StatsCategory.EXPERIENCE);
+		stats.add(movement); statsCategory.add(StatsCategory.MOVEMENT);
+		stats.add(equippedArmor); statsCategory.add(StatsCategory.EQUIPPED_ARMOR);
+		stats.add(equippedWeapon); statsCategory.add(StatsCategory.EQUIPPED_WEAPON);
+		stats.add(level); statsCategory.add(StatsCategory.LEVEL);
+		stats.add(life); statsCategory.add(StatsCategory.LIFE);
+		stats.add(mana); statsCategory.add(StatsCategory.MANA);
+		stats.add(offensiveRating); statsCategory.add(StatsCategory.OFFENSIVE_RATING);
+		stats.add(defensiveRating); statsCategory.add(StatsCategory.DEFENSIVE_RATING);
+		stats.add(armorRating); statsCategory.add(StatsCategory.ARMOR_RATING);
+		return stats;
 	}
+        
+        
 	
 	public Stats(){
 		

@@ -28,7 +28,7 @@ public class GameViewport extends Viewport {
      */
     
     private Viewport mapVP;
-    private StatsViewport statsVP;
+    private StatisticsViewport statsVP;
     private InventoryViewport invVP;
     private EquipmentViewport equipVP;
     private SkillsViewport skillsViewport;
@@ -48,7 +48,7 @@ public class GameViewport extends Viewport {
         a.addObserver(invVP);
         equipVP = new EquipmentViewport(occupation.getEquipmentHandler(), a.getStats());
         a.addObserver(equipVP);
-        statsVP = new StatsViewport(stats);
+        statsVP = new StatisticsViewport(stats);
         dialogueViewport = DialogueViewport.getInstance();
         mapVP.setBackground(Color.lightGray);
         statsVP.setBackground(Color.lightGray);

@@ -147,11 +147,12 @@ public class ImageUtil {
     public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
     
     //Stati//
-    
     public static final String SLEEPING = DIR_ITEMS + "apple.png";
     public static final String SMELLY = DIR_ITEMS + "watermelon.png";
     public static final String SINGING = DIR_ITEMS + "torch.png";
     public static final String INVISIBLE = DIR_ITEMS + "torch.png";
+    
+    
     
 
     public static String[] inEffect = new String[10];
@@ -205,6 +206,19 @@ public class ImageUtil {
     /*** CHARACTER SELECTION VIEW PORT ***/
     public static final String SKILLS_DECAL = DIR_DECALS + "GoldStart.png";
     
+     /*** STATISTIC VIEW PORT ***/ 
+    public static final String STATS_LIVES_LEFT_DECAL = DIR_SPRITES + "st_lives_left.png";
+    public static final String STATS_OFFESIVE_RATING_DECAL = DIR_SPRITES + "st_offensive_rating.png";
+    public static final String STATS_DEFENSIVE_RATING_DECAL = DIR_SPRITES + "st_defensive_rating.png";
+    public static final String STATS_ARMOR_RATING_DECAL = DIR_SPRITES + "st_armor_rating.png";
+    public static final String STATS_ARMOR_DECAL = DIR_SPRITES + "st_equipped_weapon.png";
+    public static final String STATS_EQUIPPED_WEAPON_DECAL = DIR_SPRITES + "st_armor.png";
+    public static final String STATS_MANA_DECAL = DIR_SPRITES + "st_mana.png";
+    public static final String STATS_AGILITY_DECAL = DIR_SPRITES + "st_agility.png";
+    public static final String STATS_LEVEL_DECAL = DIR_SPRITES + "st_level.png";
+    public static final String STATS_MOVEMENT_DECAL = DIR_SPRITES + "st_movement.png";
+    public static final String STATS_STRENGTH_DECAL = DIR_SPRITES + "st_strength.png";
+    public static final String STATS_EXPERIENCE_DECAL = DIR_SPRITES + "st_experience.png";
     /**
      * * MAP VIEW PORT **
      */
