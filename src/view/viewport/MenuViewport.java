@@ -17,19 +17,11 @@ import utility.ImageUtil;
 
 public class MenuViewport extends Viewport {
 
-    ImageIcon menuBackground;
-    ImageIcon newGameButtonImage;
-    ImageIcon exitButtonImage;
-    ImageIcon loadButtonImage;
-
     /**
      * Creates new form MenuViewport
      */
     public MenuViewport() {
-        menuBackground = new ImageIcon(ImageUtil.MAIN_MENU_BACKGROUND);
-        newGameButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_NEW_GAME_BUTTON);
-        loadButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_LOAD_BUTTON);
-        exitButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_EXIT_BUTTON);
+        backgroundImage = new ImageIcon(ImageUtil.MAIN_MENU_BACKGROUND);
         initComponents();
         setButtonBackgroundTransparent(newGameButton);
         setButtonBackgroundTransparent(exitGameButton);
@@ -44,7 +36,7 @@ public class MenuViewport extends Viewport {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(menuBackground.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
+        g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
     /**
      * This method is called from within the constructor to initialize the form.

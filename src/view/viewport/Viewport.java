@@ -4,6 +4,7 @@ package view.viewport;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -11,6 +12,8 @@ import javax.swing.JButton;
  * @author ChrisMoscoso
  */
 public abstract class Viewport extends JPanel{
+    
+    protected ImageIcon backgroundImage;
     
     public abstract void render();
     

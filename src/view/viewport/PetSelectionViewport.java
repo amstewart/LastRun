@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JButton;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import utility.ImageUtil;
 
@@ -21,8 +22,10 @@ public class PetSelectionViewport extends Viewport {
     /**
      * Creates new form MenuViewport
      */
+    
     public PetSelectionViewport() {
         initComponents();
+        backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
     }
     
     public JButton getStartGameButton(){
@@ -46,6 +49,12 @@ public class PetSelectionViewport extends Viewport {
 
     }
     
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+         g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
+    }
+    
     private void addActionListeners(){
         mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
         startGameButton.addActionListener(Action.getActionListener(new GoToGameAction()));
@@ -64,24 +73,34 @@ public class PetSelectionViewport extends Viewport {
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON).getImage();
-                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON,this.getWidth(), this.getHeight()).getImage();
+                g.drawImage( image , 0, 0, this);
             }
         };
         mainMenuButton = new javax.swing.JButton(){
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_MENU_BUTTON).getImage();
-                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_MENU_BUTTON, this.getWidth(), this.getHeight()).getImage();
+                g.drawImage( image , 0, 0, this);
             }
         };
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        gotLeftButton = new javax.swing.JButton();
-        gotRightButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g){
+                Image image2 = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET).getImage();
+                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET, image2.getWidth(this)*2/3, this.getHeight()).getImage();
+                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+                System.out.println("Size: " +  image2.getWidth(this)*2/3);
+            }
+        };
+        goLeftButton = new javax.swing.JButton();
+        goRightButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        avatarDescriptionTextArea = new javax.swing.JTextArea();
+        avatarOcuppationNameLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel(){
 
             @Override
@@ -90,6 +109,9 @@ public class PetSelectionViewport extends Viewport {
                 g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
             }
         };
+        jPanel4 = new javax.swing.JPanel();
+        avatarNickNameLabel = new javax.swing.JLabel();
+        avatarNickNameTextField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(202, 175, 149));
 
@@ -99,11 +121,13 @@ public class PetSelectionViewport extends Viewport {
         mainMenuButton.setText("Menu");
         mainMenuButton.setPreferredSize(new java.awt.Dimension(148, 65));
 
+        jPanel1.setOpaque(false);
+
         jPanel3.setBackground(new java.awt.Color(0, 0, 204));
 
-        gotLeftButton.setText("Left");
+        goLeftButton.setText("Left");
 
-        gotRightButton.setText("Right");
+        goRightButton.setText("Right");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -111,9 +135,9 @@ public class PetSelectionViewport extends Viewport {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(gotLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(goLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gotRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(goRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -121,15 +145,28 @@ public class PetSelectionViewport extends Viewport {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gotLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gotRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(goLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextArea1.setBackground(new java.awt.Color(255, 102, 51));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setOpaque(false);
+
+        avatarDescriptionTextArea.setBackground(new java.awt.Color(0, 51, 51));
+        avatarDescriptionTextArea.setColumns(20);
+        avatarDescriptionTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        avatarDescriptionTextArea.setRows(5);
+        avatarDescriptionTextArea.setText("\tAvatar description goes here");
+        avatarDescriptionTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(163, 43, 43)));
+        avatarDescriptionTextArea.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        avatarDescriptionTextArea.setMaximumSize(new java.awt.Dimension(853, 2147483647));
+        jScrollPane1.setViewportView(avatarDescriptionTextArea);
+
+        avatarOcuppationNameLabel.setFont(new java.awt.Font("Yu Mincho", 1, 18)); // NOI18N
+        avatarOcuppationNameLabel.setForeground(new java.awt.Color(240, 240, 240));
+        avatarOcuppationNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        avatarOcuppationNameLabel.setText("Hello");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,9 +176,11 @@ public class PetSelectionViewport extends Viewport {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(avatarOcuppationNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
                 .addGap(196, 196, 196))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,8 +188,10 @@ public class PetSelectionViewport extends Viewport {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(avatarOcuppationNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -162,7 +203,42 @@ public class PetSelectionViewport extends Viewport {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGap(0, 45, Short.MAX_VALUE)
+        );
+
+        jPanel4.setMaximumSize(new java.awt.Dimension(200, 32767));
+        jPanel4.setOpaque(false);
+
+        avatarNickNameLabel.setFont(new java.awt.Font("Yu Mincho", 2, 36)); // NOI18N
+        avatarNickNameLabel.setForeground(new java.awt.Color(240, 240, 240));
+        avatarNickNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        avatarNickNameLabel.setText("Nickname:");
+
+        avatarNickNameTextField.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
+        avatarNickNameTextField.setForeground(new java.awt.Color(255, 255, 255));
+        avatarNickNameTextField.setText("Marie");
+        avatarNickNameTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(163, 43, 43)));
+        avatarNickNameTextField.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(avatarNickNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(avatarNickNameTextField)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(avatarNickNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avatarNickNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(78, 78, 78))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -173,9 +249,11 @@ public class PetSelectionViewport extends Viewport {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(373, 373, 373)
-                        .addComponent(startGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(startGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -188,22 +266,28 @@ public class PetSelectionViewport extends Viewport {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(startGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                        .addComponent(startGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton gotLeftButton;
-    private javax.swing.JButton gotRightButton;
+    private javax.swing.JTextArea avatarDescriptionTextArea;
+    private javax.swing.JLabel avatarNickNameLabel;
+    private javax.swing.JTextField avatarNickNameTextField;
+    private javax.swing.JLabel avatarOcuppationNameLabel;
+    private javax.swing.JButton goLeftButton;
+    private javax.swing.JButton goRightButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton mainMenuButton;
     private javax.swing.JButton startGameButton;
     // End of variables declaration//GEN-END:variables
