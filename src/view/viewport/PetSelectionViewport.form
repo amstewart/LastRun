@@ -25,9 +25,11 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="mainMenuButton" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="373" max="-2" attributes="0"/>
-                      <Component id="startGameButton" max="32767" attributes="0"/>
+                      <Component id="mainMenuButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="startGameButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
@@ -43,12 +45,15 @@
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="jPanel2" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="mainMenuButton" pref="97" max="32767" attributes="0"/>
-                  <Component id="startGameButton" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="mainMenuButton" pref="97" max="32767" attributes="0"/>
+                      <Component id="startGameButton" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,7 +67,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON,this.getWidth(), this.getHeight()).getImage();&#xa;        g.drawImage( image , 0, 0, this);&#xa;    }&#xa;}"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="mainMenuButton">
@@ -73,10 +78,13 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_MENU_BUTTON).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_MENU_BUTTON, this.getWidth(), this.getHeight()).getImage();&#xa;        g.drawImage( image , 0, 0, this);&#xa;    }&#xa;}"/>
       </AuxValues>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -86,9 +94,12 @@
                   <Component id="jPanel3" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="avatarOcuppationNameLabel" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="367" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -96,11 +107,13 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel3" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="avatarOcuppationNameLabel" min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="96" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,15 +125,18 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image2 = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET).getImage();&#xa;        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET, image2.getWidth(this)*2/3, this.getHeight()).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;        System.out.println(&quot;Size: &quot; +  image2.getWidth(this)*2/3);&#xa;    }&#xa;}"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="gotLeftButton" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="goLeftButton" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="gotRightButton" min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="goRightButton" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -130,21 +146,21 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="gotLeftButton" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="gotRightButton" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="goLeftButton" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="goRightButton" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="gotLeftButton">
+            <Component class="javax.swing.JButton" name="goLeftButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Left"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="gotRightButton">
+            <Component class="javax.swing.JButton" name="goRightButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Right"/>
               </Properties>
@@ -152,23 +168,58 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="avatarDescriptionTextArea">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="66" red="ff" type="rgb"/>
+                  <Color blue="33" green="33" red="0" type="rgb"/>
                 </Property>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="&#x9;Avatar description goes here"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="3" left="0" right="3" top="0">
+                      <Color PropertyName="color" blue="2b" green="2b" red="a3" type="rgb"/>
+                    </MatteColorBorder>
+                  </Border>
+                </Property>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[853, 2147483647]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="avatarOcuppationNameLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Yu Mincho" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Hello"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
@@ -184,10 +235,77 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel4">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[200, 32767]"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="avatarNickNameLabel" min="-2" pref="189" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="avatarNickNameTextField" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="avatarNickNameLabel" min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="avatarNickNameTextField" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="avatarNickNameLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Yu Mincho" size="36" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Nickname:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="avatarNickNameTextField">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Yu Mincho" size="36" style="3"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Marie"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder bottom="3" left="0" right="3" top="0">
+                  <Color PropertyName="color" blue="2b" green="2b" red="a3" type="rgb"/>
+                </MatteColorBorder>
+              </Border>
+            </Property>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>
