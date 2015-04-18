@@ -50,9 +50,9 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 			return;
 		}
 
-		Timer timer = new Timer();
-		Vector2 faceDir = emov.getFacingDir();
-		Vector2 pos = emov.getPosition();
+		final Timer timer = new Timer();
+		final Vector2 faceDir = emov.getFacingDir();
+		final Vector2 pos = emov.getPosition();
 		final Projectile p = this;
 		Tile t = area.getTile(pos);
 		t.addProjectile(this);
@@ -113,5 +113,4 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 		entity.mergeStats(currentStats);
 
 	}
-
 }

@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import model.terrain.Terrain;
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
@@ -57,10 +58,7 @@ public class MapBuilder {
                 tiles[i][j] = new Tile(new Vector2(i, j));
                 tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.TERRAIN_GRASS));
 
-                double chance = Math.random();
-                if(chance < 0.05){
-                    tiles[i][j].addItem(ItemFactory.getRandomItem());
-                }
+
             }
         }
 
@@ -70,6 +68,15 @@ public class MapBuilder {
 
         for (Vector2 loc : lww) { // Add water terrains to map
             tiles[loc.X][loc.Y].addTerrain(new WaterTerrain(ImageUtil.TERRAIN_WATER));
+        }
+
+        for (int i = 0; i < width; i++) { // Add items to grass tiles
+            for (int j = 0; j < height; j++) {
+                double chance = Math.random();
+                if(tiles[i][j].getTerrain().getTerrainType().equals(Terrain.TerrainType.Grass) && chance < 0.05){
+                    tiles[i][j].addItem(ItemFactory.getRandomItem());
+                }
+            }
         }
 
         tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));

@@ -20,8 +20,6 @@ public abstract class StateMachine {
         currentState.update();
     }
 
-   
-
     public void push(String state) {
         State newState = states.get(state);
         stateStack.push(newState);
@@ -44,8 +42,5 @@ public abstract class StateMachine {
         State nextState = states.get(stateName);
         nextState.onEnter();
         push(stateName);
-        
     }
-
-
 }

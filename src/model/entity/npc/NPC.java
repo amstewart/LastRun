@@ -5,6 +5,7 @@ import model.entity.Entity;
 public abstract class NPC extends Entity {
 
     public NPC (String art_asset) {
-        //super(art_asset);
+        super();
+        setAssetID(art_asset);
     }
 }

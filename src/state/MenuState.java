@@ -1,5 +1,6 @@
 package state;
 
+import controller.action.stateMachineAction.GoToCharSelectAction;
 import view.viewport.MenuViewport;
 import view.viewport.Viewport;
 
@@ -18,6 +19,7 @@ public class MenuState extends State {
     @Override
     public void onEnter() {
         //actions in action
+        ((MenuViewport)viewPort).listenButton_NewGame(new GoToCharSelectAction());
         render();
     }
 
