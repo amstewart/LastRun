@@ -56,6 +56,11 @@ public class MapBuilder {
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(new Vector2(i, j));
                 tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.TERRAIN_GRASS));
+
+                double chance = Math.random();
+                if(chance < 0.05){
+                    tiles[i][j].addItem(ItemFactory.getRandomItem());
+                }
             }
         }
 

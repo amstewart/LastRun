@@ -25,6 +25,8 @@ public class Avatar extends Entity {
 
 	public Avatar() {
 		this.occupation = new Sneak(getInventory());//default
+		ImageUtil.initSneak();
+		setAssetID(ImageUtil.inEffect[2]);
 	}
 
 	public void addToInventory(TakeableItem item) {
