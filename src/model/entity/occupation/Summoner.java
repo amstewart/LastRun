@@ -39,9 +39,9 @@ public class Summoner extends Occupation {
     }
 
 
-	@Override
-	public void notifySkills(int mana) {
-		// TODO Auto-generated method stub
+    @Override
+	public void notifyManaSkills(int mana) {
+		skills.notifyManaSkills(mana);
 		
 	}
 

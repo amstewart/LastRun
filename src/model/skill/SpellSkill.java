@@ -15,17 +15,14 @@ public class SpellSkill extends Skill{
 	int baseRadius;
 	int radius;
 
-	//public SpellSkill(String name, int level,SpellEffect effect1,SpellEffect effect2,SpellEffect effect3, int radius) {}
-
-
-	//=====TEMPORARY CONSTRUCTOR FOR TESTING=====
-	public SpellSkill(String name, int level,SpellEffect effect, int radius) {
+	public SpellSkill(String name, int level,SpellEffect effect1,SpellEffect effect2,SpellEffect effect3, int radius) {
 		super(name, level, false);
 		this.effect1 = effect1;
 		this.effect2 = effect2;
 		this.effect3 = effect3; 
 		this.baseRadius = radius;
 	}
+
 	@Override
 	public void applyMultiplier() {
 		this.radius = baseRadius * getLevel();

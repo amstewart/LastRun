@@ -41,6 +41,12 @@ public class KeyController implements KeyListener{
         skillSet = new HashMap();
         skillSet.put(0, KeyEvent.VK_1);
         skillSet.put(1, KeyEvent.VK_2);
+        skillSet.put(2, KeyEvent.VK_3);
+        skillSet.put(3, KeyEvent.VK_4);
+        skillSet.put(4, KeyEvent.VK_5);
+        skillSet.put(5, KeyEvent.VK_6);
+        skillSet.put(6, KeyEvent.VK_7);
+        
         
         actionSet.put(KeyEvent.VK_W, new MoveUpAction(map));
         actionSet.put(KeyEvent.VK_E, new MoveUpRightAction(map));

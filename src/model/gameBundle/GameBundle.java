@@ -27,8 +27,17 @@ public class GameBundle {
     public GameBundle(){
         map = new GameMap();
         avatar = new Avatar();
+        
+        
+        
         map.addEntity(avatar,new Vector2(0,0));
-  
+        //
+        Vector2 pos = map.getAvatarMovement().getPosition();
+        map.createLocalArea(2, pos);
+        
+        
+        
+        //
     }
  
 

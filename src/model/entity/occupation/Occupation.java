@@ -53,7 +53,7 @@ public abstract class Occupation {
     //=====TEMP TESTING======
     public abstract String getName();
 
-	public abstract void notifySkills(int mana);
+	public abstract void notifyManaSkills(int mana);
 
 	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);

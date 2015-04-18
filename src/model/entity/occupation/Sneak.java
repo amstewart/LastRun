@@ -42,9 +42,10 @@ public class Sneak extends Occupation {
     }
 
 
-	@Override
-	public void notifySkills(int mana) {
-		// TODO Auto-generated method stub
+    @Override
+	public void notifyManaSkills(int mana) {
+		//Mixed Instance :,(
+		
 	}
 
 	@Override
