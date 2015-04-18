@@ -14,7 +14,6 @@ public class GameViewport extends Viewport{
     private Viewport mapVP;
     private StatsViewport statsVP;
     private InventoryViewport invVP;
-    private SkillPtAllocationViewport skillPtAllocationVP;
 
 
     public GameViewport(MapViewport mapVP, Inventory inventory, Avatar a){
@@ -26,16 +25,13 @@ public class GameViewport extends Viewport{
         inventory.addObserver(invVP);
         a.addObserver(invVP);
         statsVP = new StatsViewport(stats);
-        skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillBook());
         this.setBackground(Color.white);
         mapVP.setBackground(Color.lightGray);
         statsVP.setBackground(Color.lightGray);
-        skillPtAllocationVP.setBackground(Color.yellow);
 
         this.add(mapVP);
         this.add(invVP);
         this.add(statsVP);
-        this.add(skillPtAllocationVP);
     }
     @Override
     public void render() {
@@ -45,20 +41,20 @@ public class GameViewport extends Viewport{
         mapVP.setPreferredSize(new Dimension((int) (width * 0.40), (int) (height * 0.70)));
         invVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         statsVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
-        skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
+        //skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
 
         revalidate();
         this.repaint();
         mapVP.render();
         invVP.render();
         statsVP.render();
-        skillPtAllocationVP.render();
+        //skillPtAllocationVP.render();
         this.requestFocusInWindow();
     }
 
 
     public void updateOccupation(Occupation o){
-    	skillPtAllocationVP.updateOccupation(o.getSkillBook());
+    	//skillPtAllocationVP.updateOccupation(o.getSkillBook());
     }
     
 }
