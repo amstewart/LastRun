@@ -35,7 +35,6 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 			decrementMana(entity);
 			fire(map, entity, r);
 		}
-
 	}
 
 	@Override
