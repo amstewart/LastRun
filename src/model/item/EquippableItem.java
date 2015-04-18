@@ -1,5 +1,7 @@
 package model.item;
 
+import model.stat.Stats;
+
 public class EquippableItem extends TakeableItem {
 
     private String slotCategory;
@@ -14,12 +16,14 @@ public class EquippableItem extends TakeableItem {
         inventory.add(this);
     }
 
-    public void equip(EquipmentHandler equipmentHandler ) {
+    public void equip(EquipmentHandler equipmentHandler) {
         equipmentHandler.equip(this, slotCategory);
+       // stats.mergeStats(getItemStats());
     }
 
     public void unequip(EquipmentHandler equipmentHandler) {
         equipmentHandler.unequip(this, slotCategory);
+       // stats.unMergeStats(getItemStats());
     }
 
 }

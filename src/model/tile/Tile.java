@@ -15,10 +15,6 @@ import model.owner.VehicleOwner;
 import model.terrain.Terrain;
 import utility.Util;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class Tile {
 
     private Vector2 address;

@@ -6,12 +6,10 @@ import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
 import model.item.TakeableItem;
 import model.observer.AvatarObserver;
-import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
-import utility.ImageUtil;
 import utility.Util;
 
 public class Avatar extends Entity {
@@ -24,7 +22,7 @@ public class Avatar extends Entity {
 	private String id;
 
 	public Avatar() {
-		this.occupation = new Sneak(getInventory());//default
+		this.occupation = new Sneak(getInventory(), getStats());//default
 	}
 
 	public void addToInventory(TakeableItem item) {
@@ -73,7 +71,7 @@ public class Avatar extends Entity {
         
         private void notifyObserversOccupationHasChanged(){
             for(AvatarObserver o : observers){
-                o.receiveOccupation(occupation);
+                o.receiveOccupation(occupation, getStats());
             }
         }
 }

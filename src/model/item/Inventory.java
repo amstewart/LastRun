@@ -15,14 +15,15 @@ public class Inventory {
         nonEquippableItems = new ArrayList<>();
         equippableItems = new ArrayList<>();
 
-        
+        this.add(ItemFactory.newBFSword());
+        this.add(ItemFactory.newHealthPotion());
         this.add(ItemFactory.getRandomSmasherWeapon());
         this.add(ItemFactory.getRandomSmasherWeapon());
         this.add(ItemFactory.getRandomSmasherWeapon());
         this.add(ItemFactory.getRandomSneakWeapon());
         this.add(ItemFactory.newShield());
         this.add(ItemFactory.getRandomHeadEquipment());
-        this.add(ItemFactory.newShirt());
+        this.add(ItemFactory.newChest1());
         this.add(ItemFactory.getRandomSummonerWeapon());
         this.add(ItemFactory.getRandomNonEquippableItem());
         this.add(ItemFactory.getRandomNonEquippableItem());

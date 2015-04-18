@@ -1,6 +1,7 @@
 package model.item;
 
 import model.observer.EquipmentHandlerObserver;
+import model.stat.Stats;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,14 +11,16 @@ public class EquipmentHandler {
     private ArrayList<EquipmentHandlerObserver> observers;
     private HashMap<String, EquippableItem> equipment;
     private Inventory inventory;
+    private Stats playerStats;
 
-    public EquipmentHandler(Inventory inventory, ArrayList<String> slots) {
+    public EquipmentHandler(Inventory inventory, ArrayList<String> slots, Stats playerStats) {
 
         observers = new ArrayList<EquipmentHandlerObserver>();
         equipment = new HashMap<String, EquippableItem>();
 
         updateSlots(slots);
         this.inventory = inventory;
+        this.playerStats = playerStats;
     }
 
     public void updateSlots(ArrayList<String> slots) {
@@ -27,28 +30,20 @@ public class EquipmentHandler {
         notifyObserversEquipmentChanged();
     }
 
-    //TEST
-    public void getSlots() {
-        for(String s: equipment.keySet()) {
-            System.out.println(s);
-        }
-    }
     // Rings of abstraction
     public void equip(EquippableItem equippableItem, String slot) {
-        // if slot exist
         if(slotExists(slot)) {
-            returnEquippedItemToInventory(slot);
-            putInEquipment(slot, equippableItem);
-            removeFromInventory(equippableItem);
+            unequipCurrentItem(slot);
+            equipNewItem(slot, equippableItem);
         }
         notifyObserversEquipmentChanged();
     }
 
     // Rings of abstraction
+    // Pre condition, item that calls it would be equipped already
     public void unequip(EquippableItem equippableItem, String slot) {
         if(slotExists(slot)) {
-            removeFromEquipment(slot);
-            addBackToInventory(equippableItem);
+            unequipCurrentItem(slot);
         }
         notifyObserversEquipmentChanged();
     }
@@ -68,30 +63,19 @@ public class EquipmentHandler {
         return equipment.containsKey(slot);
     }
 
-    private void returnEquippedItemToInventory(String slot) {
-        EquippableItem equippedItem = equipment.get(slot);
-        if(equippedItem != null) {
-            addBackToInventory(equippedItem);
+    // Helper functions to simplify abstraction and encapsulate the process
+    private void unequipCurrentItem(String slot) {
+        EquippableItem currentEquippedItem = equipment.get(slot);
+        if(currentEquippedItem != null) {
+            inventory.add(currentEquippedItem);
+            playerStats.unMergeStats(currentEquippedItem.getItemStats());
+            equipment.put(slot, null);
         }
     }
 
-    private void putInEquipment(String slot, EquippableItem equippableItem) {
-        equipment.put(slot, equippableItem);
-    }
-
-    private void removeFromEquipment(String slot) {
-        equipment.put(slot, null);
-    }
-
-    private void removeFromInventory(EquippableItem equippableItem) {
+    private void equipNewItem(String slot, EquippableItem equippableItem) {
         inventory.remove(equippableItem);
-    }
-
-    private void addBackToInventory(EquippableItem equippableItem) {
-        inventory.add(equippableItem);
-    }
-
-    public ArrayList<EquipmentHandlerObserver> getObservers() {
-        return observers;
+        equipment.put(slot, equippableItem);
+        playerStats.mergeStats(equippableItem.getItemStats());
     }
 }

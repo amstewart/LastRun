@@ -17,6 +17,7 @@ import javax.swing.*;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
+import model.stat.Stats;
 import utility.ImageUtil;
 
 public class InventoryViewport extends Viewport implements InventoryObserver, AvatarObserver {
@@ -40,10 +41,10 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     private JMenuItem cancel = new JMenuItem("Cancel");
     private JMenuItem cancel2 = new JMenuItem("Cancel");
 
-    public InventoryViewport(Inventory inventory, EquipmentHandler eH) {
+    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats) {
 
-        equipAction = new EquipAction(eH);
-        useAction = new UseAction(inventory);
+        equipAction = new EquipAction(eH, playerStats);
+        useAction = new UseAction(inventory, playerStats);
         inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
 
@@ -105,8 +106,8 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     }
 
     @Override
-    public void receiveOccupation(Occupation o) {
-        equipAction = new EquipAction(o.getEquipmentHandler());
+    public void receiveOccupation(Occupation o, Stats playerStats) {
+        equipAction = new EquipAction(o.getEquipmentHandler(), playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
     }
 
