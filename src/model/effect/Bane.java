@@ -44,16 +44,16 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 	}
 
 	@Override
-	public void fire(GameMap area, Entity entity, int radius) {
+	public void fire(final GameMap area, Entity entity, final int radius) {
 		EntityMovement emov = getMovement(entity, area);
 		if (emov == null) {
 			return;
 		}
 
-		Timer timer = new Timer();
-		Vector2 faceDir = emov.getFacingDir();
-		Vector2 pos = emov.getPosition();
-		Projectile p = this;
+		final Timer timer = new Timer();
+		final Vector2 faceDir = emov.getFacingDir();
+		final Vector2 pos = emov.getPosition();
+		final Projectile p = this;
 		Tile t = area.getTile(pos);
 		t.addProjectile(this);
 

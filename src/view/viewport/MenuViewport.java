@@ -10,8 +10,11 @@ import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToCharSelectAction;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.plaf.basic.BasicButtonListener;
+
 import utility.ImageUtil;
 
 
@@ -38,6 +41,11 @@ public class MenuViewport extends Viewport {
         super.paintComponent(g);
         g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
+
+    public void listenButton_NewGame(ActionListener listener) {
+        this.newGameButton.addActionListener(listener);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
