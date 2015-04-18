@@ -24,6 +24,7 @@ public class ImageUtil {
     private static final String DIR_TERRAINS = DIR_RES + "terrain/";
     private static final String DIR_DECALS = DIR_RES + "decal/";
     private static final String DIR_PROJECTILES = DIR_RES + "projectiles/";
+    public static final String DIR_CHAR_SELECT = DIR_RES + "characterSelect/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
@@ -165,12 +166,14 @@ public class ImageUtil {
     public static final String MAIN_MENU_LOAD_BUTTON = DIR_SPRITES + "mm_load_game_button.jpg";
     public static final String MAIN_MENU_NEW_GAME_BUTTON = DIR_SPRITES + "mm_new_game_button.jpg";
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
-    /**
-     * * CHARACTER SELECTION VIEW PORT **
-     */
+    
     
     /*** CHARACTER SELECTION VIEW PORT ***/
-    public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    
+    public static final String CHAR_SELECT_GENERAL = DIR_CHAR_SELECT + "general.gif";
+    public static final String CHAR_SELECT_SUMMONER = DIR_CHAR_SELECT + "smasher.gif";
+    public static final String CHAR_SELECT_SMASHER = DIR_CHAR_SELECT + "summoner1.gif";
+    public static final String CHAR_SELECT_SNEAK = DIR_CHAR_SELECT + "sneak2.gif";    
     public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_main_menu_button.jpg";
     public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
     public static final String CHARACTER_SELECTION_PET = DIR_SPRITES + "cs_pet.jpg";

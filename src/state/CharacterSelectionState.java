@@ -19,6 +19,7 @@ public class CharacterSelectionState extends State{
     @Override
     public void update() {
         viewPort.receiveSelection(avatar.getOccupation().getName());
+        viewPort.repaint();
     }
 
     @Override
