@@ -29,6 +29,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats) {
         equipmentHandler.addObserver(this);
+        
         unequipAction = new UnequipAction(equipmentHandler, playerStats);
         setUpMenu();
 
@@ -36,7 +37,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     @Override
     public void render() {
-
+        this.revalidate();
     }
 
     private void setUpMenu() {
@@ -51,6 +52,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     public void receiveEquipment(HashMap<String, EquippableItem> equipment) {
         this.removeAll();
         this.add(new JLabel("Equipment"));
+        
 
         for (String s : equipment.keySet()) {
             EquippableItem item = equipment.get(s);
@@ -74,6 +76,9 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
         public EquippableItemButton(EquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
             this.item = item;
             this.addMouseListener(new EquippableItemButtonListener());
         }

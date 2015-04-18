@@ -7,6 +7,7 @@ import model.effect.ExternalEffect;
 import model.effect.SpellEffect;
 import model.entity.Entity;
 import model.map.GameMap;
+import model.movement.EntityMovement;
 
 public class SpellSkill extends Skill{
 	SpellEffect effect1;
@@ -38,16 +39,37 @@ public class SpellSkill extends Skill{
 	
 	public void performSkill(GameMap map, Entity entity){
 		applyMultiplier();
+		EntityMovement emov = getMovement(entity,map);
+		if(emov == null){
+			return;
+		}
 		Random random = new Random();
 		int m = random.nextInt(3 - 1 + 1) + 1;
 		if(m == 1){
-			effect1.applyEffect(map, entity, radius);
+			effect1.applyEffect(map, entity,emov, radius);
 		}else if (m == 2){
-			effect2.applyEffect(map, entity, radius);
+			effect2.applyEffect(map, entity,emov, radius);
 		}else{
-			effect3.applyEffect(map, entity, radius);
+			effect3.applyEffect(map, entity,emov, radius);
 		}
 		
+	}
+	
+	protected EntityMovement getMovement(Entity entity, GameMap area) {
+		EntityMovement emov = area.getAvatarMovement();
+		if(emov != null){
+			if (entity == emov.getEntity()) {
+				return emov;
+			}
+			for (EntityMovement emovement : area.getEntityMovements()) {
+				if (emovement.getEntity() == entity) {
+					return emovement;// TDA violation
+				}
+			}
+			
+		}
+		
+		return null;
 	}
 
 	public int getRadius() {

@@ -258,7 +258,7 @@ public class Tile {
 	}
 
 
-	public void accept(Projectile p, boolean affect) {
+	public void accept(Projectile p, Boolean affect) {
 		if(myEntities != null){
 			affect = true;
 			Set<Entity> ents = myEntities.getEntities();

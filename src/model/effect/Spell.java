@@ -5,6 +5,9 @@ import java.util.TimerTask;
 
 import model.*;
 import model.entity.Entity;
+import model.map.GameMap;
+import model.movement.EntityMovement;
+import model.tile.Tile;
 
 public class Spell implements Assetable{
 	private int manaDecrease = 4;
@@ -46,5 +49,13 @@ public class Spell implements Assetable{
 		this.id=id;
 		
 	}
+	protected Entity getEntity(Tile oldt,Tile t){
+		if(oldt == t){
+			return null;
+		}else{
+			return t.getEntity();
+		}
+	}
+	
 
 }

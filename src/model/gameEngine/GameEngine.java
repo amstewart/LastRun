@@ -1,6 +1,7 @@
 package model.gameEngine;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Observable;
 import model.observer.GameEngineObserver;
 import state.stateMachine.RPGStateMachine;
@@ -16,7 +17,7 @@ import state.stateMachine.RPGStateMachine;
  */
 public class GameEngine implements Runnable {
 
-    private ArrayList<GameEngineObserver> observers;
+    private ArrayList<GameEngineObserver> observers = new ArrayList();
     private RPGStateMachine rpgStateMachine;
     private static GameEngine gameEngineInstance;
     private Thread thread;
@@ -51,8 +52,8 @@ public class GameEngine implements Runnable {
     public void run() {
         while (true) {
             updateGame();
-
             renderGame();
+            notifyObserversGameEngineHasTicked();
             try {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {
@@ -65,7 +66,7 @@ public class GameEngine implements Runnable {
      * Update the game models
      */
     private void updateGame() {
-        if(rpgStateMachine != null){
+        if (rpgStateMachine != null) {
             rpgStateMachine.update();
         }
     }
@@ -74,12 +75,12 @@ public class GameEngine implements Runnable {
      * Render the game to the screen
      */
     private void renderGame() {
-        if(rpgStateMachine != null){
+        if (rpgStateMachine != null) {
             rpgStateMachine.render();
         }
     }
-    
-    public void setRPGStateMachine(RPGStateMachine s){
+
+    public void setRPGStateMachine(RPGStateMachine s) {
         rpgStateMachine = s;
     }
 
@@ -93,14 +94,22 @@ public class GameEngine implements Runnable {
         }
         return gameEngineInstance;
     }
-    
-    public void addObserver(GameEngineObserver o){
+
+    public void addObserver(GameEngineObserver o) {
         observers.add(o);
     }
-    
-    public void removeObserver(GameEngineObserver o){
+
+    public void removeObserver(GameEngineObserver o) {
         observers.remove(o);
     }
-    
-    
+
+    private void notifyObserversGameEngineHasTicked() {
+        try {
+            for (GameEngineObserver o : observers) {
+                o.gameEngineHasTicked();
+            }
+        } catch (ConcurrentModificationException ex) {
+        }
+    }
+
 }

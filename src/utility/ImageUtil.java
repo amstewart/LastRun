@@ -133,7 +133,16 @@ public class ImageUtil {
     public static final String TORCH = DIR_ITEMS + "torch.png";
     public static final String WATERMELON = DIR_ITEMS + "watermelon.png";
     
+    //Projectiles//
+    
     public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
+    
+    //Stati//
+    
+    public static final String SLEEPING = DIR_ITEMS + "apple.png";
+    public static final String SMELLY = DIR_ITEMS + "watermelon.png";
+    public static final String SINGING = DIR_ITEMS + "torch.png";
+    public static final String INVISIBLE = DIR_ITEMS + "torch.png";
     
 
     public static String[] inEffect = new String[10];

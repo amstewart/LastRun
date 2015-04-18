@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import model.Vector2;
 import model.entity.Entity;
+import model.entity.Status;
 import model.map.GameMap;
 import model.terrain.Terrain;
 import model.tile.Tile;
@@ -61,11 +62,12 @@ public class MoveDownAction extends Action {
 
         ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
         Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
-        
+        Entity e=source.getEntity();
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
-        	Entity e=source.getEntity();
         	map.moveAvatarTo(destLocation);
-            map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
+        	if(!e.is(Status.INVISIBLE)){
+                map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
+            }
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
@@ -73,6 +75,8 @@ public class MoveDownAction extends Action {
         } else {
             MapViewport.drawCantMove(destLocation);
         }
-         map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
+        if(!e.is(Status.INVISIBLE)){
+            map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
+        }
     }
 }
