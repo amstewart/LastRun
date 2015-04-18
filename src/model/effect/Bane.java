@@ -68,15 +68,18 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 				t.removeProjectile(p);
 				t = area.getTileInDirection(faceDir, t);
 				if (oldt == t) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				t.addProjectile(p);
 				boolean affect = false;
 				t.accept(p, affect);
 				if (affect == true) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				if (radius == numTimes) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				numTimes++;

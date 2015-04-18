@@ -33,6 +33,7 @@ public class MenuViewport extends Viewport {
     }
     
     private void addActionListeners(){
+        
         newGameButton.addActionListener(Action.getActionListener(new GoToCharSelectAction()));
     }
     
