@@ -28,18 +28,53 @@ public class ImageUtil {
     /* ENTITIES */
     
     /********SMASHER SPRITES************/
+    public static final String SMASHER_N = DIR_SPRITES + "Smasher_N.png";
+    public static final String SMASHER_NE = DIR_SPRITES + "Smasher_NE.png";
+    public static final String SMASHER_SE = DIR_SPRITES + "Smasher_SE.png";
+    public static final String SMASHER_S = DIR_SPRITES + "Smasher_S.png";
+    public static final String SMASHER_SW = DIR_SPRITES + "Smasher_SW.png";
+    public static final String SMASHER_NW = DIR_SPRITES + "Smasher_NW.png";
+    
+    /**********************************/
+    
+    
+    /********SNEAK SPRITES************/
+    public static final String SNEAK_N = DIR_SPRITES + "Sneak_N.png";
+    public static final String SNEAK_NE = DIR_SPRITES + "Sneak_NE.png";
+    public static final String SNEAK_SE = DIR_SPRITES + "Sneak_SE.png";
+    public static final String SNEAK_S = DIR_SPRITES + "Sneak_S.png";
+    public static final String SNEAK_SW = DIR_SPRITES + "Sneak_SW.png";
+    public static final String SNEAK_NW = DIR_SPRITES + "Sneak_NW.png";
+    
+    /**********************************/
+    
+    
+    /********SNEAK SPRITES************/
+    public static final String SUMMONER_N = DIR_SPRITES + "Summoner_N.png";
+    public static final String SUMMONER_NE = DIR_SPRITES + "Summoner_NE.png";
+    public static final String SUMMONER_SE = DIR_SPRITES + "Summoner_SE.png";
+    public static final String SUMMONER_S = DIR_SPRITES + "Summoner_S.png";
+    public static final String SUMMONER_SW = DIR_SPRITES + "Summoner_SW.png";
+    public static final String SUMMONER_NW = DIR_SPRITES + "Summoner_NW.png";
+    
+    /**********************************/
+    
+    
+    
+    
+    /********SKELETON SPRITES*********/
     public static final String EN_SKEL_N = DIR_SPRITES + "en_skel_N.png";
     public static final String EN_SKEL_NE = DIR_SPRITES + "en_skel_NE.png";
     public static final String EN_SKEL_SE = DIR_SPRITES + "en_skel_SE.png";
     public static final String EN_SKEL_S = DIR_SPRITES + "en_skel_S.png";
     public static final String EN_SKEL_SW = DIR_SPRITES + "en_skel_SW.png";
     public static final String EN_SKEL_NW = DIR_SPRITES + "en_skel_NW.png";
+    /********************************/
     
     
-    
-    public static final String[] smasherSprites= {null,EN_SKEL_SE,EN_SKEL_S,EN_SKEL_SE,null,null,null,EN_SKEL_NW,EN_SKEL_N,EN_SKEL_NE};
-    public static final String[] sneakSprites={};
-    public static final String[] summonerSprites={};
+    public static final String[] smasherSprites= {null, SMASHER_SW, SMASHER_S, SMASHER_SE,null,null,null, SMASHER_NW, SMASHER_N, SMASHER_NE};
+    public static final String[] sneakSprites={null, SNEAK_SW, SNEAK_S, SNEAK_SE,null,null,null, SNEAK_NW, SNEAK_N, SNEAK_NE};
+    public static final String[] summonerSprites={null, SUMMONER_SW, SUMMONER_S, SUMMONER_SE,null,null,null, SUMMONER_NW, SUMMONER_N, SUMMONER_NE};
     
     
     /*************TERRAINS***************/

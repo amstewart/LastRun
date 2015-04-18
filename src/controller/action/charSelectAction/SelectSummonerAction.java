@@ -18,7 +18,7 @@ public class SelectSummonerAction extends Action {
     @Override
     public void perform() {
         avatar.setOccupation(new Summoner(avatar.getInventory()));
-        ImageUtil.initSmasher();
+        ImageUtil.initSummoner();
         avatar.setAssetID(ImageUtil.inEffect[2]);
     }
 }

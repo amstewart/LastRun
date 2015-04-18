@@ -74,6 +74,6 @@ public class MoveDownRightAction extends Action {
             MapViewport.drawCantMove(destLocation);
         }
         
-        map.refaceAvatar(Direction.SOUTHEAST, ImageUtil.EN_SKEL_SE);
+        map.refaceAvatar(Direction.SOUTHEAST, ImageUtil.inEffect[3]);
     }
 }

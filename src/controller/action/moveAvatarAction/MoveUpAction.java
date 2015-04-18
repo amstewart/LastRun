@@ -78,6 +78,6 @@ public class MoveUpAction extends Action {
             MapViewport.drawCantMove(destLocation);
         }
 
-        map.refaceAvatar(Direction.NORTH, ImageUtil.EN_SKEL_N);
+        map.refaceAvatar(Direction.NORTH, ImageUtil.inEffect[8]);
     }
 }

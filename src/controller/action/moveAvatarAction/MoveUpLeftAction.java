@@ -72,6 +72,6 @@ public class MoveUpLeftAction extends Action {
         } else {
             MapViewport.drawCantMove(destLocation);
         }
-        map.refaceAvatar(Direction.NORTHWEST, ImageUtil.EN_SKEL_NW);
+        map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
     }
 }
