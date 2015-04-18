@@ -20,50 +20,64 @@ import model.observer.AvatarObserver;
 
 public class InventoryViewport extends Viewport implements InventoryObserver, AvatarObserver {
 
+    private EquippableItem[] equippableItems = null;
+    private NonEquippableItem[] nonEquippableItems = null;
+
     private EquipAction equipAction;
-   private EquipmentDropAction equipmentDropAction;
-    private UseAction useAction;        
+    private EquipmentDropAction equipmentDropAction;
+    private UseAction useAction;
     private InventoryDropAction inventoryDropAction;
 
     private JPopupMenu equipmentItemMenu = new JPopupMenu("Popup");
     private JMenuItem equipmentEquip = new JMenuItem("Equip");
     private JMenuItem equipmentItemDrop = new JMenuItem("Drop");
-    
+
     private JPopupMenu inventoryItemMenu = new JPopupMenu("Popup");
     private JMenuItem inventoryUse = new JMenuItem("Use");
     private JMenuItem inventoryItemDrop = new JMenuItem("Drop");
-    
+
     private JMenuItem cancel = new JMenuItem("Cancel");
     private JMenuItem cancel2 = new JMenuItem("Cancel");
 
     public InventoryViewport(Inventory inventory, EquipmentHandler eH) {
 
-        
         equipAction = new EquipAction(eH);
         useAction = new UseAction(inventory);
-        
 
         inventoryDropAction = new InventoryDropAction(inventory);
 
         equipmentDropAction = new EquipmentDropAction(inventory);
-        
-                setUpMenu();
 
+        setUpMenu();
 
     }
 
     @Override
     public void receiveEquippableItems(EquippableItem[] equippableItems) {
-        this.removeAll();
-        this.add(new JLabel("Inventory"));
-        for(EquippableItem i : equippableItems){
-            this.add(new EquippableItemButton(i));
-        }
+        this.equippableItems = equippableItems;
+        renderItems();
     }
 
     @Override
     public void receiveNonEquippableItems(NonEquippableItem[] nonEquippableItems) {
+        this.nonEquippableItems = nonEquippableItems;
+        renderItems();
+    }
 
+    private void renderItems() {
+        this.removeAll();
+        this.add(new JLabel("Inventory"));
+        if (equippableItems != null) {
+            for (EquippableItem i : this.equippableItems) {
+                this.add(new EquippableItemButton(i));
+            }
+        }
+
+        if (nonEquippableItems != null) {
+            for (NonEquippableItem i : this.nonEquippableItems) {
+                this.add(new NonEquippableItemButton(i));
+            }
+        }
     }
 
     private void setUpMenu() {
@@ -71,22 +85,22 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         equipmentItemMenu.add(equipmentItemDrop);
         equipmentItemMenu.addSeparator();
         equipmentItemMenu.add(cancel);
-        
+
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
         equipmentItemDrop.addActionListener(Action.getActionListener(equipmentDropAction));
-        
+
         inventoryItemMenu.add(inventoryUse);
         inventoryItemMenu.add(inventoryItemDrop);
         inventoryItemMenu.addSeparator();
         inventoryItemMenu.add(cancel2);
-        
+
         inventoryUse.addActionListener(Action.getActionListener(useAction));
         inventoryItemDrop.addActionListener(Action.getActionListener(inventoryDropAction));
     }
 
     @Override
     public void render() {
-        
+
     }
 
     @Override
@@ -104,10 +118,10 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
             this.setText(item.getName());
             this.addMouseListener(new EquippableItemButtonListener());
         }
-        
-        public EquippableItem getItem(){
+
+        public EquippableItem getItem() {
             return item;
-            
+
         }
 
         private class EquippableItemButtonListener implements MouseListener {
@@ -125,7 +139,8 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
                     equipAction.setEquippableItem(item);
                     equipmentDropAction.setCurrentItem(item);
 
-                } catch (IllegalComponentStateException ex) {}
+                } catch (IllegalComponentStateException ex) {
+                }
             }
 
             @Override
@@ -143,25 +158,26 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         }
 
     }
-    
-    public class NonEquippableItemButton extends JButton{
+
+    public class NonEquippableItemButton extends JButton {
+
         private NonEquippableItem item;
-        
-        public NonEquippableItemButton(NonEquippableItem item){
+
+        public NonEquippableItemButton(NonEquippableItem item) {
             this.item = item;
             this.setText(item.getName());
             this.addMouseListener(new NonEquippableItemButtonListener());
         }
-        
-        public NonEquippableItem getItem(){
+
+        public NonEquippableItem getItem() {
             return item;
         }
-        
-        private class NonEquippableItemButtonListener implements MouseListener{
-            
+
+        private class NonEquippableItemButtonListener implements MouseListener {
 
             @Override
-            public void mouseClicked(MouseEvent e) {}
+            public void mouseClicked(MouseEvent e) {
+            }
 
             @Override
             public void mousePressed(MouseEvent e) {
@@ -173,13 +189,16 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
             }
 
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+            }
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+            }
         }
     }
 

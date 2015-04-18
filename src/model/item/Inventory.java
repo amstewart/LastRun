@@ -20,6 +20,8 @@ public class Inventory {
         this.add(ItemFactory.newCrossBow());
         this.add(ItemFactory.newShield());
         this.add(ItemFactory.newStaff());
+        this.add(ItemFactory.newHealthPotion());
+        this.add(ItemFactory.newManaPotion());
     }
 
     public void add(EquippableItem equippableItem) {

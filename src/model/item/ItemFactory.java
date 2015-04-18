@@ -8,6 +8,17 @@ package model.item;
 public class ItemFactory {
     
     
+    public static NonEquippableItem newHealthPotion(){
+        NonEquippableItem item = new NonEquippableItem("Health Potion");
+        
+        return item;
+    }
+    
+    public static NonEquippableItem newManaPotion(){
+        NonEquippableItem item = new NonEquippableItem("Mana Potion");
+        
+        return item;
+    }
     
     public static EquippableItem  newBFSword(){
         EquippableItem item = new EquippableItem("B.F. Sword", EquipmentHandler.SMASHER_WEAPON);
