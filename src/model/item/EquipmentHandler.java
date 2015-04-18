@@ -6,15 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 // Each specific occupation will initialize this class with slots it can use
 public class EquipmentHandler {
-
-    public static String HEAD = "Head";
-    public static String CHEST = "Chest";
-    public static String LEGS = "Legs";
-    public static String SMASHER_WEAPON = "SmasherWeapon";
-    public static String SUMMONER_WEAPON = "SummonerWeapon";
-    public static String SNEAK_WEAPON = "SneakWeapon";
-
-    public static String SHIELD = "Shield";
     
     private ArrayList<EquipmentHandlerObserver> observers;
     private HashMap<String, EquippableItem> equipment;
