@@ -129,6 +129,23 @@ public class ItemFactory {
         return item;
     }
      
+     public static Item getRandomItem(){
+         double chance = Math.random();
+         if(chance < 0.10){
+             return getRandomHeadEquipment();
+         }
+         else if(chance < 0.20){
+             return getRandomSmasherWeapon();
+         }else if(chance < 0.30){
+             return getRandomSummonerWeapon();
+         }else if(chance < 0.40){
+             return getRandomSummonerWeapon();
+         }else {
+             return getRandomNonEquippableItem();
+         }
+     }
+     
+     
      public static EquippableItem getRandomHeadEquipment(){
          double chance = Math.random();
          if(chance < 0.50){

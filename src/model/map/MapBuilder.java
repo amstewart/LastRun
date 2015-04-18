@@ -11,6 +11,7 @@ import model.tile.Tile;
 import model.areaEffect.HealDamageAreaEffect;
 import model.areaEffect.LevelUpAreaEffect;
 import model.areaEffect.TakeDamageAreaEffect;
+import model.item.ItemFactory;
 import model.terrain.GrassTerrain;
 import model.terrain.MountainTerrain;
 import model.terrain.WaterTerrain;
@@ -44,6 +45,11 @@ public class MapBuilder {
                         tiles[i][j].addTerrain(new WaterTerrain(ImageUtil.WaterTerrain));
                     }else{
                         tiles[i][j].addTerrain(new MountainTerrain(ImageUtil.MountainTerrain));
+                    }
+                    
+                    double chance = Math.random();
+                    if(chance < 0.05){
+                        tiles[i][j].addItem(ItemFactory.getRandomItem());
                     }
             }
         }

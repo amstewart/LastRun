@@ -147,9 +147,9 @@ public class MapViewport extends Viewport {
    }
     
     private void drawItem(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
-    	//String img= map.getTile(i,j).getItem().getAssetID();
-       // ImageIcon image= ImageUtil.getImage(img); //this function has not been tested. Just prematurely made
-       // g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+    	String img= map.getTile(i,j).getItem().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img); //this function has not been tested. Just prematurely made
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
    }
 
     private void drawEntities(Graphics g) {

@@ -24,6 +24,7 @@ public class Inventory {
         this.add(ItemFactory.getRandomSummonerWeapon());
         this.add(ItemFactory.getRandomNonEquippableItem());
         this.add(ItemFactory.getRandomNonEquippableItem());
+        this.add(ItemFactory.getRandomNonEquippableItem());
     }
 
     public void add(EquippableItem equippableItem) {
