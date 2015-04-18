@@ -27,11 +27,13 @@
                   <Component id="jPanel2" max="32767" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="loadButton" pref="248" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="continueButton" pref="406" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Component id="exitGame" pref="248" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="loadGameButton" pref="248" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="newGameButton" pref="406" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="exitGameButton" pref="248" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -44,10 +46,10 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="loadButton" alignment="3" min="-2" pref="197" max="-2" attributes="0"/>
-                  <Component id="continueButton" alignment="3" min="-2" pref="197" max="-2" attributes="0"/>
-                  <Component id="exitGame" alignment="3" min="-2" pref="197" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="exitGameButton" alignment="0" pref="197" max="32767" attributes="0"/>
+                  <Component id="newGameButton" max="32767" attributes="0"/>
+                  <Component id="loadGameButton" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel2" max="32767" attributes="0"/>
@@ -57,33 +59,27 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="continueButton">
+    <Component class="javax.swing.JButton" name="newGameButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="New Game"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TriangleButton()"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="loadButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Load Game"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[89, 25]"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[500, 500]"/>
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TriangleButton()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_NEW_GAME_BUTTON).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;    }&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="exitGame">
+    <Component class="javax.swing.JButton" name="loadGameButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Exit Game"/>
+        <Property name="text" type="java.lang.String" value="Load Game"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[500, 500]"/>
+        </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new TriangleButton()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_LOAD_BUTTON).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;    }&#xa;}"/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
@@ -123,5 +119,17 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Component class="javax.swing.JButton" name="exitGameButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exit Game"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[500, 500]"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_EXIT_BUTTON).getImage();&#xa;        g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

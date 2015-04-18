@@ -5,45 +5,40 @@
  */
 package view.viewport;
 
-<<<<<<< HEAD
-import LastRun.src.view.viewport.TriangleButton;
-=======
-import controller.action.Action;
-import controller.action.stateMachineAction.GoToCharSelectAction;
->>>>>>> 7b45516855b156f50241bbfb10a1074316173cd9
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import utility.ImageUtil;
 
-import java.util.ArrayList;
 
 public class MenuViewport extends Viewport {
 
     ImageIcon menuBackground;
+    ImageIcon newGameButtonImage;
+    ImageIcon exitButtonImage;
+    ImageIcon loadButtonImage;
 
     /**
      * Creates new form MenuViewport
      */
     public MenuViewport() {
-        initComponents();
         menuBackground = new ImageIcon(ImageUtil.MAIN_MENU_BACKGROUND);
+        newGameButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_NEW_GAME_BUTTON);
+        loadButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_LOAD_BUTTON);
+        exitButtonImage = new ImageIcon(ImageUtil.MAIN_MENU_EXIT_BUTTON);
+        initComponents();
+        setButtonBackgroundTransparent(newGameButton);
+        setButtonBackgroundTransparent(exitGameButton);
+        setButtonBackgroundTransparent(loadGameButton);
     }
+    
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2D = (Graphics2D) g.create();
-
-        if (menuBackground != null) {
-            //g2D.drawImage(menuBackground.getImage(), 0, 0, null);
-            //g.setFont(new Font(g.getFont().getFamily(), Font.PLAIN, 30));
-        }
-        continueButton.addActionListener(Action.getActionListener(new GoToCharSelectAction()));
+        g.drawImage(menuBackground.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,20 +48,40 @@ public class MenuViewport extends Viewport {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        continueButton = new TriangleButton();
-        loadButton = new TriangleButton();
-        exitGame = new TriangleButton();
+        newGameButton = new javax.swing.JButton(){
+
+            @Override
+            public void paintComponent(Graphics g){
+                Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_NEW_GAME_BUTTON).getImage();
+                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+            }
+        };
+        loadGameButton = new javax.swing.JButton(){
+
+            @Override
+            public void paintComponent(Graphics g){
+                Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_LOAD_BUTTON).getImage();
+                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+            }
+        };
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        exitGameButton = new javax.swing.JButton(){
+
+            @Override
+            public void paintComponent(Graphics g){
+                Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_EXIT_BUTTON).getImage();
+                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+            }
+        };
 
         setBackground(new java.awt.Color(226, 124, 21));
 
-        continueButton.setText("New Game");
+        newGameButton.setText("New Game");
+        newGameButton.setMaximumSize(new java.awt.Dimension(500, 500));
 
-        loadButton.setText("Load Game");
-        loadButton.setPreferredSize(new java.awt.Dimension(89, 25));
-
-        exitGame.setText("Exit Game");
+        loadGameButton.setText("Load Game");
+        loadGameButton.setMaximumSize(new java.awt.Dimension(500, 500));
 
         jPanel1.setOpaque(false);
 
@@ -94,6 +109,9 @@ public class MenuViewport extends Viewport {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        exitGameButton.setText("Exit Game");
+        exitGameButton.setMaximumSize(new java.awt.Dimension(500, 500));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,11 +122,13 @@ public class MenuViewport extends Viewport {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(loadButton, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(continueButton, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(exitGame, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(loadGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(newGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exitGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,10 +137,10 @@ public class MenuViewport extends Viewport {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exitGame, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                    .addComponent(newGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loadGameButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -129,11 +149,11 @@ public class MenuViewport extends Viewport {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton continueButton;
-    public javax.swing.JButton exitGame;
+    public javax.swing.JButton exitGameButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public javax.swing.JButton loadButton;
+    public javax.swing.JButton loadGameButton;
+    public javax.swing.JButton newGameButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

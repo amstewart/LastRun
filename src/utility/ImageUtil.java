@@ -24,7 +24,6 @@ public class ImageUtil {
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
-    public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "menu_bg_2.jpg";
     /* ENTITIES */
     public static final String EN_SKEL_N = DIR_SPRITES + "en_skel_N.png";
     public static final String EN_SKEL_NE = DIR_SPRITES + "en_skel_NE.png";
@@ -64,6 +63,13 @@ public class ImageUtil {
 
     private static boolean initialized = false;
     private static HashMap<String, BufferedImage> assets = new HashMap<>();
+    
+    /*** MAIN MENU VIEW PORT ***/
+    public static final String MAIN_MENU_EXIT_BUTTON = DIR_SPRITES + "mm_exit_game_button.jpg";
+    public static final String MAIN_MENU_LOAD_BUTTON = DIR_SPRITES + "mm_load_game_button.jpg";
+    public static final String MAIN_MENU_NEW_GAME_BUTTON = DIR_SPRITES + "mm_new_game_button.jpg";
+    public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    
     
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         
