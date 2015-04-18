@@ -10,6 +10,7 @@ import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
+import utility.ImageUtil;
 import utility.Util;
 
 public class Avatar extends Entity {
@@ -23,15 +24,18 @@ public class Avatar extends Entity {
 
 	public Avatar() {
 		this.occupation = new Sneak(getInventory(), getStats());//default
+		ImageUtil.initSneak();
+		setAssetID(ImageUtil.inEffect[2]);
 	}
 
 	public void addToInventory(TakeableItem item) {
 		item.touch(this.getInventory());
 	}
 
-	public void changeName(String new_name) {
+	@Override
+	public void setName(String new_name) {
 		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
-		setName(new_name);
+		super.setName(new_name);
 	}
 
     @Override

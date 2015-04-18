@@ -10,30 +10,27 @@ import model.terrain.Terrain;
  * @author ChrisMoscoso
  */
 public class TerrainOwner {
-    private Set<Terrain> slaves;
+    //private Set<Terrain> slaves;
+    Terrain slave;
     
     public TerrainOwner(){
-        slaves = new HashSet<Terrain>();
+        //slaves = new HashSet<Terrain>();
     }
     
     public void adopt(Terrain t){
-        slaves.add(t);
+        slave = t;
     }
     
     public void release(Terrain t){
-        slaves.remove(t);
+        slave = null;
     }
     
     public int getNumberOwned(){
-        return slaves.size();
+        if (slave == null) return 0;
+        else return 1;
     }
-    
-    /* TODO: This returns a random terrain if numOwner > 1 */
+
     public Terrain getTerrain(){
-        Terrain terrain = null; 
-        for(Terrain t : slaves){
-            terrain = t;
-        }
-        return terrain;
+        return slave;
     }
 }

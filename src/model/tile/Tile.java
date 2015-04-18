@@ -1,7 +1,10 @@
 package model.tile;
 
+import java.util.Set;
+
 import model.Vector2;
 import model.areaEffect.AreaEffect;
+import model.effect.Projectile;
 import model.entity.Entity;
 import model.entity.npc.pet.Pet;
 import model.entity.vehicle.Vehicle;
@@ -10,6 +13,7 @@ import model.owner.AreaEffectOwner;
 import model.owner.EntityOwner;
 import model.owner.ItemOwner;
 import model.owner.PetOwner;
+import model.owner.ProjectileOwner;
 import model.owner.TerrainOwner;
 import model.owner.VehicleOwner;
 import model.terrain.Terrain;
@@ -25,6 +29,7 @@ public class Tile {
     private PetOwner myPets;
     private TerrainOwner myTerrains;
     private VehicleOwner myVehicles;
+    private ProjectileOwner myProjectiles;
     
     public Tile(){
         
@@ -50,6 +55,24 @@ public class Tile {
             }
         } else {
             Util.dbgOut("I can't release " + a + " because I am not an entity owner", 3);
+        }        
+    }
+    
+    public void addProjectile(Projectile p) {
+        if (!isProjectileOwner()) {
+            myProjectiles = new ProjectileOwner();
+        }
+        myProjectiles.adopt(p);
+    }
+
+    public void removeProjectile(Projectile p) {
+        if (isProjectileOwner()) {
+        	myProjectiles.release(p);
+            if(myProjectiles.getNumberOwned() == 0){
+            	myProjectiles = null;
+            }
+        } else {
+            Util.dbgOut("I can't release " + p + " because I am not an entity owner", 3);
         }        
     }
 
@@ -168,6 +191,10 @@ public class Tile {
         return myVehicles != null;
     }
 
+    public boolean isProjectileOwner() {
+        return myProjectiles != null;
+    }
+
     public Vector2 getLocation() {
         return address;
     }
@@ -219,5 +246,31 @@ public class Tile {
     protected EntityOwner getEntityOwner(){
           return myEntities;
     }
+
+
+	public void accept(Entity e) {
+		if(myItems != null){
+			Set<Item> items = myItems.getItems();
+			for(Item i: items){
+				i.accept(e,this);
+			}
+		}
+	}
+
+
+	public void accept(Projectile p, boolean affect) {
+		if(myEntities != null){
+			affect = true;
+			Set<Entity> ents = myEntities.getEntities();
+			for(Entity e: ents){
+				p.affect(e);
+			}
+		}
+	}
+
+
+	public Projectile getProjectile() {
+		return myProjectiles.getProjectile();
+	}
     
 }

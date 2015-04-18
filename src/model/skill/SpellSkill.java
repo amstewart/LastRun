@@ -6,7 +6,7 @@ import controller.KeyController;
 import model.effect.ExternalEffect;
 import model.effect.SpellEffect;
 import model.entity.Entity;
-import model.map.LocalArea;
+import model.map.GameMap;
 
 public class SpellSkill extends Skill{
 	SpellEffect effect1;
@@ -37,17 +37,21 @@ public class SpellSkill extends Skill{
 		effect3.setCanPerform(mana);
 	}
 	
-	public void performSkill(LocalArea map, Entity entity){
+	public void performSkill(GameMap map, Entity entity){
 		Random random = new Random();
 		int m = random.nextInt(3 - 1 + 1) + 1;
 		if(m == 1){
-			effect1.applyEffect(map, entity);
+			effect1.applyEffect(map, entity, radius);
 		}else if (m == 2){
-			effect2.applyEffect(map, entity);
+			effect2.applyEffect(map, entity, radius);
 		}else{
-			effect3.applyEffect(map, entity);
+			effect3.applyEffect(map, entity, radius);
 		}
 		
+	}
+
+	public int getRadius() {
+		return radius;
 	}
 
 }

@@ -1,6 +1,10 @@
 package model.item;
 
-import model.stat.Stats;
+import model.tile.Tile;
+
+
+import model.entity.Entity;
+import model.tile.Tile;
 
 public class EquippableItem extends TakeableItem {
 
@@ -25,5 +29,11 @@ public class EquippableItem extends TakeableItem {
         equipmentHandler.unequip(this, slotCategory);
        // stats.unMergeStats(getItemStats());
     }
+
+	@Override
+	public void accept(Entity e, Tile t) {
+		t.removeItem(this);
+		e.visit(this);
+	}
 
 }

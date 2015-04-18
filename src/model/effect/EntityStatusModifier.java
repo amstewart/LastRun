@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import model.entity.Entity;
 import model.entity.Status;
+import model.map.GameMap;
 import model.map.LocalArea;
 
 public class EntityStatusModifier extends Spell implements SpellEffect{
@@ -23,18 +24,9 @@ public class EntityStatusModifier extends Spell implements SpellEffect{
 	}
 
 	@Override
-	public void applyEffect(LocalArea map, Entity entity) {
+	public void applyEffect(GameMap map, Entity entity, int radius) {
 		if(canPerform()){
-			final Entity affectedEntity = map.getEntityLinear(entity);
-			affectedEntity.addStatus(changeTo);
-			TimerTask timertask = new TimerTask(){
-				@Override
-				public void run() {
-					affectedEntity.removeStatus(changeTo);	
-				}		
-			};
-			Timer timer = new Timer();
-			timer.schedule(timertask, length * 1000);	
+			
 		}
 	}
 	

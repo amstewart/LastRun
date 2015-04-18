@@ -31,6 +31,8 @@ public class MapViewport extends Viewport {
 
     private GameMap map;
     private int hexRadius = 36;
+    private final int defaultHexRadius = hexRadius; //Used for zoom scale
+
 
     private int hexWidth = hexRadius * 2;
     private int hexHeight = (int) (hexRadius * 1.75);
@@ -118,6 +120,10 @@ public class MapViewport extends Viewport {
                 	 drawItem(g, i,j,positionX,positionY, offsetY);
                 }
                 
+                if(map.getTile(i,j).isProjectileOwner()){
+               	 drawProjectile(g, i,j,positionX,positionY, offsetY);
+               }
+                
             
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
@@ -129,14 +135,22 @@ public class MapViewport extends Viewport {
                     cantMoveTimer -= 0.02;
                 } else {
                     //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
-                }      
+                }
             }
         }
     }
     
-    private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
-    	 String terrain= map.getTile(i,j).getTerrain().getAssetID();
-         ImageIcon image= ImageUtil.getImage(terrain);
+    private void drawProjectile(Graphics g, int i, int j, int positionX,
+			int positionY, int offsetY) {
+    	String img= map.getTile(i,j).getProjectile().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img);
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+		
+	}
+
+	private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	 String pro= map.getTile(i,j).getTerrain().getAssetID();
+         ImageIcon image= ImageUtil.getImage(pro);
          g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
     }
     
@@ -219,8 +233,6 @@ public class MapViewport extends Viewport {
     }
 
     private void rescaleMap() {
-        int defaultHexRadius = 50;
-
         hexRadius = (int) (defaultHexRadius * scale);
         hexWidth = hexRadius * 2;
         hexHeight = (int) (hexRadius * 1.748);

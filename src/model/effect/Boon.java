@@ -1,8 +1,8 @@
 package model.effect;
 
 import model.entity.Entity;
+import model.map.GameMap;
 import model.map.LocalArea;
-
 import model.stat.Stats;
 import model.enums.DefinedStats;
 
@@ -28,7 +28,7 @@ public class Boon extends Spell implements SpellEffect{
 	}
 
 	@Override
-	public void applyEffect(LocalArea map, Entity entity) {
+	public void applyEffect(GameMap map, Entity entity, int radius) {
 		if(canPerform()){
 			decrementMana(entity);
 			entity.mergeStats(currentStats);

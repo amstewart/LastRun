@@ -1,5 +1,3 @@
-package main;
-
 import state.stateMachine.RPGStateMachine;
 import utility.Util;
 
