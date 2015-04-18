@@ -7,12 +7,6 @@ package model.stat;
 
 import java.util.ArrayList;
 
-import model.item.TakeableItem;
-import model.item.equipment.OneHandedWeapon;
-import model.item.equipment.Shield;
-import model.item.equipment.Staff;
-import model.item.equipment.TwoHandedWeapon;
-import view.viewport.InventoryViewport;
 import view.viewport.StatsViewport;
 
 public class Stats {

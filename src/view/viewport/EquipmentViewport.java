@@ -1,110 +1,117 @@
 package view.viewport;
 
 import controller.action.Action;
-import controller.action.equipmentAction.UnequipAction;
-import model.entity.occupation.Occupation;
-import model.item.EquipmentManager;
-import model.item.equipment.Equipment;
-
-import javax.swing.*;
-import java.awt.*;
+import controller.action.equipmentHandlerAction.UnequipAction;
+import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import model.item.EquippableItem;
+import model.observer.EquipmentHandlerObserver;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import model.entity.occupation.Occupation;
+import model.item.EquipmentHandler;
+import model.observer.AvatarObserver;
 
-public class EquipmentViewport extends Viewport {
+public class EquipmentViewport extends Viewport implements EquipmentHandlerObserver, AvatarObserver {
 
-    EquipmentManager equipmentManager;
-    
+    private JPopupMenu equipmentItemMenu = new JPopupMenu("Popup");
+    private JMenuItem cancel = new JMenuItem("Cancel");
+    private JMenuItem equipmentUnEquip = new JMenuItem("UnEquip");
+
     private UnequipAction unequipAction;
-    private JPopupMenu menu = new JPopupMenu("PopUp");
-    private JMenuItem unequipItem = new JMenuItem("Unequip");
 
-    public EquipmentViewport(EquipmentManager em, Occupation occupation) {
-        this.equipmentManager = em;
-        this.equipmentManager.registerView(this);
-        receiveEquipment(equipmentManager.getEquippedItems());
+    public EquipmentViewport(EquipmentHandler equipmentHandler) {
+        equipmentHandler.addObserver(this);
+        unequipAction = new UnequipAction(equipmentHandler);
+        setUpMenu();
 
-        setMenu();
-        unequipAction = new UnequipAction(occupation);
-        unequipItem.addActionListener(Action.getActionListener(unequipAction));
-    }
-
-    public void receiveEquipment(Equipment[] equipment) {
-        this.removeAll();
-        this.add(new JLabel("Equipment"));
-        for(int i = 0; i < equipment.length; i++) {
-            if(equipment[i] != null) {
-                add(new EquipmentButton(equipment[i]));
-            }
-       }
-    }
-
-    private void setMenu() {
-        menu.add(unequipItem);
     }
 
     @Override
     public void render() {
 
     }
-    
-    public void setOccupation(Occupation occupation){
-            equipmentManager.unregiserView(this);
-            equipmentManager = occupation.getEquipmentManager();
-            receiveEquipment(equipmentManager.getEquippedItems());
+
+    private void setUpMenu() {
+        equipmentItemMenu.add(equipmentUnEquip);
+        equipmentItemMenu.addSeparator();
+        equipmentItemMenu.add(cancel);
+
+        equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
     }
 
-    
+    @Override
+    public void receiveEquipment(HashMap<String, EquippableItem> equipment) {
+        this.removeAll();
+        this.add(new JLabel("Equipment"));
 
-    public class EquipmentButton extends JButton {
-        private Equipment equipment;
-
-        public EquipmentButton(Equipment equipment) {
-            super(equipment.getName());
-            this.equipment = equipment;
-            this.addMouseListener(new ItemMouseListener());
-        }
-
-        public Equipment getEquipment(){
-            return equipment;
+        for (String s : equipment.keySet()) {
+            EquippableItem item = equipment.get(s);
+            if (item != null) {
+                this.add(new EquippableItemButton(item));
+            }
         }
     }
 
-    private class ItemMouseListener implements MouseListener {
+    @Override
+    public void receiveOccupation(Occupation o) {
+       unequipAction = new UnequipAction(o.getEquipmentHandler());
+       equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
+       o.getEquipmentHandler().addObserver(this);
+    }
 
-        public ItemMouseListener() {
+    public class EquippableItemButton extends JButton {
+
+        private EquippableItem item;
+
+        public EquippableItemButton(EquippableItem item) {
+            super(item.getName());
+            this.item = item;
+            this.addMouseListener(new EquippableItemButtonListener());
         }
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-            try{
-
-                Equipment equipment =  ((EquipmentButton) e.getSource()).getEquipment();
-                menu.show(e.getComponent(), e.getX(), e.getY());
-                unequipAction.setEquipment(equipment);
-
-
-            }catch(IllegalComponentStateException ex){}
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
+        public EquippableItem getItem() {
+            return item;
 
         }
 
-        @Override
-        public void mouseExited(MouseEvent e) {
+        private class EquippableItemButtonListener implements MouseListener {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                try {
+
+                    EquippableItem item = (EquippableItem) ((EquippableItemButton) e.getSource()).getItem();
+                    equipmentItemMenu.show(e.getComponent(), e.getX(), e.getY());
+                    unequipAction.setEquippableItem(item);
+
+                } catch (IllegalComponentStateException ex) {
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
 
         }
+
     }
 }

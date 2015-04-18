@@ -1,4 +1,4 @@
-package model.item2;
+package model.item;
 
 import model.observer.EquipmentHandlerObserver;
 
@@ -7,16 +7,42 @@ import java.util.HashMap;
 // Each specific occupation will initialize this class with slots it can use
 public class EquipmentHandler {
 
+    public static String HEAD = "Head";
+    public static String CHEST = "Chest";
+    public static String LEGS = "Legs";
+    public static String SMASHER_WEAPON = "SmasherWeapon";
+    public static String SUMMONER_WEAPON = "SummonerWeapon";
+    public static String SNEAK_WEAPON = "SneakWeapon";
+
+    public static String SHIELD = "Shield";
+    
     private ArrayList<EquipmentHandlerObserver> observers;
     private HashMap<String, EquippableItem> equipment;
     private Inventory inventory;
 
-    public EquipmentHandler(Inventory inventory, HashMap<String, EquippableItem> slots) {
+    public EquipmentHandler(Inventory inventory, ArrayList<String> slots) {
+
         observers = new ArrayList<EquipmentHandlerObserver>();
-        equipment = slots;
+        equipment = new HashMap<String, EquippableItem>();
+
+        updateSlots(slots);
+        
         this.inventory = inventory;
     }
 
+    public void updateSlots(ArrayList<String> slots) {
+        for(String s: slots) {
+            equipment.put(s, null);
+        }
+        notifyObserversEquipmentChanged();
+    }
+
+    //TEST
+    public void getSlots() {
+        for(String s: equipment.keySet()) {
+            System.out.println(s);
+        }
+    }
     // Rings of abstraction
     public void equip(EquippableItem equippableItem, String slot) {
         // check the slots passed in and if they are available
@@ -24,7 +50,7 @@ public class EquipmentHandler {
             putInEquipment(slot, equippableItem);
             removeFromInventory(equippableItem);
         }
-
+        notifyObserversEquipmentChanged();
     }
 
     // Rings of abstraction
@@ -33,21 +59,18 @@ public class EquipmentHandler {
             removeFromEquipment(slot);
             addBackToInventory(equippableItem);
         }
+        notifyObserversEquipmentChanged();
     }
 
-    public void registerObserver(EquipmentHandlerObserver observer) {
+    public void addObserver(EquipmentHandlerObserver observer) {
         observers.add(observer);
-        notifyObserversEquipmentchanged();
+        notifyObserversEquipmentChanged();
     }
 
-    private void notifyObserversEquipmentchanged() {
+    private void notifyObserversEquipmentChanged() {
         for(EquipmentHandlerObserver observer: observers) {
-            observer.receiveEquipment(getEquipment());
+            observer.receiveEquipment(equipment);
         }
-    }
-
-    private EquippableItem[] getEquipment() {
-        return ((EquippableItem[])equipment.values().toArray());
     }
 
     private boolean slotExists(String slot) {
@@ -68,5 +91,9 @@ public class EquipmentHandler {
 
     private void addBackToInventory(EquippableItem equippableItem) {
         inventory.add(equippableItem);
+    }
+
+    public ArrayList<EquipmentHandlerObserver> getObservers() {
+        return observers;
     }
 }

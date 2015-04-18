@@ -23,7 +23,7 @@ public class GameState extends State {
         this.player = player;
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
-        viewPort =  new GameViewport(mapVP, inventory,player.getOccupation(),player.getStats());
+        viewPort =  new GameViewport(mapVP, inventory, player);
     }
 
     @Override
@@ -31,8 +31,6 @@ public class GameState extends State {
         //MAP MOVEMENT LOGIC
         //UGLY ASS CODE THAT IS TEMPORARY UNTIL VIEWPORTS COMPLETELY IMPLEMENT OBSERVER PATTERN
         GameViewport v = (GameViewport) viewPort;
-        v.getInventoryViewport().setOccupation(player.getOccupation());
-        v.getEquipmentViewport().setOccupation(player.getOccupation());
         v.updateOccupation(player.getOccupation());
         
     }

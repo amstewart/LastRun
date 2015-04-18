@@ -2,7 +2,6 @@
 package state;
 
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 

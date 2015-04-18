@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 
 /**
  *

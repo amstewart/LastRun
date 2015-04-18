@@ -1,6 +1,4 @@
-package model.item2;
-
-import java.util.ArrayList;
+package model.item;
 
 public class EquippableItem extends TakeableItem {
 
@@ -11,12 +9,17 @@ public class EquippableItem extends TakeableItem {
         slotCategory = slot;
     }
 
+    @Override
+    public void touch(Inventory inventory) {
+        inventory.add(this);
+    }
+
     public void equip(EquipmentHandler equipmentHandler ) {
         equipmentHandler.equip(this, slotCategory);
     }
 
     public void unequip(EquipmentHandler equipmentHandler) {
-        equipmentHandler.equip(this, slotCategory);
+        equipmentHandler.unequip(this, slotCategory);
     }
 
 }

@@ -1,8 +1,11 @@
 package model.observer;
 
-import model.item2.EquippableItem;
+import model.item.EquippableItem;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface EquipmentHandlerObserver {
 
-    void receiveEquipment(EquippableItem[] equippableItems);
+    void receiveEquipment(HashMap<String, EquippableItem> equipment);
 }

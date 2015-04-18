@@ -4,13 +4,10 @@ package model.gameBundle;
 
 import model.Vector2;
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
-import model.enums.DefinedStats;
-import model.item.EquipmentManager;
+import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.map.GameMap;
-import model.stat.Stats;
 
 /*
     Game class that holds all necessary components that
@@ -24,9 +21,8 @@ public class GameBundle {
     
     private GameMap map;
     private Avatar avatar;
-    private OccupationChooser occupationChooser;
     private Occupation occupation;
-    private EquipmentManager equipmentManager;
+    private EquipmentHandler equipmentHandler;
 
     public GameBundle(){
         map = new GameMap();
@@ -57,8 +53,8 @@ public class GameBundle {
         return occupation;
     }
     // pre condition is occupation is chose before accessing equipment
-    public EquipmentManager getEquipmentManager() {
-        equipmentManager = occupation.getEquipmentManager();
-        return equipmentManager;
+    public EquipmentHandler getEquipmentManager() {
+        equipmentHandler = occupation.getEquipmentHandler();
+        return equipmentHandler;
     }
 }

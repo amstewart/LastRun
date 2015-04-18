@@ -3,7 +3,6 @@ package controller.action.charSelectAction;
 import utility.ImageUtil;
 import controller.action.Action;
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 import model.entity.occupation.Sneak;
 
 public class SelectSneakAction extends Action {

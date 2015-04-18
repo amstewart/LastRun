@@ -1,61 +1,88 @@
 package model.item;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import model.item.equipment.OneHandedWeapon;
-import model.item.equipment.Shield;
-import model.item.equipment.Staff;
-import model.item.equipment.TwoHandedWeapon;
-import view.viewport.InventoryViewport;
+import model.observer.InventoryObserver;
+
+import java.util.*;
 
 public class Inventory {
-    private ArrayList<TakeableItem> items;
-    private ArrayList<InventoryViewport> registeredViews;
+
+    private ArrayList<InventoryObserver> observers;
+    private ArrayList<NonEquippableItem> nonEquippableItems;
+    private ArrayList<EquippableItem> equippableItems;
 
     public Inventory() {
-        items = new ArrayList<TakeableItem>();
-        registeredViews = new ArrayList<InventoryViewport>();
-        items.add(new Shield());
-        items.add(new OneHandedWeapon());
-        items.add(new Staff());
-        items.add(new TwoHandedWeapon());
-    }
+        observers = new ArrayList<InventoryObserver>();
+        nonEquippableItems = new ArrayList<>();
+        equippableItems = new ArrayList<>();
 
-    public void registerView(InventoryViewport view) {
-        registeredViews.add(view);
-    }
-
-    private void notifyViews() {
-        for(InventoryViewport views: registeredViews) {
-            views.receive(this.getItems());
-        }
-    }
-    public boolean addItem(TakeableItem item) {
-        if(item != null) {
-            items.add(item);
-            notifyViews();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean removeItem(TakeableItem item) {
-        if(items.contains(item)) {
-            items.remove(item);
-            notifyViews();
-            return true;
-        }
         
-        return false;
+        this.add(ItemFactory.newBFSword());
+        this.add(ItemFactory.newCrossBow());
+        this.add(ItemFactory.newShield());
+        this.add(ItemFactory.newStaff());
     }
 
-    public TakeableItem[] getItems() {
-        Collections.sort(items, new Comparator<TakeableItem>() {
-            public int compare(TakeableItem item1, TakeableItem item2) {
+    public void add(EquippableItem equippableItem) {
+        equippableItems.add(equippableItem);
+        notifyObserversEquippableItemsHaveChanged();
+    }
+
+    public void add(NonEquippableItem nonEquippableItem) {
+        nonEquippableItems.add(nonEquippableItem);
+        notifyObserversNonEquippableItemsHaveChanged();
+    }
+
+    public void remove(EquippableItem equippableItem) {
+        if(equippableItems.contains(equippableItem)) {
+            equippableItems.remove(equippableItem);
+            notifyObserversEquippableItemsHaveChanged();
+        }
+    }
+
+    public void remove(NonEquippableItem nonEquippableItem) {
+        if(nonEquippableItems.contains(nonEquippableItem)) {
+            nonEquippableItems.remove(nonEquippableItem);
+            notifyObserversNonEquippableItemsHaveChanged();
+        }
+    }
+
+    public void addObserver(InventoryObserver inventoryObserver){
+        observers.add(inventoryObserver);
+        notifyObserversNonEquippableItemsHaveChanged();
+        notifyObserversEquippableItemsHaveChanged();
+    }
+
+    private void notifyObserversNonEquippableItemsHaveChanged() {
+        for(InventoryObserver observer : observers){
+            observer.receiveNonEquippableItems(getNonEquippableItems());
+        }
+    }
+
+    private void notifyObserversEquippableItemsHaveChanged() {
+        for(InventoryObserver observer : observers){
+            observer.receiveEquippableItems(getEquippableItems());
+        }
+    }
+    
+
+    //TODO: Give observers the items it needs
+    private EquippableItem[] getEquippableItems() {
+        Collections.sort(equippableItems, new Comparator<EquippableItem>() {
+            public int compare(EquippableItem item1, EquippableItem item2) {
                 return item1.getName().compareTo(item2.getName());
             }
         });
-        return items.toArray(new TakeableItem[items.size()]);
+        return equippableItems.toArray(new EquippableItem[equippableItems.size()]);
+    }
+
+    private NonEquippableItem[] getNonEquippableItems() {
+        Collections.sort(nonEquippableItems, new Comparator<NonEquippableItem>() {
+            public int compare(NonEquippableItem item1, NonEquippableItem item2) {
+                return item1.getName().compareTo(item2.getName());
+            }
+        });
+        return nonEquippableItems.toArray(new NonEquippableItem[nonEquippableItems.size()]);
     }
 }
+
+
