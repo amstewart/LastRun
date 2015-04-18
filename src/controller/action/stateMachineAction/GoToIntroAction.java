@@ -1,14 +1,9 @@
-package controller.action.charSelectAction;
+package controller.action.stateMachineAction;
 
 import controller.action.Action;
 import state.stateMachine.RPGStateMachine;
 
 public class GoToIntroAction extends Action {
-
-
-    public GoToIntroAction() {
-        
-    }
     
     @Override
     public void perform() {

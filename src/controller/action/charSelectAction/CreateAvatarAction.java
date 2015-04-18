@@ -1,5 +1,6 @@
 package controller.action.charSelectAction;
 
+import controller.action.stateMachineAction.GoToIntroAction;
 import model.enums.OcupationCategory;
 import controller.action.Action;
 import model.entity.Avatar;

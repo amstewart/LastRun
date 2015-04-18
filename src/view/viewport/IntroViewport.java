@@ -10,6 +10,7 @@ import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import model.entity.occupation.Occupation;
 import utility.ImageUtil;
 
 /**
@@ -21,7 +22,10 @@ public class IntroViewport extends Viewport {
     /**
      * Creates new form IntroViewport
      */
-    public IntroViewport() {
+    Occupation occupation;
+    
+    public IntroViewport(Occupation occupation) {
+        this.occupation = occupation;
         initComponents();
         backgroundImage = new ImageIcon(ImageUtil.INTRO_BACKGROUND);
         addActionListeners();
@@ -34,9 +38,8 @@ public class IntroViewport extends Viewport {
     }
     
     private void addActionListeners(){
-    
         goToCharacterSelectionButton.addActionListener(Action.getActionListener(new GoBackAction()));
-        goToCharacterSelectionButton.addActionListener(Action.getActionListener(new GoToGameAction()));
+        goToGame.addActionListener(Action.getActionListener(new GoToGameAction()));
     }
 
     /**

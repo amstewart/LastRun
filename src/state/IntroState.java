@@ -13,7 +13,7 @@ public class IntroState extends State{
     public IntroState(Occupation occupation){
         
         this.ocupation = occupation;
-        viewPort = new IntroViewport();
+        viewPort = new IntroViewport(occupation);
     }
 
     @Override
