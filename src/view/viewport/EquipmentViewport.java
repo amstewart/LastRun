@@ -17,6 +17,7 @@ import javax.swing.JPopupMenu;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
+import utility.ImageUtil;
 
 public class EquipmentViewport extends Viewport implements EquipmentHandlerObserver, AvatarObserver {
 
@@ -71,7 +72,8 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
         private EquippableItem item;
 
         public EquippableItemButton(EquippableItem item) {
-            super(item.getName());
+            super(ImageUtil.getImage(item.getAssetID()));
+            this.setToolTipText(item.getName());
             this.item = item;
             this.addMouseListener(new EquippableItemButtonListener());
         }

@@ -1,7 +1,11 @@
 package model.item;
 
-public abstract class Item {
+import model.Assetable;
+
+public abstract class Item implements Assetable {
+
     private String name;
+    protected String assetID;
 
     public Item(String name) {
         this.name = name;
@@ -13,5 +17,14 @@ public abstract class Item {
 
     public String getName() {
         return name;
+    }
+
+    public String getAssetID() {
+        return assetID;
+    }
+
+    public void setAssetID(String id) {
+        assetID = id;
+
     }
 }

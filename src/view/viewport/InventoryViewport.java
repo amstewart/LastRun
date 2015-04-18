@@ -17,6 +17,7 @@ import javax.swing.*;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
+import utility.ImageUtil;
 
 public class InventoryViewport extends Viewport implements InventoryObserver, AvatarObserver {
 
@@ -114,8 +115,10 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         private EquippableItem item;
 
         public EquippableItemButton(EquippableItem item) {
+            super(ImageUtil.getImage(item.getAssetID()));
+            this.setToolTipText(item.getName());
             this.item = item;
-            this.setText(item.getName());
+            
             this.addMouseListener(new EquippableItemButtonListener());
         }
 
@@ -164,8 +167,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         private NonEquippableItem item;
 
         public NonEquippableItemButton(NonEquippableItem item) {
+            super(ImageUtil.getImage(item.getAssetID()));
+            this.setToolTipText(item.getName());
             this.item = item;
-            this.setText(item.getName());
             this.addMouseListener(new NonEquippableItemButtonListener());
         }
 
