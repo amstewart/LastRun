@@ -31,6 +31,8 @@ public class MapViewport extends Viewport {
 
     private GameMap map;
     private int hexRadius = 36;
+    private final int defaultHexRadius = hexRadius; //Used for zoom scale
+
 
     private int hexWidth = hexRadius * 2;
     private int hexHeight = (int) (hexRadius * 1.75);
@@ -219,8 +221,6 @@ public class MapViewport extends Viewport {
     }
 
     private void rescaleMap() {
-        int defaultHexRadius = 50;
-
         hexRadius = (int) (defaultHexRadius * scale);
         hexWidth = hexRadius * 2;
         hexHeight = (int) (hexRadius * 1.748);
