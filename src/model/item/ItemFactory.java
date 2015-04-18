@@ -1,12 +1,12 @@
 
 package model.item;
 
+import model.entity.occupation.Occupation;
+import model.entity.occupation.Smasher;
+import model.entity.occupation.Sneak;
+import model.entity.occupation.Summoner;
 import utility.ImageUtil;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public class ItemFactory {
     
     public static NonEquippableItem newHealthPotion(){
@@ -56,75 +56,75 @@ public class ItemFactory {
     
     
     public static EquippableItem  newBFSword(){
-        EquippableItem item = new EquippableItem("B.F. Sword", EquipmentHandler.SMASHER_WEAPON);
+        EquippableItem item = new EquippableItem("B.F. Sword", Smasher.SMASHER_WEAPON);
         item.setAssetID(ImageUtil.SWORD);
         return item;
     }
     public static EquippableItem  newAxe(){
-        EquippableItem item = new EquippableItem("Axe - the best deoderant for men", EquipmentHandler.SMASHER_WEAPON);
+        EquippableItem item = new EquippableItem("Axe - the best deoderant for men", Smasher.SMASHER_WEAPON);
         item.setAssetID(ImageUtil.AXE);
         return item;
     }
     public static EquippableItem  newBandana(){
-        EquippableItem item = new EquippableItem("Bandana", EquipmentHandler.HEAD);
+        EquippableItem item = new EquippableItem("Bandana", Occupation.HEAD);
         item.setAssetID(ImageUtil.BANDANA);
         return item;
     }
     
     public static EquippableItem  newHelmet(){
-        EquippableItem item = new EquippableItem("Helmet", EquipmentHandler.HEAD);
+        EquippableItem item = new EquippableItem("Helmet", Occupation.HEAD);
         item.setAssetID(ImageUtil.HELMET);
         return item;
     }
     
     public static EquippableItem  newClub(){
-        EquippableItem item = new EquippableItem("Club", EquipmentHandler.SMASHER_WEAPON);
+        EquippableItem item = new EquippableItem("Club", Smasher.SMASHER_WEAPON);
         item.setAssetID(ImageUtil.CLUB);
         return item;
     }
     public static EquippableItem  newCrossbow(){
-        EquippableItem item = new EquippableItem("Crossbow", EquipmentHandler.SNEAK_WEAPON);
+        EquippableItem item = new EquippableItem("Crossbow", Sneak.SNEAK_WEAPON);
         item.setAssetID(ImageUtil.SWORD);
         return item;
     }
     public static EquippableItem  newDagger(){
-        EquippableItem item = new EquippableItem("Dagger", EquipmentHandler.SNEAK_WEAPON);
+        EquippableItem item = new EquippableItem("Dagger", Sneak.SNEAK_WEAPON);
         item.setAssetID(ImageUtil.DAGGER);
         return item;
     }
     
     public static EquippableItem  newHammer(){
-        EquippableItem item = new EquippableItem("Hammer", EquipmentHandler.SMASHER_WEAPON);
+        EquippableItem item = new EquippableItem("Hammer", Smasher.SMASHER_WEAPON);
         item.setAssetID(ImageUtil.HAMMER);
         return item;
     }
     
     public static EquippableItem  newMace(){
-        EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", EquipmentHandler.SMASHER_WEAPON);
+        EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", Smasher.SMASHER_WEAPON);
         item.setAssetID(ImageUtil.MACE);
         return item;
     }
     
     public static EquippableItem  newStaff(){
-        EquippableItem item = new EquippableItem("Staff", EquipmentHandler.SUMMONER_WEAPON);
+        EquippableItem item = new EquippableItem("Staff", Summoner.SUMMONER_WEAPON);
         item.setAssetID(ImageUtil.STAFF);
         return item;
     }
     
     public static EquippableItem  newCandyCaneStaff(){
-        EquippableItem item = new EquippableItem("Santa Staff", EquipmentHandler.SUMMONER_WEAPON);
+        EquippableItem item = new EquippableItem("Santa Staff", Summoner.SUMMONER_WEAPON);
         item.setAssetID(ImageUtil.CANDYCANE_STAFF);
         return item;
     }
     
      public static EquippableItem  newShield(){
-        EquippableItem item = new EquippableItem("Shield", EquipmentHandler.SHIELD);
+        EquippableItem item = new EquippableItem("Shield", Smasher.SHIELD);
         item.setAssetID(ImageUtil.SHIELD);
         return item;
     }
      
      public static EquippableItem  newShirt(){
-        EquippableItem item = new EquippableItem("Shirt - Bought at the Gap", EquipmentHandler.CHEST);
+        EquippableItem item = new EquippableItem("Shirt - Bought at the Gap", Occupation.CHEST);
         item.setAssetID(ImageUtil.SHIRT);
         return item;
     }

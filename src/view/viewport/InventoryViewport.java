@@ -44,7 +44,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
         equipAction = new EquipAction(eH);
         useAction = new UseAction(inventory);
-
+        inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
 
         equipmentDropAction = new EquipmentDropAction(inventory);

@@ -18,7 +18,7 @@ public class Observe implements ExternalEffect, Describable{
 
 	@Override
 	public void applyEffect(LocalArea map, Entity entity) {
-		Entity observedEntity = map.getEntityLinear();
+		Entity observedEntity = map.getEntityLinear(entity);
 		if(observedEntity != null){
 			Stats stats = observedEntity.getStats();
 			int level = stats.getLevel() + howWrong;

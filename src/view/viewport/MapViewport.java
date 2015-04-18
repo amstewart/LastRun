@@ -131,7 +131,7 @@ public class MapViewport extends Viewport {
                     cantMoveTimer -= 0.02;
                 } else {
                     //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
-                }      
+                }
             }
         }
     }

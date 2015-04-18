@@ -13,7 +13,6 @@ import model.map.GameMap;
     Game class that holds all necessary components that
     states will use
 
-
     Might violate TDA as clients that use the accessors will for sure
     change the state outside of this game bundle. Shit. lol.
  */
@@ -27,8 +26,11 @@ public class GameBundle {
     public GameBundle(){
         map = new GameMap();
         avatar = new Avatar();
+        avatar.setName("PLAYER");
+        
         map.addEntity(avatar,new Vector2(0,0));
-  
+        Vector2 pos = map.getAvatarMovement().getPosition();
+        map.createLocalArea(2, pos);
     }
  
 

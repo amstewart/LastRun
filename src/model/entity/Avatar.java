@@ -25,15 +25,18 @@ public class Avatar extends Entity {
 
 	public Avatar() {
 		this.occupation = new Sneak(getInventory());//default
+		ImageUtil.initSneak();
+		setAssetID(ImageUtil.inEffect[2]);
 	}
 
 	public void addToInventory(TakeableItem item) {
 		item.touch(this.getInventory());
 	}
 
-	public void changeName(String new_name) {
+	@Override
+	public void setName(String new_name) {
 		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
-		setName(new_name);
+		super.setName(new_name);
 	}
 
     @Override
@@ -57,7 +60,7 @@ public class Avatar extends Entity {
     @Override
     public void setMana(int mana){
     	super.setMana(mana);
-    	getOccupation().notifySkills(mana);
+    	getOccupation().notifyManaSkills(mana);
 
     }
 

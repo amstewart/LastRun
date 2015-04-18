@@ -19,6 +19,7 @@ import utility.Util;
 import view.viewport.Viewport;
 
 public class GameMap {
+
     private ArrayList<MapObserver> observers = new ArrayList<>();
     private static int DELTA_ODD_Y = 1;
 
@@ -292,4 +293,109 @@ public class GameMap {
         }
     }
     
+	public LocalArea createLocalArea(int radius, Vector2 center) {
+		ArrayList<Tile> list = new ArrayList();
+		Tile t = getTile(center);
+		Tile oldt = null;
+		boolean addTile = true;
+		list.add(t);
+		for (int i = 0; i != radius; ++i) {
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheNorth(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);
+			
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheNorthEast(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);
+			
+			
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheSouthEast(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);
+			
+			
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheSouth(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);
+			
+			
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheSouthWest(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);
+			
+			for (int j = 0; j != i + 1; ++j) {
+				oldt = t;
+				t = getTileToTheSouthEast(center);
+				if (oldt == t) {
+					addTile = false;
+					break;
+				}
+			}
+			if (addTile) {
+				list.add(t);
+			} else {
+				addTile = true;
+			}
+			t = getTile(center);//added
+		}
+		LocalArea la = new LocalArea(center, list);
+		return la;
+
+	}
+
 }

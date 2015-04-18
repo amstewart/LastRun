@@ -2,7 +2,9 @@ package model.skillset;
 
 import java.util.ArrayList;
 
+import model.effect.Boon;
 import model.effect.Spell;
+import model.enums.DefinedStats;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -16,7 +18,10 @@ public class SummonerSkills extends BasicSkills {
     private ExternalSkill staff;
 
     public SummonerSkills() {
-      //  boon = new SpellSkill("Boon", 1);
+    	Boon boonEffect1 = new Boon("fire", DefinedStats.ADDHARDINESS.getStats());
+    	Boon boonEffect2 = new Boon("ice", DefinedStats.ADDHEALTH.getStats());
+    	Boon boonEffect3 = new Boon("water", DefinedStats.ADDINTELLECT.getStats());
+    	boon = new SpellSkill("boon", 1, boonEffect1, boonEffect2, boonEffect3, 1);
       //  bane = new SpellSkill("Bane", 1);
       //  enchantment = new SpellSkill("Enchantment", 1);
        // staff = new ExternalSkill("Staff", 1);
@@ -38,7 +43,7 @@ public class SummonerSkills extends BasicSkills {
         return staff;
     }
     
-    public void notifySkills(int mana){
+    public void notifyManaSkills(int mana){
     	boon.setCanPeform(mana);
     	bane.setCanPeform(mana);
     	enchantment.setCanPeform(mana);

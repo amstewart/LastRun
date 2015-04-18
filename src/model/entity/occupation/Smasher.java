@@ -12,6 +12,10 @@ import model.skillset.SmasherSkills;
 
 public class Smasher extends Occupation {
 
+    public static final String SHIELD = "Shield";
+
+    public static final String SMASHER_WEAPON = "SmasherWeapon";
+
     private SmasherSkills skills;
 
     public Smasher(Inventory inventory) {
@@ -23,8 +27,8 @@ public class Smasher extends Occupation {
     private void setSmasherItemSlots() {
         ArrayList<String> slots = getBasicSlots();
         
-        slots.add(EquipmentHandler.SMASHER_WEAPON);
-        slots.add(EquipmentHandler.SHIELD);        
+        slots.add(SMASHER_WEAPON);
+        slots.add(SHIELD);
 
         updateEquipmentHandler(slots);
     }
@@ -40,10 +44,10 @@ public class Smasher extends Occupation {
         return "Smasher";
     }
 
-
-    @Override
-	public void notifySkills(int mana) {
-		// TODO Auto-generated method stub
+	@Override
+	public void notifyManaSkills(int mana) {
+		//Mixed Instance :,(
+		
 	}
 
 	@Override

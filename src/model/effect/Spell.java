@@ -12,9 +12,9 @@ public class Spell implements Assetable{
 	private String id;
 	
 	public Spell(String id) {
-		setAssetID(id);
-		
+		setAssetID(id);	
 	}
+	
 	public void decrementMana(final Entity entity){
 		entity.setMana(-manaDecrease);
 		TimerTask timertask = new TimerTask(){
