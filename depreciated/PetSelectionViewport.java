@@ -5,20 +5,16 @@
  */
 package view.viewport;
 
-
-import LastRun.src.utility.DoubleLinkedList;
+import utility.DoubleLinkedList;
 import controller.action.Action;
 import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
