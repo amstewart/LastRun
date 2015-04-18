@@ -6,6 +6,7 @@
 package view.viewport;
 
 
+import LastRun.src.controller.action.charSelectAction.AvatarNameAction;
 import LastRun.src.controller.action.charSelectAction.CreateAvatarAction;
 import LastRun.src.model.enums.OcupationCategory;
 import LastRun.src.utility.DoubleLinkedList;
@@ -57,10 +58,11 @@ public class CharacterSelectionViewport extends Viewport {
     
     public CharacterSelectionViewport(Avatar avatar) {
         
+        this.avatar = avatar;
         backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
         initComponents();
         addAvatarOcupations();
-        addActionListeners(avatar);
+        addActionListeners();
     }
     
     public JButton getStartGameButton(){
@@ -132,7 +134,14 @@ public class CharacterSelectionViewport extends Viewport {
         return image;
     }
     
-    private final MouseListener changeOcupationAction = new MouseListener() {
+    private void addActionListeners(){
+        mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
+        startGameButton.addActionListener(Action.getActionListener(new CreateAvatarAction(avatar,ocupationList.getData()) ));
+        ocupationPanel.addMouseListener(changeOcupationAction);
+        avatarNickNameTextField.addActionListener( Action.getActionListener(new AvatarNameAction(avatar, avatarNickNameTextField.getText())));
+    }
+ 
+     private final MouseListener changeOcupationAction = new MouseListener() {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -171,14 +180,7 @@ public class CharacterSelectionViewport extends Viewport {
         public void mouseExited(MouseEvent e) {
         }
     };
-    
-    private void addActionListeners(Avatar avatar){
-        mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
-        startGameButton.addActionListener(Action.getActionListener(new CreateAvatarAction(avatar,ocupationList.getData()) ));
-        ocupationPanel.addMouseListener(changeOcupationAction);
-        
-    }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
