@@ -1,5 +1,8 @@
 package model.entity.npc;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
+
 public class Villager extends NPC {
 
     private static final String DESC = "Hello!";
@@ -16,4 +19,11 @@ public class Villager extends NPC {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+    @Override
+    public void accept(EntityVisitor visitor, VisitorContainer container) {
+
+    }
+
 }

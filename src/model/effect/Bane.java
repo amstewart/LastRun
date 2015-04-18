@@ -42,8 +42,8 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 	}
 
 	@Override
-	public void fire(GameMap area, Entity entity, EntityMovement emov,
-			int radius) {
+	public void fire(final GameMap area, Entity entity, EntityMovement emov,
+			final int radius) {
 
 		final Vector2 faceDir = emov.getFacingDir();
 		System.out.println(faceDir);

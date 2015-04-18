@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import Visitor.OccupationVisitor;
 import Visitor.VisitorContainer;
+import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.Inventory;
+import model.map.GameMap;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -65,6 +67,21 @@ public class Summoner extends Occupation {
 	public void accept(OccupationVisitor occupationVisitor, VisitorContainer container) {
 		container.setOccupation(this);
 	}
+	
+	@Override
+	public void performPassiveInternalSkill(String s, Entity e) {
+		skills.performPassiveInternalSkill(s,e); 
+		
+	}
+
+	@Override
+	public void performPassiveExternalSkill(String s, Entity e, GameMap map) {
+		skills.performPassiveExternalSkill(s,e,map);
+		
+	}
+
+	
+
 
 
 	

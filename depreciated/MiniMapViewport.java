@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import model.map.GameMap;
+import model.map.MiniMap;
 import view.viewport.MapViewport;
 
 /**
@@ -13,6 +14,7 @@ import view.viewport.MapViewport;
 public class MiniMapViewport extends MapViewport {
 
     private MapViewport mapVP;
+    private MiniMap mmap = null;
 
     public MiniMapViewport(GameMap m, MapViewport mapVP) {
         super(m);
@@ -115,6 +117,13 @@ public class MiniMapViewport extends MapViewport {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        int dx = 50;
+        int dy = 50;
+        int dwidth = 100;
+        int dheight = 100;
+        g.drawImage(mmap.getBitmap(), dx, dy, dwidth, dheight, this);
+        /*
         int mapVPWidthInTiles = mapVP.getWindowWidthInTiles();
         int mapVPHeightInTiles = mapVP.getWindowHeightInTiles();
 
@@ -151,7 +160,10 @@ public class MiniMapViewport extends MapViewport {
             rectWidth = (mapWidthInTiles - startX) * hexHeight - 20;
         }
         g.drawRect((int) (startX * hexWidth * 0.84), (int) (startY * hexHeight * 0.80), rectWidth, rectHeight);
-
+        */
     }
 
+    public void linkToMMap(MiniMap mmap) {
+        this.mmap = mmap;
+    }
 }

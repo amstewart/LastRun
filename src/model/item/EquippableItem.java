@@ -1,8 +1,7 @@
 package model.item;
 
 import model.tile.Tile;
-
-
+import model.entity.Avatar;
 import model.entity.Entity;
 import model.tile.Tile;
 
@@ -20,13 +19,13 @@ public class EquippableItem extends TakeableItem {
         inventory.add(this);
     }
 
-   public boolean equip(EquipmentHandler equipmentHandler) {
-        return equipmentHandler.equip(this, slotCategory);
+   public boolean equip(Avatar avatar) {
+        return avatar.equip(this, slotCategory);
         // stats.mergeStats(getItemStats());
     }
 
-    public boolean unequip(EquipmentHandler equipmentHandler) {
-        return equipmentHandler.unequip(this, slotCategory);
+    public boolean unequip(Avatar avatar) {
+        return avatar.unequip(this, slotCategory);
         // stats.unMergeStats(getItemStats());
     }
 

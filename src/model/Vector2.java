@@ -46,6 +46,20 @@ public class Vector2 implements Comparable {
         return new Long(a.X * b.X + a.Y * b.Y);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            Vector2 b = (Vector2)obj;
+
+            if (this.X.equals(b.X) && this.Y.equals(b.Y))
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public double magnitude() {
         Double xs = Math.pow(X.doubleValue(), 2);
         Double ys = Math.pow(Y.doubleValue(), 2);

@@ -328,10 +328,12 @@ public class GameMap {
             o.receiveMap(this);
         }
     }
+
     public ArrayList<Tile> createLocalAreaAngular(int radius, Vector2 center) {
     	//TODO
     	return null;
     }
+
 	public ArrayList<Tile> createLocalAreaRadial(int radius, Vector2 center) {
 		ArrayList<Tile> list = new ArrayList();
 		Tile t = getTile(center);
