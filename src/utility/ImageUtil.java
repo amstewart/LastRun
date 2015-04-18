@@ -136,6 +136,9 @@ public class ImageUtil {
     public static final String WINE = DIR_ITEMS + "wine.png";
     public static final String OINTMENT = DIR_ITEMS + "ointment.png";
     public static final String PROTEIN = DIR_ITEMS + "protein.png";
+    public static final String LEGS1 = DIR_ITEMS + "Legs1.png";
+    public static final String LEGS2 = DIR_ITEMS + "Legs2.png";
+    public static final String LEGS3 = DIR_ITEMS + "Legs3.png";
     //Projectiles//
 
     public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";

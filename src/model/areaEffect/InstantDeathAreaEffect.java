@@ -6,10 +6,6 @@
 package model.areaEffect;
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
 public class InstantDeathAreaEffect extends AreaEffect {
 	
 	public InstantDeathAreaEffect(){}

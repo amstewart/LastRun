@@ -5,7 +5,7 @@ import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
-import view.viewport.GViewport;
+import view.viewport.GameViewport;
 import view.viewport.MapViewport;
 
 
@@ -23,14 +23,14 @@ public class GameState extends State {
         this.player = player;
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
-        viewPort =  new GViewport(mapVP, inventory, player);
+        viewPort =  new GameViewport(mapVP, inventory, player);
     }
 
     @Override
     public void update() {
         //MAP MOVEMENT LOGIC
         //UGLY ASS CODE THAT IS TEMPORARY UNTIL VIEWPORTS COMPLETELY IMPLEMENT OBSERVER PATTERN
-        GViewport v = (GViewport) viewPort;
+        GameViewport v = (GameViewport) viewPort;
         v.updateOccupation(player.getOccupation());
         
     }

@@ -9,11 +9,11 @@ import model.stat.Stats;
 public class UnequipAction extends Action {
 
     private EquippableItem equippableItem;
-    private Avatar avatar;
+    private EquipmentHandler equipmentHandler;
     private Stats stats;
 
-    public UnequipAction(Avatar avatar, Stats stats) {
-        this.avatar = avatar;
+    public UnequipAction(EquipmentHandler equipmentHandler, Stats stats) {
+        this.equipmentHandler = equipmentHandler;
         this.stats = stats;
     }
     
@@ -24,7 +24,7 @@ public class UnequipAction extends Action {
     @Override
     public void perform() {
         if(equippableItem != null) {
-            equippableItem.unequip(avatar);
+            equippableItem.unequip(equipmentHandler);
         }
     }
 }
