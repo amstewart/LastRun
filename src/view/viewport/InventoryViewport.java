@@ -87,8 +87,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         add(equipmentViewport);
         
         
-        
-        
+      
 
     }
 
