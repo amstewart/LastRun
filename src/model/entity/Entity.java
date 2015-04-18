@@ -2,9 +2,10 @@ package model.entity;
 
 import java.util.ArrayList;
 
+import model.entity.npc.pet.Pet;
 import model.item.EquippableItem;
-import model.item.TakeableItem;
 import model.item.NonEquippableItem;
+import model.owner.EntityOwner;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -25,16 +26,23 @@ public abstract class Entity implements Describable, Assetable{
     // Fields
     private ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
 
+	private Inventory inventory = new Inventory();
+	private String id;
+	private EntityOwner pets = new EntityOwner();
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
 	private LinkedList<Status> statuses = new LinkedList<Status>();
-	private Inventory inventory = new Inventory();
-	private String id;
+
 
 	public Entity() {
 		this.stats = saving_stats;
                 setCanMoveOnGrass(true);
+	}
+
+	public void addPet(Pet new_pet) {
+		pets.adopt(new_pet);
+		new_pet.adopt(this); // notify the new pet that this entity is the owner
 	}
 
 	/**
@@ -56,11 +64,9 @@ public abstract class Entity implements Describable, Assetable{
 		return true;
 	}
 
-
 	public int getAgility() {
 		return stats.getAgility();
 	}
-
     
     public Stats getStats() {
 		return stats;
@@ -229,10 +235,9 @@ public abstract class Entity implements Describable, Assetable{
 
 	public void visit(NonEquippableItem nonEquippableItem) {
 		nonEquippableItem.touch(inventory);
-		
 	}
+
 	public void visit(EquippableItem equippableItem) {
 		equippableItem.touch(inventory);
-		
 	}
 }
