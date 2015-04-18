@@ -1,4 +1,4 @@
-package LastRun.src.controller.action.charSelectAction;
+package controller.action.charSelectAction;
 
 import controller.action.Action;
 import javax.swing.JTextField;

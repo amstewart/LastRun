@@ -5,6 +5,9 @@
  */
 package view.viewport;
 
+import controller.action.Action;
+import controller.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import utility.ImageUtil;
@@ -21,12 +24,19 @@ public class IntroViewport extends Viewport {
     public IntroViewport() {
         initComponents();
          backgroundImage = new ImageIcon(ImageUtil.INTRO_BACKGROUND);
+         addActionListeners();
     }
     
      @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
          g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
+    }
+    
+    private void addActionListeners(){
+    
+        goToCharacterSelectionButton.addActionListener(Action.getActionListener(new GoBackAction()));
+        goToCharacterSelectionButton.addActionListener(Action.getActionListener(new GoToGameAction()));
     }
 
     /**
@@ -51,6 +61,7 @@ public class IntroViewport extends Viewport {
         goToCharacterSelectionButton.setMinimumSize(new java.awt.Dimension(59, 60));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(32767, 400));
+        jPanel1.setOpaque(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,6 +87,8 @@ public class IntroViewport extends Viewport {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 38, Short.MAX_VALUE)
         );
+
+        jPanel3.setOpaque(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

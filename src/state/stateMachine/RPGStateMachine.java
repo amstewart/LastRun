@@ -15,19 +15,20 @@ public class RPGStateMachine extends StateMachine{
     private GameBundle gameBundle;
     private GameWindow window = new GameWindow();
     
-    State menu, charSelect, petSelect, game, HUD;
+    State menu, charSelect, petSelect, game, HUD, intro;
     
     private RPGStateMachine(){
         gameBundle = new GameBundle();
-        
         menu = new MenuState();
         charSelect = new CharacterSelectionState(gameBundle.getAvatar());
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
+        intro = new IntroState(gameBundle.getAvatar().getOccupation());
         
         this.add("menu", menu);
         this.add("charSelect", charSelect);
         this.add("petSelect", petSelect);
         this.add("game", game);
+        this.add("intro", intro);
     }
     
      public void render() {
@@ -40,8 +41,11 @@ public class RPGStateMachine extends StateMachine{
     public void changeToMenuState() {
        this.changeToState("menu");
     }
-
-
+    
+    public void changeToIntroState() {
+       this.changeToState("intro");
+    }
+    
     public void changeToGameState() {
         this.changeToState("game");
     }
