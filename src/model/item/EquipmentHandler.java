@@ -6,15 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 // Each specific occupation will initialize this class with slots it can use
 public class EquipmentHandler {
-
-    public static String HEAD = "Head";
-    public static String CHEST = "Chest";
-    public static String LEGS = "Legs";
-    public static String SMASHER_WEAPON = "SmasherWeapon";
-    public static String SUMMONER_WEAPON = "SummonerWeapon";
-    public static String SNEAK_WEAPON = "SneakWeapon";
-
-    public static String SHIELD = "Shield";
     
     private ArrayList<EquipmentHandlerObserver> observers;
     private HashMap<String, EquippableItem> equipment;
@@ -26,7 +17,6 @@ public class EquipmentHandler {
         equipment = new HashMap<String, EquippableItem>();
 
         updateSlots(slots);
-        
         this.inventory = inventory;
     }
 
@@ -45,8 +35,9 @@ public class EquipmentHandler {
     }
     // Rings of abstraction
     public void equip(EquippableItem equippableItem, String slot) {
-        // check the slots passed in and if they are available
+        // if slot exist
         if(slotExists(slot)) {
+            returnEquippedItemToInventory(slot);
             putInEquipment(slot, equippableItem);
             removeFromInventory(equippableItem);
         }
@@ -75,6 +66,13 @@ public class EquipmentHandler {
 
     private boolean slotExists(String slot) {
         return equipment.containsKey(slot);
+    }
+
+    private void returnEquippedItemToInventory(String slot) {
+        EquippableItem equippedItem = equipment.get(slot);
+        if(equippedItem != null) {
+            addBackToInventory(equippedItem);
+        }
     }
 
     private void putInEquipment(String slot, EquippableItem equippableItem) {

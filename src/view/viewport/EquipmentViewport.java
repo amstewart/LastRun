@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 import model.item.EquippableItem;
 import model.observer.EquipmentHandlerObserver;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JLabel;

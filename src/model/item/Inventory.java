@@ -17,6 +17,8 @@ public class Inventory {
 
         
         this.add(ItemFactory.getRandomSmasherWeapon());
+        this.add(ItemFactory.getRandomSmasherWeapon());
+        this.add(ItemFactory.getRandomSmasherWeapon());
         this.add(ItemFactory.getRandomSneakWeapon());
         this.add(ItemFactory.newShield());
         this.add(ItemFactory.getRandomHeadEquipment());

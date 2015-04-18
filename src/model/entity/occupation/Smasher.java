@@ -13,6 +13,7 @@ import model.skillset.SmasherSkills;
 public class Smasher extends Occupation {
 
     public static final String SHIELD = "Shield";
+
     public static final String SMASHER_WEAPON = "SmasherWeapon";
 
     private SmasherSkills skills;
