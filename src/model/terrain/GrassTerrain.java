@@ -12,8 +12,10 @@ import java.awt.Color;
  * @author
  */
 public class GrassTerrain extends Terrain {
+	
 
-    public GrassTerrain() {
+    public GrassTerrain(String id) {
+    	super(id);
         this.terrainType = TerrainType.Grass;
     }
 

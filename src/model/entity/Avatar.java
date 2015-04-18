@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.entity;
 
 import java.util.ArrayList;
-
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
@@ -25,11 +19,14 @@ public class Avatar extends Entity {
 
 	private Pet pet;
 	private Occupation occupation;
-	
+	private String id;
 
 	public Avatar() {
-		super(ImageUtil.NULL_ASSET);
 		this.occupation = new Sneak(getInventory());//default
+	}
+
+	public boolean addToInventory(TakeableItem item) {
+		return getInventory().addItem(item);
 	}
 
 	public void changeName(String new_name) {
@@ -49,8 +46,13 @@ public class Avatar extends Entity {
 	public void setOccupation(Occupation o){
 		this.occupation = o;
 	}
+
 	public Equipment[] getEquipment() {
 		return getOccupation().getEquipment();
+	}
+
+	public TakeableItem[] getInventoryItems() {
+		return getInventory().getItems();
 	}
 
 	public Skill[] getSkills() {
@@ -63,15 +65,6 @@ public class Avatar extends Entity {
     	getOccupation().notifySkills(mana);
 
     }
-
-	public boolean addToInventory(TakeableItem item) {
-		return getInventory().addItem(item);
-	}
-
-
-	public TakeableItem[] getInventoryItems() {
-		return getInventory().getItems();
-	}
 
 	public void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {

@@ -3,14 +3,16 @@ package model.effect;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import model.Asset;
+import model.*;
 import model.entity.Entity;
 
-public class Spell extends Asset{
+public class Spell implements Assetable{
 	private int manaDecrease = 4;
 	private boolean canPerform = true;
+	private String id;
+	
 	public Spell(String id) {
-		super(id);
+		setAssetID(id);
 		
 	}
 	public void decrementMana(final Entity entity){
@@ -33,6 +35,15 @@ public class Spell extends Asset{
 			canPerform = true;
 		}
 		canPerform = false;	
+	}
+	@Override
+	public String getAssetID() {
+		return id;
+	}
+	@Override
+	public void setAssetID(String id) {
+		this.id=id;
+		
 	}
 
 }

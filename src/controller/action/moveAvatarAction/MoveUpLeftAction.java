@@ -9,6 +9,8 @@ import model.entity.Entity;
 import model.map.GameMap;
 import model.terrain.Terrain;
 import model.tile.Tile;
+import utility.Direction;
+import utility.ImageUtil;
 import utility.Util;
 import view.viewport.MapViewport;
 
@@ -19,55 +21,57 @@ import view.viewport.MapViewport;
 public class MoveUpLeftAction extends Action {
 
     private GameMap map;
-    
-    public MoveUpLeftAction(){
+
+    public MoveUpLeftAction() {
         Util.dbgOut("Dont forget to set the map for the action.", 3);
     }
-    
-    public MoveUpLeftAction(GameMap m){
-        map = m;
-    }
-    
-    public void setMap(GameMap m){
+
+    public MoveUpLeftAction(GameMap m) {
         map = m;
     }
 
-    public boolean isAreaEffect(Tile tile){
-    	if(tile.isAreaEffectOwner()){
-    		return true;
-    	}
-    	return false;
+    public void setMap(GameMap m) {
+        map = m;
     }
-    
-    public void updateEntityTileLocation(Entity e,Tile source, Tile dest){
-    	source.removeEntity(e);
-    	dest.addEntity(e);
+
+    public boolean isAreaEffect(Tile tile) {
+        if (tile.isAreaEffectOwner()) {
+            return true;
+        }
+        return false;
     }
-    
-    public void applyAreaEffect(Entity e,Tile dest){
-    	dest.getAreaEffect().apply(e);
+
+    public void updateEntityTileLocation(Entity e, Tile source, Tile dest) {
+        source.removeEntity(e);
+        dest.addEntity(e);
+    }
+
+    public void applyAreaEffect(Entity e, Tile dest) {
+        dest.getAreaEffect().apply(e);
     }
 
     @Override
     public void perform() {
         Vector2 sourceLocation = map.getAvatarMovement().getPosition();
         Vector2 destLocation = map.getTileToTheNorthWest(sourceLocation).getLocation();
-        
-        Tile source= map.getTile(sourceLocation);
-        Tile dest= map.getTile(destLocation);
-        
+
+        Tile source = map.getTile(sourceLocation);
+        Tile dest = map.getTile(destLocation);
+
         ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
         Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
         
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
         	Entity e=source.getEntity();
         	map.moveAvatarTo(destLocation);
-        	updateEntityTileLocation(e,source,dest);
+            map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
+        	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
             }
-        }else{
+        } else {
             MapViewport.drawCantMove(destLocation);
         }
+        map.refaceAvatar(Direction.NORTHWEST, ImageUtil.EN_SKEL_NW);
     }
 }
