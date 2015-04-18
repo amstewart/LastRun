@@ -6,37 +6,29 @@
 package view.viewport;
 
 
+import LastRun.src.utility.DoubleLinkedList;
 import controller.action.Action;
 import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import utility.ImageUtil;
 
 public class PetSelectionViewport extends Viewport {
 
-    /**
+    /***
      * Creates new form MenuViewport
      */
-    
-    public PetSelectionViewport() {
-        initComponents();
-        backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
-    }
-    
-    public JButton getStartGameButton(){
-        
-        return startGameButton;
-    }
-    
-    public JButton getCharacterButton(){
-        
-        return mainMenuButton;
-    }
     
     public static void main(String[] args) {
 
@@ -49,15 +41,105 @@ public class PetSelectionViewport extends Viewport {
 
     }
     
+    DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
+    
+    public enum OcupationCategory {
+        
+        SMASHER,
+        SUMMONER,
+        SNEAK;
+    }
+    
+    public PetSelectionViewport() {
+        initComponents();
+        backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
+        addActionListeners();
+        addAvatarOcupations();
+    }
+    
+    public JButton getStartGameButton(){
+        return startGameButton;
+    }
+    
+    public JButton getCharacterButton(){
+        return mainMenuButton;
+    }
+    
+    private void addAvatarOcupations(){
+        
+        ocupationList.add(OcupationCategory.SMASHER);
+        ocupationList.add(OcupationCategory.SNEAK);
+        ocupationList.add(OcupationCategory.SUMMONER);
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
          g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
     
+    private void paintAvatarOcupation(JPanel panel, Graphics g){
+        Image image2 = null;
+        switch (ocupationList.getData()){
+        
+            case SMASHER:
+                image2 = ImageUtil.getImage( ImageUtil.MAIN_MENU_EXIT_BUTTON).getImage();
+                break;
+            case SUMMONER:
+                image2 = ImageUtil.getImage( ImageUtil.MAIN_MENU_LOAD_BUTTON).getImage();
+                break;
+            default:
+                image2 = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET).getImage();
+                break;
+        }
+        Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET, image2.getWidth(panel)*2/3, panel.getHeight()).getImage();
+        g.drawImage( image , panel.getWidth()/2 - image.getWidth(panel)/2, 0, panel);
+    }
+    
+    private final MouseListener changeOcupationAction = new MouseListener() {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            
+            Point location  = e.getLocationOnScreen();
+            Point panelLocation = ocupationPanel.getLocation();
+            
+            // 1/3 Left of the panel
+            if ( location.x <= ocupationPanel.getWidth()/3+panelLocation.x ){
+                
+                ocupationList.previous();
+                ocupationPanel.repaint();
+            }
+            // 1/3 to the right
+            else if (location.x >= ocupationPanel.getWidth()*2/3+panelLocation.x ){
+                
+                ocupationList.next();
+                ocupationPanel.repaint();
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
+    };
+    
     private void addActionListeners(){
         mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
         startGameButton.addActionListener(Action.getActionListener(new GoToGameAction()));
+        ocupationPanel.addMouseListener(changeOcupationAction);
     }
 
     /**
@@ -86,18 +168,13 @@ public class PetSelectionViewport extends Viewport {
             }
         };
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel(){
-
+        ocupationPanel = new javax.swing.JPanel() {
             @Override
             public void paintComponent(Graphics g){
-                Image image2 = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET).getImage();
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET, image2.getWidth(this)*2/3, this.getHeight()).getImage();
-                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
-                System.out.println("Size: " +  image2.getWidth(this)*2/3);
+
+                paintAvatarOcupation(this,g);
             }
         };
-        goLeftButton = new javax.swing.JButton();
-        goRightButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         avatarDescriptionTextArea = new javax.swing.JTextArea();
         avatarOcuppationNameLabel = new javax.swing.JLabel();
@@ -123,31 +200,17 @@ public class PetSelectionViewport extends Viewport {
 
         jPanel1.setOpaque(false);
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 204));
+        ocupationPanel.setBackground(new java.awt.Color(0, 0, 204));
 
-        goLeftButton.setText("Left");
-
-        goRightButton.setText("Right");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(goLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(goRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        javax.swing.GroupLayout ocupationPanelLayout = new javax.swing.GroupLayout(ocupationPanel);
+        ocupationPanel.setLayout(ocupationPanelLayout);
+        ocupationPanelLayout.setHorizontalGroup(
+            ocupationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 711, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goLeftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goRightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        ocupationPanelLayout.setVerticalGroup(
+            ocupationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 105, Short.MAX_VALUE)
         );
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
@@ -174,7 +237,7 @@ public class PetSelectionViewport extends Viewport {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ocupationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
@@ -187,7 +250,7 @@ public class PetSelectionViewport extends Viewport {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ocupationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addComponent(avatarOcuppationNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,14 +344,12 @@ public class PetSelectionViewport extends Viewport {
     private javax.swing.JLabel avatarNickNameLabel;
     private javax.swing.JTextField avatarNickNameTextField;
     private javax.swing.JLabel avatarOcuppationNameLabel;
-    private javax.swing.JButton goLeftButton;
-    private javax.swing.JButton goRightButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton mainMenuButton;
+    private javax.swing.JPanel ocupationPanel;
     private javax.swing.JButton startGameButton;
     // End of variables declaration//GEN-END:variables
 

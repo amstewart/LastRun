@@ -38,6 +38,7 @@ public class SpellSkill extends Skill{
 	}
 	
 	public void performSkill(GameMap map, Entity entity){
+		applyMultiplier();
 		Random random = new Random();
 		int m = random.nextInt(3 - 1 + 1) + 1;
 		if(m == 1){

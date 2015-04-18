@@ -16,6 +16,7 @@ import javax.swing.JPopupMenu;
 import model.entity.occupation.Occupation;
 import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
+import model.stat.Stats;
 import utility.ImageUtil;
 
 public class EquipmentViewport extends Viewport implements EquipmentHandlerObserver, AvatarObserver {
@@ -26,9 +27,9 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     private UnequipAction unequipAction;
 
-    public EquipmentViewport(EquipmentHandler equipmentHandler) {
+    public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats) {
         equipmentHandler.addObserver(this);
-        unequipAction = new UnequipAction(equipmentHandler);
+        unequipAction = new UnequipAction(equipmentHandler, playerStats);
         setUpMenu();
 
     }
@@ -60,8 +61,8 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     }
 
     @Override
-    public void receiveOccupation(Occupation o) {
-       unequipAction = new UnequipAction(o.getEquipmentHandler());
+    public void receiveOccupation(Occupation o, Stats playerStats) {
+       unequipAction = new UnequipAction(o.getEquipmentHandler(), playerStats);
        equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
        o.getEquipmentHandler().addObserver(this);
     }

@@ -15,7 +15,7 @@ public class SelectSneakAction extends Action {
 
     @Override
     public void perform() {
-        avatar.setOccupation(new Sneak(avatar.getInventory()));
+        avatar.setOccupation(new Sneak(avatar.getInventory(), avatar.getStats()));
         ImageUtil.initSneak();
         avatar.setAssetID(ImageUtil.inEffect[2]); //set sneak sprite sheet here
     }
