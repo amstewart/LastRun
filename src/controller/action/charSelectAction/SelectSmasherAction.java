@@ -17,7 +17,7 @@ public class SelectSmasherAction extends Action {
     public void perform() {
         avatar.setOccupation(new Smasher(avatar.getInventory(), avatar.getStats()));
         ImageUtil.initSmasher();
-        avatar.setAssetID(ImageUtil.inEffect[1]); //set sneak sprite sheet here
+        avatar.setAssetID(ImageUtil.inEffect[2]); //set sneak sprite sheet here
     }
 }
 

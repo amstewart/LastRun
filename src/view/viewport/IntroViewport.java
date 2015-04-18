@@ -10,6 +10,7 @@ import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToGameAction;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import model.entity.occupation.Occupation;
 import utility.ImageUtil;
 
@@ -29,6 +30,8 @@ public class IntroViewport extends Viewport {
         initComponents();
         backgroundImage = new ImageIcon(ImageUtil.INTRO_BACKGROUND);
         addActionListeners();
+        setButtonTransparent(goToCharacterSelectionButton);
+        setButtonTransparent(goToGame);
     }
     
      @Override
@@ -40,6 +43,13 @@ public class IntroViewport extends Viewport {
     private void addActionListeners(){
         goToCharacterSelectionButton.addActionListener(Action.getActionListener(new GoBackAction()));
         goToGame.addActionListener(Action.getActionListener(new GoToGameAction()));
+    }
+    
+    private void setButtonTransparent(JButton button){
+        
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
     }
 
     /**
@@ -59,6 +69,7 @@ public class IntroViewport extends Viewport {
 
         setBackground(new java.awt.Color(102, 0, 255));
 
+        goToCharacterSelectionButton.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
         goToCharacterSelectionButton.setText("Back");
         goToCharacterSelectionButton.setMaximumSize(new java.awt.Dimension(100, 100));
         goToCharacterSelectionButton.setMinimumSize(new java.awt.Dimension(59, 60));
@@ -74,9 +85,10 @@ public class IntroViewport extends Viewport {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
+            .addGap(0, 65, Short.MAX_VALUE)
         );
 
+        goToGame.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
         goToGame.setText("Continue");
         goToGame.setMaximumSize(new java.awt.Dimension(100, 60));
 
@@ -88,7 +100,7 @@ public class IntroViewport extends Viewport {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
+            .addGap(0, 37, Short.MAX_VALUE)
         );
 
         jPanel3.setOpaque(false);
@@ -101,7 +113,7 @@ public class IntroViewport extends Viewport {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addGap(0, 66, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -115,9 +127,9 @@ public class IntroViewport extends Viewport {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goToCharacterSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                        .addComponent(goToCharacterSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                         .addGap(205, 205, 205)
-                        .addComponent(goToGame, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
+                        .addComponent(goToGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -131,7 +143,7 @@ public class IntroViewport extends Viewport {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(goToCharacterSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(goToCharacterSelectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(goToGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );

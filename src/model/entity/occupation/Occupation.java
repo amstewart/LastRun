@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import model.item.EquipmentHandler;
 import model.item.Inventory;
-import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;

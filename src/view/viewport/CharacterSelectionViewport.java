@@ -9,7 +9,11 @@ import model.enums.OcupationCategory;
 import utility.DoubleLinkedList;
 import controller.action.Action;
 import controller.action.charSelectAction.CreateAvatarAction;
+import controller.action.charSelectAction.SelectSmasherAction;
+import controller.action.charSelectAction.SelectSneakAction;
+import controller.action.charSelectAction.SelectSummonerAction;
 import controller.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoToIntroAction;
 import model.entity.Avatar;
 import utility.ImageUtil;
 
@@ -22,6 +26,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.entity.Avatar;
+import model.entity.occupation.Smasher;
+import model.entity.occupation.Sneak;
+import model.entity.occupation.Summoner;
 import utility.ImageUtil;
 import utility.StringUtilEnum;
 
@@ -35,22 +42,11 @@ public class CharacterSelectionViewport extends Viewport {
     private String SUMMONER_DESCRIPTION = StringUtilEnum.SUMMONER_DESCRIPTION.getDescription();
     private String SMASHER_DESCRIPTION = StringUtilEnum.SMASHER_DESCRIPTION.getDescription();
     private String SNEAK_DESCRIPTION = StringUtilEnum.SNEAK_DESCRIPTION.getDescription();
-    
-    public static void main(String[] args) {
-
-        JFrame frame = new JFrame();
-        frame.setSize(500, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        CharacterSelectionViewport petSelectionView = new CharacterSelectionViewport(new Avatar());
-        frame.add(petSelectionView);
-        frame.setVisible(true);
-
-    }
-    
     DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
     
     public CharacterSelectionViewport(Avatar avatar) {
         
+        this.avatar = avatar;
         backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
         initComponents();
         addAvatarOcupations();
@@ -103,6 +99,8 @@ public class CharacterSelectionViewport extends Viewport {
     
     public Image getImageFromList(OcupationCategory ocupation){
         
+        Action action;
+         if (avatar == null) System.out.println("0000000000000000000000000000000000000000000000000000");
         Image image;
         switch (ocupation){
         
@@ -110,19 +108,22 @@ public class CharacterSelectionViewport extends Viewport {
                 image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SMASHER).getImage();
                 avatarOcuppationNameLabel.setText("Smasher");
                 avatarDescriptionTextArea.setText(SMASHER_DESCRIPTION);
+                action = new SelectSmasherAction(avatar);
                 break;
             case SUMMONER:
                 image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SUMMONER).getImage();
                 avatarOcuppationNameLabel.setText("Summoner");
                 avatarDescriptionTextArea.setText(SUMMONER_DESCRIPTION);
+                action = new SelectSummonerAction(avatar);
                 break;
             default:
                 image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SNEAK).getImage();
                 avatarOcuppationNameLabel.setText("Sneak");
                 avatarDescriptionTextArea.setText(SNEAK_DESCRIPTION);
+                action = new SelectSneakAction(avatar);
                 break;
         }
-        
+        action.perform();
         return image;
     }
     
@@ -146,6 +147,8 @@ public class CharacterSelectionViewport extends Viewport {
                 ocupationList.next();
                 ocupationPanel.repaint();
             }
+            
+            
         }
 
         @Override
@@ -168,7 +171,7 @@ public class CharacterSelectionViewport extends Viewport {
     
     private void addActionListeners(Avatar avatar){
         mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
-        startGameButton.addActionListener(Action.getActionListener(new CreateAvatarAction(avatar, ocupationList.getData())));
+        startGameButton.addActionListener(Action.getActionListener(new GoToIntroAction()));
         ocupationPanel.addMouseListener(changeOcupationAction);
         
     }
