@@ -5,8 +5,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import model.entity.npc.pet.Pet;
-import model.item.EquippableItem;
-import model.item.NonEquippableItem;
+import model.item.*;
 import model.owner.EntityOwner;
 import model.stat.Stats;
 import model.Assetable;
@@ -15,7 +14,6 @@ import model.Describable;
 import java.util.LinkedList;
 
 import model.enums.DefinedStats;
-import model.item.Inventory;
 import model.terrain.Terrain.TerrainType;
 
 /**
@@ -246,6 +244,14 @@ public abstract class Entity implements Describable, Assetable{
 		equippableItem.touch(inventory);
 	}
 
+	public void visit(ActivationItem activationItem) {
+		activationItem.touch(inventory);
+	}
+
+	public boolean visit(InteractiveItem interactiveItem) {
+		return interactiveItem.receiveKey(getInventory(), getInventory().getActivationItems());
+	}
+
 	public void addTimedStatus(Status changeTo, String assetID, int length) {
 		String _status = getAssetID();
 		this.addStatus(changeTo);
@@ -262,4 +268,8 @@ public abstract class Entity implements Describable, Assetable{
 		timer.schedule(ttask, 4 * 1000);
 		
 	}
+	public boolean holds(String s){
+		return false;
+	}
+
 }

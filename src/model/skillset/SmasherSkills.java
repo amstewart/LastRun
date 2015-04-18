@@ -1,7 +1,9 @@
 package model.skillset;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import model.item.EquippableItem;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -51,4 +53,8 @@ public class SmasherSkills extends BasicSkills {
 		
 		
 	}
+
+
+
+
 }

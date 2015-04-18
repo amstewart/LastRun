@@ -24,4 +24,5 @@ public class InternalSkill extends Skill{
 		effect.applyEffect(entity);
 	}
 	
+	
 }

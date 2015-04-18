@@ -10,4 +10,10 @@ public class Villager extends NPC {
     }
 
     public String getDescription() { return getName() + ": " + DESC; }
+
+	@Override
+	public String talk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

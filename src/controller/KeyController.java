@@ -10,6 +10,7 @@ import controller.action.moveAvatarAction.MoveDownRightAction;
 import controller.action.moveAvatarAction.MoveUpAction;
 import controller.action.moveAvatarAction.MoveUpLeftAction;
 import controller.action.moveAvatarAction.MoveUpRightAction;
+import controller.action.skillAction.ExternalSkillAction;
 import controller.action.skillAction.InternalSkillAction;
 import controller.action.skillAction.SpellSkillAction;
 
@@ -72,6 +73,12 @@ public class KeyController implements KeyListener{
        for(SpellSkill s: sSkills){
     	   if(s != null && !s.isPassive()){
 	    	   actionSet.put(skillSet.get(skillNumber), new SpellSkillAction(map, avatar, s));
+	    	   ++skillNumber;
+    	   }
+       }
+       for(ExternalSkill e: eSkills){
+    	   if(e != null && !e.isPassive()){
+	    	   actionSet.put(skillSet.get(skillNumber), new ExternalSkillAction(map, avatar, e));
 	    	   ++skillNumber;
     	   }
        }

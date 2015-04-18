@@ -1,8 +1,10 @@
 package model.entity.occupation;
 
 import java.util.ArrayList;
-import model.item.EquipmentHandler;
+import java.util.HashMap;
 
+import model.item.EquipmentHandler;
+import model.item.EquippableItem;
 import model.item.Inventory;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -61,5 +63,7 @@ public class Smasher extends Occupation {
 	public SmasherSkills getSkillBook() {
 		return this.skills;
 	}
+
+
 
 }

@@ -22,12 +22,10 @@ public class EquippableItem extends TakeableItem {
 
     public void equip(EquipmentHandler equipmentHandler) {
         equipmentHandler.equip(this, slotCategory);
-       // stats.mergeStats(getItemStats());
     }
 
     public void unequip(EquipmentHandler equipmentHandler) {
         equipmentHandler.unequip(this, slotCategory);
-       // stats.unMergeStats(getItemStats());
     }
 
 	@Override

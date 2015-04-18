@@ -23,8 +23,8 @@ public class IntroViewport extends Viewport {
      */
     public IntroViewport() {
         initComponents();
-         backgroundImage = new ImageIcon(ImageUtil.INTRO_BACKGROUND);
-         addActionListeners();
+        backgroundImage = new ImageIcon(ImageUtil.INTRO_BACKGROUND);
+        addActionListeners();
     }
     
      @Override

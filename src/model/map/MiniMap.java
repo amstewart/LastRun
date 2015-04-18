@@ -44,6 +44,8 @@ public class MiniMap implements TerrainVisitor, MapObserver {
     public void receiveMap(GameMap map) {
         translateMap(map);
     }
+    @Override
+    public void receiveNonStealthAvatarPosition(Vector2 v) {}
 
     public void translateMap(GameMap map) {
         int map_width = map.getWidth();
