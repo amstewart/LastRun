@@ -186,6 +186,9 @@ public class ImageUtil {
     public static final String CHARACTER_SELECTION_SUMMONER = DIR_SPRITES + "cs_summoner.jpg";
     public static final String CHARACTER_SELECTION_SNEAK = DIR_SPRITES + "cs_sneak.jpg";
     public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    
+    /*** CHARACTER SELECTION VIEW PORT ***/
+    public static final String DIALOGUE_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
 
     /**
      * * MAP VIEW PORT **

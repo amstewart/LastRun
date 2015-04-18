@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LastRun.src.view.viewport;
+package view.viewport;
 
 /**
  *
  * @author Carlos
  */
-public class DialogueViewport extends javax.swing.JPanel {
+public class IntroViewport extends Viewport {
 
     /**
-     * Creates new form DialogueViewport
+     * Creates new form IntroViewport
      */
-    public DialogueViewport() {
+    public IntroViewport() {
         initComponents();
-        
     }
 
     /**
@@ -32,15 +31,20 @@ public class DialogueViewport extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 489, Short.MAX_VALUE)
+            .addGap(0, 435, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void render() {
+        
+    }
 }

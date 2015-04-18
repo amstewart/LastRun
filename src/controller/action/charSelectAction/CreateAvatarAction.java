@@ -1,11 +1,10 @@
-package LastRun.src.controller.action.charSelectAction;
+package controller.action.charSelectAction;
 
 import LastRun.src.model.enums.OcupationCategory;
 import controller.action.Action;
 import controller.action.stateMachineAction.GoToGameAction;
 import model.entity.Avatar;
 import model.entity.occupation.Smasher;
-import model.entity.occupation.Sneak;
 import utility.ImageUtil;
 
 public class CreateAvatarAction extends Action {

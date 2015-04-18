@@ -7,19 +7,11 @@ package view.viewport;
 
 
 import LastRun.src.controller.action.charSelectAction.AvatarNameAction;
-import LastRun.src.controller.action.charSelectAction.CreateAvatarAction;
 import LastRun.src.model.enums.OcupationCategory;
 import LastRun.src.utility.DoubleLinkedList;
 import controller.action.Action;
+import controller.action.charSelectAction.CreateAvatarAction;
 import controller.action.stateMachineAction.GoBackAction;
-import controller.action.stateMachineAction.GoToGameAction;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JLabel;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -39,6 +31,7 @@ public class CharacterSelectionViewport extends Viewport {
      * Creates new form MenuViewport
      */
     Avatar avatar;
+    DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
     private String SUMMONER_DESCRIPTION = "Summmoner is the best";
     private String SMASHER_DESCRIPTION = "Smasher is the best";
     private String SNEAK_DESCRIPTION = "Sneak is the best";
@@ -53,8 +46,6 @@ public class CharacterSelectionViewport extends Viewport {
         frame.setVisible(true);
 
     }
-    
-    DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
     
     public CharacterSelectionViewport(Avatar avatar) {
         
