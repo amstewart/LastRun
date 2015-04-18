@@ -11,11 +11,7 @@ public class OccupationTest extends Test {
 
     @Override
     public void run() throws NoSuchMethodException {
-        Inventory inventory = new Inventory();
-        Occupation smasher = new Smasher(inventory);
 
-        EquipmentHandler equipmentHandler = smasher.getEquipmentHandler();
-        equipmentHandler.getSlots();
 
     }
 }

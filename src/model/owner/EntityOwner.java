@@ -36,4 +36,8 @@ public class EntityOwner {
         }
         return e;
     }
+
+	public Set<Entity> getEntities() {
+		return slaves;
+	}
 }

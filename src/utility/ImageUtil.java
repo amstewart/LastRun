@@ -23,6 +23,7 @@ public class ImageUtil {
     private static final String DIR_SPRITES = DIR_RES + "sprites/";
     private static final String DIR_TERRAINS = DIR_RES + "terrain/";
     private static final String DIR_DECALS = DIR_RES + "decal/";
+    private static final String DIR_PROJECTILES = DIR_RES + "projectiles/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
@@ -126,9 +127,12 @@ public class ImageUtil {
     public static final String SPEAR = DIR_ITEMS + "spear1.png";
     public static final String STAFF = DIR_ITEMS + "staff.png";
     public static final String CANDYCANE_STAFF = DIR_ITEMS + "staff4.png";
+    public static final String WERID_STAFF = DIR_ITEMS + "staff3.png";
     public static final String SWORD = DIR_ITEMS + "sword2.png";
     public static final String TORCH = DIR_ITEMS + "torch.png";
     public static final String WATERMELON = DIR_ITEMS + "watermelon.png";
+    
+    public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
     
 
     public static String[] inEffect = new String[10];

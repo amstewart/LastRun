@@ -44,6 +44,7 @@ public class MoveDownAction extends Action {
     public void updateEntityTileLocation(Entity e, Tile source, Tile dest) {
         source.removeEntity(e);
         dest.addEntity(e);
+        dest.accept(e);
     }
 
     public void applyAreaEffect(Entity e, Tile dest) {

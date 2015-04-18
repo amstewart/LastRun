@@ -100,9 +100,12 @@ public class MapBuilder {
             }
         }
 
+
       tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
       tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
       tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
+
+     
     }
 
     public Tile[][] getMap(){

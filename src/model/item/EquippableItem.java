@@ -1,5 +1,11 @@
 package model.item;
 
+import model.tile.Tile;
+
+
+import model.entity.Entity;
+import model.tile.Tile;
+
 public class EquippableItem extends TakeableItem {
 
     private String slotCategory;
@@ -14,12 +20,20 @@ public class EquippableItem extends TakeableItem {
         inventory.add(this);
     }
 
-    public void equip(EquipmentHandler equipmentHandler ) {
+    public void equip(EquipmentHandler equipmentHandler) {
         equipmentHandler.equip(this, slotCategory);
+       // stats.mergeStats(getItemStats());
     }
 
     public void unequip(EquipmentHandler equipmentHandler) {
         equipmentHandler.unequip(this, slotCategory);
+       // stats.unMergeStats(getItemStats());
     }
+
+	@Override
+	public void accept(Entity e, Tile t) {
+		t.removeItem(this);
+		e.visit(this);
+	}
 
 }

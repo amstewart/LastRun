@@ -16,7 +16,7 @@ public class SelectSmasherAction extends Action {
 
     @Override
     public void perform() {
-        avatar.setOccupation(new Smasher(avatar.getInventory()));
+        avatar.setOccupation(new Smasher(avatar.getInventory(), avatar.getStats()));
         ImageUtil.initSmasher();
         avatar.setAssetID(ImageUtil.inEffect[2]); //set Smasher
     }

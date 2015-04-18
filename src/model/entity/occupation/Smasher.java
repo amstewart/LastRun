@@ -9,6 +9,7 @@ import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
 import model.skillset.SmasherSkills;
+import model.stat.Stats;
 
 public class Smasher extends Occupation {
 
@@ -18,8 +19,8 @@ public class Smasher extends Occupation {
 
     private SmasherSkills skills;
 
-    public Smasher(Inventory inventory) {
-        super(inventory);
+    public Smasher(Inventory inventory, Stats playerStats) {
+        super(inventory, playerStats);
         skills = new SmasherSkills();
         setSmasherItemSlots();
     }

@@ -7,24 +7,31 @@ import model.entity.Entity;
 import model.movement.Movement;
 import model.tile.Tile;
 
-public class LocalArea {
-	Vector2 center ;
+public class LocalArea extends GameMap {
+	Vector2 center;
 	ArrayList<Tile> list;
 	Movement movement;
-	
-	public LocalArea(Vector2 center, ArrayList<Tile> list){
-		this.center = center;
-		this.list = list;
+	int radius;
+
+	public Tile getTileAtCenter() {
+		return getTile(center);
 	}
-	
-	public Entity getEntityLinear(Entity entity){ 
-		return null;
-	}
-	
 
 	
-	
-	public Trap getTrapRadial(Entity entity){
+	public int getRadius(){
+		return radius;
+	}
+	public LocalArea(Vector2 center, ArrayList<Tile> list, int radius) {
+		this.center = center;
+		this.list = list;
+		this.radius = radius;
+	}
+
+	public Entity getEntityLinear(Entity entity) {
+		return null;
+	}
+
+	public Trap getTrapRadial(Entity entity) {
 		return null;
 	}
 

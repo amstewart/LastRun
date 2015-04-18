@@ -29,6 +29,10 @@ public class ItemOwner {
         slaves.remove(i);
     }
     
+    public Set<Item> getItems(){
+    	return slaves;
+    }
+    
       public Item getItem(){
          Item item= null;
         for(Item i: slaves){
@@ -36,4 +40,5 @@ public class ItemOwner {
         }
         return item;
     }
+     
 }

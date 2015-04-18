@@ -13,6 +13,7 @@ import java.util.LinkedList;
 
 import model.entity.Avatar;
 import model.observer.MapObserver;
+import utility.Direction;
 import utility.Util;
 
 public class GameMap {
@@ -78,6 +79,23 @@ public class GameMap {
         getTile(location).addItem(item);
         itemMovements.add(new ItemMovement(item, location));
         notifyObserversMapHasChanged();
+    }
+    
+    public Tile getTileInDirection(Vector2 dir, Tile t){
+    	if(dir == Direction.NORTH){
+    		return getTileToTheNorth(t.getLocation());
+    	}else if(dir == Direction.SOUTH){
+    		return getTileToTheSouth(t);
+    	}if(dir == Direction.NORTHEAST){
+    		return getTileToTheNorthEast(t);
+    	}if(dir == Direction.NORTHWEST){
+    		return getTileToTheNorthWest(t);
+    	}if(dir == Direction.SOUTHEAST){
+    		return getTileToTheSouthEast(t);
+    	}if(dir == Direction.SOUTHWEST){
+    		return getTileToTheSouthWest(t);
+    	}
+    	return null;
     }
 
     public EntityMovement getAvatarMovement() {
@@ -401,7 +419,7 @@ public class GameMap {
 			}
 			t = getTile(center);//added
 		}
-		LocalArea la = new LocalArea(center, list);
+		LocalArea la = new LocalArea(center, list, radius);
 		return la;
 
 	}

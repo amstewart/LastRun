@@ -2,8 +2,8 @@ package model.entity;
 
 import java.util.ArrayList;
 
+import model.item.EquippableItem;
 import model.item.TakeableItem;
-
 import model.item.NonEquippableItem;
 import model.stat.Stats;
 import model.Assetable;
@@ -226,4 +226,13 @@ public abstract class Entity implements Describable, Assetable{
     public void setAssetID(String id){
     	this.id=id;
     }
+
+	public void visit(NonEquippableItem nonEquippableItem) {
+		nonEquippableItem.touch(inventory);
+		
+	}
+	public void visit(EquippableItem equippableItem) {
+		equippableItem.touch(inventory);
+		
+	}
 }

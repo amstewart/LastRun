@@ -11,6 +11,7 @@ import controller.action.moveAvatarAction.MoveUpAction;
 import controller.action.moveAvatarAction.MoveUpLeftAction;
 import controller.action.moveAvatarAction.MoveUpRightAction;
 import controller.action.skillAction.InternalSkillAction;
+import controller.action.skillAction.SpellSkillAction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -65,6 +66,12 @@ public class KeyController implements KeyListener{
        for(InternalSkill i: iSkills){
     	   if(i != null && !i.isPassive()){
 	    	   actionSet.put(skillSet.get(skillNumber), new InternalSkillAction(avatar,i));
+	    	   ++skillNumber;
+    	   }
+       }
+       for(SpellSkill s: sSkills){
+    	   if(s != null && !s.isPassive()){
+	    	   actionSet.put(skillSet.get(skillNumber), new SpellSkillAction(map, avatar, s));
 	    	   ++skillNumber;
     	   }
        }

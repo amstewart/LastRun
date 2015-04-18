@@ -8,11 +8,12 @@ import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
 import model.skillset.BasicSkills;
+import model.stat.Stats;
 
 public class NPCOccupation extends Occupation {
 
-	public NPCOccupation(Inventory inventory) {
-		super(inventory);
+	public NPCOccupation(Inventory inventory, Stats stats) {
+		super(inventory, stats);
 	}
 
 	@Override
