@@ -16,6 +16,7 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 
 	private Stats currentStats;
 	private Stats baseStats;
+	private static int num = 1;
 
 	public Bane(String id, Stats baseStats) {
 		super(id);
@@ -64,11 +65,15 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 
 			@Override
 			public void run() {
+				if(num == 2){
+					System.out.println("DSAf");
+				}
 				oldt = t;
 				t.removeProjectile(p);
 				t = area.getTileInDirection(faceDir, t);
 				if (oldt == t) {
 					t.removeProjectile(p);
+					++num;
 					timer.cancel();
 				}
 				t.addProjectile(p);
@@ -76,13 +81,17 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 				t.accept(p, affect);
 				if (affect == true) {
 					t.removeProjectile(p);
+					++num;
 					timer.cancel();
 				}
 				if (radius == numTimes) {
 					t.removeProjectile(p);
+					++num;
 					timer.cancel();
 				}
+				
 				numTimes++;
+				
 			}
 
 		};
