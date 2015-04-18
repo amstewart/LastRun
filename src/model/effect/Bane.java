@@ -110,5 +110,4 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 		entity.mergeStats(currentStats);
 
 	}
-
 }

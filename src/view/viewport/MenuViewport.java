@@ -42,6 +42,14 @@ public class MenuViewport extends Viewport {
         g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
 
+    public void listenButton_Exit(ActionListener listener) {
+        this.exitGameButton.addActionListener(listener);
+    }
+
+    public void listenButton_LoadGame(ActionListener listener) {
+        this.loadGameButton.addActionListener(listener);
+    }
+
     public void listenButton_NewGame(ActionListener listener) {
         this.newGameButton.addActionListener(listener);
     }
