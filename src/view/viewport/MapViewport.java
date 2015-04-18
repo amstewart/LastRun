@@ -31,7 +31,7 @@ public class MapViewport extends Viewport {
     private static Vector2 cantMoveLocation = Vector2.zero();
 
     private GameMap map;
-    private int hexRadius = 50;
+    private int hexRadius = 36;
 
     private int hexWidth = hexRadius * 2;
     private int hexHeight = (int) (hexRadius * 1.75);
@@ -50,10 +50,10 @@ public class MapViewport extends Viewport {
     }
 
     private void drawTiles(Graphics g) {
-        g.setColor(java.awt.Color.WHITE);
+       // g.setColor(java.awt.Color.WHITE);
 
-        g.setColor(Color.ORANGE);
-        g.fillRect(0, 00, getSize().width, getSize().height);
+        //g.setColor(Color.ORANGE);
+        //g.fillRect(0, 00, getSize().width, getSize().height);
         
         //Calculate which portion of the map to draw based on avatar position.
         int windowWidth = (int) (this.getSize().width);
@@ -84,7 +84,7 @@ public class MapViewport extends Viewport {
             for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
 
                 int offsetX = hexRadius;
-                int offsetY = (int) (hexRadius * 0.8);
+                int offsetY = 0;//(int) (hexRadius * 0.8);
 
                 if (i % 2 != 0) {
                     offsetY += (int) (hexRadius * 0.84);
@@ -94,7 +94,7 @@ public class MapViewport extends Viewport {
                 int positionY = (int) ((j - startY) * hexHeight);
 
                 positionX -= (i - startX) * hexRadius / 2;
-
+                /*
                 Polygon p = new Polygon();
                 for (int k = 0; k < 6; k++) {
                     g.setColor(java.awt.Color.BLACK);
@@ -105,33 +105,27 @@ public class MapViewport extends Viewport {
                     }
 
                 }
-
+				*/
                 //Color c = map.getTile(i, j).getTerrain().getColor();
                 //g.setColor(c);
                 //g.fillPolygon(p);
                // g.setClip(p);
                 String terrain= map.getTile(i,j).getTerrain().getAssetID();
                 ImageIcon image= ImageUtil.getImage(terrain);
-                g.drawImage(image.getImage(), positionX+offsetX, positionY+offsetY, hexRadius, hexRadius, this);
-
+                
+                g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+                
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
                 String coordinate = "(" + i + "," + j + ")";
                 if (i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0) {
                     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
                     coordinate = "Cant Go Here";
-                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int)(hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
                     cantMoveTimer -= 0.02;
                 } else {
                     //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
-                }
-
-                g.setColor(Color.pink);
-                for(int kk = 0; kk < 20; kk++){
-                    //int wierd =
-                    //g.fillRect(wierd * kk, wierd * kk, wierd, wierd);
-                }
-                
+                }      
             }
         }
     }
