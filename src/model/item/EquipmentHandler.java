@@ -17,7 +17,6 @@ public class EquipmentHandler {
         equipment = new HashMap<String, EquippableItem>();
 
         updateSlots(slots);
-        
         this.inventory = inventory;
     }
 
