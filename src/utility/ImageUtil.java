@@ -21,25 +21,41 @@ public class ImageUtil {
     private static final String DIR_RES = "res/";
     private static final String DIR_SPRITES = DIR_RES + "sprites/";
     private static final String DIR_TERRAINS= DIR_RES + "terrain/";
+    private static final String DIR_DECALS= DIR_RES + "decal/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "menu_bg_2.jpg";
     /* ENTITIES */
+    
+    /********SMASHER SPRITES************/
     public static final String EN_SKEL_N = DIR_SPRITES + "en_skel_N.png";
     public static final String EN_SKEL_NE = DIR_SPRITES + "en_skel_NE.png";
     public static final String EN_SKEL_SE = DIR_SPRITES + "en_skel_SE.png";
     public static final String EN_SKEL_S = DIR_SPRITES + "en_skel_S.png";
     public static final String EN_SKEL_SW = DIR_SPRITES + "en_skel_SW.png";
     public static final String EN_SKEL_NW = DIR_SPRITES + "en_skel_NW.png";
+    
+    
+    
     public static final String[] smasherSprites= {null,EN_SKEL_SE,EN_SKEL_S,EN_SKEL_SE,null,null,null,EN_SKEL_NW,EN_SKEL_N,EN_SKEL_NE};
     public static final String[] sneakSprites={};
     public static final String[] summonerSprites={};
     
+    
+    /*************TERRAINS***************/
     public static final String GrassTerrain= DIR_TERRAINS + "GrassTerrain.png";
     public static final String WaterTerrain= DIR_TERRAINS + "WaterTerrain.png";
     public static final String MountainTerrain= DIR_TERRAINS + "MountainTerrain.png";
-    		
+    /*********************************/
+    
+    
+    
+    /*************DECALS***************/
+    public static final String GoldStar= DIR_DECALS+ "GoldStar.png";
+    public static final String Crossbone= DIR_DECALS+"Crossbone.png";
+    public static final String RedCross= DIR_DECALS + "RedCross.png";
+    /*********************************/
     		
     public static String[] inEffect= new String[10];
     

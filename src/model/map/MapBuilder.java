@@ -8,6 +8,7 @@ package model.map;
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
+import model.areaEffect.HealDamageAreaEffect;
 import model.areaEffect.LevelUpAreaEffect;
 import model.areaEffect.TakeDamageAreaEffect;
 import model.terrain.GrassTerrain;
@@ -47,8 +48,9 @@ public class MapBuilder {
             }
         }
 
-        //tiles[0][0][0].setItem(new Item()); a type of item
-        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect());
+      tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.Crossbone));
+      tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GoldStar));
+      tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.RedCross));
     }
 
     public Tile[][] getMap(){

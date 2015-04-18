@@ -18,6 +18,11 @@ public class TakeDamageAreaEffect extends AreaEffect {
         damage=.50;
     }
     
+    public TakeDamageAreaEffect(String id){
+    	super(id);
+        damage=.50;
+    }
+    
     public void apply(Entity e){
         e.setLife(newHealth(e));
 

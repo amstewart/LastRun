@@ -12,6 +12,12 @@ import model.entity.Entity;
  * @author
  */
 public class LevelUpAreaEffect extends AreaEffect{
+	
+	public LevelUpAreaEffect(){}
+	
+	public LevelUpAreaEffect(String id){
+		super(id);
+	}
 
 	public void apply(Entity e){
 		e.setLevel(e.getLevel()+1);

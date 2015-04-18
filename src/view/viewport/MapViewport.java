@@ -106,15 +106,18 @@ public class MapViewport extends Viewport {
 
                 }
 				*/
-                //Color c = map.getTile(i, j).getTerrain().getColor();
-                //g.setColor(c);
-                //g.fillPolygon(p);
-               // g.setClip(p);
-                String terrain= map.getTile(i,j).getTerrain().getAssetID();
-                ImageIcon image= ImageUtil.getImage(terrain);
+               
+                 drawTerrain(g, i,j,positionX,positionY, offsetY);
                 
-                g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+                if(map.getTile(i,j).isAreaEffectOwner()){
+                	 drawAreaEffect(g, i,j,positionX,positionY, offsetY);
+                }
                 
+                if(map.getTile(i,j).isItemOwner()){
+                	 drawItem(g, i,j,positionX,positionY, offsetY);
+                }
+                
+            
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
                 String coordinate = "(" + i + "," + j + ")";
@@ -129,6 +132,24 @@ public class MapViewport extends Viewport {
             }
         }
     }
+    
+    private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	 String terrain= map.getTile(i,j).getTerrain().getAssetID();
+         ImageIcon image= ImageUtil.getImage(terrain);
+         g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+    }
+    
+    private void drawAreaEffect(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+   	 String img= map.getTile(i,j).getAreaEffect().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img);
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+   }
+    
+    private void drawItem(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	//String img= map.getTile(i,j).getItem().getAssetID();
+       // ImageIcon image= ImageUtil.getImage(img); //this function has not been tested. Just prematurely made
+       // g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+   }
 
     private void drawEntities(Graphics g) {
         int windowWidth = (int) (this.getSize().width);
