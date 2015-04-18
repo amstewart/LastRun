@@ -48,8 +48,11 @@ public class MoveDownAction extends Action {
         dest.accept(e);
     }
 
-    public void applyAreaEffect(Entity e, Tile dest) {
+    private void applyAreaEffect(Entity e, Tile dest) {
         dest.getAreaEffect().apply(e);
+    }
+    private void applyTrapEffect(Entity e, Tile dest){
+    	dest.getTrap().apply(e);
     }
 
     @Override
@@ -71,6 +74,9 @@ public class MoveDownAction extends Action {
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
+            }
+            if(dest.isTrapOwner()){
+            	applyTrapEffect(e,dest);
             }
         } else {
             MapViewport.drawCantMove(destLocation);

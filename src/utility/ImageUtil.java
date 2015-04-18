@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author darien
+ * 
  */
 public class ImageUtil {
 
@@ -132,6 +132,7 @@ public class ImageUtil {
     public static final String SWORD = DIR_ITEMS + "sword2.png";
     public static final String TORCH = DIR_ITEMS + "torch.png";
     public static final String WATERMELON = DIR_ITEMS + "watermelon.png";
+    public static final String SPIKETRAP = DIR_ITEMS + "SpikeTrap.png";
     
     //Projectiles//
     

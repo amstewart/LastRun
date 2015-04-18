@@ -40,11 +40,14 @@ public class MoveUpAction extends Action {
         map = m;
     }
 
-    public boolean isAreaEffect(Tile tile) {
+    private boolean isAreaEffect(Tile tile) {
         if (tile.isAreaEffectOwner()) {
             return true;
         }
         return false;
+    }
+    private void applyTrapEffect(Entity e, Tile dest){
+    	dest.getTrap().apply(e);
     }
 
     public void updateEntityTileLocation(Entity e, Tile source, Tile dest) {
@@ -77,6 +80,9 @@ public class MoveUpAction extends Action {
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
+            }
+            if(dest.isTrapOwner()){
+            	applyTrapEffect(e,dest);
             }
         } else {
             MapViewport.drawCantMove(destLocation);
