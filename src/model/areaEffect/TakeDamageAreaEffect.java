@@ -14,10 +14,6 @@ import model.entity.Entity;
 public class TakeDamageAreaEffect extends AreaEffect {
     private double damage;
     
-    public TakeDamageAreaEffect(){
-        damage=.50;
-    }
-    
     public TakeDamageAreaEffect(String id){
     	super(id);
         damage=.50;

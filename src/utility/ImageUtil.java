@@ -87,9 +87,9 @@ public class ImageUtil {
     /**
      * ***********TERRAINS**************
      */
-    public static final String GrassTerrain = DIR_TERRAINS + "GrassTerrain.png";
-    public static final String WaterTerrain = DIR_TERRAINS + "WaterTerrain.png";
-    public static final String MountainTerrain = DIR_TERRAINS + "MountainTerrain.png";
+    public static final String TERRAIN_GRASS = DIR_TERRAINS + "GrassTerrain.png";
+    public static final String TERRAIN_WATER = DIR_TERRAINS + "WaterTerrain.png";
+    public static final String TERRAIN_MOUNTAIN = DIR_TERRAINS + "MountainTerrain.png";
     /**
      * ******************************
      */
@@ -97,9 +97,9 @@ public class ImageUtil {
     /**
      * ***********DECALS**************
      */
-    public static final String GoldStar = DIR_DECALS + "GoldStar.png";
-    public static final String Crossbone = DIR_DECALS + "Crossbone.png";
-    public static final String RedCross = DIR_DECALS + "RedCross.png";
+    public static final String GOLDSTAR = DIR_DECALS + "GoldStar.png";
+    public static final String CROSSBONE = DIR_DECALS + "Crossbone.png";
+    public static final String REDCROSS = DIR_DECALS + "RedCross.png";
     /**
      * ******************************
      */
@@ -195,6 +195,7 @@ public class ImageUtil {
         BufferedImage image = null;
         if (fileName == null) {
             Util.errOut(new Exception("Null asset filepath specified."), false);
+            image = assets.get(NULL_ASSET);
         } else {
             image = assets.get(fileName); // search the assets map for the image
             if (image == null) { // if it is not in the map already
@@ -255,6 +256,7 @@ public class ImageUtil {
         if (im_null == null) {
             Util.errOut(new Exception("Image Utility could not load null image."), true);
         }
+        assets.put(NULL_ASSET, im_null);
 
         initialized = true;
     }

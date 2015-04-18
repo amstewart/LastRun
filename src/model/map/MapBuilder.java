@@ -55,19 +55,21 @@ public class MapBuilder {
         for (int i = 0; i < width; i++) { // Init all tiles to grass
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(new Vector2(i, j));
-                tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.GrassTerrain));
+                tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.TERRAIN_GRASS));
             }
         }
 
         for (Vector2 loc : lmm) { // Add mountain terrains to map
-            tiles[loc.X][loc.Y].addTerrain(new MountainTerrain(ImageUtil.MountainTerrain));
+            tiles[loc.X][loc.Y].addTerrain(new MountainTerrain(ImageUtil.TERRAIN_MOUNTAIN));
         }
 
         for (Vector2 loc : lww) { // Add water terrains to map
-            tiles[loc.X][loc.Y].addTerrain(new WaterTerrain(ImageUtil.WaterTerrain));
+            tiles[loc.X][loc.Y].addTerrain(new WaterTerrain(ImageUtil.TERRAIN_WATER));
         }
 
-        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect());
+        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
+        tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
+        tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
     }
     
     
@@ -79,11 +81,11 @@ public class MapBuilder {
                     tiles[i][j]= new Tile(loc);
                     double randomTerrain = Math.random();
                     if(randomTerrain < 0.70){
-                        tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.GrassTerrain));
+                        tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.TERRAIN_GRASS));
                     }else if(randomTerrain < 0.85){
-                        tiles[i][j].addTerrain(new WaterTerrain(ImageUtil.WaterTerrain));
+                        tiles[i][j].addTerrain(new WaterTerrain(ImageUtil.TERRAIN_WATER));
                     }else{
-                        tiles[i][j].addTerrain(new MountainTerrain(ImageUtil.MountainTerrain));
+                        tiles[i][j].addTerrain(new MountainTerrain(ImageUtil.TERRAIN_MOUNTAIN));
                     }
                     
                     double chance = Math.random();
@@ -93,9 +95,9 @@ public class MapBuilder {
             }
         }
 
-      tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.Crossbone));
-      tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GoldStar));
-      tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.RedCross));
+      tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
+      tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
+      tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
     }
 
     public Tile[][] getMap(){
