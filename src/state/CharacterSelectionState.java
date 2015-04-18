@@ -2,7 +2,6 @@
 package state;
 
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
 
@@ -19,7 +18,7 @@ public class CharacterSelectionState extends State{
 
     @Override
     public void update() {
-
+        viewPort.receiveSelection(avatar.getOccupation().getName());
     }
 
     @Override

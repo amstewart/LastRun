@@ -1,26 +1,33 @@
 package model.entity.occupation;
 
 import java.util.ArrayList;
+import model.item.EquipmentHandler;
 
 import model.item.Inventory;
-import model.item.SummonerEquipmentManager;
-import model.item.equipment.*;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
-import model.skillset.SmasherSkills;
 import model.skillset.SummonerSkills;
 
 public class Summoner extends Occupation {
 
-    private SummonerEquipmentManager equipmentManager;
+    public static final String SUMMONER_WEAPON = "SummonerWeapon";
+
     private SummonerSkills skills;
 
     public Summoner(Inventory inventory) {
         super(inventory);
-        equipmentManager = new SummonerEquipmentManager(inventory);
         skills = new SummonerSkills();
+        setSummonerItemSlots();
+    }
+
+    private void setSummonerItemSlots() {
+        ArrayList<String> slots = getBasicSlots();
+        
+        slots.add(SUMMONER_WEAPON);
+
+        updateEquipmentHandler(slots);
     }
 
     @Override
@@ -33,51 +40,10 @@ public class Summoner extends Occupation {
         return "Summoner";
     }
 
-    @Override
-    public boolean addToEquipment(BasicEquipment equipment) {
-        return equipment.doEquip(equipmentManager);
-    }
 
     @Override
-    public boolean addToEquipment(SmasherEquipment equipment) {
-        return false;
-    }
-
-    @Override
-    public boolean addToEquipment(SneakEquipment equipment) {
-        return false;
-    }
-
-    @Override
-    public boolean addToEquipment(SummonerEquipment equipment) {
-        return equipment.doEquip(equipmentManager);
-    }
-    //================================Unequipping===================================
-    @Override
-    public boolean removeFromEquipment(BasicEquipment equipment) { return equipment.doUnequip(equipmentManager); }
-
-    @Override
-    public boolean removeFromEquipment(SmasherEquipment equipment) { return false; }
-
-    @Override
-    public boolean removeFromEquipment(SneakEquipment equipment) { return false; }
-
-    @Override
-    public boolean removeFromEquipment(SummonerEquipment equipment) { return equipment.doUnEquip(equipmentManager); }
-
-    @Override
-    public Equipment[] getEquipment() {
-        return equipmentManager.getEquippedItems();
-    }
-
-
-    public SummonerEquipmentManager getEquipmentManager() {
-        return equipmentManager;
-    }
-
-	@Override
-	public void notifySkills(int mana) {
-		// TODO Auto-generated method stub
+	public void notifyManaSkills(int mana) {
+		skills.notifyManaSkills(mana);
 		
 	}
 

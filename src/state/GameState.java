@@ -6,6 +6,7 @@ import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
 import view.viewport.GameViewport;
+import view.viewport.MapViewport;
 
 
 public class GameState extends State {
@@ -15,13 +16,14 @@ public class GameState extends State {
     private Avatar player;
     private Occupation occupation;
     private GameMap map;
+    private MapViewport mapVP;
 
     public GameState(GameMap map, Avatar player){
         this.map = map;
         this.player = player;
         inventory = player.getInventory();
-
-        viewPort =  new GameViewport(map, inventory,player.getOccupation(),player.getStats());
+        mapVP = new MapViewport(map);
+        viewPort =  new GameViewport(mapVP, inventory, player);
     }
 
     @Override
@@ -29,8 +31,6 @@ public class GameState extends State {
         //MAP MOVEMENT LOGIC
         //UGLY ASS CODE THAT IS TEMPORARY UNTIL VIEWPORTS COMPLETELY IMPLEMENT OBSERVER PATTERN
         GameViewport v = (GameViewport) viewPort;
-        v.getInventoryViewport().setOccupation(player.getOccupation());
-        v.getEquipmentViewport().setOccupation(player.getOccupation());
         v.updateOccupation(player.getOccupation());
         
     }
@@ -39,7 +39,7 @@ public class GameState extends State {
     public void onEnter() {
         render();
         
-        getViewport().addKeyListener(new KeyController(map,player));
+        getViewport().addKeyListener(new KeyController(map,player, mapVP));
         
         /*ArrayList<Action> a = new ArrayList<Action>();
         a.add(new MoveUp());

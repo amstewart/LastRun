@@ -3,7 +3,6 @@ package controller.action.skillAction;
 import controller.action.Action;
 import model.skill.Skill;
 import model.skillset.BasicSkills;
-import model.skillset.SkillPtAllocator;
 
 public class AllocateSkillPtAction extends Action {
 

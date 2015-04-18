@@ -4,16 +4,14 @@ package model.gameBundle;
 
 import model.Vector2;
 import model.entity.Avatar;
-import model.entity.OccupationChooser;
 import model.entity.occupation.Occupation;
-import model.item.EquipmentManager;
+import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.map.GameMap;
 
 /*
     Game class that holds all necessary components that
     states will use
-
 
     Might violate TDA as clients that use the accessors will for sure
     change the state outside of this game bundle. Shit. lol.
@@ -22,15 +20,17 @@ public class GameBundle {
     
     private GameMap map;
     private Avatar avatar;
-    private OccupationChooser occupationChooser;
     private Occupation occupation;
-    private EquipmentManager equipmentManager;
+    private EquipmentHandler equipmentHandler;
 
     public GameBundle(){
         map = new GameMap();
         avatar = new Avatar();
         avatar.setName("PLAYER");
+        
         map.addEntity(avatar,new Vector2(0,0));
+        Vector2 pos = map.getAvatarMovement().getPosition();
+        map.createLocalArea(2, pos);
     }
  
 
@@ -55,8 +55,8 @@ public class GameBundle {
         return occupation;
     }
     // pre condition is occupation is chose before accessing equipment
-    public EquipmentManager getEquipmentManager() {
-        equipmentManager = occupation.getEquipmentManager();
-        return equipmentManager;
+    public EquipmentHandler getEquipmentManager() {
+        equipmentHandler = occupation.getEquipmentHandler();
+        return equipmentHandler;
     }
 }

@@ -15,7 +15,7 @@ import model.entity.Entity;
 public class TeleportAreaEffect extends AreaEffect {
     Vector2 location;
     
-    public TeleportAreaEffect(Vector2 location){
+    public TeleportAreaEffect(Vector2 location){ //add assetable stuff here
         this.location=location;
     }
 

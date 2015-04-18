@@ -1,21 +1,30 @@
 package model.item;
 
-import model.entity.Entity;
+import model.Assetable;
 
+public abstract class Item implements Assetable {
 
-public abstract class Item {
     private String name;
-    private int value;
+    protected String assetID;
 
-    public Item(String name, int value) {
+    public Item(String name) {
         this.name = name;
-        this.value = value;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
-    public abstract boolean touch(Entity entity);
+    public String getAssetID() {
+        return assetID;
+    }
 
+    public void setAssetID(String id) {
+        assetID = id;
+
+    }
 }

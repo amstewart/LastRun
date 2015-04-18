@@ -3,6 +3,8 @@ package model.entity;
 import java.util.ArrayList;
 
 import model.item.TakeableItem;
+
+import model.item.NonEquippableItem;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -10,7 +12,6 @@ import model.Describable;
 import java.util.LinkedList;
 
 import model.enums.DefinedStats;
-import model.item.CoinPouch;
 import model.item.Inventory;
 import model.terrain.Terrain.TerrainType;
 
@@ -23,8 +24,7 @@ import model.terrain.Terrain.TerrainType;
 public abstract class Entity implements Describable, Assetable{
     // Fields
     private ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
-    
-    private CoinPouch coins = new CoinPouch();
+
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
@@ -32,8 +32,7 @@ public abstract class Entity implements Describable, Assetable{
 	private Inventory inventory = new Inventory();
 	private String id;
 
-	public Entity(String asset_id) {
-		id=asset_id;
+	public Entity() {
 		this.stats = saving_stats;
                 setCanMoveOnGrass(true);
 	}
@@ -52,8 +51,9 @@ public abstract class Entity implements Describable, Assetable{
     	statuses.remove(status);
     }
 
-	public boolean addToInventory(TakeableItem item) {
-		return inventory.addItem(item);
+	public boolean addToInventory(NonEquippableItem item) {
+		inventory.add(item);
+		return true;
 	}
 
 
@@ -99,10 +99,6 @@ public abstract class Entity implements Describable, Assetable{
 	 * @return This entity's inventory as an Inventory reference
 	 */
 	public Inventory getInventory() { return inventory; }
-
-	public TakeableItem[] getInventoryItems() {
-		return inventory.getItems();
-	}
 
 	public int getMovement() {
 		return stats.getMovement();

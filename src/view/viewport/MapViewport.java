@@ -3,12 +3,16 @@ package view.viewport;
 import controller.action.Action;
 import controller.action.mapAction.ZoomInMapAction;
 import controller.action.mapAction.ZoomOutMapAction;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Polygon;
+import java.awt.Image;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
@@ -26,32 +30,40 @@ public class MapViewport extends Viewport {
     private static Vector2 cantMoveLocation = Vector2.zero();
 
     private GameMap map;
-    private int hexRadius = 50;
+    private int hexRadius = 36;
 
     private int hexWidth = hexRadius * 2;
     private int hexHeight = (int) (hexRadius * 1.75);
+    
+    private JButton zoomIn, zoomOut;
 
     public MapViewport(GameMap m) {
         map = m;
+        this.setLayout(null);
         initComponents();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //validate();
         drawTiles(g);
         drawEntities(g);
     }
 
     private void drawTiles(Graphics g) {
-        g.setColor(java.awt.Color.WHITE);
+       // g.setColor(java.awt.Color.WHITE);
 
+        //g.setColor(Color.ORANGE);
+        //g.fillRect(0, 00, getSize().width, getSize().height);
+        
         //Calculate which portion of the map to draw based on avatar position.
         int windowWidth = (int) (this.getSize().width);
         int windowHeight = (int) (this.getSize().height);
 
-        int windowWidthInTiles = (windowWidth / hexWidth) + 2;
-        int windowHeightInTiles = windowHeight / hexHeight;
-
+        int windowWidthInTiles = windowWidth / ((int) (Math.tan(0.5235) * hexRadius) + hexRadius);
+        int windowHeightInTiles = (windowHeight / hexHeight);
+        
+        
         int startX = map.getAvatarMovement().getPosition().X - (windowWidthInTiles / 2);
         int startY = map.getAvatarMovement().getPosition().Y - (windowHeightInTiles / 2);
 
@@ -73,7 +85,7 @@ public class MapViewport extends Viewport {
             for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
 
                 int offsetX = hexRadius;
-                int offsetY = (int) (hexRadius * 0.8);
+                int offsetY = 0;//(int) (hexRadius * 0.8);
 
                 if (i % 2 != 0) {
                     offsetY += (int) (hexRadius * 0.84);
@@ -83,7 +95,7 @@ public class MapViewport extends Viewport {
                 int positionY = (int) ((j - startY) * hexHeight);
 
                 positionX -= (i - startX) * hexRadius / 2;
-
+                /*
                 Polygon p = new Polygon();
                 for (int k = 0; k < 6; k++) {
                     g.setColor(java.awt.Color.BLACK);
@@ -94,33 +106,58 @@ public class MapViewport extends Viewport {
                     }
 
                 }
-
-                Color c = map.getTile(i, j).getTerrain().getColor();
-                g.setColor(c);
-                g.fillPolygon(p);
-
+				*/
+               
+                 drawTerrain(g, i,j,positionX,positionY, offsetY);
+                
+                if(map.getTile(i,j).isAreaEffectOwner()){
+                	 drawAreaEffect(g, i,j,positionX,positionY, offsetY);
+                }
+                
+                if(map.getTile(i,j).isItemOwner()){
+                	 drawItem(g, i,j,positionX,positionY, offsetY);
+                }
+                
+            
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
                 String coordinate = "(" + i + "," + j + ")";
                 if (i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0) {
                     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
                     coordinate = "Cant Go Here";
-                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int)(hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
                     cantMoveTimer -= 0.02;
                 } else {
-                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
+                    //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
                 }
-
             }
         }
     }
+    
+    private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	 String terrain= map.getTile(i,j).getTerrain().getAssetID();
+         ImageIcon image= ImageUtil.getImage(terrain);
+         g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+    }
+    
+    private void drawAreaEffect(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+   	 String img= map.getTile(i,j).getAreaEffect().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img);
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+   }
+    
+    private void drawItem(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	String img= map.getTile(i,j).getItem().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img); //this function has not been tested. Just prematurely made
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+   }
 
     private void drawEntities(Graphics g) {
         int windowWidth = (int) (this.getSize().width);
         int windowHeight = (int) (this.getSize().height);
 
-        int windowWidthInTiles = (windowWidth / (hexRadius * 2)) + 2;
-        int windowHeightInTiles = windowHeight / (int) (hexRadius * 1.748);
+        int windowWidthInTiles = windowWidth / ((int) (Math.tan(0.5235) * hexRadius) + hexRadius);
+        int windowHeightInTiles = windowHeight / (int) (hexHeight);
 
         int startX = map.getAvatarMovement().getPosition().X - (windowWidthInTiles / 2);
         int startY = map.getAvatarMovement().getPosition().Y - (windowHeightInTiles / 2);
@@ -175,8 +212,8 @@ public class MapViewport extends Viewport {
 
     public void zoomOut() {
         scale -= 0.10;
-        if(scale < 0.2){
-            scale = 0.2;
+        if(scale < 0.3){
+            scale = 0.3;
         }
         rescaleMap();
     }
@@ -192,6 +229,13 @@ public class MapViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+        if(zoomIn != null && zoomOut != null){
+            zoomIn.setBounds(this.getSize().width - 100,0,50,50);
+            zoomOut.setBounds(this.getSize().width - 50,0,50,50);
+
+            zoomIn.repaint();
+            zoomOut.repaint();
+        }
     }
 
     public static void drawCantMove(Vector2 v2) {
@@ -200,12 +244,13 @@ public class MapViewport extends Viewport {
     }
 
     private void initComponents() {
-        JButton zoomIn = new JButton("Zoom In");
+        ImageIcon zoomInIcon = ImageUtil.rescaleImage(ImageUtil.getImage(ImageUtil.ZOOM_IN), 45, 45);
+        zoomIn = new JButton(zoomInIcon);
         zoomIn.addActionListener(Action.getActionListener(new ZoomInMapAction(this)));
-
-        JButton zoomOut = new JButton("Zoom Out");
+        ImageIcon zoomOutIcon = ImageUtil.rescaleImage(ImageUtil.getImage(ImageUtil.ZOOM_OUT), 45, 45);
+        zoomOut = new JButton(zoomOutIcon);
         zoomOut.addActionListener(Action.getActionListener(new ZoomOutMapAction(this)));
-
+        
         this.add(zoomIn);
         this.add(zoomOut);
     }

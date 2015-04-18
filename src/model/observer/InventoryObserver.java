@@ -1,7 +1,7 @@
 package model.observer;
 
-import model.item2.EquippableItem;
-import model.item2.NonEquippableItem;
+import model.item.EquippableItem;
+import model.item.NonEquippableItem;
 
 public interface InventoryObserver {
 

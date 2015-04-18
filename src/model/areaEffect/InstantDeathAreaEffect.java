@@ -11,6 +11,12 @@ import model.entity.Entity;
  * @author
  */
 public class InstantDeathAreaEffect extends AreaEffect {
+	
+	public InstantDeathAreaEffect(){}
+	
+	public InstantDeathAreaEffect(String id){
+		super(id);
+	}
     
     public void apply(Entity e){
        e.setLivesLeft(e.getLivesLeft()-1);

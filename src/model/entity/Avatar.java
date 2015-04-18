@@ -5,7 +5,8 @@ import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
 import model.item.TakeableItem;
-import model.item.equipment.Equipment;
+import model.observer.AvatarObserver;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -15,19 +16,19 @@ import utility.Util;
 
 public class Avatar extends Entity {
 
+    private ArrayList<AvatarObserver> observers = new ArrayList();
     private static final String DESC = "This is the player character.";
 
 	private Pet pet;
 	private Occupation occupation;
+	private String id;
 
 	public Avatar() {
-		//super(ImageUtil.NULL_ASSET);
-		super(ImageUtil.EN_SKEL_S);
 		this.occupation = new Sneak(getInventory());//default
 	}
 
-	public boolean addToInventory(TakeableItem item) {
-		return getInventory().addItem(item);
+	public void addToInventory(TakeableItem item) {
+		item.touch(this.getInventory());
 	}
 
 	@Override
@@ -46,15 +47,8 @@ public class Avatar extends Entity {
 	}
 
 	public void setOccupation(Occupation o){
-		this.occupation = o;
-	}
-
-	public Equipment[] getEquipment() {
-		return getOccupation().getEquipment();
-	}
-
-	public TakeableItem[] getInventoryItems() {
-		return getInventory().getItems();
+             this.occupation = o;
+             notifyObserversOccupationHasChanged();
 	}
 
 	public Skill[] getSkills() {
@@ -64,7 +58,7 @@ public class Avatar extends Entity {
     @Override
     public void setMana(int mana){
     	super.setMana(mana);
-    	getOccupation().notifySkills(mana);
+    	getOccupation().notifyManaSkills(mana);
 
     }
 
@@ -73,4 +67,14 @@ public class Avatar extends Entity {
 		getOccupation().sortSkills(eSkills,iSkills,sSkills);
 		
 	}
+        
+        public void addObserver(AvatarObserver o){
+            observers.add(o);
+        }
+        
+        private void notifyObserversOccupationHasChanged(){
+            for(AvatarObserver o : observers){
+                o.receiveOccupation(occupation);
+            }
+        }
 }

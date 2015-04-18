@@ -17,6 +17,12 @@ public class HealDamageAreaEffect extends AreaEffect {
    public HealDamageAreaEffect(){
        healPercentage=.5;                 //static for now.
    }
+   
+   public HealDamageAreaEffect(String id){
+	   super(id);
+       healPercentage=.5;                 
+   }
+   
     
     
     public void apply(Entity e){

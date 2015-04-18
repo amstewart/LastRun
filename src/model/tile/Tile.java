@@ -33,12 +33,11 @@ public class Tile {
     public Tile(){
         
     }
+    
 
     public Tile(Vector2 location) {
         address = location;
     }
-    
-
     
     public void addAreaEffect(AreaEffect a) {
         if (!isAreaEffectOwner()) {

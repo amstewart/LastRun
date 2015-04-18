@@ -16,6 +16,7 @@ public class GameWindow extends JFrame{
         this.setExtendedState(this.getExtendedState()
                 | JFrame.NORMAL);
         this.setVisible(true);
+        javax.swing.ToolTipManager.sharedInstance().setInitialDelay(0);
     }
     
    public void displayState(Viewport viewPort){

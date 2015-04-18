@@ -1,5 +1,5 @@
 package model.effect;
-
+/*
 import model.entity.Entity;
 import model.item.SneakEquipmentManager;
 import model.item.equipment.Equipment;
@@ -35,3 +35,4 @@ public class SneakWeaponBasedStatModifier implements InternalEffect{
 	}
 
 }
+*/

@@ -18,8 +18,8 @@ public class Tests {
         int c_suites = 0;
 
         // Add tests here:
-        //tests.push(new InventoryTest());
-        tests.push(new EquipmentTest());
+        tests.push(new OccupationTest());
+
 
         Util.dbgOut("Running All (" + tests.size() + ") Tests...", 1);
 

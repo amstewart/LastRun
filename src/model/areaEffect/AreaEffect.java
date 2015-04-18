@@ -5,13 +5,29 @@
  */
 package model.areaEffect;
 
+import model.Assetable;
 import model.entity.Entity;
 
 /**
  *
  * @author
  */
-public abstract class AreaEffect{
+public abstract class AreaEffect implements Assetable{
+	String id;
+	
+	public AreaEffect(){}
+	
+	public AreaEffect(String id){
+		setAssetID(id);
+	}
+	
+	public String getAssetID(){
+		return id;
+	}
+	
+	public void setAssetID(String id){
+		this.id=id;
+	}
 
 	public abstract void apply(Entity e);
 }
