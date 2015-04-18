@@ -21,10 +21,6 @@ public class SpellSkillAction extends Action{
 	
 	@Override
 	public void perform() {
-		int radius = skill.getRadius();
-		Vector2 pos = map.getAvatarMovement().getPosition();//right now it's just getting the
-		//position of the avatar, if we want NPC's to do skills, then edit this.
-		LocalArea area = map.createLocalArea(radius, pos);
-		skill.performSkill(area, entity);
+		skill.performSkill(map, entity);
 	}
 }

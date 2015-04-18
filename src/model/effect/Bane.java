@@ -44,7 +44,7 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 	}
 
 	@Override
-	public void fire(GameMap area, Entity entity, int radius) {
+	public void fire(final GameMap area, Entity entity, final int radius) {
 		EntityMovement emov = getMovement(entity, area);
 		if (emov == null) {
 			return;
@@ -53,7 +53,7 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 		Timer timer = new Timer();
 		Vector2 faceDir = emov.getFacingDir();
 		Vector2 pos = emov.getPosition();
-		Projectile p = this;
+		final Projectile p = this;
 		Tile t = area.getTile(pos);
 		t.addProjectile(this);
 
@@ -68,15 +68,18 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 				t.removeProjectile(p);
 				t = area.getTileInDirection(faceDir, t);
 				if (oldt == t) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				t.addProjectile(p);
 				boolean affect = false;
 				t.accept(p, affect);
 				if (affect == true) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				if (radius == numTimes) {
+					t.removeProjectile(p);
 					timer.cancel();
 				}
 				numTimes++;

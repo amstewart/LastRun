@@ -3,6 +3,7 @@ package model.movement;
 import model.Vector2;
 import model.entity.Entity;
 import model.map.GameMap;
+import utility.Direction;
 import utility.Util;
 
 /**
@@ -31,7 +32,7 @@ public class EntityMovement extends Movement {
             starting_position = Vector2.zero();
         }
 
-        initialize(entity, starting_position, Vector2.zero());
+        initialize(entity, starting_position, Direction.SOUTH);
     }
 
     public void changeEntity(Entity new_ent) {
