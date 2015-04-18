@@ -14,6 +14,7 @@ public class GoBackAction extends Action{
     public GoBackAction() {
         super();
     }
+    
     @Override
     public void perform() {
         RPGStateMachine.getInstance().pop();

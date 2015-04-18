@@ -19,7 +19,6 @@ public class MenuState extends State {
     public void onEnter() {
         //actions in action
         render();
-        
     }
 
     @Override

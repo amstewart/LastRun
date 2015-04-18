@@ -5,6 +5,9 @@
  */
 package view.viewport;
 
+import controller.action.Action;
+import controller.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoToCharSelectAction;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -31,9 +34,13 @@ public class MenuViewport extends Viewport {
         setButtonBackgroundTransparent(newGameButton);
         setButtonBackgroundTransparent(exitGameButton);
         setButtonBackgroundTransparent(loadGameButton);
+        addActionListeners();
     }
     
-
+    private void addActionListeners(){
+        newGameButton.addActionListener(Action.getActionListener(new GoToCharSelectAction()));
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -160,6 +167,4 @@ public class MenuViewport extends Viewport {
     public void render() {
         this.revalidate();
     }
-
-    
 }

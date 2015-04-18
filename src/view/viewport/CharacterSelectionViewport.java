@@ -38,7 +38,6 @@ public class CharacterSelectionViewport extends Viewport {
         back.addActionListener(Action.getActionListener(new GoBackAction()));
 
         this.add(back, BorderLayout.EAST);
-
         currentOccupation = new JLabel("Current Occupation: ");
         this.add(currentOccupation);
 
