@@ -127,6 +127,10 @@ public class ImageUtil {
     public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
     public static final String CHARACTER_SELECTION_PET = DIR_SPRITES + "cs_pet.jpg";
     
+    /*** MAP VIEW PORT ***/
+    public static final String ZOOM_IN = DIR_SPRITES + "zoom_in.png";
+    public static final String ZOOM_OUT = DIR_SPRITES + "zoom_out.png";
+    
     public static ImageIcon rescaleImage(ImageIcon image, int width, int height){
         
          BufferedImage bufferedImage = (BufferedImage)image.getImage();

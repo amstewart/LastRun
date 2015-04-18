@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Polygon;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
@@ -35,6 +34,8 @@ public class MapViewport extends Viewport {
 
     private int hexWidth = hexRadius * 2;
     private int hexHeight = (int) (hexRadius * 1.75);
+    
+    private JButton zoomIn, zoomOut;
 
     public MapViewport(GameMap m) {
         map = m;
@@ -60,7 +61,7 @@ public class MapViewport extends Viewport {
         int windowHeight = (int) (this.getSize().height);
 
         int windowWidthInTiles = windowWidth / ((int) (Math.tan(0.5235) * hexRadius) + hexRadius);
-        int windowHeightInTiles = windowHeight / hexHeight;
+        int windowHeightInTiles = (windowHeight / hexHeight);
         
         
         int startX = map.getAvatarMovement().getPosition().X - (windowWidthInTiles / 2);
@@ -228,6 +229,13 @@ public class MapViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+        if(zoomIn != null && zoomOut != null){
+            zoomIn.setBounds(this.getSize().width - 100,0,50,50);
+            zoomOut.setBounds(this.getSize().width - 50,0,50,50);
+
+            zoomIn.repaint();
+            zoomOut.repaint();
+        }
     }
 
     public static void drawCantMove(Vector2 v2) {
@@ -236,17 +244,12 @@ public class MapViewport extends Viewport {
     }
 
     private void initComponents() {
-        JButton zoomIn = new JButton("Zoom In");
+        ImageIcon zoomInIcon = ImageUtil.rescaleImage(ImageUtil.getImage(ImageUtil.ZOOM_IN), 45, 45);
+        zoomIn = new JButton(zoomInIcon);
         zoomIn.addActionListener(Action.getActionListener(new ZoomInMapAction(this)));
-
-        JButton zoomOut = new JButton("Zoom Out");
+        ImageIcon zoomOutIcon = ImageUtil.rescaleImage(ImageUtil.getImage(ImageUtil.ZOOM_OUT), 45, 45);
+        zoomOut = new JButton(zoomOutIcon);
         zoomOut.addActionListener(Action.getActionListener(new ZoomOutMapAction(this)));
-
-        zoomIn.setBounds(400,0,100,30);
-        zoomOut.setBounds(500,0,100,30);
-        
-        zoomIn.repaint();
-        zoomOut.repaint();
         
         this.add(zoomIn);
         this.add(zoomOut);
