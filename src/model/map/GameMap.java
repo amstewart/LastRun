@@ -10,9 +10,10 @@ import model.movement.ItemMovement;
 import model.tile.Tile;
 
 import java.util.LinkedList;
+
 import model.entity.Avatar;
 import model.observer.InventoryObserver;
-//import model.observer.MapObserver;
+import model.observer.MapObserver;
 import utility.Direction;
 import utility.Util;
 import view.viewport.Viewport;
