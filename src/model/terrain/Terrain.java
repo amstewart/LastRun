@@ -3,6 +3,7 @@ package model.terrain;
 import java.awt.Color;
 
 import model.Assetable;
+import model.Vector2;
 
 public abstract class Terrain implements Assetable{
 		private String id;

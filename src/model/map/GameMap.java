@@ -12,11 +12,8 @@ import model.tile.Tile;
 import java.util.LinkedList;
 
 import model.entity.Avatar;
-import model.observer.InventoryObserver;
 import model.observer.MapObserver;
-import utility.Direction;
 import utility.Util;
-import view.viewport.Viewport;
 
 public class GameMap {
 
@@ -24,6 +21,7 @@ public class GameMap {
     private static int DELTA_ODD_Y = 1;
 
     private Tile[][] map;
+    private MiniMap miniMap;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
     private LinkedList<ItemMovement> itemMovements = new LinkedList<>();
 
@@ -38,6 +36,8 @@ public class GameMap {
     public GameMap() {
         m = new MapBuilder();
         map = m.getMap();
+        miniMap = new MiniMap();
+        addMapObserver(miniMap);
     }
 
     public void addEntity(Avatar a) {
@@ -57,6 +57,7 @@ public class GameMap {
     public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
+        notifyObserversMapHasChanged();
     }
 
     public ArrayList<Entity> getEntities() {
@@ -70,16 +71,20 @@ public class GameMap {
     public void refaceAvatar(Vector2 facing, String new_asset) {
         avatarMovement.reface(facing);
         if (new_asset != null) avatarMovement.setAsset(new_asset);
+        notifyObserversMapHasChanged();
     }
 
     public void addItem(Item item, Vector2 location) {
         getTile(location).addItem(item);
         itemMovements.add(new ItemMovement(item, location));
+        notifyObserversMapHasChanged();
     }
 
     public EntityMovement getAvatarMovement() {
         return avatarMovement;
     }
+
+    public MiniMap getMiniMap() { return miniMap; }
 
      public Tile getTileToTheNorth(Vector2 location) {
         int newX = location.X;
@@ -186,10 +191,12 @@ public class GameMap {
     }
 
     public boolean removeEntity(EntityMovement ent_mov) {
+        notifyObserversMapHasChanged();
         return entityMovements.remove(ent_mov);
     }
 
     public boolean removeItem(ItemMovement item_mov) {
+        notifyObserversMapHasChanged();
         return itemMovements.remove(item_mov);
     }
 
@@ -280,14 +287,15 @@ public class GameMap {
         Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
         //avatarMovement.reface(Direction.getDirection(source, dest));
+        notifyObserversMapHasChanged();
     }
     
    public void addMapObserver(MapObserver o) {
        observers.add(o);
-        noitfyObserversMapHasChanged();
+        notifyObserversMapHasChanged();
     }
     
-    private void noitfyObserversMapHasChanged(){
+    private void notifyObserversMapHasChanged(){
         for(MapObserver o : observers){
             o.receiveMap(this);
         }

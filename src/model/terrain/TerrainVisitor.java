@@ -5,18 +5,17 @@
  */
 package model.terrain;
 
+import model.Vector2;
+
 /**
  *
  * @author
  */
-public class TerrainVisitor{
-	
+public interface TerrainVisitor{
 
-	public void visit(Terrain terrain){
-		terrain.accept(this);
-	}
+	public void visit(GrassTerrain terr_grass);
 
-	
+	public void visit(MountainTerrain terr_mount);
 
-
+	public void visit(WaterTerrain terr_water);
 }

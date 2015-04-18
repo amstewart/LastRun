@@ -5,6 +5,8 @@
  */
 package model.terrain;
 
+import model.Vector2;
+
 import java.awt.Color;
 
 /**
@@ -23,7 +25,7 @@ public class WaterTerrain extends Terrain {
     
  
     public void accept(TerrainVisitor visitor){
-            System.out.println("IM GRASS");
+            visitor.visit(this);
     }
 
     @Override

@@ -5,6 +5,8 @@
  */
 package model.terrain;
 
+import model.Vector2;
+
 import java.awt.Color;
 
 /**
@@ -22,7 +24,7 @@ public class GrassTerrain extends Terrain {
     private int shadeOfGreen = (int) (Math.random() * 250 + 50);
 
     public void accept(TerrainVisitor visitor) {
-        System.out.println("IM GRASS");
+        visitor.visit(this);
     }
 
     @Override

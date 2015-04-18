@@ -5,6 +5,8 @@
  */
 package model.terrain;
 
+import model.Vector2;
+
 import java.awt.Color;
 
 /**
@@ -21,7 +23,7 @@ public class MountainTerrain extends Terrain{
     private int shadeOfRed = (int) (Math.random() * 250 + 50);
 
 	public void accept(TerrainVisitor visitor){
-		System.out.println("IM Mountain");
+		visitor.visit(this);
 	}
 
     @Override
