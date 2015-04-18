@@ -6,15 +6,11 @@
 package view.viewport;
 
 import controller.action.Action;
-import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToCharSelectAction;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.plaf.basic.BasicButtonListener;
-
 import utility.ImageUtil;
 
 
