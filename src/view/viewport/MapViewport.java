@@ -120,6 +120,10 @@ public class MapViewport extends Viewport {
                 	 drawItem(g, i,j,positionX,positionY, offsetY);
                 }
                 
+                if(map.getTile(i,j).isProjectileOwner()){
+               	 drawProjectile(g, i,j,positionX,positionY, offsetY);
+               }
+                
             
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
@@ -136,9 +140,17 @@ public class MapViewport extends Viewport {
         }
     }
     
-    private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
-    	 String terrain= map.getTile(i,j).getTerrain().getAssetID();
-         ImageIcon image= ImageUtil.getImage(terrain);
+    private void drawProjectile(Graphics g, int i, int j, int positionX,
+			int positionY, int offsetY) {
+    	String img= map.getTile(i,j).getProjectile().getAssetID();
+        ImageIcon image= ImageUtil.getImage(img);
+        g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+		
+	}
+
+	private void drawTerrain(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+    	 String pro= map.getTile(i,j).getTerrain().getAssetID();
+         ImageIcon image= ImageUtil.getImage(pro);
          g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
     }
     

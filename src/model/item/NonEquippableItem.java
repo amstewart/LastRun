@@ -1,5 +1,11 @@
 package model.item;
+
 // Nonequippable Items are items that can only be used... like One shot Item
+
+
+import model.entity.Entity;
+import model.tile.Tile;
+
 public class NonEquippableItem extends TakeableItem {
 
     public NonEquippableItem(String name) {
@@ -14,6 +20,12 @@ public class NonEquippableItem extends TakeableItem {
     // will pass in stats or something form the avatar/entity
     public void use() {
         System.out.println("You just used " + this.getName());
-        // todo
+        // TODO
     }
+
+	@Override
+	public void accept(Entity e, Tile t) {
+		t.removeItem(this);
+		e.visit(this);
+	}
 }

@@ -1,6 +1,8 @@
 package model.item;
 
 import model.Assetable;
+import model.entity.Entity;
+import model.tile.Tile;
 
 public abstract class Item implements Assetable {
 
@@ -27,4 +29,6 @@ public abstract class Item implements Assetable {
         assetID = id;
 
     }
+
+	public abstract void accept(Entity e, Tile tile);
 }

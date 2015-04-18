@@ -2,6 +2,8 @@ package model.skillset;
 
 import java.util.ArrayList;
 
+import utility.ImageUtil;
+import model.effect.Bane;
 import model.effect.Boon;
 import model.effect.Spell;
 import model.enums.DefinedStats;
@@ -18,11 +20,15 @@ public class SummonerSkills extends BasicSkills {
     private ExternalSkill staff;
 
     public SummonerSkills() {
-    	Boon boonEffect1 = new Boon("fire", DefinedStats.ADDHARDINESS.getStats());
-    	Boon boonEffect2 = new Boon("ice", DefinedStats.ADDHEALTH.getStats());
-    	Boon boonEffect3 = new Boon("water", DefinedStats.ADDINTELLECT.getStats());
-    	boon = new SpellSkill("boon", 1, boonEffect1, boonEffect2, boonEffect3, 1);
-      //  bane = new SpellSkill("Bane", 1);
+    	//Boon boonEffect1 = new Boon("fire", DefinedStats.ADDHARDINESS.getStats());
+    	//Boon boonEffect2 = new Boon("ice", DefinedStats.ADDHEALTH.getStats());
+    	//Boon boonEffect3 = new Boon("water", DefinedStats.ADDINTELLECT.getStats());
+    	//boon = new SpellSkill("boon", 1, boonEffect1, boonEffect2, boonEffect3, 1);
+    	Bane baneEffect1 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHARDINESS.getStats());
+    	Bane baneEffect2 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHEALTH.getStats());
+    	Bane baneEffect3 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDINTELLECT.getStats());
+    	bane = new SpellSkill("boon", 1, baneEffect1, baneEffect2, baneEffect3, 1);
+  
       //  enchantment = new SpellSkill("Enchantment", 1);
        // staff = new ExternalSkill("Staff", 1);
     }
@@ -44,9 +50,9 @@ public class SummonerSkills extends BasicSkills {
     }
     
     public void notifyManaSkills(int mana){
-    	boon.setCanPeform(mana);
+    	//boon.setCanPeform(mana);
     	bane.setCanPeform(mana);
-    	enchantment.setCanPeform(mana);
+    	//enchantment.setCanPeform(mana);
     }
 
     @Override
