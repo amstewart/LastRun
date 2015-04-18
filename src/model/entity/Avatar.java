@@ -59,7 +59,7 @@ public class Avatar extends Entity {
     @Override
     public void setMana(int mana){
     	super.setMana(mana);
-    	getOccupation().notifyManaSkills(mana);
+    	getOccupation().notifyManaSkills(getMana());
 
     }
 

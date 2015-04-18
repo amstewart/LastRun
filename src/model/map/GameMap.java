@@ -82,17 +82,17 @@ public class GameMap {
     }
     
     public Tile getTileInDirection(Vector2 dir, Tile t){
-    	if(dir == Direction.NORTH){
+    	if(dir.X == Direction.NORTH.X && dir.Y == Direction.NORTH.Y){
     		return getTileToTheNorth(t.getLocation());
-    	}else if(dir == Direction.SOUTH){
+    	}else if(dir.X == Direction.SOUTH.X && dir.Y == Direction.SOUTH.Y){
     		return getTileToTheSouth(t);
-    	}if(dir == Direction.NORTHEAST){
+    	}if(dir.X == Direction.NORTHEAST.X && dir.Y == Direction.NORTHEAST.Y){
     		return getTileToTheNorthEast(t);
-    	}if(dir == Direction.NORTHWEST){
+    	}if(dir.X == Direction.NORTHWEST.X && dir.Y == Direction.NORTHWEST.Y){
     		return getTileToTheNorthWest(t);
-    	}if(dir == Direction.SOUTHEAST){
+    	}if(dir.X == Direction.SOUTHEAST.X && dir.Y == Direction.SOUTHEAST.Y){
     		return getTileToTheSouthEast(t);
-    	}if(dir == Direction.SOUTHWEST){
+    	}if(dir.X == Direction.SOUTHWEST.X && dir.Y == Direction.SOUTHWEST.Y){
     		return getTileToTheSouthWest(t);
     	}
     	return null;

@@ -33,6 +33,7 @@ public class Spell implements Assetable{
 	public void setCanPerform(int mana) {
 		if(mana > manaDecrease){
 			canPerform = true;
+			return;
 		}
 		canPerform = false;	
 	}

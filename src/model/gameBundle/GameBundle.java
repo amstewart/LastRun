@@ -28,6 +28,7 @@ public class GameBundle {
         avatar = new Avatar();
 
         avatar.setName("PLAYER");
+        avatar.setMana(45);
         
         map.addEntity(avatar,new Vector2(0,0));
         Vector2 pos = map.getAvatarMovement().getPosition();
