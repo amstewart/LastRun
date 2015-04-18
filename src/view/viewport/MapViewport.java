@@ -226,8 +226,8 @@ public class MapViewport extends Viewport {
 
     public void zoomOut() {
         scale -= 0.10;
-        if(scale < 0.3){
-            scale = 0.3;
+        if(scale < 0.5){
+            scale = 0.5;
         }
         rescaleMap();
     }

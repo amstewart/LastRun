@@ -172,8 +172,8 @@ public class ImageUtil {
     /*** CHARACTER SELECTION VIEW PORT ***/
     
     public static final String CHAR_SELECT_GENERAL = DIR_CHAR_SELECT + "general.gif";
-    public static final String CHAR_SELECT_SUMMONER = DIR_CHAR_SELECT + "smasher.gif";
-    public static final String CHAR_SELECT_SMASHER = DIR_CHAR_SELECT + "summoner1.gif";
+    public static final String CHAR_SELECT_SUMMONER = DIR_CHAR_SELECT + "summoner1.gif";
+    public static final String CHAR_SELECT_SMASHER = DIR_CHAR_SELECT + "smasher.gif";
     public static final String CHAR_SELECT_SNEAK = DIR_CHAR_SELECT + "sneak2.gif";    
     public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_main_menu_button.jpg";
     public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
