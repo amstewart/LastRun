@@ -1,14 +1,11 @@
 package state;
 
 import controller.KeyController;
-import model.Vector2;
 import model.entity.Avatar;
-import model.entity.npc.pet.Pet;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
-import utility.ImageUtil;
-import view.viewport.GameViewport;
+import view.viewport.GViewport;
 import view.viewport.MapViewport;
 
 
@@ -26,14 +23,14 @@ public class GameState extends State {
         this.player = player;
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
-        viewPort =  new GameViewport(mapVP, inventory, player);
+        viewPort =  new GViewport(mapVP, inventory, player);
     }
 
     @Override
     public void update() {
         //MAP MOVEMENT LOGIC
         //UGLY ASS CODE THAT IS TEMPORARY UNTIL VIEWPORTS COMPLETELY IMPLEMENT OBSERVER PATTERN
-        GameViewport v = (GameViewport) viewPort;
+        GViewport v = (GViewport) viewPort;
         v.updateOccupation(player.getOccupation());
         
     }
