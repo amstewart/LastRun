@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LastRun.src.testing;
+package testing;
 
-import LastRun.src.utility.DoubleLinkedList;
+import utility.DoubleLinkedList;
 
 /**
  *

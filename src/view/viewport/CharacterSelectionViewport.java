@@ -8,7 +8,7 @@ package view.viewport;
 
 import LastRun.src.controller.action.charSelectAction.AvatarNameAction;
 import LastRun.src.model.enums.OcupationCategory;
-import LastRun.src.utility.DoubleLinkedList;
+import utility.DoubleLinkedList;
 import controller.action.Action;
 import controller.action.charSelectAction.CreateAvatarAction;
 import controller.action.stateMachineAction.GoBackAction;

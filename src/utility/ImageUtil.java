@@ -188,7 +188,7 @@ public class ImageUtil {
     public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
     
     /*** CHARACTER SELECTION VIEW PORT ***/
-    public static final String DIALOGUE_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
+    public static final String INTRO_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
 
     /**
      * * MAP VIEW PORT **
@@ -228,7 +228,6 @@ public class ImageUtil {
         // image should now be either the requested asset or null_asset
         return new ImageIcon(image);
     }
-
     /**
      * Get a rescaled version of an image asset.
      * @param fileName The asset filename to get
@@ -252,7 +251,6 @@ public class ImageUtil {
         g2.dispose();
         return resizedImg;
     }
-
     public static final BufferedImage extractImage(String file_path) {
         try {
             File image_file = new File(file_path);
