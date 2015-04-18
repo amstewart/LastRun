@@ -1,5 +1,5 @@
 package model.item;
-
+// Nonequippable Items are items that can only be used... like One shot Item
 public class NonEquippableItem extends TakeableItem {
 
     public NonEquippableItem(String name) {

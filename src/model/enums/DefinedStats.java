@@ -10,6 +10,8 @@ public enum DefinedStats {
 	ADDHEALTH(new Stats(0,10,0,0,0,0,0,0,0)),
 	ADDHARDINESS(new Stats(0,0,0,0,10,0,0,0,0)),
 	ADDINTELLECT(new Stats(0,0,0,10,0,0,0,0,0)),
+	ADDARMOR(new Stats(0, 0, 0, 0, 0, 0, 0, 5, 0)),
+	ADDWEAPON(new Stats(0, 0, 0, 0, 0, 0, 0, 0, 10)),
 	ENTITYSTATS(new Stats(10,10,10,10,10,10,10,10,10));
 	
 	

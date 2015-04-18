@@ -35,8 +35,9 @@ public class EquipmentHandler {
     }
     // Rings of abstraction
     public void equip(EquippableItem equippableItem, String slot) {
-        // check the slots passed in and if they are available
+        // if slot exist
         if(slotExists(slot)) {
+            returnEquippedItemToInventory(slot);
             putInEquipment(slot, equippableItem);
             removeFromInventory(equippableItem);
         }
@@ -65,6 +66,13 @@ public class EquipmentHandler {
 
     private boolean slotExists(String slot) {
         return equipment.containsKey(slot);
+    }
+
+    private void returnEquippedItemToInventory(String slot) {
+        EquippableItem equippedItem = equipment.get(slot);
+        if(equippedItem != null) {
+            addBackToInventory(equippedItem);
+        }
     }
 
     private void putInEquipment(String slot, EquippableItem equippableItem) {
