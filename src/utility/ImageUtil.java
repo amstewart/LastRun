@@ -114,6 +114,7 @@ public class ImageUtil {
     public static final String CLUB = DIR_ITEMS + "club.png";
     public static final String CROSSBOW = DIR_ITEMS + "crossbow.gif";
     public static final String DAGGER = DIR_ITEMS + "dagger.png";
+    public static final String HAMMER = DIR_ITEMS + "hammer.png";
     public static final String HELMET = DIR_ITEMS + "helmet.png";
     public static final String KEY = DIR_ITEMS + "key2.png";
     public static final String MACE = DIR_ITEMS + "mace.png";
