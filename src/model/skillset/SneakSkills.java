@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import model.effect.Creep;
 import model.effect.DetectTrap;
+import model.effect.PickPocket;
 import model.effect.WeaponBasedStatModifier;
 import model.entity.Entity;
 import model.entity.occupation.Occupation;
@@ -22,16 +23,19 @@ public class SneakSkills extends BasicSkills {
 	private InternalSkill creep;
 	private ExternalSkill trapDetectionRemoval;
 	private InternalSkill range;
+	private ExternalSkill pickpocket;
 	private HashMap<SkillStrings, InternalSkill> passiveSkills_int = new HashMap();
 	private HashMap<SkillStrings, ExternalSkill> passiveSkills_ex = new HashMap();
 
 	public SneakSkills() {
+		PickPocket pp = new PickPocket();
+		pickpocket = new ExternalSkill("PickPocket", 1,pp,3,false);
 		Creep creepEffect = new Creep();
 		DetectTrap detectTrap = new DetectTrap();
 		creep = new InternalSkill("Creep", 1, creepEffect, false);
 		trapDetectionRemoval = new ExternalSkill("TrapRemoval", 1, detectTrap,
 				5, true);
-		WeaponBasedStatModifier wp = new WeaponBasedStatModifier(Sneak.CHEST,1);
+		WeaponBasedStatModifier wp = new WeaponBasedStatModifier(Sneak.RANGED,1);
 		range = new InternalSkill("Range",1, wp,true);
 
 		passiveSkills_int.put(SkillStrings.RANGE, range);
@@ -68,6 +72,7 @@ public class SneakSkills extends BasicSkills {
 		iSkills.add(getBindWound());
 		iSkills.add(getRange());
 		eSkills.add(getTrapRemoval());
+		eSkills.add(pickpocket);
 		iSkills.add(getCreep());
 
 	}

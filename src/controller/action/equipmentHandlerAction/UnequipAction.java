@@ -9,7 +9,7 @@ import model.stat.Stats;
 public class UnequipAction extends Action {
 
     private EquippableItem equippableItem;
-    private Avatar avatar;
+     public Avatar avatar;
     private Stats stats;
 
     public UnequipAction(Avatar avatar, Stats stats) {

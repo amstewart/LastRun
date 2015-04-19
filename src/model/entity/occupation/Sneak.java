@@ -17,7 +17,8 @@ import model.stat.Stats;
 
 public class Sneak extends Occupation {
 
-    public static final String SNEAK_WEAPON = "SneakWeapon";
+    public static final String RANGED = "RANGED";
+    public static final String SNEAK_WEAPON = "SNEAKWEAPON";
 
     private SneakSkills skills;
 
@@ -31,6 +32,7 @@ public class Sneak extends Occupation {
     private void setSneakItemSlots() {
         ArrayList<String> slots = getBasicSlots();
         
+        slots.add(RANGED);
         slots.add(SNEAK_WEAPON);
 
         updateEquipmentHandler(slots);
