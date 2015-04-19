@@ -20,5 +20,6 @@ public class OneShotItem extends Item {
     @Override
     public void accept(Entity e, Tile tile) {
         ability.perform(e);
+        tile.removeItem(this);
     }
 }
