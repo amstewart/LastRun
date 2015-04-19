@@ -34,8 +34,10 @@ public class Util {
      * @return The resultant value of the global debut print level
      */
     public static int setDbgLevel(int value) {
-        if (value >= 0)
+        if (value >= 0) {
             debugLevel = value;
+            Util.dbgOut("Debug level set to " + Integer.toString(debugLevel), 0);
+        }
         return debugLevel;
     }
     //</editor-fold>

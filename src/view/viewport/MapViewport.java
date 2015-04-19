@@ -315,5 +315,4 @@ public class MapViewport extends Viewport {
     public int getWindowHeightInTiles() {
         return windowHeightInTiles;
     }
-
 }

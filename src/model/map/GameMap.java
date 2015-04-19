@@ -302,10 +302,9 @@ public class GameMap {
     }
 
     public void moveAvatarTo(Vector2 dest) {
-        //Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 4);
+        Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 5);
         Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
-        //avatarMovement.reface(Direction.getDirection(source, dest));
         notifyObserversMapHasChanged();
         if(avatarMovement.getEntity().is(Status.INVISIBLE)){
             notifyHostileNPC();
