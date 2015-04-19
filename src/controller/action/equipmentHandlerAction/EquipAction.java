@@ -1,6 +1,7 @@
 package controller.action.equipmentHandlerAction;
 
 import controller.action.Action;
+import javax.swing.JOptionPane;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.stat.Stats;
@@ -23,7 +24,9 @@ public class EquipAction extends Action {
     @Override
     public void perform() {
         if(equippableItem != null) {
-            equippableItem.equip(equipmentHandler);
+            if(!equippableItem.equip(equipmentHandler)){
+                //Print to dialogue it looks like I cannnot equip items of type
+            }     
         }
     }
 }

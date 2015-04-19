@@ -1,10 +1,14 @@
 package model.effect;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import model.entity.Entity;
+import model.map.GameMap;
 import model.map.LocalArea;
 import model.map.Trap;
+import model.movement.EntityMovement;
+import model.tile.Tile;
 
 public class DetectTrap implements ExternalEffect{
 	private int baseProbability = 10;
@@ -19,12 +23,16 @@ public class DetectTrap implements ExternalEffect{
 	}
 
 	@Override
-	public void applyEffect(LocalArea map, Entity entity) {
-		Random random = new Random();
-		int r = random.nextInt(100);
-		if(r < probability){
-			map.getTrapRadial(entity);
-			map.removeTrapLinear(entity, 1);
+	public void applyEffect(GameMap map, Entity entity, EntityMovement emov,
+			int radius) {
+			ArrayList<Tile> tiles = map.createLocalAreaRadial(radius, emov.getPosition());
+			for(Tile t : tiles){
+				if(t.isTrapOwner()){
+					t.getTrap().makeVisible();
+				}
 		}
+		
 	}
+
+	
 }

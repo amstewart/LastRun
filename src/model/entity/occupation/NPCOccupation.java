@@ -2,6 +2,9 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
+import Visitor.EntityVisitor;
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
 import model.item.Inventory;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -47,4 +50,8 @@ public class NPCOccupation extends Occupation {
 
 	}
 
+	@Override
+	public void accept(OccupationVisitor occupationVisitor, VisitorContainer container) {
+
+	}
 }

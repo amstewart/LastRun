@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+<<<<<<< HEAD:depreciated/DoubleLinkedList.java
 package src.utility;
 
 /**
@@ -87,6 +88,15 @@ public class DoubleLinkedList<T> {
     public T getData(){
         
         return current.data;
+    }
+    public T getNextData(){
+        
+        return current.next.data;
+    }
+    
+    public T getPreviousData(){
+        
+        return current.prev.data;
     }
     
     public void removeAll(){

@@ -2,6 +2,9 @@ package view.viewport;
 
 import controller.action.Action;
 import controller.action.equipmentHandlerAction.UnequipAction;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,6 +12,7 @@ import model.item.EquippableItem;
 import model.observer.EquipmentHandlerObserver;
 
 import java.util.HashMap;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -29,6 +33,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats) {
         equipmentHandler.addObserver(this);
+
         unequipAction = new UnequipAction(equipmentHandler, playerStats);
         setUpMenu();
 
@@ -36,7 +41,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     @Override
     public void render() {
-
+        this.revalidate();
     }
 
     private void setUpMenu() {
@@ -45,26 +50,54 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
         equipmentItemMenu.add(cancel);
 
         equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
+        this.setLayout(new GridLayout(0, 3));
     }
 
     @Override
     public void receiveEquipment(HashMap<String, EquippableItem> equipment) {
         this.removeAll();
-        this.add(new JLabel("Equipment"));
-
         for (String s : equipment.keySet()) {
             EquippableItem item = equipment.get(s);
+            
+            JButton b;
             if (item != null) {
-                this.add(new EquippableItemButton(item));
+                b = new EquippableItemButton(item);
+                add(b);
+            } else {
+                //b = new JButton();
+                //b.setOpaque(false);
+                //b.setContentAreaFilled(false);
             }
+
+            /*for (String viewSlot : viewSlots){
+                
+            }*/
+
         }
+
+        /*this.add(new JButton(ImageUtil.getImage(ImageUtil.HEAD_SLOT)));
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.CHEST_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.LEGS_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.SHIELD_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.SUMMONER_WEAPON_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.SMASHER_WEAPON_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.SNEAK_WEAPON_SLOT)));
+
+        this.add(new JButton(ImageUtil.getImage(ImageUtil.BOOTS_SLOT)));
+        this.setBackground(Color.BLUE);*/
+
     }
 
     @Override
     public void receiveOccupation(Occupation o, Stats playerStats) {
-       unequipAction = new UnequipAction(o.getEquipmentHandler(), playerStats);
-       equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
-       o.getEquipmentHandler().addObserver(this);
+        unequipAction = new UnequipAction(o.getEquipmentHandler(), playerStats);
+        equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
+        o.getEquipmentHandler().addObserver(this);
     }
 
     public class EquippableItemButton extends JButton {
@@ -74,6 +107,9 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
         public EquippableItemButton(EquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
             this.item = item;
             this.addMouseListener(new EquippableItemButtonListener());
         }

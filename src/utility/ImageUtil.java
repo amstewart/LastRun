@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author darien
+ * 
  */
 public class ImageUtil {
 
@@ -24,6 +24,7 @@ public class ImageUtil {
     private static final String DIR_TERRAINS = DIR_RES + "terrain/";
     private static final String DIR_DECALS = DIR_RES + "decal/";
     private static final String DIR_PROJECTILES = DIR_RES + "projectiles/";
+    public static final String DIR_CHAR_SELECT = DIR_RES + "characterSelect/";
     //
     public static final String NULL_ASSET = DIR_RES + "null.png";
     //
@@ -131,8 +132,21 @@ public class ImageUtil {
     public static final String SWORD = DIR_ITEMS + "sword2.png";
     public static final String TORCH = DIR_ITEMS + "torch.png";
     public static final String WATERMELON = DIR_ITEMS + "watermelon.png";
+    public static final String SPIKETRAP = DIR_ITEMS + "SpikeTrap.png";
     
+    //Projectiles//
+
+    public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";
+    public static final String CLOSEDCHEST = DIR_ITEMS + "treasure_chest_closed.png";
+    public static final String OPENCHEST = DIR_ITEMS + "treasure_chest_open.jpg";
     public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
+    
+    //Stati//
+    
+    public static final String SLEEPING = DIR_ITEMS + "apple.png";
+    public static final String SMELLY = DIR_ITEMS + "watermelon.png";
+    public static final String SINGING = DIR_ITEMS + "torch.png";
+    public static final String INVISIBLE = DIR_ITEMS + "torch.png";
     
 
     public static String[] inEffect = new String[10];
@@ -166,15 +180,19 @@ public class ImageUtil {
     public static final String MAIN_MENU_LOAD_BUTTON = DIR_SPRITES + "mm_load_game_button.jpg";
     public static final String MAIN_MENU_NEW_GAME_BUTTON = DIR_SPRITES + "mm_new_game_button.jpg";
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
-    /**
-     * * CHARACTER SELECTION VIEW PORT **
-     */
     
-    /*** CHARACTER SELECTION VIEW PORT ***/
-    public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    
+    /*** CHARACTER SELECTION VIEW PORT ***/    
     public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_main_menu_button.jpg";
     public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
     public static final String CHARACTER_SELECTION_PET = DIR_SPRITES + "cs_pet.jpg";
+    public static final String CHARACTER_SELECTION_SMASHER = DIR_CHAR_SELECT + "smasher.gif";
+    public static final String CHARACTER_SELECTION_SUMMONER = DIR_SPRITES + "cs_summoner.jpg";
+    public static final String CHARACTER_SELECTION_SNEAK = DIR_SPRITES + "cs_sneak.jpg";
+    public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    
+    /*** CHARACTER SELECTION VIEW PORT ***/
+    public static final String INTRO_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
 
     /**
      * * MAP VIEW PORT **
@@ -214,7 +232,6 @@ public class ImageUtil {
         // image should now be either the requested asset or null_asset
         return new ImageIcon(image);
     }
-
     /**
      * Get a rescaled version of an image asset.
      * @param fileName The asset filename to get
@@ -238,7 +255,6 @@ public class ImageUtil {
         g2.dispose();
         return resizedImg;
     }
-
     public static final BufferedImage extractImage(String file_path) {
         try {
             File image_file = new File(file_path);

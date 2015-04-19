@@ -14,7 +14,6 @@ public class BindWounds implements InternalEffect{
 	@Override
 	public void applyEffect(Entity entity) {
 		entity.setStrength(strengthIncrease);
-		
 	}
 
 }

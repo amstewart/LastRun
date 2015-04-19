@@ -3,6 +3,7 @@ package view.viewport;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 import javax.swing.JLabel;
 
@@ -12,7 +13,9 @@ public class StatsViewport extends Viewport {
 	
 	ArrayList<String> stats = new ArrayList<>();
 	public StatsViewport(Stats stats) {
+            try{
 		stats.registerView(this);
+            }catch(ConcurrentModificationException ex){}
 	}
 
 	public void paintComponent(Graphics g) {

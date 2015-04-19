@@ -1,8 +1,10 @@
 package model.entity.occupation;
 
 import java.util.ArrayList;
-import model.item.EquipmentHandler;
 
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
+import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -58,5 +60,13 @@ public class Summoner extends Occupation {
 	public SummonerSkills getSkillBook() {
 		return this.skills;
 	}
+
+	@Override
+	public void accept(OccupationVisitor occupationVisitor, VisitorContainer container) {
+		container.setOccupation(this);
+	}
+
+
+	
 
 }

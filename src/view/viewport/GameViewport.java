@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
-import model.map.GameMap;
 import model.stat.Stats;
 
 
@@ -15,7 +14,6 @@ public class GameViewport extends Viewport{
     private Viewport mapVP;
     private StatsViewport statsVP;
     private InventoryViewport invVP;
-    private EquipmentViewport equipVP;
     private SkillPtAllocationViewport skillPtAllocationVP;
 
 
@@ -27,8 +25,6 @@ public class GameViewport extends Viewport{
         invVP = new InventoryViewport(inventory, occupation.getEquipmentHandler(), a.getStats());
         inventory.addObserver(invVP);
         a.addObserver(invVP);
-        equipVP = new EquipmentViewport(occupation.getEquipmentHandler(), a.getStats());
-        a.addObserver(equipVP);
         statsVP = new StatsViewport(stats);
         skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillBook());
         this.setBackground(Color.white);
@@ -38,7 +34,6 @@ public class GameViewport extends Viewport{
 
         this.add(mapVP);
         this.add(invVP);
-        this.add(equipVP);
         this.add(statsVP);
         this.add(skillPtAllocationVP);
     }
@@ -48,7 +43,6 @@ public class GameViewport extends Viewport{
         int height = this.getSize().height;
 
         mapVP.setPreferredSize(new Dimension((int) (width * 0.40), (int) (height * 0.70)));
-        equipVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         invVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         statsVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
@@ -56,6 +50,7 @@ public class GameViewport extends Viewport{
         revalidate();
         this.repaint();
         mapVP.render();
+        invVP.render();
         statsVP.render();
         skillPtAllocationVP.render();
         this.requestFocusInWindow();

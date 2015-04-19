@@ -2,6 +2,8 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
 import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.skill.ExternalSkill;
@@ -12,12 +14,12 @@ import model.skillset.BasicSkills;
 import model.stat.Stats;
 
 
-public abstract class Occupation {
+public abstract class Occupation{
 
     public static final String HEAD = "Head";
     public static final String CHEST = "Chest";
     public static final String LEGS = "Legs";
-
+    
     private final int initialSkillPoints;
 
     private EquipmentHandler equipmentHandler;
@@ -25,10 +27,10 @@ public abstract class Occupation {
     public Occupation(Inventory inventory, Stats playerStats) {
         // points is hardcoded until we figure out where to get it
         initialSkillPoints = 5;
-        equipmentHandler = new EquipmentHandler(inventory, getBasicSlots(), playerStats);
+        equipmentHandler = new EquipmentHandler(inventory, getBasicSlots(), playerStats, this);
     }
 
-
+ 
     public EquipmentHandler getEquipmentHandler() {
         return equipmentHandler;
     }
@@ -62,5 +64,15 @@ public abstract class Occupation {
 
 	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);
+
+
+	public boolean holds(String s) {
+		return equipmentHandler.holds(s);
+	}
+
+
+	public abstract void accept(OccupationVisitor occupationVisitor,VisitorContainer container);
+
+
 
 }

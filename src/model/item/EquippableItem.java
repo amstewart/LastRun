@@ -20,14 +20,14 @@ public class EquippableItem extends TakeableItem {
         inventory.add(this);
     }
 
-    public void equip(EquipmentHandler equipmentHandler) {
-        equipmentHandler.equip(this, slotCategory);
-       // stats.mergeStats(getItemStats());
+   public boolean equip(EquipmentHandler equipmentHandler) {
+        return equipmentHandler.equip(this, slotCategory);
+        // stats.mergeStats(getItemStats());
     }
 
-    public void unequip(EquipmentHandler equipmentHandler) {
-        equipmentHandler.unequip(this, slotCategory);
-       // stats.unMergeStats(getItemStats());
+    public boolean unequip(EquipmentHandler equipmentHandler) {
+        return equipmentHandler.unequip(this, slotCategory);
+        // stats.unMergeStats(getItemStats());
     }
 
 	@Override

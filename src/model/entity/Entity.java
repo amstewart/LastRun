@@ -1,10 +1,11 @@
 package model.entity;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import model.entity.npc.pet.Pet;
-import model.item.EquippableItem;
-import model.item.NonEquippableItem;
+import model.item.*;
 import model.owner.EntityOwner;
 import model.stat.Stats;
 import model.Assetable;
@@ -12,8 +13,9 @@ import model.Describable;
 
 import java.util.LinkedList;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
 import model.enums.DefinedStats;
-import model.item.Inventory;
 import model.terrain.Terrain.TerrainType;
 
 /**
@@ -44,7 +46,10 @@ public abstract class Entity implements Describable, Assetable{
 		pets.adopt(new_pet);
 		new_pet.adopt(this); // notify the new pet that this entity is the owner
 	}
-
+	
+	public boolean is(Status status){
+		return statuses.contains(status);
+	}
 	/**
 	 * Adds a new status effect to this entity, if it does not already have the
 	 * status applied.
@@ -240,4 +245,36 @@ public abstract class Entity implements Describable, Assetable{
 	public void visit(EquippableItem equippableItem) {
 		equippableItem.touch(inventory);
 	}
+
+	public void visit(ActivationItem activationItem) {
+		activationItem.touch(inventory);
+	}
+
+	public boolean visit(InteractiveItem interactiveItem) {
+		return interactiveItem.receiveKey(getInventory(), getInventory().getActivationItems());
+	}
+
+	public void addTimedStatus(Status changeTo, String assetID, int length) {
+		String _status = getAssetID();
+		this.addStatus(changeTo);
+		this.setAssetID(assetID);
+		Timer timer = new Timer();
+		final Entity e = this;
+		TimerTask ttask = new TimerTask(){
+			@Override
+			public void run() {
+				//e.removeStatus(changeTo);
+				//e.setAssetID(_status);
+			}
+		};
+		timer.schedule(ttask, 4 * 1000);
+		
+	}
+	public boolean holds(String s){
+		return false;
+	}
+	
+	public abstract void accept(EntityVisitor visitor,VisitorContainer container);
+
+
 }

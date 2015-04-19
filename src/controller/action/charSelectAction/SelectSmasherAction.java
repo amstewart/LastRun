@@ -4,7 +4,6 @@ import utility.ImageUtil;
 import controller.action.Action;
 import model.entity.Avatar;
 import model.entity.occupation.Smasher;
-import model.entity.occupation.Sneak;
 
 public class SelectSmasherAction extends Action {
 
@@ -18,7 +17,7 @@ public class SelectSmasherAction extends Action {
     public void perform() {
         avatar.setOccupation(new Smasher(avatar.getInventory(), avatar.getStats()));
         ImageUtil.initSmasher();
-        avatar.setAssetID(ImageUtil.inEffect[2]); //set Smasher
+        avatar.setAssetID(ImageUtil.inEffect[2]); //set sneak sprite sheet here
     }
 }
 

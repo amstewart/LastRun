@@ -9,12 +9,14 @@ import model.entity.Entity;
 import model.entity.npc.pet.Pet;
 import model.entity.vehicle.Vehicle;
 import model.item.Item;
+import model.map.Trap;
 import model.owner.AreaEffectOwner;
 import model.owner.EntityOwner;
 import model.owner.ItemOwner;
 import model.owner.PetOwner;
 import model.owner.ProjectileOwner;
 import model.owner.TerrainOwner;
+import model.owner.TrapOwner;
 import model.owner.VehicleOwner;
 import model.terrain.Terrain;
 import utility.Util;
@@ -30,6 +32,7 @@ public class Tile {
     private TerrainOwner myTerrains;
     private VehicleOwner myVehicles;
     private ProjectileOwner myProjectiles;
+    private TrapOwner myTrap;
     
     public Tile(){
         
@@ -166,6 +169,26 @@ public class Tile {
             Util.dbgOut("I can't release " + v + " because I am not an vehicle owner", 3);
         }
     }
+    
+    public void addTrap(Trap t){
+    	if(!isTrapOwner()){
+    		myTrap= new TrapOwner();
+    	}
+    	myTrap.adopt(t);
+    }
+
+    
+    public void removeTrap(Trap t){
+    	 if (isTrapOwner()) {
+             myTrap.release(t);
+             if(myTrap.getNumberOwned() == 0){
+                myTrap= null;
+             }
+    	 }
+             else {
+                 Util.dbgOut("I can't release " + t + " because I am not a Trap Owner", 3);
+             	}
+    }
 
     public boolean isAreaEffectOwner() {
         return myAreaEffects != null;
@@ -194,6 +217,10 @@ public class Tile {
     public boolean isProjectileOwner() {
         return myProjectiles != null;
     }
+    
+    public boolean isTrapOwner(){
+    	return myTrap!=null;
+    }
 
     public Vector2 getLocation() {
         return address;
@@ -221,6 +248,10 @@ public class Tile {
     
     public Pet getPet(){
         return myPets.getPet();
+    }
+    
+    public Trap getTrap(){
+    	return myTrap.getTrap();
     }
     
     protected PetOwner getPetOwner(){
@@ -258,7 +289,7 @@ public class Tile {
 	}
 
 
-	public void accept(Projectile p, boolean affect) {
+	public void accept(Projectile p, Boolean affect) {
 		if(myEntities != null){
 			affect = true;
 			Set<Entity> ents = myEntities.getEntities();

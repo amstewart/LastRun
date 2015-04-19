@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import model.Vector2;
 import model.entity.Entity;
+import model.entity.Status;
 import model.map.GameMap;
 import model.terrain.Terrain;
 import model.tile.Tile;
@@ -34,11 +35,15 @@ public class MoveUpLeftAction extends Action {
         map = m;
     }
 
-    public boolean isAreaEffect(Tile tile) {
+    private boolean isAreaEffect(Tile tile) {
         if (tile.isAreaEffectOwner()) {
             return true;
         }
         return false;
+    }
+    
+    private void applyTrapEffect(Entity e, Tile dest){
+    	dest.getTrap().apply(e);
     }
 
     public void updateEntityTileLocation(Entity e, Tile source, Tile dest) {
@@ -61,18 +66,25 @@ public class MoveUpLeftAction extends Action {
 
         ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
         Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
-        
+        Entity e=source.getEntity();
         if(avatarsAllowableTerrainTypes.contains(destTerrain)){
-        	Entity e=source.getEntity();
+        	
         	map.moveAvatarTo(destLocation);
-            map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
+        	if(!e.is(Status.INVISIBLE)){
+                map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
+            	}
         	updateEntityTileLocation(e, source, dest);
             if(dest.isAreaEffectOwner()){
             	applyAreaEffect(e,dest);
             }
+            if(dest.isTrapOwner()){
+            	applyTrapEffect(e,dest);
+            }
         } else {
             MapViewport.drawCantMove(destLocation);
         }
-        map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
+        if(!e.is(Status.INVISIBLE)){
+            map.refaceAvatar(Direction.NORTHWEST, ImageUtil.inEffect[7]);
+        	}
     }
 }

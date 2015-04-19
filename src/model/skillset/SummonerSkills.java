@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import utility.ImageUtil;
 import model.effect.Bane;
 import model.effect.Boon;
+import model.effect.EntityStatusModifier;
 import model.effect.Spell;
+import model.effect.Staff;
+import model.entity.Status;
 import model.enums.DefinedStats;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -20,17 +23,22 @@ public class SummonerSkills extends BasicSkills {
     private ExternalSkill staff;
 
     public SummonerSkills() {
-    	//Boon boonEffect1 = new Boon("fire", DefinedStats.ADDHARDINESS.getStats());
-    	//Boon boonEffect2 = new Boon("ice", DefinedStats.ADDHEALTH.getStats());
-    	//Boon boonEffect3 = new Boon("water", DefinedStats.ADDINTELLECT.getStats());
-    	//boon = new SpellSkill("boon", 1, boonEffect1, boonEffect2, boonEffect3, 1);
-    	Bane baneEffect1 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHARDINESS.getStats());
-    	Bane baneEffect2 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHEALTH.getStats());
-    	Bane baneEffect3 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDINTELLECT.getStats());
-    	bane = new SpellSkill("Bane", 10, baneEffect1, baneEffect2, baneEffect3, 1);
-  
-      //  enchantment = new SpellSkill("Enchantment", 1);
-       // staff = new ExternalSkill("Staff", 1);
+    	Boon boonEffect1 = new Boon("fire", DefinedStats.ADDHARDINESS.getStats());
+    	Boon boonEffect2 = new Boon("ice", DefinedStats.ADDHEALTH.getStats());
+    	Boon boonEffect3 = new Boon("water", DefinedStats.ADDINTELLECT.getStats());
+    	boon = new SpellSkill("boon", 1, boonEffect1, boonEffect2, boonEffect3, 1);
+    	Bane baneEffect1 = new Bane(ImageUtil.FIREBALL, DefinedStats.MINUSHARDINESS.getStats());
+    	Bane baneEffect2 = new Bane(ImageUtil.FIREBALL, DefinedStats.MINUSHEALTH.getStats());
+    	Bane baneEffect3 = new Bane(ImageUtil.FIREBALL, DefinedStats.MINUSINTELLECT.getStats());
+    	bane = new SpellSkill("Bane", 1, baneEffect1, baneEffect2, baneEffect3, 3);
+    	EntityStatusModifier emod = new EntityStatusModifier(ImageUtil.AXE, Status.SLEEPING, ImageUtil.SINGING);
+    	EntityStatusModifier emod1 = new EntityStatusModifier(ImageUtil.AXE, Status.SLEEPING, ImageUtil.SLEEPING);
+    	EntityStatusModifier emod2 = new EntityStatusModifier(ImageUtil.AXE, Status.SLEEPING, ImageUtil.SMELLY);
+    	
+    	enchantment = new SpellSkill("Enchant", 1, emod, emod1, emod2, 3);
+    	
+    	Staff staf = new Staff();
+       staff = new ExternalSkill("Staff", 1, staf, 1, false);
     }
 
     protected SpellSkill getBoon() {
@@ -50,9 +58,9 @@ public class SummonerSkills extends BasicSkills {
     }
     
     public void notifyManaSkills(int mana){
-    	//boon.setCanPeform(mana);
+    	boon.setCanPeform(mana);
     	bane.setCanPeform(mana);
-    	//enchantment.setCanPeform(mana);
+    	enchantment.setCanPeform(mana);
     }
 
     @Override

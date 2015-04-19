@@ -5,9 +5,13 @@ import controller.action.equipmentHandlerAction.EquipAction;
 import controller.action.equipmentHandlerAction.EquipmentDropAction;
 import controller.action.inventoryAction.InventoryDropAction;
 import controller.action.inventoryAction.UseAction;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import model.item.EquippableItem;
 import model.item.Inventory;
 import model.item.NonEquippableItem;
@@ -15,6 +19,7 @@ import model.observer.InventoryObserver;
 
 import javax.swing.*;
 import model.entity.occupation.Occupation;
+import model.item.ActivationItem;
 import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
 import model.stat.Stats;
@@ -22,6 +27,11 @@ import utility.ImageUtil;
 
 public class InventoryViewport extends Viewport implements InventoryObserver, AvatarObserver {
 
+    private EquipmentViewport equipmentViewport;
+    
+    private JScrollPane scrollPane;
+    private JPanel panel = new JPanel();
+    
     private EquippableItem[] equippableItems = null;
     private NonEquippableItem[] nonEquippableItems = null;
 
@@ -50,34 +60,46 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
         equipmentDropAction = new EquipmentDropAction(inventory);
 
+                panel.setLayout(new GridLayout(0, 3));
+
+        panel.setSize(new Dimension(300,300));
         setUpMenu();
-
-    }
-
-    @Override
-    public void receiveEquippableItems(EquippableItem[] equippableItems) {
-        this.equippableItems = equippableItems;
-        renderItems();
-    }
-
-    @Override
-    public void receiveNonEquippableItems(NonEquippableItem[] nonEquippableItems) {
-        this.nonEquippableItems = nonEquippableItems;
-        renderItems();
-    }
-
-    private void renderItems() {
-        this.removeAll();
+        
         this.add(new JLabel("Inventory"));
+        
+        
+        scrollPane = new JScrollPane(panel);
+        scrollPane.setPreferredSize(new Dimension(this.getWidth(), 700));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane);
+        
+        this.add(new JLabel("Equipment"));
+        
+        
+        equipmentViewport = new EquipmentViewport(eH, playerStats);
+        add(equipmentViewport);
+        
+        
+        
+        
+
+    }
+
+    
+    private void renderItems() {
+        
+        panel.setSize(new Dimension(this.getSize()));
+
+        panel.removeAll();
         if (equippableItems != null) {
             for (EquippableItem i : this.equippableItems) {
-                this.add(new EquippableItemButton(i));
+                panel.add(new EquippableItemButton(i));
             }
         }
 
         if (nonEquippableItems != null) {
             for (NonEquippableItem i : this.nonEquippableItems) {
-                this.add(new NonEquippableItemButton(i));
+                panel.add(new NonEquippableItemButton(i));
             }
         }
     }
@@ -102,13 +124,25 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
     @Override
     public void render() {
-
+        this.revalidate();
+        scrollPane.setPreferredSize(new Dimension(this.getWidth(), 300));
+        equipmentViewport.setPreferredSize(new Dimension(this.getWidth(), 180));
     }
 
     @Override
     public void receiveOccupation(Occupation o, Stats playerStats) {
+        remove(equipmentViewport);
+        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats);
+        add(equipmentViewport);
         equipAction = new EquipAction(o.getEquipmentHandler(), playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
+    }
+
+    @Override
+    public void receiveTakeableItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
+        this.equippableItems = equippableItems;
+        this.nonEquippableItems = nonEquippableItems;
+        renderItems();
     }
 
     public class EquippableItemButton extends JButton {
@@ -118,6 +152,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         public EquippableItemButton(EquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
             this.item = item;
             
             this.addMouseListener(new EquippableItemButtonListener());
@@ -170,6 +207,11 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         public NonEquippableItemButton(NonEquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
+            
             this.item = item;
             this.addMouseListener(new NonEquippableItemButtonListener());
         }

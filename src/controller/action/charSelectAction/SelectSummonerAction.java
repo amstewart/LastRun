@@ -13,7 +13,6 @@ public class SelectSummonerAction extends Action {
     public SelectSummonerAction(Avatar avatar) {
         this.avatar = avatar;
     }
-
     @Override
     public void perform() {
         avatar.setOccupation(new Summoner(avatar.getInventory(), avatar.getStats()));

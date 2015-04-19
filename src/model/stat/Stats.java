@@ -131,15 +131,15 @@ public class Stats {
 	}
 
 	public void multiplyStats(Stats stats, int m) {
-		this.livesLeft *= stats.getLivesLeft();
-		this.strength *= stats.getStrength();
-		this.agility *= stats.getAgility();
-		this.intellect *= stats.getIntellect();
-		this.hardiness *= stats.getHardiness();
-		this.experience *= stats.getExperience();
-		this.movement *= stats.getMovement();
-		this.equippedArmor *= stats.getEquippedArmor();
-		this.equippedWeapon *= stats.getEquippedWeapon();
+		this.livesLeft = m * stats.getLivesLeft();
+		this.strength = m * stats.getStrength();
+		this.agility = m * stats.getAgility();
+		this.intellect = m* stats.getIntellect();
+		this.hardiness = m*stats.getHardiness();
+		this.experience = m*stats.getExperience();
+		this.movement = m*stats.getMovement();
+		this.equippedArmor = m*stats.getEquippedArmor();
+		this.equippedWeapon = m* stats.getEquippedWeapon();
 		this.deriveStats();
 	}
 

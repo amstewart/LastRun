@@ -20,8 +20,9 @@ public class InternalSkill extends Skill{
 	}
 	
 	public void performSkill(Entity entity){
-	
+		applyMultiplier();
 		effect.applyEffect(entity);
 	}
+	
 	
 }
