@@ -312,11 +312,11 @@ public class GameMap {
         }
     }
     
-   public void addMapObserver(MapObserver o) {
-       observers.add(o);
+    public void addMapObserver(MapObserver o) {
+        observers.add(o);
         notifyObserversMapHasChanged();
     }
-
+    
     private void notifyHostileNPC(){
         for(MapObserver o : observers){
             o.receiveNonStealthAvatarPosition(avatarMovement.getPosition());

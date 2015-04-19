@@ -7,6 +7,7 @@ package view.viewport;
 
 
 import controller.action.charSelectAction.CreateAvatarAction;
+import controller.action.charSelectAction.AvatarNameAction;
 import model.enums.OcupationCategory;
 import utility.DoubleLinkedList;
 import controller.action.Action;
