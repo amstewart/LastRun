@@ -20,10 +20,6 @@ import model.movement.EntityMovement;
 import model.tile.Tile;
 import utility.ImageUtil;
 
-/**
- *
- * @author =ChrisMoscoso
- */
 public class MapViewport extends Viewport {
 
     private double scale = 1.0;

@@ -2,7 +2,6 @@ package model.map;
 
 import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
-
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
@@ -22,7 +21,6 @@ public class MapBuilder {
     private int height=30;
 
     public MapBuilder(){
-
     	//generateMapDebug();
     	//generateMapRandom();
         generateMapDemo();
@@ -58,6 +56,7 @@ public class MapBuilder {
                 }
             }
         }
+
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
         tiles[8][13].addItem(ItemFactory.newClosedChest());
