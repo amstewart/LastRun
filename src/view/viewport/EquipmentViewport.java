@@ -43,6 +43,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     @Override
     public void render() {
+
         this.revalidate();
     }
 

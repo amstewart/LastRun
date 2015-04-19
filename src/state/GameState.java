@@ -5,7 +5,11 @@ import model.Vector2;
 import model.entity.Avatar;
 import model.entity.npc.pet.Pet;
 import model.entity.occupation.Occupation;
+import model.item.EquippableItem;
 import model.item.Inventory;
+import model.item.Item;
+import model.item.ItemFactory;
+import model.item.NonEquippableItem;
 import model.map.GameMap;
 import utility.ImageUtil;
 import view.viewport.GameViewport;
@@ -38,9 +42,14 @@ public class GameState extends State {
     @Override
     public void onEnter() {
         render();
+        NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
+       
+        
         
         getViewport().addKeyListener(new KeyController(map, player, mapVP));
         Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
+        
+        en_puddles.addToInventory(i);
         map.addEntity(en_puddles, new Vector2(1, 3));
         map.getAvatarMovement().getEntity().addPet(en_puddles);
 

@@ -143,7 +143,7 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Chest", Occupation.CHEST);
             Stats stats = DefinedStats.ADDCHESTARMOR.getStats();
             item.setItemStats(stats);
-            // TODO: ADD IMAGE ASSET
+            item.setAssetID(ImageUtil.CHEST2);
             return item;
         }
 
@@ -151,7 +151,7 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Bullet Proof Vest", Occupation.CHEST);
             Stats stats = DefinedStats.ADDCHESTARMOR.getStats();
             item.setItemStats(stats);
-            //TODO: Add Image ASSET
+            item.setAssetID(ImageUtil.CHEST3);
             return item;
         }
 
@@ -212,7 +212,7 @@ public class ItemFactory {
         //=========== 3 types of Smasher Equipment ================
 
         public static EquippableItem  newBFSword(){
-            EquippableItem item = new EquippableItem("B.F. Sword", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("B.F. Sword", Smasher.TWOHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.SWORD);
@@ -220,7 +220,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newAxe(){
-            EquippableItem item = new EquippableItem("Axe - the best deoderant for men", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Axe - the best deoderant for men", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS3.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.AXE);
@@ -228,7 +228,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newClub(){
-            EquippableItem item = new EquippableItem("Club", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Club", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS2.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.CLUB);
@@ -236,7 +236,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newHammer(){
-            EquippableItem item = new EquippableItem("Hammer", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Hammer", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.HAMMER);
@@ -244,7 +244,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newMace(){
-            EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.MACE);
@@ -252,7 +252,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newShield(){
-            EquippableItem item = new EquippableItem("Shield", Smasher.SHIELD);
+            EquippableItem item = new EquippableItem("Shield", Smasher.BRAWL);
             Stats stats = DefinedStats.ADDHEADARMOR.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.SHIELD);
@@ -262,7 +262,7 @@ public class ItemFactory {
         //=========== 3 types of Sneak Equipment ==================
 
         public static EquippableItem  newCrossbow(){
-            EquippableItem item = new EquippableItem("Crossbow", Sneak.SNEAK_WEAPON);
+            EquippableItem item = new EquippableItem("Crossbow", Sneak.RANGED);
             Stats stats = DefinedStats.SNEAKWEAPONSTATS1.getStats();
             item.setItemStats(stats);
             item.setAssetID(ImageUtil.CROSSBOW);
@@ -348,6 +348,8 @@ public class ItemFactory {
                  return getRandomOneShotItem();
              }else if (chance < 0.60) {
                  return getRandomLegEquipment();
+             }else if (chance < 0.70) {
+                 return getRandomChestEquipment();
              }else {
                  return getRandomNonEquippableItem();
              }
@@ -376,6 +378,17 @@ public class ItemFactory {
              }
          }
 
+        public static EquippableItem getRandomChestEquipment() {
+            double chance = Math.random();
+            if(chance < 0.30) {
+                return newChest1();
+            } else if(chance < 0.50) {
+                return newChest2();
+            } else {
+                return newChest3();
+            }
+        }
+
         public static EquippableItem getRandomLegEquipment() {
             double chance = Math.random();
             if(chance < 0.30) {
@@ -386,6 +399,7 @@ public class ItemFactory {
                 return newLegs3();
             }
         }
+
         public static EquippableItem getRandomHeadEquipment(){
              double chance = Math.random();
              if(chance < 0.50){
