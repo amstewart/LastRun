@@ -117,8 +117,12 @@ public class GameTimer implements GameEngineObserver{
     }
 
     private void fire() {
-        for(GameTimerListener l : listeners){
-            l.trigger();
+        try{
+        for (GameTimerListener l : listeners) {
+                l.trigger();
+            }
+        }catch(java.util.ConcurrentModificationException e){
+            
         }
     }
 
@@ -128,6 +132,11 @@ public class GameTimer implements GameEngineObserver{
             this.tick();
         }
         
+    }
+
+    public void destroy() {
+        listeners.removeAll(listeners);
+        GameEngine.getInstance().removeObserver(this);
     }
 
 }
