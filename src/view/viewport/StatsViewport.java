@@ -40,6 +40,7 @@ public class StatsViewport extends Viewport {
         setButtonBackgroundToTranparent(lifeButton);
         setButtonBackgroundToTranparent(livesLeftButton);
         setButtonBackgroundToTranparent(manaButton);
+        setProgressBarProperties();
         
         createPanels();
          try{
@@ -61,6 +62,17 @@ public class StatsViewport extends Viewport {
 	
     }
     
+    private void setProgressBarProperties(){
+        
+        livesLeftProgressBar.setBorderPainted(true);
+        lifeProgressBar.setMaximum(10);
+        
+        lifeProgressBar.setBorderPainted(true);
+        lifeProgressBar.setMaximum(10);
+        
+        
+    }
+    
     public void receive(ArrayList<Integer> stats, ArrayList<StatsCategory> categories) {
         
         for ( int i = 0; i < stats.size(); i++){
@@ -69,7 +81,8 @@ public class StatsViewport extends Viewport {
             switch(categories.get(i)){
             
                 case LIVES_LEFT:
-                    livesLeftProgressBar.setValue(stats.get(i));
+                    livesLeftProgressBar.setValue(0);
+                    //livesLeftProgressBar.setValue(stats.get(i));
                     break;
                 case MANA:
                     manaProgressBar.setValue(stats.get(i));

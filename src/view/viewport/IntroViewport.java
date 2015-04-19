@@ -54,9 +54,9 @@ public class IntroViewport extends Viewport {
     
     private void setStorieToList(){
         
-        queue.add("Phase 1");
-        queue.add("Phase 2");
-        queue.add("Phase 3");
+        queue.add("Ready");
+        queue.add("To");
+        queue.add("Play?");
     }
     
     private ActionListener continueButtonAction = new ActionListener(){

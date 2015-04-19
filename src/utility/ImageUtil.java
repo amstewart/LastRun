@@ -200,10 +200,10 @@ public class ImageUtil {
     public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_main_menu_button.jpg";
     public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
     public static final String CHARACTER_SELECTION_PET = DIR_SPRITES + "cs_pet.jpg";
-    public static final String CHARACTER_SELECTION_SMASHER = DIR_CHAR_SELECT + "smasher.gif";
+    public static final String CHARACTER_SELECTION_SMASHER = DIR_SPRITES  + "cs_smasher.jpg";
     public static final String CHARACTER_SELECTION_SUMMONER = DIR_SPRITES + "cs_summoner.jpg";
     public static final String CHARACTER_SELECTION_SNEAK = DIR_SPRITES + "cs_sneak.jpg";
-    public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
+    public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
     
     /*** CHARACTER SELECTION VIEW PORT ***/
     public static final String INTRO_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";

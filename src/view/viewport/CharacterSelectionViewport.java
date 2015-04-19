@@ -5,17 +5,15 @@
  */
 package view.viewport;
 
+
 import model.enums.OcupationCategory;
 import utility.DoubleLinkedList;
 import controller.action.Action;
-import controller.action.charSelectAction.CreateAvatarAction;
 import controller.action.charSelectAction.SelectSmasherAction;
 import controller.action.charSelectAction.SelectSneakAction;
 import controller.action.charSelectAction.SelectSummonerAction;
 import controller.action.stateMachineAction.GoBackAction;
 import controller.action.stateMachineAction.GoToIntroAction;
-import model.entity.Avatar;
-import utility.ImageUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +21,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.entity.Avatar;
-import model.entity.occupation.Smasher;
-import model.entity.occupation.Sneak;
-import model.entity.occupation.Summoner;
 import utility.ImageUtil;
 import utility.StringUtilEnum;
 
@@ -51,6 +45,7 @@ public class CharacterSelectionViewport extends Viewport {
         initComponents();
         addAvatarOcupations();
         addActionListeners(avatar);
+        
     }
     
     public JButton getStartGameButton(){
@@ -258,8 +253,8 @@ public class CharacterSelectionViewport extends Viewport {
         avatarDescriptionTextArea.setMaximumSize(new java.awt.Dimension(853, 2147483647));
         jScrollPane1.setViewportView(avatarDescriptionTextArea);
 
-        avatarOcuppationNameLabel.setFont(new java.awt.Font("Yu Mincho", 1, 18)); // NOI18N
-        avatarOcuppationNameLabel.setForeground(new Color(240, 240, 240));
+        avatarOcuppationNameLabel.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
+        avatarOcuppationNameLabel.setForeground(new Color(128,0,0));
         avatarOcuppationNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         avatarOcuppationNameLabel.setText("Hello");
 

@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import utility.Audio;
 import utility.ImageUtil;
 
 
@@ -23,6 +24,7 @@ public class MenuViewport extends Viewport {
         setButtonBackgroundTransparent(exitGameButton);
         setButtonBackgroundTransparent(loadGameButton);
         addActionListeners();
+        
     }
     
     private void addActionListeners(){
