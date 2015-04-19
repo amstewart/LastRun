@@ -1,6 +1,7 @@
 package controller.action.equipmentHandlerAction;
 
 import controller.action.Action;
+import model.entity.Avatar;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.stat.Stats;
@@ -8,11 +9,11 @@ import model.stat.Stats;
 public class UnequipAction extends Action {
 
     private EquippableItem equippableItem;
-    private EquipmentHandler equipmentHandler;
+    private Avatar avatar;
     private Stats stats;
 
-    public UnequipAction(EquipmentHandler equipmentHandler, Stats stats) {
-        this.equipmentHandler = equipmentHandler;
+    public UnequipAction(Avatar avatar, Stats stats) {
+        this.avatar = avatar;
         this.stats = stats;
     }
     
@@ -23,7 +24,7 @@ public class UnequipAction extends Action {
     @Override
     public void perform() {
         if(equippableItem != null) {
-            equippableItem.unequip(equipmentHandler);
+            equippableItem.unequip(avatar);
         }
     }
 }

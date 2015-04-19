@@ -20,8 +20,10 @@ public class Villager extends NPC {
 		return null;
 	}
 
+
     @Override
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
     }
+
 }

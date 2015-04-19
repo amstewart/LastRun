@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 import Visitor.OccupationVisitor;
 import Visitor.VisitorContainer;
+import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.item.Inventory;
+import model.map.GameMap;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -71,6 +73,19 @@ public class Smasher extends Occupation {
 		container.setOccupation(this);
 		
 	}
+
+	@Override
+	public void performPassiveInternalSkill(String s, Entity e) {
+		skills.performPassiveInternalSkill(s,e); 
+		
+	}
+
+	@Override
+	public void performPassiveExternalSkill(String s, Entity e, GameMap map) {
+		skills.performPassiveExternalSkill(s,e,map);
+		
+	}
+
 
 
 

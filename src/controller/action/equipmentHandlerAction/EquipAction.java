@@ -1,7 +1,11 @@
 package controller.action.equipmentHandlerAction;
 
 import controller.action.Action;
+
 import javax.swing.JOptionPane;
+
+import view.viewport.DialogueViewport;
+import model.entity.Avatar;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.stat.Stats;
@@ -9,11 +13,11 @@ import model.stat.Stats;
 public class EquipAction extends Action {
 
     private EquippableItem equippableItem;
-    private EquipmentHandler equipmentHandler;
+    private Avatar avatar;
     private Stats stats;
 
-    public EquipAction(EquipmentHandler equipmentHandler, Stats stats) {
-        this.equipmentHandler = equipmentHandler;
+    public EquipAction(Avatar avatar, Stats stats) {
+        this.avatar = avatar;
         this.stats = stats;
     }
 
@@ -24,8 +28,9 @@ public class EquipAction extends Action {
     @Override
     public void perform() {
         if(equippableItem != null) {
-            if(!equippableItem.equip(equipmentHandler)){
-                //Print to dialogue it looks like I cannnot equip items of type
+            if(!equippableItem.equip(avatar)){
+            	DialogueViewport ins =  DialogueViewport.getInstance();
+            	ins.print("You can't equip Items of this type");
             }     
         }
     }

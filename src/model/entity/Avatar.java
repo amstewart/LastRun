@@ -9,6 +9,7 @@ import Visitor.VisitorContainer;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
+import model.item.EquippableItem;
 import model.item.TakeableItem;
 import model.observer.AvatarObserver;
 import model.skill.ExternalSkill;
@@ -36,7 +37,8 @@ public class Avatar extends Entity {
 	public void addToInventory(TakeableItem item) {
 		item.touch(this.getInventory());
 	}
-
+	
+	
 	@Override
 	public void setName(String new_name) {
 		if (new_name == null) {
@@ -109,5 +111,13 @@ public class Avatar extends Entity {
 		System.out.println("Inside Avatar accept avatarVisitor");
 		OccupationVisitor occVisitor= new OccupationVisitor();
 		occVisitor.visit(getOccupation(),container);
+	}
+
+	public boolean equip(EquippableItem equippableItem, String slotCategory) {
+		return occupation.equip(equippableItem, slotCategory);
+	}
+
+	public boolean unequip(EquippableItem equippableItem, String slotCategory) {
+		return occupation.unequip(equippableItem, slotCategory);
 	}
 }

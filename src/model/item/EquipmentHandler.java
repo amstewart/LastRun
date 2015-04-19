@@ -42,7 +42,7 @@ public class EquipmentHandler {
             return true;
         } else {
             notifyObserversEquipmentChanged();
-
+            
             return false;
         }
     }
