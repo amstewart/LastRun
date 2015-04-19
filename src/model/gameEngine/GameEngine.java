@@ -52,6 +52,7 @@ public class GameEngine implements Runnable {
         while (true) {
             updateGame();
             renderGame();
+            notifyObserversGameEngineHasTicked();
             try {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {
@@ -99,6 +100,12 @@ public class GameEngine implements Runnable {
     
     public void removeObserver(GameEngineObserver o){
         observers.remove(o);
+    }
+
+    private void notifyObserversGameEngineHasTicked() {
+        for(GameEngineObserver o :observers){
+            o.gameEngineHasTicked();
+        }
     }
     
     
