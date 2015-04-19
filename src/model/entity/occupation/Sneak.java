@@ -1,8 +1,10 @@
 package model.entity.occupation;
 
 import java.util.ArrayList;
-import model.item.EquipmentHandler;
 
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
+import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -47,7 +49,7 @@ public class Sneak extends Occupation {
 
     @Override
 	public void notifyManaSkills(int mana) {
-		//Mixed Instance :,(
+		//Mixed Inst	@Overrideance :,(
 		
 	}
 
@@ -62,6 +64,14 @@ public class Sneak extends Occupation {
 	public SneakSkills getSkillBook() {
 		return this.skills;
 	}
+
+	@Override
+	public void accept(OccupationVisitor occupationVisitor, VisitorContainer container) {
+		container.setOccupation(this);
+		
+	}
+
+
 
 	
 	

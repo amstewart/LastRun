@@ -3,6 +3,8 @@ package model.entity.occupation;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.item.Inventory;
@@ -62,6 +64,12 @@ public class Smasher extends Occupation {
 	@Override
 	public SmasherSkills getSkillBook() {
 		return this.skills;
+	}
+
+	@Override
+	public void accept(OccupationVisitor occupationVisitor, VisitorContainer container) {
+		container.setOccupation(this);
+		
 	}
 
 

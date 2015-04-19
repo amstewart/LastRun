@@ -13,6 +13,8 @@ import model.Describable;
 
 import java.util.LinkedList;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
 
@@ -271,5 +273,8 @@ public abstract class Entity implements Describable, Assetable{
 	public boolean holds(String s){
 		return false;
 	}
+	
+	public abstract void accept(EntityVisitor visitor,VisitorContainer container);
+
 
 }

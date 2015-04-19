@@ -2,6 +2,8 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
 import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.observer.EquipmentHandlerObserver;
@@ -68,6 +70,9 @@ public abstract class Occupation{
 	public boolean holds(String s) {
 		return equipmentHandler.holds(s);
 	}
+
+
+	public abstract void accept(OccupationVisitor occupationVisitor,VisitorContainer container);
 
 
 

@@ -1,5 +1,7 @@
 package controller.action.moveAvatarAction;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
 import controller.action.Action;
 
 import java.util.ArrayList;
@@ -7,7 +9,9 @@ import java.util.ArrayList;
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
+import model.entity.occupation.Occupation;
 import model.map.GameMap;
+import model.skill.Skill;
 import model.terrain.Terrain;
 import model.tile.Tile;
 import utility.Direction;
@@ -22,6 +26,8 @@ import view.viewport.MapViewport;
 public class MoveDownAction extends Action {
 
     private GameMap map;
+    EntityVisitor visitor = new EntityVisitor();
+    VisitorContainer container = new VisitorContainer();
 
     public MoveDownAction() {
         Util.dbgOut("Dont forget to set the map for the action.", 3);
@@ -78,6 +84,10 @@ public class MoveDownAction extends Action {
             if(dest.isTrapOwner()){
             	applyTrapEffect(e,dest);
             }
+            
+          visitor.visit(e,container);
+          Occupation o= container.getOccupation();  
+          //think of something to do detect Trap here
         } else {
             MapViewport.drawCantMove(destLocation);
         }
