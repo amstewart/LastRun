@@ -26,10 +26,8 @@ public class MapBuilder {
     private Tile[][] tiles;
     private int width=30;
     private int height=30;
-    private GameMap gameMap;
 
-    public MapBuilder(GameMap gameMap){
-        this.gameMap = gameMap;
+    public MapBuilder(){
     	//generateMapDebug();
     	//generateMapRandom();
         generateMapDemo();
@@ -43,9 +41,6 @@ public class MapBuilder {
 
         TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
         LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
-        TeleportAreaEffect teleportAreaEffect = new TeleportAreaEffect(new Vector2(5, 5));
-        teleportAreaEffect.setAssetID(ImageUtil.REDCROSS);
-        teleportAreaEffect.setGameMap(gameMap);
 
         for(int i = 0; i < width; i ++) {
             for(int j = 0; j < height; j++) {
@@ -63,7 +58,7 @@ public class MapBuilder {
                 }
             }
         }
-        tiles[3][3].addAreaEffect(teleportAreaEffect);
+
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
         tiles[8][13].addItem(ItemFactory.newClosedChest());

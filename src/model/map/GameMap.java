@@ -38,7 +38,7 @@ public class GameMap {
     private EntityMovement avatarMovement;
 
     public GameMap() {
-        m = new MapBuilder(this);
+        m = new MapBuilder();
         map = m.getMap();
         miniMap = new MiniMap();
         addMapObserver(miniMap);

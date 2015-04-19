@@ -12,18 +12,13 @@ import model.map.GameMap;
 public class TeleportAreaEffect extends AreaEffect {
 
     private Vector2 location;
-    private GameMap gameMap;
 
     public TeleportAreaEffect(Vector2 location){ //add assetable stuff here
         this.location=location;
     }
 
-    public void setGameMap(GameMap gameMap) {
-        this.gameMap = gameMap;
-    }
-
     @Override
     public void apply(Entity e) {
-        gameMap.moveAvatarTo(location);
+        //TODO: relocate the entity and redraw map
     }
 }
