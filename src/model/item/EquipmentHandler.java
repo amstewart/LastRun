@@ -1,5 +1,6 @@
 package model.item;
 
+import model.entity.occupation.Occupation;
 import model.observer.EquipmentHandlerObserver;
 import model.stat.Stats;
 
@@ -12,11 +13,13 @@ public class EquipmentHandler {
     private HashMap<String, EquippableItem> equipment;
     private Inventory inventory;
     private Stats playerStats;
+    Occupation occupation;
 
-    public EquipmentHandler(Inventory inventory, ArrayList<String> slots, Stats playerStats) {
+    public EquipmentHandler(Inventory inventory, ArrayList<String> slots, Stats playerStats, Occupation o) {
 
         observers = new ArrayList<EquipmentHandlerObserver>();
         equipment = new HashMap<String, EquippableItem>();
+        this.occupation = o;
 
         updateSlots(slots);
         this.inventory = inventory;
@@ -78,4 +81,12 @@ public class EquipmentHandler {
         equipment.put(slot, equippableItem);
         playerStats.mergeStats(equippableItem.getItemStats());
     }
+
+	public boolean holds(String s) {
+		if(equipment.get(s) == null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 }

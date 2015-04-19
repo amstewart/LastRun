@@ -63,4 +63,7 @@ public class Sneak extends Occupation {
 		return this.skills;
 	}
 
+	
+	
+
 }

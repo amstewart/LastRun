@@ -59,4 +59,6 @@ public class Summoner extends Occupation {
 		return this.skills;
 	}
 
+	
+
 }

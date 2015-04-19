@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.util.ArrayList;
+
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
@@ -15,15 +16,15 @@ import utility.Util;
 
 public class Avatar extends Entity {
 
-    private ArrayList<AvatarObserver> observers = new ArrayList();
-    private static final String DESC = "This is the player character.";
+	private ArrayList<AvatarObserver> observers = new ArrayList();
+	private static final String DESC = "This is the player character.";
 
 	private Pet pet;
 	private Occupation occupation;
 	private String id;
 
 	public Avatar() {
-		this.occupation = new Sneak(getInventory(), getStats());//default
+		this.occupation = new Sneak(getInventory(), getStats());// default
 		ImageUtil.initSneak();
 		setAssetID(ImageUtil.inEffect[2]);
 	}
@@ -34,48 +35,64 @@ public class Avatar extends Entity {
 
 	@Override
 	public void setName(String new_name) {
-		if (new_name == null) { Util.errOut(new Exception("Avatar name changed to null value."), true); }
+		if (new_name == null) {
+			Util.errOut(new Exception("Avatar name changed to null value."),
+					true);
+		}
 		super.setName(new_name);
 	}
 
-    @Override
-    public String getDescription() {
-        return DESC;
-    }
-	// Pre condition, getting the occupationChooser only happens in states where occupationChooser was initialized
+	@Override
+	public String getDescription() {
+		return DESC;
+	}
+
+	// Pre condition, getting the occupationChooser only happens in states where
+	// occupationChooser was initialized
 	public Occupation getOccupation() {
 		return occupation;
 	}
 
-	public void setOccupation(Occupation o){
-             this.occupation = o;
-             notifyObserversOccupationHasChanged();
+	public void setOccupation(Occupation o) {
+		this.occupation = o;
+		notifyObserversOccupationHasChanged();
 	}
 
 	public Skill[] getSkills() {
 		return getOccupation().getSkills();
 	}
-    
-    @Override
-    public void setMana(int mana){
-    	super.setMana(mana);
-    	getOccupation().notifyManaSkills(getMana());
 
-    }
+	@Override
+	public void setMana(int mana) {
+		super.setMana(mana);
+		getOccupation().notifyManaSkills(getMana());
+
+	}
 
 	public void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills) {
-		getOccupation().sortSkills(eSkills,iSkills,sSkills);
-		
+		getOccupation().sortSkills(eSkills, iSkills, sSkills);
+
 	}
-        
-        public void addObserver(AvatarObserver o){
-            observers.add(o);
-        }
-        
-        private void notifyObserversOccupationHasChanged(){
-            for(AvatarObserver o : observers){
-                o.receiveOccupation(occupation, getStats());
-            }
-        }
+
+	public void addObserver(AvatarObserver o) {
+		observers.add(o);
+	}
+
+	private void notifyObserversOccupationHasChanged() {
+		for (AvatarObserver o : observers) {
+			o.receiveOccupation(occupation, getStats());
+		}
+	}
+	
+	@Override
+	public boolean holds(String s){
+		return occupation.holds(s);
+	}
+
+	@Override
+	public String talk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

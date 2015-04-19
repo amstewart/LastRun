@@ -268,4 +268,8 @@ public abstract class Entity implements Describable, Assetable{
 		timer.schedule(ttask, 4 * 1000);
 		
 	}
+	public boolean holds(String s){
+		return false;
+	}
+
 }

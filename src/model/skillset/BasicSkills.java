@@ -1,6 +1,7 @@
 package model.skillset;
 
 import model.effect.BindWounds;
+import model.effect.Observe;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -49,7 +50,8 @@ public abstract class BasicSkills {
 		// bargain = new ExternalSkill("Bargain", 1);
 		BindWounds bw = new BindWounds();
 		bindWound = new InternalSkill("BindWound", 1, bw, false);
-		// observation = new ExternalSkill("Observation", 1);
+		Observe obs = new Observe();
+		observation = new ExternalSkill("Observation", 1, obs, 1, false);
 	}
 
 	protected ExternalSkill getBargain() {
