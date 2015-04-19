@@ -1,12 +1,8 @@
 package model.entity.npc.pet;
 
-<<<<<<< HEAD
+
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
-=======
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
->>>>>>> juan
 import model.entity.Entity;
 import model.entity.npc.NPC;
 

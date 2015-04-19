@@ -1,12 +1,9 @@
 package model.entity.npc;
 
-<<<<<<< HEAD
+
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
-=======
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
->>>>>>> juan
+
 
 public class Villager extends NPC {
 
