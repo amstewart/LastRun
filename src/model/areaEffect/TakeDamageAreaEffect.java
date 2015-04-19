@@ -7,11 +7,8 @@ package model.areaEffect;
 
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
 public class TakeDamageAreaEffect extends AreaEffect {
+
     private double damage;
     
     public TakeDamageAreaEffect(String id){
@@ -21,7 +18,6 @@ public class TakeDamageAreaEffect extends AreaEffect {
     
     public void apply(Entity e){
         e.setLife(newHealth(e));
-
     }
     
     public int newHealth(Entity e){
@@ -29,9 +25,4 @@ public class TakeDamageAreaEffect extends AreaEffect {
         int remove= (int)(avatarCurrLife*damage);
         return avatarCurrLife-remove;
     }
-
- 
-
-  
-    
 }
