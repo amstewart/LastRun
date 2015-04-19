@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
+import model.entity.vehicle.Vehicle;
 import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
@@ -42,23 +43,21 @@ public class GameMap {
         addMapObserver(miniMap);
     }
 
-    public void addEntity(Avatar a) {
-        this.addEntity(a, new Vector2());
-    }
-
     public void addEntity(Avatar a, Vector2 location) {
         getTile(location).addEntity(a);
         avatarMovement = new EntityMovement(a, this, location);
         entityMovements.add(avatarMovement);
     }
 
-    public void addEntity(Entity e) {
-        this.addEntity(e, new Vector2());
-    }
-
     public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
+        notifyObserversMapHasChanged();
+    }
+
+    public void addVehicle(Vehicle vic, Vector2 location) {
+        getTile(location).addVehicle(vic);
+        entityMovements.add(new EntityMovement(vic, this, location));
         notifyObserversMapHasChanged();
     }
 

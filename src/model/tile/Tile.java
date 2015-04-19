@@ -30,7 +30,7 @@ public class Tile {
     private ItemOwner myItems;
     private PetOwner myPets;
     private TerrainOwner myTerrains;
-    private VehicleOwner myVehicles;
+    private VehicleOwner myVehicle;
     private ProjectileOwner myProjectiles;
     private TrapOwner myTrap;
     
@@ -154,16 +154,16 @@ public class Tile {
 
     public void addVehicle(Vehicle v) {
         if (!isVehicleOwner()) {
-            myVehicles = new VehicleOwner();
+            myVehicle = new VehicleOwner();
         }
-        myVehicles.adopt(v);
+        myVehicle.adopt(v);
     }
 
     public void removeVehicle(Vehicle v) {
         if (isVehicleOwner()) {
-            myVehicles.release(v);
-            if(myVehicles.getNumberOwned() == 0){
-                myVehicles = null;
+            myVehicle.release();
+            if(myVehicle.getNumberOwned() == 0){
+                myVehicle = null;
             }
         } else {
             Util.dbgOut("I can't release " + v + " because I am not an vehicle owner", 3);
@@ -211,7 +211,7 @@ public class Tile {
     }
 
     public boolean isVehicleOwner() {
-        return myVehicles != null;
+        return myVehicle != null;
     }
 
     public boolean isProjectileOwner() {
@@ -239,7 +239,7 @@ public class Tile {
     }
     
     public Vehicle getVehicle(){
-        return myVehicles.getVehicle();
+        return myVehicle.getVehicle();
     }
     
     public Item getItem(){
@@ -267,7 +267,7 @@ public class Tile {
     }
      
     protected VehicleOwner getVehicleOwner(){
-          return myVehicles;
+          return myVehicle;
     }
       
     protected ItemOwner getItemOwner(){

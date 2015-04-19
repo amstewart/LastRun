@@ -3,12 +3,14 @@ package model.entity.vehicle;
 import Visitor.EntityVisitor;
 import Visitor.VisitorContainer;
 import model.entity.npc.NPC;
+import utility.Util;
 
 public class Vehicle extends NPC {
 
-    public Vehicle (String art_asset, String name) {
+    public Vehicle (String art_asset, String name, int speed) {
         super(art_asset);
         setName(name);
+        this.setMovement(speed);
     }
 
     public String getDescription() {

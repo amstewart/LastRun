@@ -1,10 +1,13 @@
 package state;
 
 import controller.KeyController;
+import model.Vector2;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
+import model.map.MapBuilder;
+import utility.ImageUtil;
 import view.viewport.GViewport;
 import view.viewport.MapViewport;
 
@@ -21,6 +24,7 @@ public class GameState extends State {
     public GameState(GameMap map, Avatar player){
         this.map = map;
         this.player = player;
+
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
         viewPort =  new GViewport(mapVP, inventory, player);
@@ -38,8 +42,11 @@ public class GameState extends State {
     @Override
     public void onEnter() {
         render();
-        
-        getViewport().addKeyListener(new KeyController(map, player, mapVP));
+
+        KeyController kc = new KeyController(map, player, mapVP);
+        getViewport().addKeyListener(kc);
+
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 3);
         //Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         //map.addEntity(en_puddles, new Vector2(1, 3));
         //map.getAvatarMovement().getEntity().addPet(en_puddles);

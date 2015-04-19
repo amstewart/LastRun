@@ -201,6 +201,8 @@ public class MapViewport extends Viewport {
             for (int i = startX; i < Math.min(startX + windowWidthInTiles, mapWidthInTiles); i++) {
                 for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
                     if (e.getPosition().X == i && e.getPosition().Y == j) {
+                        // skip drawing the avatar in this pass
+                        if (e == map.getAvatarMovement()) { continue; }
 
                         int offsetX = hexRadius;
                         int offsetY = (int) (hexRadius * 0.8);
@@ -221,6 +223,24 @@ public class MapViewport extends Viewport {
                 }
             }
         }
+
+        // Draw the avatar last
+        EntityMovement em = map.getAvatarMovement();
+        int offsetX = hexRadius;
+        int offsetY = (int) (hexRadius * 0.8);
+
+        if (em.getPosition().X % 2 != 0) {
+            offsetY += (int) (hexRadius * 0.84);
+        }
+
+        int positionX = (em.getPosition().X - startX) * hexRadius * 2;
+        int positionY = (int) ((em.getPosition().Y - startY) * hexRadius * 1.748);
+
+        positionX -= (em.getPosition().X - startX) * hexRadius / 2;
+        g.setColor(Color.ORANGE);
+        //g.fillRect(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        Rectangle rect = new Rectangle(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        g.drawImage(ImageUtil.getImage(em.getEntity().getAssetID()).getImage(), rect.x, rect.y, rect.width, rect.height, this);
     }
 
     private void drawMiniMap(Graphics g) {

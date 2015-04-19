@@ -12,6 +12,7 @@ import controller.action.moveAvatarAction.MoveUpLeftAction;
 import controller.action.moveAvatarAction.MoveUpRightAction;
 import controller.action.skillAction.ExternalSkillAction;
 import controller.action.skillAction.InternalSkillAction;
+import controller.action.skillAction.MountAction;
 import controller.action.skillAction.SpellSkillAction;
 
 import java.awt.event.KeyEvent;
@@ -56,6 +57,7 @@ public class KeyController implements KeyListener{
         actionSet.put(KeyEvent.VK_A, new MoveDownLeftAction(map));
         actionSet.put(KeyEvent.VK_S, new MoveDownAction(map));
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
+        actionSet.put(KeyEvent.VK_M, new MountAction(map, map.getAvatarMovement()));
         
         actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
         actionSet.put(KeyEvent.VK_EQUALS, new ZoomInMapAction(mapVP));
@@ -103,6 +105,4 @@ public class KeyController implements KeyListener{
     public void keyReleased(KeyEvent e) {
         
     }
-
-    
 }

@@ -5,8 +5,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import model.entity.npc.pet.Pet;
+import model.entity.vehicle.Vehicle;
 import model.item.*;
 import model.owner.EntityOwner;
+import model.owner.VehicleOwner;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -17,6 +19,7 @@ import Visitor.EntityVisitor;
 import Visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
+import utility.Util;
 
 /**
  * Entities are all game objects which have the ability to move and manipulate
@@ -31,6 +34,7 @@ public abstract class Entity implements Describable, Assetable{
 	private Inventory inventory = new Inventory();
 	private String id;
 	private EntityOwner pets = new EntityOwner();
+	private VehicleOwner mount = new VehicleOwner();
     private String name = "NONAME";
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
@@ -112,7 +116,10 @@ public abstract class Entity implements Describable, Assetable{
 	public Inventory getInventory() { return inventory; }
 
 	public int getMovement() {
-		return stats.getMovement();
+		if (this.mount.getNumberOwned() == 0)
+			return stats.getMovement();
+		else
+			return this.mount.getVehicle().getMovement();
 	}
 
 	public int getLevel() {
@@ -154,6 +161,11 @@ public abstract class Entity implements Describable, Assetable{
 	 */
 	public void mergeStats(Stats stat) {
 		stats.mergeStats(stat);
+	}
+
+	public void mount(Vehicle new_mount) {
+		this.mount.adopt(new_mount);
+		this.addStatus(Status.MOUNTED);
 	}
 
 	public void setAgility(int agility) {
@@ -209,6 +221,11 @@ public abstract class Entity implements Describable, Assetable{
     public void unMergeStats(Stats stat) {
         stats.unMergeStats(stat);
     }
+
+	public void unmount() {
+		this.mount.release();
+		this.removeStatus(Status.MOUNTED);
+	}
     
     public void setCanMoveOnWater(boolean b){
         if(b){
@@ -270,6 +287,7 @@ public abstract class Entity implements Describable, Assetable{
 		timer.schedule(ttask, 4 * 1000);
 		
 	}
+
 	public boolean holds(String s){
 		return false;
 	}

@@ -12,29 +12,25 @@ import model.entity.vehicle.Vehicle;
  */
 public class VehicleOwner {
     
-    public Set<Vehicle> slaves;
+    public Vehicle slave;
     
     public VehicleOwner(){
-        slaves = new HashSet<Vehicle>();
     }
     
     public int getNumberOwned(){
-        return slaves.size();
+        if (slave == null) return 0;
+        else return 1;
     }
     
     public void adopt(Vehicle v){
-        slaves.add(v);
+        slave = v;
     }
     
-    public void release(Vehicle v){
-        slaves.remove(v);
+    public void release(){
+        slave = null;
     }
     
     public Vehicle getVehicle(){
-        Vehicle v=null;
-        for(Vehicle vehicle : slaves){
-            v=vehicle;
-        }
-        return v;
+        return slave;
     }
 }

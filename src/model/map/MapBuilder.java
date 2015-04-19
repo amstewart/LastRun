@@ -5,6 +5,7 @@
  */
 package model.map;
 
+import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
 import model.item.Item;
 
@@ -30,6 +31,11 @@ public class MapBuilder {
 
     	generateMapDebug();
     	//generateMapRandom();
+    }
+
+    public static void addVehicle(GameMap map, Vector2 pos, String name, String art_asset, int speed) {
+        Vehicle vic = new Vehicle(art_asset, name, speed);
+        map.addVehicle(vic, pos);
     }
 
     public void generateMapDebug() {
@@ -88,7 +94,6 @@ public class MapBuilder {
         tiles[6][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
         tiles[3][3].addTrap(new SpikeTrap(ImageUtil.SPIKETRAP));
     }
-    
     
     public void generateMapRandom(){
         tiles= new Tile[width][height];
