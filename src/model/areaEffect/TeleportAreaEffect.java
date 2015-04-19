@@ -20,5 +20,6 @@ public class TeleportAreaEffect extends AreaEffect {
     @Override
     public void apply(Entity e) {
         //TODO: relocate the entity and redraw map
+        
     }
 }

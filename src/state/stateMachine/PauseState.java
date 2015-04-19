@@ -1,7 +1,9 @@
 
 package state.stateMachine;
 
+import controller.keyControllers.PauseController;
 import state.State;
+import view.viewport.PauseViewport;
 
 /**
  *
@@ -9,7 +11,11 @@ import state.State;
  */
 public class PauseState extends State{
 
+    
+    
     public PauseState() {
+        viewPort = new PauseViewport();
+        controller = new PauseController();
     }
 
     @Override

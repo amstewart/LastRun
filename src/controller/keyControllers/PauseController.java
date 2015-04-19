@@ -9,8 +9,12 @@ import java.awt.event.KeyListener;
  *
  * @author ChrisMoscoso
  */
-public class PauseController implements KeyListener{
+public class PauseController extends KeyController implements KeyListener{
 
+    public PauseController(){
+        actionSet.put(KeyEvent.VK_ESCAPE, new GoBackAction());
+    }
+    
     @Override
     public void keyTyped(KeyEvent e) {
         
@@ -18,9 +22,7 @@ public class PauseController implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            new GoBackAction().perform();
-        }
+        super.keyPressed(e);
     }
 
     @Override

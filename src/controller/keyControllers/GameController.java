@@ -34,9 +34,8 @@ import view.viewport.MapViewport;
  *
  * @author ChrisMoscoso
  */
-public class GameController implements KeyListener{
+public class GameController extends KeyController{
     
-    Map<Integer, Action> actionSet;
     Map<Integer, Integer> skillSet;
     int skillNumber = 0;
 
@@ -61,6 +60,7 @@ public class GameController implements KeyListener{
         
         actionSet.put(KeyEvent.VK_ESCAPE, new GoToPauseAction());
         actionSet.put(KeyEvent.VK_M, new GoToMerchantAction());
+
         
         actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
         actionSet.put(KeyEvent.VK_EQUALS, new ZoomInMapAction(mapVP));
@@ -97,12 +97,7 @@ public class GameController implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        for(Integer keyCode : actionSet.keySet()){
-            if(e.getKeyCode() == keyCode){
-                actionSet.get(keyCode).perform();
-                break;
-            }
-        }
+        super.keyPressed(e);
     }
 
     @Override

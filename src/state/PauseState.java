@@ -1,14 +1,14 @@
 package state;
 
-import view.viewport.PauseGameViewport;
+import view.viewport.PauseViewport;
 import view.viewport.Viewport;
 
-public class PauseGameState extends State {
+public class PauseState extends State {
 
-    private PauseGameViewport viewPort;
+    private PauseViewport viewPort;
 
-    public PauseGameState() {
-        viewPort = new PauseGameViewport();
+    public PauseState() {
+        viewPort = new PauseViewport();
     }
 
     @Override
