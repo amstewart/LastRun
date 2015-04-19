@@ -14,108 +14,91 @@ import model.movement.EntityMovement;
 
 public class Bane extends Spell implements SpellEffect, Projectile {
 
-    private Stats currentStats;
-    private Stats baseStats;
-    private static int num = 1;
+	private Stats currentStats;
+	private Stats baseStats;
+	private static int num = 1;
 
-    public Bane(String id, Stats baseStats) {
-        super(id);
-        this.baseStats = baseStats;
-        this.currentStats = new Stats(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    }
+	public Bane(String id, Stats baseStats) {
+		super(id);
+		this.baseStats = baseStats;
+		this.currentStats = new Stats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+	}
 
-    @Override
-    public void applyMultiplier(int m) {
-        currentStats.multiplyStats(baseStats, m);
-    }
+	@Override
+	public void applyMultiplier(int m) {
+		currentStats.multiplyStats(baseStats, m);
+	}
 
-    @Override
-    public void applyEffect(GameMap map, Entity entity, int r) {
-        if (canPerform()) {
-            decrementMana(entity);
-            fire(map, entity, r);
-        }
-    }
+	@Override
+	public void setCanPerform(int mana) {
+		super.setCanPerform(mana);
 
-    @Override
-    public void setCanPerform(int mana) {
-        super.setCanPerform(mana);
+	}
 
-    }
+	@Override
+	public void affect(Entity entity) {
+		entity.mergeStats(currentStats);
 
-    @Override
-    public void fire(final GameMap area, Entity entity, final int radius) {
-        EntityMovement emov = getMovement(entity, area);
-        if (emov == null) {
-            return;
-        }
+	}
 
-        final Vector2 faceDir = emov.getFacingDir();
-        final Vector2 pos = emov.getPosition();
-        final Projectile p = this;
-        Tile t = area.getTile(pos);
-        t.addProjectile(this);
-        
-        final GameTimer gameTimer = new GameTimer(2, true);
-        GameTimerListener l = new GameTimerListener() {
+	@Override
+	public void fire(GameMap area, Entity entity, EntityMovement emov,
+			int radius) {
 
-            private Tile oldt = null;
-            private int numTimes = 1;
-            private Tile t = area.getTile(pos);
+		final Vector2 faceDir = emov.getFacingDir();
+		System.out.println(faceDir);
+		final Vector2 pos = emov.getPosition();
+		System.out.println(pos);
+		final Projectile p = this;
+		Tile t = area.getTile(pos);
+		t.addProjectile(this);
 
-            @Override
-            public void trigger() {
-                oldt = t;
-                t.removeProjectile(p);
-                t = area.getTileInDirection(faceDir, t);
-                if (oldt == t) {
-                    t.removeProjectile(p);
-                    ++num;
-                    gameTimer.destroy();
-                }
-                t.addProjectile(p);
-                boolean affect = false;
-                t.accept(p, affect);
-                if (affect == true) {
-                    t.removeProjectile(p);
-                    ++num;
-                    gameTimer.destroy();
-                }
-                if (radius == numTimes) {
-                    t.removeProjectile(p);
-                    ++num;
-                    gameTimer.destroy();
-                }
+		final GameTimer gameTimer = new GameTimer(30, true);//30 = 1 sec
+		GameTimerListener l = new GameTimerListener() {
 
-                numTimes++;
-            }
+			private Tile oldt = null;
+			private int numTimes = 1;
+			private Tile t = area.getTile(pos);
 
-        };
-        gameTimer.addGameTimerListener(l);
-        gameTimer.start();
+			@Override
+			public void trigger() {
+				oldt = t;
+				t.removeProjectile(p);
+				t = area.getTileInDirection(faceDir, t);
+				if (oldt == t) {
+					t.removeProjectile(p);
+					++num;
+					gameTimer.destroy();
+				}
+				t.addProjectile(p);
+				Boolean affect = new Boolean(false);
+				t.accept(p, affect);
+				if (affect.booleanValue() == true) {
+					t.removeProjectile(p);
+					++num;
+					gameTimer.destroy();
+				}
+				if (radius == numTimes) {
+					t.removeProjectile(p);
+					++num;
+					gameTimer.destroy();
+				}
 
-    }
+				numTimes++;
+			}
 
-    private EntityMovement getMovement(Entity entity, GameMap area) {
-        EntityMovement emov = area.getAvatarMovement();
-        if (emov != null) {
-            if (entity == emov.getEntity()) {
-                return emov;
-            }
-            for (EntityMovement emovement : area.getEntityMovements()) {
-                if (emovement.getEntity() == entity) {
-                    return emovement;// TDA violation
-                }
-            }
+		};
+		gameTimer.addGameTimerListener(l);
+		gameTimer.start();
 
-        }
+	}
 
-        return null;
-    }
-
-    @Override
-    public void affect(Entity entity) {
-        entity.mergeStats(currentStats);
-
-    }
+	@Override
+	public void applyEffect(GameMap map, Entity entity, EntityMovement emov,
+			int radius) {
+		if (canPerform()) {
+			decrementMana(entity);
+			fire(map, entity, emov, radius);
+		}
+	}
 }

@@ -17,6 +17,8 @@ public enum DefinedStats {
 	SUMWEAPONSTATS2(new Stats(0, 0, 0, 15, 0, 0, 0, 0, 2)),
 	SUMWEAPONSTATS3(new Stats(0, 0, 0, 25, 0, 0, 0, 0, 11)),
 	MINUSHEALTH(new Stats(0,-10,0,0,0,0,0,0,0)),
+	MINUSHARDINESS(new Stats(0,0,0,0,10,0,0,0,0)),
+	MINUSINTELLECT(new Stats(0,0,0,10,0,0,0,0,0)),
 	ADDHEALTH(new Stats(0,10,0,0,0,0,0,0,0)),
 	ADDHARDINESS(new Stats(0,0,0,0,10,0,0,0,0)),
 	ADDINTELLECT(new Stats(0,0,0,10,0,0,0,0,0)),

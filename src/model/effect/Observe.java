@@ -1,9 +1,11 @@
 package model.effect;
 
 import model.Describable;
+import model.Vector2;
 import model.entity.Entity;
-import model.map.LocalArea;
-import model.stat.Stats;
+import model.map.GameMap;
+import model.movement.EntityMovement;
+
 
 public class Observe implements ExternalEffect, Describable{
 	private int baseHowWrong = 100;
@@ -16,31 +18,7 @@ public class Observe implements ExternalEffect, Describable{
 		
 	}
 
-	@Override
-	public void applyEffect(LocalArea map, Entity entity) {
-		Entity observedEntity = map.getEntityLinear(entity);
-		if(observedEntity != null){
-			Stats stats = observedEntity.getStats();
-			int level = stats.getLevel() + howWrong;
-			int agility= stats.getAgility()+ howWrong;
-			int oRating= stats.getOffensiveRating()+ howWrong;
-			int dRating= stats.getDefensiveRating()+ howWrong;
-			int strength= stats.getStrength()+ howWrong;
-			int livesLeft= stats.getLivesLeft()+ howWrong;
-			int hardiness= stats.getHardiness()+ howWrong;
-			
-			description += "Level: " + Integer.toString(level);
-			description += "Agility: " + Integer.toString(agility);
-			description += "Offensive Rating: " + Integer.toString(oRating);
-			description += "Defensive Rating: " + Integer.toString(dRating);
-			description += "Strength: " + Integer.toString(strength);
-			description += "Lives Left: " + Integer.toString(livesLeft);
-			description += "Hardiness: " + Integer.toString(hardiness);
-			
-		}
-		
-		
-	}
+	
 
 	@Override
 	public String getDescription() {
@@ -51,6 +29,32 @@ public class Observe implements ExternalEffect, Describable{
 	public String getName() {
 		String s = "You Observed:\n";
 		return s;
+	}
+
+	@Override
+	public void applyEffect(GameMap map, Entity entity, EntityMovement emov,
+			int radius) {
+	
+//		if(observedEntity != null){
+//			Stats stats = observedEntity.getStats();
+//			int level = stats.getLevel() + howWrong;
+//			int agility= stats.getAgility()+ howWrong;
+//			int oRating= stats.getOffensiveRating()+ howWrong;
+//			int dRating= stats.getDefensiveRating()+ howWrong;
+//			int strength= stats.getStrength()+ howWrong;
+//			int livesLeft= stats.getLivesLeft()+ howWrong;
+//			int hardiness= stats.getHardiness()+ howWrong;
+//			
+//			description += "Level: " + Integer.toString(level);
+//			description += "Agility: " + Integer.toString(agility);
+//			description += "Offensive Rating: " + Integer.toString(oRating);
+//			description += "Defensive Rating: " + Integer.toString(dRating);
+//			description += "Strength: " + Integer.toString(strength);
+//			description += "Lives Left: " + Integer.toString(livesLeft);
+//			description += "Hardiness: " + Integer.toString(hardiness);
+//			
+//		}
+		
 	}
 
 }
