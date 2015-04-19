@@ -5,6 +5,7 @@ import controller.action.equipmentHandlerAction.EquipAction;
 import controller.action.equipmentHandlerAction.EquipmentDropAction;
 import controller.action.inventoryAction.InventoryDropAction;
 import controller.action.inventoryAction.UseAction;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -12,12 +13,15 @@ import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+
 import model.item.EquippableItem;
 import model.item.Inventory;
 import model.item.NonEquippableItem;
 import model.observer.InventoryObserver;
 
 import javax.swing.*;
+
+import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.ActivationItem;
 import model.item.EquipmentHandler;
@@ -50,10 +54,12 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
     private JMenuItem cancel = new JMenuItem("Cancel");
     private JMenuItem cancel2 = new JMenuItem("Cancel");
+    
+    private Avatar avatar;
 
-    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats) {
+    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats, Avatar av) {
 
-        equipAction = new EquipAction(eH, playerStats);
+        equipAction = new EquipAction(av, playerStats);
         useAction = new UseAction(inventory, playerStats);
         inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
@@ -66,6 +72,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         setUpMenu();
         
         this.add(new JLabel("Inventory"));
+        this.avatar = av;
         
         
         scrollPane = new JScrollPane(panel);
@@ -76,7 +83,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         this.add(new JLabel("Equipment"));
         
         
-        equipmentViewport = new EquipmentViewport(eH, playerStats);
+        equipmentViewport = new EquipmentViewport(eH, playerStats,avatar);
         add(equipmentViewport);
         
         
@@ -132,9 +139,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     @Override
     public void receiveOccupation(Occupation o, Stats playerStats) {
         remove(equipmentViewport);
-        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats);
+        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats, avatar);
         add(equipmentViewport);
-        equipAction = new EquipAction(o.getEquipmentHandler(), playerStats);
+        equipAction = new EquipAction(avatar, playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
     }
 

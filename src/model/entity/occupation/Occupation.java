@@ -6,6 +6,7 @@ import Visitor.OccupationVisitor;
 import Visitor.VisitorContainer;
 import model.entity.Entity;
 import model.item.EquipmentHandler;
+import model.item.EquippableItem;
 import model.item.Inventory;
 import model.map.GameMap;
 import model.skill.ExternalSkill;
@@ -25,6 +26,13 @@ public abstract class Occupation{
     private final int initialSkillPoints;
 
     private EquipmentHandler equipmentHandler;
+    
+    public boolean equip(EquippableItem equippableItem, String slotCategory) {
+		return equipmentHandler.equip(equippableItem, slotCategory);
+	}
+    public boolean unequip(EquippableItem equippableItem, String slotCategory) {
+    	return equipmentHandler.equip(equippableItem, slotCategory);
+	}
 
     public Occupation(Inventory inventory, Stats playerStats) {
         // points is hardcoded until we figure out where to get it
@@ -77,6 +85,8 @@ public abstract class Occupation{
 	
 	public abstract void performPassiveInternalSkill(String s, Entity e);
 	public abstract void performPassiveExternalSkill(String s, Entity e, GameMap map);
+
+	
 
 
 
