@@ -88,20 +88,20 @@ public class Inventory {
 
     //TODO: Give observers the items it needs
     private EquippableItem[] getEquippableItems() {
-        Collections.sort(equippableItems, new Comparator<EquippableItem>() {
+        /*Collections.sort(equippableItems, new Comparator<EquippableItem>() {
             public int compare(EquippableItem item1, EquippableItem item2) {
                 return item1.getName().compareTo(item2.getName());
             }
-        });
+        });*/
         return equippableItems.toArray(new EquippableItem[equippableItems.size()]);
     }
 
     private NonEquippableItem[] getNonEquippableItems() {
-        Collections.sort(nonEquippableItems, new Comparator<NonEquippableItem>() {
+        /*Collections.sort(nonEquippableItems, new Comparator<NonEquippableItem>() {
             public int compare(NonEquippableItem item1, NonEquippableItem item2) {
                 return item1.getName().compareTo(item2.getName());
             }
-        });
+        });*/
         return nonEquippableItems.toArray(new NonEquippableItem[nonEquippableItems.size()]);
     }
 

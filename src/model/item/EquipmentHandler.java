@@ -34,22 +34,30 @@ public class EquipmentHandler {
     }
 
     // Rings of abstraction
-    public void equip(EquippableItem equippableItem, String slot) {
-        if(slotExists(slot)) {
+    public boolean equip(EquippableItem equippableItem, String slot) {
+        if (slotExists(slot)) {
             unequipCurrentItem(slot);
             equipNewItem(slot, equippableItem);
+            notifyObserversEquipmentChanged();
+            return true;
+        } else {
+            notifyObserversEquipmentChanged();
+
+            return false;
         }
-        notifyObserversEquipmentChanged();
     }
 
     // Rings of abstraction
     // Pre condition, item that calls it would be equipped already
-    public void unequip(EquippableItem equippableItem, String slot) {
-        if(slotExists(slot)) {
+    public boolean unequip(EquippableItem equippableItem, String slot) {
+        if (slotExists(slot)) {
             unequipCurrentItem(slot);
+            notifyObserversEquipmentChanged();
+            return true;
         }
-        notifyObserversEquipmentChanged();
+        return false;
     }
+
 
     public void addObserver(EquipmentHandlerObserver observer) {
         observers.add(observer);

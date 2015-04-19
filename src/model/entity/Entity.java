@@ -263,8 +263,8 @@ public abstract class Entity implements Describable, Assetable{
 		TimerTask ttask = new TimerTask(){
 			@Override
 			public void run() {
-				e.removeStatus(changeTo);
-				e.setAssetID(_status);
+				//e.removeStatus(changeTo);
+				//e.setAssetID(_status);
 			}
 		};
 		timer.schedule(ttask, 4 * 1000);

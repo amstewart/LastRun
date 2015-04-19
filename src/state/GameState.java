@@ -43,9 +43,9 @@ public class GameState extends State {
         render();
         
         getViewport().addKeyListener(new KeyController(map, player, mapVP));
-        Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
-        map.addEntity(en_puddles, new Vector2(1, 3));
-        map.getAvatarMovement().getEntity().addPet(en_puddles);
+        //Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
+        //map.addEntity(en_puddles, new Vector2(1, 3));
+        //map.getAvatarMovement().getEntity().addPet(en_puddles);
 
         
         /*ArrayList<Action> a = new ArrayList<Action>();
