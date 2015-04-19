@@ -34,10 +34,10 @@ public abstract class Occupation{
     	return l;
 		
 	}
-    public  abstract void performWeaponSkills(Entity entity);
+    public abstract void performWeaponSkills(Entity entity);
     
 	public boolean unequip(EquippableItem equippableItem, String slotCategory, Entity entity) {
-    	boolean l = equipmentHandler.equip(equippableItem, slotCategory);
+    	boolean l = equipmentHandler.unequip(equippableItem, slotCategory);
     	performWeaponSkills(entity);
     	return l;
 	}

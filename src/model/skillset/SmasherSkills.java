@@ -25,11 +25,13 @@ public class SmasherSkills extends BasicSkills {
 
 	public SmasherSkills() {
 		
-		WeaponBasedStatModifier wb1 = new WeaponBasedStatModifier(Smasher.SMASHER_WEAPON, 1);
+		WeaponBasedStatModifier wb1 = new WeaponBasedStatModifier(Smasher.ONEHAND, 1);
+		WeaponBasedStatModifier wb2 = new WeaponBasedStatModifier(Smasher.TWOHAND, 1);
+		WeaponBasedStatModifier wb3 = new WeaponBasedStatModifier(Smasher.BRAWL, 1);
 		
 		oneHand = new InternalSkill("OneHand", 1, wb1, false);
-		twoHand = new InternalSkill("TwoHand", 1, wb1, false);
-		brawl = new InternalSkill("Brawl", 1, wb1, false);
+		twoHand = new InternalSkill("TwoHand", 1, wb2, false);
+		brawl = new InternalSkill("Brawl", 1, wb3, false);
 		passiveSkills_int.put(SkillStrings.ONEHAND, oneHand);
 		passiveSkills_int.put(SkillStrings.TWOHAND, twoHand);
 		passiveSkills_int.put(SkillStrings.BRAWL, brawl);

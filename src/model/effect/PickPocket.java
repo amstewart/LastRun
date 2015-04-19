@@ -26,7 +26,7 @@ public class PickPocket implements ExternalEffect {
 			int radius) {
 		Random random = new Random();
 		int m = random.nextInt(100 - 1 + 1) + 1;
-		if (m < probability) {
+		//if (m < probability) {
 			Vector2 pos = emov.getPosition();
 			Vector2 dir = emov.getFacingDir();
 			Tile oldt = null;
@@ -46,7 +46,7 @@ public class PickPocket implements ExternalEffect {
 				}
 			}
 
-		}
+		//}
 
 	}
 

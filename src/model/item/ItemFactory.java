@@ -264,7 +264,7 @@ public class ItemFactory {
         //=========== 3 types of Smasher Equipment ================
 
         public static EquippableItem  newBFSword(){
-            EquippableItem item = new EquippableItem("B.F. Sword", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("B.F. Sword", Smasher.TWOHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
 
             item.setValue(HIGH_VALUE);
@@ -275,7 +275,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newAxe(){
-            EquippableItem item = new EquippableItem("Axe - the best deoderant for men", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Axe - the best deoderant for men", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS3.getStats();
 
             item.setValue(HIGH_VALUE);
@@ -286,7 +286,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newClub(){
-            EquippableItem item = new EquippableItem("Club", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Club", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS2.getStats();
 
             item.setValue(MEDIUM_VALUE);
@@ -297,7 +297,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newHammer(){
-            EquippableItem item = new EquippableItem("Hammer", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Hammer", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
 
             item.setValue(MEDIUM_VALUE);
@@ -308,7 +308,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newMace(){
-            EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", Smasher.SMASHER_WEAPON);
+            EquippableItem item = new EquippableItem("Mace - hurts more than the spray kind", Smasher.ONEHAND);
             Stats stats = DefinedStats.SMASHERWEAPONSTATS1.getStats();
 
             item.setValue(LOW_VALUE);
@@ -319,7 +319,7 @@ public class ItemFactory {
         }
 
         public static EquippableItem  newShield(){
-            EquippableItem item = new EquippableItem("Shield", Smasher.SHIELD);
+            EquippableItem item = new EquippableItem("Shield", Smasher.BRAWL);
             Stats stats = DefinedStats.ADDHEADARMOR.getStats();
 
             item.setValue(MEDIUM_VALUE);
@@ -332,7 +332,7 @@ public class ItemFactory {
         //=========== 3 types of Sneak Equipment ==================
 
         public static EquippableItem  newCrossbow(){
-            EquippableItem item = new EquippableItem("Crossbow", Sneak.SNEAK_WEAPON);
+            EquippableItem item = new EquippableItem("Crossbow", Sneak.RANGED);
             Stats stats = DefinedStats.SNEAKWEAPONSTATS1.getStats();
 
             item.setValue(MEDIUM_VALUE);
