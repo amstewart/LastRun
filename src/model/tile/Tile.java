@@ -1,5 +1,6 @@
 package model.tile;
 
+import java.util.ConcurrentModificationException;
 import java.util.Set;
 
 import model.Vector2;
@@ -33,16 +34,15 @@ public class Tile {
     private VehicleOwner myVehicles;
     private ProjectileOwner myProjectiles;
     private TrapOwner myTrap;
-    
-    public Tile(){
-        
+
+    public Tile() {
+
     }
-    
 
     public Tile(Vector2 location) {
         address = location;
     }
-    
+
     public void addAreaEffect(AreaEffect a) {
         if (!isAreaEffectOwner()) {
             myAreaEffects = new AreaEffectOwner();
@@ -53,14 +53,14 @@ public class Tile {
     public void removeAreaEffect(AreaEffect a) {
         if (isAreaEffectOwner()) {
             myAreaEffects.release(a);
-            if(myAreaEffects.getNumberOwned() == 0){
+            if (myAreaEffects.getNumberOwned() == 0) {
                 myAreaEffects = null;
             }
         } else {
             Util.dbgOut("I can't release " + a + " because I am not an entity owner", 3);
-        }        
+        }
     }
-    
+
     public void addProjectile(Projectile p) {
         if (!isProjectileOwner()) {
             myProjectiles = new ProjectileOwner();
@@ -70,13 +70,13 @@ public class Tile {
 
     public void removeProjectile(Projectile p) {
         if (isProjectileOwner()) {
-        	myProjectiles.release(p);
-            if(myProjectiles.getNumberOwned() == 0){
-            	myProjectiles = null;
+            myProjectiles.release(p);
+            if (myProjectiles.getNumberOwned() == 0) {
+                myProjectiles = null;
             }
         } else {
             Util.dbgOut("I can't release " + p + " because I am not an entity owner", 3);
-        }        
+        }
     }
 
     public void addEntity(Entity e) {
@@ -89,7 +89,7 @@ public class Tile {
     public void removeEntity(Entity e) {
         if (isEntityOwner()) {
             myEntities.release(e);
-            if(myEntities.getNumberOwned() == 0){
+            if (myEntities.getNumberOwned() == 0) {
                 myEntities = null;
             }
         } else {
@@ -107,14 +107,13 @@ public class Tile {
     public void removeItem(Item i) {
         if (isItemOwner()) {
             myItems.release(i);
-            if(myItems.getNumberOwned() == 0){
+            if (myItems.getNumberOwned() == 0) {
                 myItems = null;
             }
         } else {
             Util.dbgOut("I can't release " + i.getName() + " because I am not an item owner", 3);
         }
     }
-    
 
     public void addPet(Pet p) {
         if (!isPetOwner()) {
@@ -126,14 +125,14 @@ public class Tile {
     public void removePet(Pet p) {
         if (isPetOwner()) {
             myPets.release(p);
-            if(myPets.getNumberOwned() == 0){
+            if (myPets.getNumberOwned() == 0) {
                 myPets = null;
             }
         } else {
             Util.dbgOut("I can't release " + p.getName() + " because I am not an pet owner", 3);
         }
     }
-    
+
     public void addTerrain(Terrain t) {
         if (!isTerrainOwner()) {
             myTerrains = new TerrainOwner();
@@ -144,7 +143,7 @@ public class Tile {
     public void removeTerrain(Terrain t) {
         if (isTerrainOwner()) {
             myTerrains.release(t);
-            if(myTerrains.getNumberOwned() == 0){
+            if (myTerrains.getNumberOwned() == 0) {
                 myTerrains = null;
             }
         } else {
@@ -162,32 +161,30 @@ public class Tile {
     public void removeVehicle(Vehicle v) {
         if (isVehicleOwner()) {
             myVehicles.release(v);
-            if(myVehicles.getNumberOwned() == 0){
+            if (myVehicles.getNumberOwned() == 0) {
                 myVehicles = null;
             }
         } else {
             Util.dbgOut("I can't release " + v + " because I am not an vehicle owner", 3);
         }
     }
-    
-    public void addTrap(Trap t){
-    	if(!isTrapOwner()){
-    		myTrap= new TrapOwner();
-    	}
-    	myTrap.adopt(t);
+
+    public void addTrap(Trap t) {
+        if (!isTrapOwner()) {
+            myTrap = new TrapOwner();
+        }
+        myTrap.adopt(t);
     }
 
-    
-    public void removeTrap(Trap t){
-    	 if (isTrapOwner()) {
-             myTrap.release(t);
-             if(myTrap.getNumberOwned() == 0){
-                myTrap= null;
-             }
-    	 }
-             else {
-                 Util.dbgOut("I can't release " + t + " because I am not a Trap Owner", 3);
-             	}
+    public void removeTrap(Trap t) {
+        if (isTrapOwner()) {
+            myTrap.release(t);
+            if (myTrap.getNumberOwned() == 0) {
+                myTrap = null;
+            }
+        } else {
+            Util.dbgOut("I can't release " + t + " because I am not a Trap Owner", 3);
+        }
     }
 
     public boolean isAreaEffectOwner() {
@@ -217,91 +214,91 @@ public class Tile {
     public boolean isProjectileOwner() {
         return myProjectiles != null;
     }
-    
-    public boolean isTrapOwner(){
-    	return myTrap!=null;
+
+    public boolean isTrapOwner() {
+        return myTrap != null;
     }
 
     public Vector2 getLocation() {
         return address;
     }
-    
-    public Terrain getTerrain(){
+
+    public Terrain getTerrain() {
         return myTerrains.getTerrain();
     }
-    
-    public AreaEffect getAreaEffect(){
+
+    public AreaEffect getAreaEffect() {
         return myAreaEffects.getAreaEffect();
     }
-    
-    public Entity getEntity(){
+
+    public Entity getEntity() {
         return myEntities.getEntity();
     }
-    
-    public Vehicle getVehicle(){
+
+    public Vehicle getVehicle() {
         return myVehicles.getVehicle();
     }
-    
-    public Item getItem(){
+
+    public Item getItem() {
         return myItems.getItem();
     }
-    
-    public Pet getPet(){
+
+    public Pet getPet() {
         return myPets.getPet();
     }
-    
-    public Trap getTrap(){
-    	return myTrap.getTrap();
+
+    public Trap getTrap() {
+        return myTrap.getTrap();
     }
-    
-    protected PetOwner getPetOwner(){
+
+    protected PetOwner getPetOwner() {
         return myPets;
     }
-    
-    protected AreaEffectOwner getAreaEffectOwner(){
+
+    protected AreaEffectOwner getAreaEffectOwner() {
         return myAreaEffects;
     }
-    
-    protected TerrainOwner getTerrainOwner(){
-         return myTerrains;
-    }
-     
-    protected VehicleOwner getVehicleOwner(){
-          return myVehicles;
-    }
-      
-    protected ItemOwner getItemOwner(){
-          return myItems;
-    }
-       
-    protected EntityOwner getEntityOwner(){
-          return myEntities;
+
+    protected TerrainOwner getTerrainOwner() {
+        return myTerrains;
     }
 
+    protected VehicleOwner getVehicleOwner() {
+        return myVehicles;
+    }
 
-	public void accept(Entity e) {
-		if(myItems != null){
-			Set<Item> items = myItems.getItems();
-			for(Item i: items){
-				i.accept(e,this);
-			}
-		}
-	}
+    protected ItemOwner getItemOwner() {
+        return myItems;
+    }
 
+    protected EntityOwner getEntityOwner() {
+        return myEntities;
+    }
 
-	public void accept(Projectile p, Boolean affect) {
-		if(myEntities != null){
-			affect = true;
-			Set<Entity> ents = myEntities.getEntities();
-			for(Entity e: ents){
-				p.affect(e);
-			}
-		}
-	}
+    public void accept(Entity e) {
+        if (myItems != null) {
+            Set<Item> items = myItems.getItems();
+            try {
+                for (Item i : items) {
+                    i.accept(e, this);
+                }
+            } catch (ConcurrentModificationException ex) {
+            }
+        }
+    }
 
+    public void accept(Projectile p, Boolean affect) {
+        if (myEntities != null) {
+            affect = true;
+            Set<Entity> ents = myEntities.getEntities();
+            for (Entity e : ents) {
+                p.affect(e);
+            }
+        }
+    }
 
-	public Projectile getProjectile() {
-		return myProjectiles.getProjectile();
-	}
-    
+    public Projectile getProjectile() {
+        return myProjectiles.getProjectile();
+    }
+
 }

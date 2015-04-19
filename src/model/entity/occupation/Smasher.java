@@ -3,8 +3,8 @@ package model.entity.occupation;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.EquippableItem;

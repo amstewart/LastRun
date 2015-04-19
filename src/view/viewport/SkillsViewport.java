@@ -79,7 +79,6 @@ public class SkillsViewport extends Viewport {
     
     private void paintButton(JButton button, String imagePathName){
         
-        System.out.println("Button Size: " + button.getSize());
         Image image = ImageUtil.getImage(ImageUtil.MAIN_MENU_EXIT_BUTTON, 50, buttonsPanel.getHeight()*2/3).getImage();
         ImageIcon imageIcon = new ImageIcon(image);
         button.setIcon( imageIcon );

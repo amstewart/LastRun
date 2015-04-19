@@ -1,7 +1,7 @@
 package model.entity.npc;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 
 public class Villager extends NPC {
 

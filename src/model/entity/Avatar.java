@@ -2,10 +2,10 @@ package model.entity;
 
 import java.util.ArrayList;
 
-import Visitor.AvatarVisitor;
-import Visitor.EntityVisitor;
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.AvatarVisitor;
+import visitor.EntityVisitor;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;

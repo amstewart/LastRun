@@ -1,7 +1,7 @@
 package model.entity.vehicle;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 import model.entity.npc.NPC;
 
 public class Vehicle extends NPC {

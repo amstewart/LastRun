@@ -61,23 +61,23 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
         equipmentDropAction = new EquipmentDropAction(inventory);
 
-                panel.setLayout(new GridLayout(0, 3));
+        this.setLayout(new GridLayout(0,2));
+        panel.setLayout(new GridLayout(0, 3));
 
-        panel.setSize(new Dimension(300,300));
+        //panel.setSize(new Dimension(300,300));
         setUpMenu();
         
-        this.add(new JLabel("Inventory"));
 
         scrollPane = new JScrollPane(panel);
-        scrollPane.setPreferredSize(new Dimension(this.getWidth(), 700));
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane);
         
-        this.add(new JLabel("Equipment"));
         
         
         equipmentViewport = new EquipmentViewport(eH, playerStats);
         add(equipmentViewport);
+        
+        panel.setBackground(Color.WHITE);
         
     }
 
@@ -129,8 +129,8 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     @Override
     public void render() {
         this.revalidate();
-        scrollPane.setPreferredSize(new Dimension(this.getWidth(), 300));
-        equipmentViewport.setPreferredSize(new Dimension(this.getWidth(), 180));
+        scrollPane.setPreferredSize(new Dimension(this.getWidth() / 2, this.getHeight()));
+        equipmentViewport.setPreferredSize(new Dimension(this.getWidth() / 2, this.getHeight()));
     }
 
     @Override

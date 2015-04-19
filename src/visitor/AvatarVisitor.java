@@ -1,4 +1,4 @@
-package Visitor;
+package visitor;
 
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;

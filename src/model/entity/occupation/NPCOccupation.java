@@ -3,9 +3,9 @@ package model.entity.occupation;
 import java.util.ArrayList;
 
 
-import Visitor.EntityVisitor;
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 
 import model.entity.Entity;
 

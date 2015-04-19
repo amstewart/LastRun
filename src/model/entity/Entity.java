@@ -14,8 +14,8 @@ import model.Describable;
 
 import java.util.LinkedList;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
 

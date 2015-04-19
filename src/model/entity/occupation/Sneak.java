@@ -2,8 +2,8 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.Inventory;

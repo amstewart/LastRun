@@ -49,4 +49,8 @@ public class EquippableItem extends TakeableItem {
     public boolean unequip(EquipmentHandler equipmentHandler) {
         return equipmentHandler.unequip(this, slotCategory);
     }
+
+    public String getSlotCategory() {
+        return slotCategory;
+    }
 }

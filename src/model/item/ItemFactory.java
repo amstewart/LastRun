@@ -262,7 +262,7 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Crossbow", Sneak.SNEAK_WEAPON);
             Stats stats = DefinedStats.SNEAKWEAPONSTATS1.getStats();
             item.setItemStats(stats);
-            item.setAssetID(ImageUtil.SWORD);
+            item.setAssetID(ImageUtil.CROSSBOW);
 
             return item;
         }
