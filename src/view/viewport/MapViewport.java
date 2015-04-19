@@ -7,7 +7,6 @@ import controller.action.mapAction.ZoomOutMapAction;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
@@ -25,12 +24,14 @@ import utility.ImageUtil;
 public class MapViewport extends Viewport {
 
     private double scale = 1.0;
+    private static final double MMAP_PERC = .15;
 
     private static double cantMoveTimer = 0;
     private static Vector2 cantMoveLocation = Vector2.zero();
 
     protected GameMap map;
     protected int hexRadius = 36;
+    protected int mmap_min_xy = hexRadius * 2;
     protected final int defaultHexRadius = hexRadius; //Used for zoom scale
 
     protected int hexWidth = hexRadius * 2;
@@ -53,6 +54,7 @@ public class MapViewport extends Viewport {
         revalidate();
         drawTiles(g);
         drawEntities(g);
+        drawMiniMap(g);
     }
 
     protected void drawTiles(Graphics g) {
@@ -219,6 +221,16 @@ public class MapViewport extends Viewport {
                 }
             }
         }
+    }
+
+    private void drawMiniMap(Graphics g) {
+        int draw_x = this.getWidth() - (int)(MMAP_PERC * this.getWidth());
+        int draw_y = 0;
+        int draw_width = (int)(this.getWidth() * MMAP_PERC);
+        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; }
+        int draw_height = draw_width;
+
+        g.drawImage(this.map.getMiniMap().getBitmap(), draw_x, draw_y, draw_width, draw_height, this);
     }
 
     public void zoomIn() {

@@ -19,9 +19,14 @@ import java.awt.image.BufferedImage;
 public class MiniMap implements TerrainVisitor, MapObserver {
 
     private static final Color C_AVATAR = Color.RED;
-    private static final Color C_GRASS = Color.GREEN;
+    private static final Color C_GRASS = new Color(0, 200, 0);
+    private static final Color C_ITEM = Color.YELLOW;
     private static final Color C_MOUNTAIN = Color.LIGHT_GRAY;
+    private static final Color C_PET = Color.MAGENTA;
+    private static final Color C_TRAP = Color.ORANGE;
+    private static final Color C_VEHICLE = Color.CYAN;
     private static final Color C_WATER = Color.BLUE;
+
 
     private Color[][] mmap = null;
     private Vector2 iter = Vector2.zero();
@@ -70,6 +75,26 @@ public class MiniMap implements TerrainVisitor, MapObserver {
         EntityMovement av = map.getAvatarMovement();
         if (av != null && av.getPosition().equals(iter)) {
             mmap[iter.X][iter.Y] = C_AVATAR;
+            return; // exit now because we don't want to draw anything on top of the avatar
+        }
+
+        if (t.isPetOwner()) {
+            mmap[iter.X][iter.Y] = C_PET;
+            return;
+        }
+
+        if (t.isVehicleOwner()) {
+            mmap[iter.X][iter.Y] = C_VEHICLE;
+            return;
+        }
+
+        if (t.isAreaEffectOwner()) {
+            mmap[iter.X][iter.Y] = C_TRAP;
+            return;
+        }
+
+        if (t.isItemOwner()) {
+            mmap[iter.X][iter.Y] = C_ITEM;
         }
     }
 
