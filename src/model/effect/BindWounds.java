@@ -3,6 +3,7 @@ package model.effect;
 import model.entity.Entity;
 
 public class BindWounds implements InternalEffect{
+
 	private int baseStrengthIncrease = 5;
 	private int strengthIncrease;
 	

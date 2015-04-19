@@ -160,7 +160,8 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Leggings", Occupation.LEGS);
             Stats stats = DefinedStats.ADDLEGARMOR.getStats();
             item.setItemStats(stats);
-            item.setAssetID(ImageUtil.SHIRT);
+            item.setAssetID(ImageUtil.LEGS1);
+
             return item;
         }
 
@@ -168,7 +169,8 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Joggers", Occupation.LEGS);
             Stats stats = DefinedStats.ADDLEGARMOR.getStats();
             item.setItemStats(stats);
-            // TODO: ADD IMAGE ASSET
+            item.setAssetID(ImageUtil.LEGS2);
+
             return item;
         }
 
@@ -176,7 +178,8 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Skinny Fit jeans", Occupation.LEGS);
             Stats stats = DefinedStats.ADDLEGARMOR.getStats();
             item.setItemStats(stats);
-            //TODO: Add Image ASSET
+            item.setAssetID(ImageUtil.LEGS3);
+
             return item;
         }
 
@@ -343,6 +346,8 @@ public class ItemFactory {
                  return getRandomSummonerWeapon();
              }else if (chance < 0.50) {
                  return getRandomOneShotItem();
+             }else if (chance < 0.60) {
+                 return getRandomLegEquipment();
              }else {
                  return getRandomNonEquippableItem();
              }
@@ -371,6 +376,16 @@ public class ItemFactory {
              }
          }
 
+        public static EquippableItem getRandomLegEquipment() {
+            double chance = Math.random();
+            if(chance < 0.30) {
+                return newLegs1();
+            } else if(chance < 0.50) {
+                return newLegs2();
+            } else {
+                return newLegs3();
+            }
+        }
         public static EquippableItem getRandomHeadEquipment(){
              double chance = Math.random();
              if(chance < 0.50){

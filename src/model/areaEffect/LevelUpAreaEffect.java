@@ -7,10 +7,6 @@ package model.areaEffect;
 
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
 public class LevelUpAreaEffect extends AreaEffect{
 	
 	public LevelUpAreaEffect(){}
