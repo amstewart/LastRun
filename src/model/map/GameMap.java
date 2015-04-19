@@ -508,15 +508,11 @@ public class GameMap {
     	Tile currTile= getTile(center);
     	int count=0;
     	int loops=0;
-    	if(radius==1){
-    		loops=7;
-    	}
-    	else{
-    	for(int i=0;i<radius;i++){
+    	
+    	for(int i=1;i<=radius;i++){
     		loops+=(i*6);
     	}
     	loops++;
-    	}
     	visited[currTile.getLocation().X][currTile.getLocation().Y]=true;
     	if(radius==0){
     		return tileList;
