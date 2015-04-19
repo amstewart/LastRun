@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import Visitor.OccupationVisitor;
 import Visitor.VisitorContainer;
+import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.Inventory;
+import model.map.GameMap;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -72,6 +74,9 @@ public abstract class Occupation{
 
 
 	public abstract void accept(OccupationVisitor occupationVisitor,VisitorContainer container);
+	
+	public abstract void performPassiveInternalSkill(String s, Entity e);
+	public abstract void performPassiveExternalSkill(String s, Entity e, GameMap map);
 
 
 

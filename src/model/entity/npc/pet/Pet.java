@@ -28,8 +28,10 @@ public class Pet extends NPC {
 		return null;
 	}
 
+
     @Override
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
     }
+
 }
