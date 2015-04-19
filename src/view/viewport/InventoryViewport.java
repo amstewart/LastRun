@@ -102,7 +102,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
     @Override
     public void render() {
-
+        this.revalidate();
     }
 
     @Override
