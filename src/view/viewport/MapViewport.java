@@ -20,10 +20,6 @@ import model.movement.EntityMovement;
 import model.tile.Tile;
 import utility.ImageUtil;
 
-/**
- *
- * @author =ChrisMoscoso
- */
 public class MapViewport extends Viewport {
 
     private double scale = 1.0;
@@ -133,7 +129,7 @@ public class MapViewport extends Viewport {
                     p.addPoint((int) (offsetX + positionX + hexRadius * Math.cos(k * 2 * Math.PI / 6)),
                             (int) (polygonOffsetY + positionY + hexRadius * Math.sin(k * 2 * Math.PI / 6)));
                     if (k > 0) {
-                        g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
+                        //g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
                     }
 
                 }
@@ -160,7 +156,7 @@ public class MapViewport extends Viewport {
                 if (i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0) {
                     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
                     coordinate = "Cant Go Here";
-                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
+                    //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
                     cantMoveTimer -= 0.02;
                 } else {
                    // g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
@@ -223,6 +219,8 @@ public class MapViewport extends Viewport {
             for (int i = startX; i < Math.min(startX + windowWidthInTiles, mapWidthInTiles); i++) {
                 for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
                     if (e.getPosition().X == i && e.getPosition().Y == j) {
+                        // skip drawing the avatar in this pass
+                        if (e == map.getAvatarMovement()) { continue; }
 
                         int offsetX = hexRadius;
                         int offsetY = (int) (hexRadius * 0.8);
@@ -243,16 +241,35 @@ public class MapViewport extends Viewport {
                 }
             }
         }
+
+        // Draw the avatar last
+        EntityMovement em = map.getAvatarMovement();
+        int offsetX = hexRadius;
+        int offsetY = (int) (hexRadius * 0.8);
+
+        if (em.getPosition().X % 2 != 0) {
+            offsetY += (int) (hexRadius * 0.84);
+        }
+
+        int positionX = (em.getPosition().X - startX) * hexRadius * 2;
+        int positionY = (int) ((em.getPosition().Y - startY) * hexRadius * 1.748);
+
+        positionX -= (em.getPosition().X - startX) * hexRadius / 2;
+        g.setColor(Color.ORANGE);
+        //g.fillRect(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        Rectangle rect = new Rectangle(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        g.drawImage(ImageUtil.getImage(em.getEntity().getAssetID()).getImage(), rect.x, rect.y, rect.width, rect.height, this);
     }
 
     private void drawMiniMap(Graphics g) {
-        int draw_x = this.getWidth() - (int) (MMAP_PERC * this.getWidth());
-        int draw_y = 0;
-        int draw_width = (int) (this.getWidth() * MMAP_PERC);
-        if (draw_width < mmap_min_xy) {
-            draw_width = mmap_min_xy;
-        }
+        // First, calculate the width and height
+        int draw_width = (int)(this.getWidth() * MMAP_PERC);
+        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; } // eforce a minimum size
         int draw_height = draw_width;
+
+        // position the minimap in the upper-right
+        int draw_x = this.getWidth() - draw_width;
+        int draw_y = 0;
 
         g.drawImage(this.map.getMiniMap().getBitmap(), draw_x, draw_y, draw_width, draw_height, this);
     }
@@ -302,8 +319,8 @@ public class MapViewport extends Viewport {
         zoomOut = new JButton(zoomOutIcon);
         zoomOut.addActionListener(Action.getActionListener(new ZoomOutMapAction(this)));
 
-        zoomIn.setBounds(this.getSize().width - 100, 0, 50, 50);
-        zoomOut.setBounds(this.getSize().width - 50, 0, 50, 50);
+        zoomIn.setBounds(this.getSize().width - 100, 300, 50, 50);
+        zoomOut.setBounds(this.getSize().width - 50, 300, 50, 50);
 
         zoomIn.repaint();
         zoomOut.repaint();
@@ -336,5 +353,4 @@ public class MapViewport extends Viewport {
     public int getWindowHeightInTiles() {
         return windowHeightInTiles;
     }
-
 }

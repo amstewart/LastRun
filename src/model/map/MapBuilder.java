@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.map;
 
+import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
-import model.item.Item;
-
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
@@ -27,10 +21,14 @@ public class MapBuilder {
     private int height=30;
 
     public MapBuilder(){
-
     	//generateMapDebug();
     	//generateMapRandom();
         generateMapDemo();
+    }
+
+    public static void addVehicle(GameMap map, Vector2 pos, String name, String art_asset, int speed) {
+        Vehicle vic = new Vehicle(art_asset, name, speed);
+        map.addVehicle(vic, pos);
     }
 
     public void generateMapDemo() {
@@ -58,11 +56,11 @@ public class MapBuilder {
                 }
             }
         }
+
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
         tiles[8][13].addItem(ItemFactory.newClosedChest());
     }
-
 
     public void generateMapDebug() {
         tiles = new Tile[width][height];
@@ -120,7 +118,6 @@ public class MapBuilder {
         tiles[6][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
         tiles[3][3].addTrap(new SpikeTrap(ImageUtil.SPIKETRAP));
     }
-    
     
     public void generateMapRandom(){
         tiles= new Tile[width][height];

@@ -1,6 +1,6 @@
 package model.skill;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 import model.effect.ExternalEffect;
 import model.entity.Entity;
 import model.map.GameMap;
