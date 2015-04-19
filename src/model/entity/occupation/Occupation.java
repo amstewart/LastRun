@@ -17,7 +17,7 @@ public abstract class Occupation {
     public static final String HEAD = "Head";
     public static final String CHEST = "Chest";
     public static final String LEGS = "Legs";
-
+    
     private final int initialSkillPoints;
 
     private EquipmentHandler equipmentHandler;

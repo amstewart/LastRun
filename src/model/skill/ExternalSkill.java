@@ -5,6 +5,7 @@ import model.effect.ExternalEffect;
 import model.entity.Entity;
 import model.map.GameMap;
 import model.map.LocalArea;
+import model.movement.EntityMovement;
 
 public class ExternalSkill extends Skill{
 	private ExternalEffect effect;
@@ -23,9 +24,31 @@ public class ExternalSkill extends Skill{
 		effect.applyMultiplier(getLevel());
 	}
 	
-	public void performSkill(LocalArea map, Entity entity){
-		effect.applyEffect(map, entity);
+	public void performSkill(GameMap map, Entity entity){
+		applyMultiplier();
+		EntityMovement emov = getMovement(entity,map);
+		if(emov == null){
+			return;
+		}
+		effect.applyEffect(map, entity, emov,radius);
 	}
+	
+	protected EntityMovement getMovement(Entity entity, GameMap area) {
+		EntityMovement emov = area.getAvatarMovement();
+		if(emov != null){
+			if (entity == emov.getEntity()) {
+				return emov;
+			}
+			for (EntityMovement emovement : area.getEntityMovements()) {
+				if (emovement.getEntity() == entity) {
+					return emovement;// TDA violation
+				}
+			}
+			
+		}
+		return null;
+	}
+
 	
 	public int getRadius(){
 		return radius;

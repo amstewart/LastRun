@@ -1,6 +1,8 @@
 package model.entity;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import model.entity.npc.pet.Pet;
 import model.item.EquippableItem;
@@ -44,7 +46,10 @@ public abstract class Entity implements Describable, Assetable{
 		pets.adopt(new_pet);
 		new_pet.adopt(this); // notify the new pet that this entity is the owner
 	}
-
+	
+	public boolean is(Status status){
+		return statuses.contains(status);
+	}
 	/**
 	 * Adds a new status effect to this entity, if it does not already have the
 	 * status applied.
@@ -239,5 +244,22 @@ public abstract class Entity implements Describable, Assetable{
 
 	public void visit(EquippableItem equippableItem) {
 		equippableItem.touch(inventory);
+	}
+
+	public void addTimedStatus(Status changeTo, String assetID, int length) {
+		String _status = getAssetID();
+		this.addStatus(changeTo);
+		this.setAssetID(assetID);
+		Timer timer = new Timer();
+		final Entity e = this;
+		TimerTask ttask = new TimerTask(){
+			@Override
+			public void run() {
+				e.removeStatus(changeTo);
+				e.setAssetID(_status);
+			}
+		};
+		timer.schedule(ttask, 4 * 1000);
+		
 	}
 }

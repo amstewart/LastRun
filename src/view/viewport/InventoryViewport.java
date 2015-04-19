@@ -118,6 +118,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         public EquippableItemButton(EquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
             this.item = item;
             
             this.addMouseListener(new EquippableItemButtonListener());
@@ -170,6 +173,11 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         public NonEquippableItemButton(NonEquippableItem item) {
             super(ImageUtil.getImage(item.getAssetID()));
             this.setToolTipText(item.getName());
+            
+            this.setOpaque(false);
+            this.setContentAreaFilled(false);
+            this.setBorderPainted(false);
+            
             this.item = item;
             this.addMouseListener(new NonEquippableItemButtonListener());
         }

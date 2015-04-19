@@ -88,6 +88,15 @@ public class DoubleLinkedList<T> {
         
         return current.data;
     }
+    public T getNextData(){
+        
+        return current.next.data;
+    }
+    
+    public T getPreviousData(){
+        
+        return current.prev.data;
+    }
     
     public void removeAll(){
         
