@@ -28,9 +28,41 @@ public class MapBuilder {
 
     public MapBuilder(){
 
-    	generateMapDebug();
+    	//generateMapDebug();
     	//generateMapRandom();
+        generateMapDemo();
     }
+
+    public void generateMapDemo() {
+        tiles = new Tile[width][height];
+        GrassTerrain grassTerrain = new GrassTerrain(ImageUtil.TERRAIN_GRASS);
+        MountainTerrain mountainTerrain = new MountainTerrain(ImageUtil.TERRAIN_MOUNTAIN);
+        WaterTerrain waterTerrain = new WaterTerrain(ImageUtil.TERRAIN_WATER);
+
+        TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
+        LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
+
+        for(int i = 0; i < width; i ++) {
+            for(int j = 0; j < height; j++) {
+                tiles[i][j] = new Tile(new Vector2(i, j));
+                if ( j % 5 == 0 && i != j) {
+                    tiles[i][j].addTerrain(mountainTerrain);
+                } else if ( j > 5 && j < 10) {
+                    tiles[i][j].addTerrain(waterTerrain);
+                } else {
+                    tiles[i][j].addTerrain(grassTerrain);
+                }
+                double chance = Math.random();
+                if(chance > 0.99) {
+                    tiles[i][j].addItem(ItemFactory.getRandomItem());
+                }
+            }
+        }
+        tiles[26][4].addItem(ItemFactory.newKey1());
+        tiles[4][4].addItem(ItemFactory.newWaterWine());
+        tiles[8][13].addItem(ItemFactory.newClosedChest());
+    }
+
 
     public void generateMapDebug() {
         tiles = new Tile[width][height];

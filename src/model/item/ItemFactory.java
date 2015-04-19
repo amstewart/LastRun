@@ -143,7 +143,7 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Chest", Occupation.CHEST);
             Stats stats = DefinedStats.ADDCHESTARMOR.getStats();
             item.setItemStats(stats);
-            // TODO: ADD IMAGE ASSET
+            item.setAssetID(ImageUtil.CHEST2);
             return item;
         }
 
@@ -151,7 +151,7 @@ public class ItemFactory {
             EquippableItem item = new EquippableItem("Bullet Proof Vest", Occupation.CHEST);
             Stats stats = DefinedStats.ADDCHESTARMOR.getStats();
             item.setItemStats(stats);
-            //TODO: Add Image ASSET
+            item.setAssetID(ImageUtil.CHEST3);
             return item;
         }
 
@@ -348,6 +348,8 @@ public class ItemFactory {
                  return getRandomOneShotItem();
              }else if (chance < 0.60) {
                  return getRandomLegEquipment();
+             }else if (chance < 0.70) {
+                 return getRandomChestEquipment();
              }else {
                  return getRandomNonEquippableItem();
              }
@@ -376,6 +378,17 @@ public class ItemFactory {
              }
          }
 
+        public static EquippableItem getRandomChestEquipment() {
+            double chance = Math.random();
+            if(chance < 0.30) {
+                return newChest1();
+            } else if(chance < 0.50) {
+                return newChest2();
+            } else {
+                return newChest3();
+            }
+        }
+
         public static EquippableItem getRandomLegEquipment() {
             double chance = Math.random();
             if(chance < 0.30) {
@@ -386,6 +399,7 @@ public class ItemFactory {
                 return newLegs3();
             }
         }
+
         public static EquippableItem getRandomHeadEquipment(){
              double chance = Math.random();
              if(chance < 0.50){
