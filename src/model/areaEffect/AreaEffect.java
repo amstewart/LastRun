@@ -8,12 +8,9 @@ package model.areaEffect;
 import model.Assetable;
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
 public abstract class AreaEffect implements Assetable{
-	String id;
+
+	private String id;
 	
 	public AreaEffect(){}
 	

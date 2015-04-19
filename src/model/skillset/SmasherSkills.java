@@ -3,9 +3,12 @@ package model.skillset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.effect.WeaponBasedStatModifier;
 import model.entity.Entity;
+import model.entity.occupation.Smasher;
 import model.enums.SkillStrings;
 import model.map.GameMap;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -22,13 +25,16 @@ public class SmasherSkills extends BasicSkills {
 
 	public SmasherSkills() {
 		
-
-		// oneHand = new InternalSkill("OneHand", 1);
-		// twoHand = new InternalSkill("TwoHand", 1);
-		// brawl = new InternalSkill("Brawl", 1);
+		WeaponBasedStatModifier wb1 = new WeaponBasedStatModifier(Smasher.ONEHAND, 1);
+		WeaponBasedStatModifier wb2 = new WeaponBasedStatModifier(Smasher.TWOHAND, 1);
+		WeaponBasedStatModifier wb3 = new WeaponBasedStatModifier(Smasher.BRAWL, 1);
+		
+		oneHand = new InternalSkill("OneHand", 1, wb1, false);
+		twoHand = new InternalSkill("TwoHand", 1, wb2, false);
+		brawl = new InternalSkill("Brawl", 1, wb3, false);
 		passiveSkills_int.put(SkillStrings.ONEHAND, oneHand);
 		passiveSkills_int.put(SkillStrings.TWOHAND, twoHand);
-		passiveSkills_int.put(SkillStrings.ONEHAND, brawl);
+		passiveSkills_int.put(SkillStrings.BRAWL, brawl);
 		passiveSkills_ex.put(SkillStrings.BARGAIN, getBargain());
 	}
 
@@ -71,6 +77,21 @@ public class SmasherSkills extends BasicSkills {
 		InternalSkill skill = passiveSkills_int.get(s);
 		skill.performSkill(e);
 
+	}
+
+	@Override
+	public void registerEquipmentHandlers(
+			ArrayList<EquipmentHandlerObserver> observers) {
+		observers.add(brawl);
+		observers.add(oneHand);
+		observers.add(twoHand);
+	}
+
+	public void performWeaponSkills(Entity e) {
+		brawl.performSkill(e);
+		oneHand.performSkill(e);
+		twoHand.performSkill(e);
+		
 	}
 
 }

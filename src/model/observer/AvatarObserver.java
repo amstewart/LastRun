@@ -6,6 +6,6 @@ import model.stat.Stats;
 
 public interface AvatarObserver {
 
-    public void receiveOccupation(Occupation o, Stats playerStats);
+    public void receiveNewOccupation(Occupation o, Stats playerStats);
     
 }

@@ -9,6 +9,7 @@ import model.enums.DefinedStats;
 
 
 public class Boon extends Spell implements SpellEffect{
+
 	private Stats currentStats;
 	private Stats baseStats;
 	
@@ -26,7 +27,6 @@ public class Boon extends Spell implements SpellEffect{
 	@Override
 	public void setCanPerform(int mana) {
 		super.setCanPerform(mana);
-		
 	}
 	
 	@Override
@@ -36,8 +36,5 @@ public class Boon extends Spell implements SpellEffect{
 			decrementMana(entity);
 			entity.mergeStats(currentStats);
 		}
-		
 	}
-
-	
 }

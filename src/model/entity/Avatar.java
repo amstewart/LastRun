@@ -2,10 +2,10 @@ package model.entity;
 
 import java.util.ArrayList;
 
-import Visitor.AvatarVisitor;
-import Visitor.EntityVisitor;
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.AvatarVisitor;
+import visitor.EntityVisitor;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
@@ -87,7 +87,7 @@ public class Avatar extends Entity {
 
 	private void notifyObserversOccupationHasChanged() {
 		for (AvatarObserver o : observers) {
-			o.receiveOccupation(occupation, getStats());
+			o.receiveNewOccupation(occupation, getStats());
 		}
 	}
 	
@@ -103,21 +103,19 @@ public class Avatar extends Entity {
 	}
 	
 	public void accept(EntityVisitor entityVisitor,VisitorContainer container){
-		System.out.println("Inside Avatar accept EntityVisitor");
 		accept(new AvatarVisitor(),container);
 	}
 	
 	public void accept(AvatarVisitor avatarVisitor, VisitorContainer container) {
-		System.out.println("Inside Avatar accept avatarVisitor");
 		OccupationVisitor occVisitor= new OccupationVisitor();
 		occVisitor.visit(getOccupation(),container);
 	}
 
 	public boolean equip(EquippableItem equippableItem, String slotCategory) {
-		return occupation.equip(equippableItem, slotCategory);
+		return occupation.equip(equippableItem, slotCategory, this);
 	}
 
 	public boolean unequip(EquippableItem equippableItem, String slotCategory) {
-		return occupation.unequip(equippableItem, slotCategory);
+		return occupation.unequip(equippableItem, slotCategory, this);
 	}
 }

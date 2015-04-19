@@ -1,7 +1,7 @@
 package controller.action.moveAvatarAction;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 import controller.action.Action;
 
 import java.util.ArrayList;

@@ -2,8 +2,8 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 import model.entity.Entity;
 import model.item.EquipmentHandler;
 import model.item.Inventory;
@@ -24,6 +24,7 @@ public class Summoner extends Occupation {
     public Summoner(Inventory inventory, Stats playerStats) {
         super(inventory, playerStats);
         skills = new SummonerSkills();
+        getEquipmentHandler().setEquipmentManager();
         setSummonerItemSlots();
     }
 
@@ -77,6 +78,11 @@ public class Summoner extends Occupation {
 	@Override
 	public void performPassiveExternalSkill(String s, Entity e, GameMap map) {
 		skills.performPassiveExternalSkill(s,e,map);
+		
+	}
+	@Override
+	public void performWeaponSkills(Entity entity) {
+		//mixed Instance:(
 		
 	}
 

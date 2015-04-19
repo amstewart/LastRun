@@ -1,6 +1,7 @@
 package model.item;
 
 import model.tile.Tile;
+import model.bank.BankAccount;
 import model.entity.Avatar;
 import model.entity.Entity;
 import model.tile.Tile;
@@ -34,5 +35,15 @@ public class EquippableItem extends TakeableItem {
 		t.removeItem(this);
 		e.visit(this);
 	}
+
+	@Override
+	public void sell(BankAccount bankAccount, Inventory inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+    public String getSlotCategory() {
+        return slotCategory;
+    }
 
 }

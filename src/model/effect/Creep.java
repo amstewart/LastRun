@@ -1,11 +1,13 @@
 package model.effect;
 
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import utility.ImageUtil;
 import model.entity.Entity;
 import model.entity.Status;
+import model.item.EquippableItem;
 
 public class Creep implements InternalEffect{
 	
@@ -21,6 +23,12 @@ public class Creep implements InternalEffect{
 	@Override
 	public void applyEffect(final Entity entity) {
 		entity.addTimedStatus(Status.INVISIBLE, ImageUtil.INVISIBLE, length);
+	}
+
+	@Override
+	public void applyEffect(HashMap<String, EquippableItem> equipment) {
+		// mixed Instance :(
+		
 	}
 
 }

@@ -1,14 +1,14 @@
 package model.entity.npc;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 import model.skill.Skill;
 import state.NPCBehaviour.NPCHostile;
 
 import java.util.ArrayList;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 
 public class Monster extends NPC {
 
@@ -35,4 +35,7 @@ public class Monster extends NPC {
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
     }
+
+    
+    
 }

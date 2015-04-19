@@ -136,6 +136,11 @@ public class ImageUtil {
     public static final String WINE = DIR_ITEMS + "wine.png";
     public static final String OINTMENT = DIR_ITEMS + "ointment.png";
     public static final String PROTEIN = DIR_ITEMS + "protein.png";
+    public static final String LEGS1 = DIR_ITEMS + "Legs1.png";
+    public static final String LEGS2 = DIR_ITEMS + "Legs2.png";
+    public static final String LEGS3 = DIR_ITEMS + "Legs3.png";
+    public static final String CHEST2 = DIR_ITEMS + "Chest2.png";
+    public static final String CHEST3 = DIR_ITEMS + "Chest3.png";
     //Projectiles//
 
     public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";
@@ -195,7 +200,13 @@ public class ImageUtil {
     
     /*** CHARACTER SELECTION VIEW PORT ***/
     public static final String INTRO_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
-
+    
+     /*** GAME VIEW SELECTION VIEW PORT ***/   
+    public static final String GAME_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
+    
+    /*** CHARACTER SELECTION VIEW PORT ***/
+    public static final String SKILLS_DECAL = DIR_DECALS + "GoldStart.png";
+    
     /**
      * * MAP VIEW PORT **
      */

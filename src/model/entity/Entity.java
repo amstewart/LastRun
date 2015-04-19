@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import model.bank.BankAccount;
 import model.entity.npc.pet.Pet;
 import model.entity.vehicle.Vehicle;
 import model.item.*;
@@ -15,8 +16,8 @@ import model.Describable;
 
 import java.util.LinkedList;
 
-import Visitor.EntityVisitor;
-import Visitor.VisitorContainer;
+import visitor.EntityVisitor;
+import visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
 import utility.Util;
@@ -38,11 +39,14 @@ public abstract class Entity implements Describable, Assetable{
     private Stats stats;
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
 	private LinkedList<Status> statuses = new LinkedList<Status>();
+	private BankAccount bankAccount;
 
+	private final int initialAmount = 100;
 
 	public Entity() {
 		this.stats = saving_stats;
-                setCanMoveOnGrass(true);
+		setCanMoveOnGrass(true);
+		bankAccount = new BankAccount(initialAmount);
 	}
 
 	public void addPet(Pet new_pet) {
@@ -113,6 +117,10 @@ public abstract class Entity implements Describable, Assetable{
 	 * @return This entity's inventory as an Inventory reference
 	 */
 	public Inventory getInventory() { return inventory; }
+
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
 
 	public int getMovement() {
 		return stats.getMovement();
@@ -279,4 +287,16 @@ public abstract class Entity implements Describable, Assetable{
 	}
 	
 	public abstract void accept(EntityVisitor visitor,VisitorContainer container);
+
+	public void rob(Entity e) {
+		e.giveItems(this.inventory);
+		
+	}
+
+	private void giveItems(Inventory inventory2) {
+		EquippableItem i = inventory.getEquippableItem();
+		if( i != null){
+			inventory2.add(i);
+		}
+	}
 }

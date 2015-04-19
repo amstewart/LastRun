@@ -3,8 +3,6 @@ package view.viewport;
 import controller.action.Action;
 import controller.action.equipmentHandlerAction.UnequipAction;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
@@ -15,9 +13,7 @@ import model.observer.EquipmentHandlerObserver;
 
 import java.util.HashMap;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -37,17 +33,17 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     private UnequipAction unequipAction;
     Avatar av;
 
-    public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats, Avatar a) {
+    public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats, Avatar av) {
         equipmentHandler.addObserver(this);
+        this.av = av;
 
-        unequipAction = new UnequipAction(a, playerStats);
+        unequipAction = new UnequipAction(av, playerStats);
         setUpMenu();
-        this.av = a;
-
     }
 
     @Override
     public void render() {
+
         this.revalidate();
     }
 
@@ -101,7 +97,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     }
 
     @Override
-    public void receiveOccupation(Occupation o, Stats playerStats) {
+    public void receiveNewOccupation(Occupation o, Stats playerStats) {
         unequipAction = new UnequipAction(av, playerStats);
         equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
         o.getEquipmentHandler().addObserver(this);

@@ -14,6 +14,7 @@ import model.entity.Status;
 import model.enums.DefinedStats;
 import model.enums.SkillStrings;
 import model.map.GameMap;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -108,6 +109,13 @@ public class SummonerSkills extends BasicSkills {
 	}
 	public void performPassiveInternalSkill(String s, Entity e) {
 		
+		
+	}
+
+	@Override
+	public void registerEquipmentHandlers(
+			ArrayList<EquipmentHandlerObserver> observers) {
+		//Mixed instance ;(
 		
 	}
 }

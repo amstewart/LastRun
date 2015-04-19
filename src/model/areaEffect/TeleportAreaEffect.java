@@ -8,12 +8,9 @@ package model.areaEffect;
 import model.Vector2;
 import model.entity.Entity;
 
-/**
- *
- * @author
- */
 public class TeleportAreaEffect extends AreaEffect {
-    Vector2 location;
+
+    private Vector2 location;
     
     public TeleportAreaEffect(Vector2 location){ //add assetable stuff here
         this.location=location;
@@ -23,6 +20,4 @@ public class TeleportAreaEffect extends AreaEffect {
     public void apply(Entity e) {
         //change the entity's location and draw him somewhere else on the map.
     }
-    
-    
 }

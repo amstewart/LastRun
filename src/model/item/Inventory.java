@@ -82,6 +82,12 @@ public class Inventory {
         }
     }
 
+    public EquippableItem getEquippableItem(){
+    	for(EquippableItem i:equippableItems){
+    		return equippableItems.remove(0);
+    	}
+    	return null;
+    }
     public ArrayList<ActivationItem> getActivationItems() {
         return activationItems;
     }

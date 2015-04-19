@@ -2,15 +2,15 @@ package model.entity.occupation;
 
 import java.util.ArrayList;
 
+import visitor.EntityVisitor;
+import visitor.OccupationVisitor;
+import visitor.VisitorContainer;
 
-import Visitor.EntityVisitor;
-import Visitor.OccupationVisitor;
-import Visitor.VisitorContainer;
 
 import model.entity.Entity;
-
 import model.item.Inventory;
 import model.map.GameMap;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -72,5 +72,12 @@ public class NPCOccupation extends Occupation {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void performWeaponSkills(Entity e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
