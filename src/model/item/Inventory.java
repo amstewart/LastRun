@@ -78,10 +78,16 @@ public class Inventory {
 
     private void notifyObservers() {
         for(InventoryObserver observer: observers) {
-            observer.receiveTakeableItems(getEquippableItems(), getNonEquippableItems(), getActivationItems());
+            observer.receiveAllInventoryItems(getEquippableItems(), getNonEquippableItems(), getActivationItems());
         }
     }
 
+    public EquippableItem getEquippableItem(){
+    	for(EquippableItem i:equippableItems){
+    		return equippableItems.remove(0);
+    	}
+    	return null;
+    }
     public ArrayList<ActivationItem> getActivationItems() {
         return activationItems;
     }

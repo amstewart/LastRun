@@ -9,6 +9,7 @@ import model.item.EquipmentHandler;
 import model.item.EquippableItem;
 import model.item.Inventory;
 import model.map.GameMap;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -27,11 +28,18 @@ public abstract class Occupation{
 
     private EquipmentHandler equipmentHandler;
     
-    public boolean equip(EquippableItem equippableItem, String slotCategory) {
-		return equipmentHandler.equip(equippableItem, slotCategory);
+    public boolean equip(EquippableItem equippableItem, String slotCategory , Entity entity) {
+    	boolean l = equipmentHandler.equip(equippableItem, slotCategory);
+    	performWeaponSkills(entity);
+    	return l;
+		
 	}
-    public boolean unequip(EquippableItem equippableItem, String slotCategory) {
-    	return equipmentHandler.equip(equippableItem, slotCategory);
+    public abstract void performWeaponSkills(Entity entity);
+    
+	public boolean unequip(EquippableItem equippableItem, String slotCategory, Entity entity) {
+    	boolean l = equipmentHandler.unequip(equippableItem, slotCategory);
+    	performWeaponSkills(entity);
+    	return l;
 	}
 
     public Occupation(Inventory inventory, Stats playerStats) {
@@ -85,6 +93,7 @@ public abstract class Occupation{
 	
 	public abstract void performPassiveInternalSkill(String s, Entity e);
 	public abstract void performPassiveExternalSkill(String s, Entity e, GameMap map);
+	
 
 	
 

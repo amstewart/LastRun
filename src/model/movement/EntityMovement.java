@@ -1,8 +1,10 @@
 package model.movement;
 
+import java.util.ArrayList;
 import model.Vector2;
 import model.entity.Entity;
 import model.map.GameMap;
+import model.tile.Tile;
 import utility.Direction;
 import utility.Util;
 
@@ -54,10 +56,25 @@ public class EntityMovement extends Movement {
 
     public void reface(Vector2 new_facing) {
         this.facing_dir = new Vector2(new_facing);
-        Util.dbgOut("Entity " + entity.getName() + " facing = " + facing_dir.toString(), 4);
+        Util.dbgOut("Entity " + entity.getName() + " facing = " + facing_dir.toString(), 5);
     }
 
     public void setAsset(String new_asset) {
         entity.setAssetID(new_asset);
+    }
+    
+    public ArrayList<Tile> getLightMap(GameMap map){
+        ArrayList<Tile> tileList = new ArrayList();
+        for(Tile tile : map.createLocalAreaAngular(3, getPosition())){
+            tileList.add(tile);
+        }
+        for(Tile tile : map.createLocalAreaRadial(1, getPosition())){
+           tileList.add(tile);
+        }
+        return tileList;
+    }
+    
+    public ArrayList<Tile> getRingAroundAvatar(GameMap map){
+    	return map.createLocalAreaRadial(1,getPosition());
     }
 }

@@ -51,10 +51,11 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
     private JMenuItem cancel = new JMenuItem("Cancel");
     private JMenuItem cancel2 = new JMenuItem("Cancel");
+    Avatar av;
 
-    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats) {
-
-        equipAction = new EquipAction(eH, playerStats);
+    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats, Avatar av) {
+    	this.av = av;
+        equipAction = new EquipAction(av, playerStats);
         useAction = new UseAction(inventory, playerStats);
         inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
@@ -64,7 +65,6 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         this.setLayout(new GridLayout(0,2));
         panel.setLayout(new GridLayout(0, 3));
 
-        //panel.setSize(new Dimension(300,300));
         setUpMenu();
         
 
@@ -74,7 +74,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         
         
         
-        equipmentViewport = new EquipmentViewport(eH, playerStats);
+        equipmentViewport = new EquipmentViewport(eH, playerStats, av);
         add(equipmentViewport);
         
         panel.setBackground(Color.WHITE);
@@ -134,16 +134,16 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     }
 
     @Override
-    public void receiveOccupation(Occupation o, Stats playerStats) {
+    public void receiveNewOccupation(Occupation o, Stats playerStats) {
         remove(equipmentViewport);
-        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats);
+        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats, av);
         add(equipmentViewport);
-        equipAction = new EquipAction(o.getEquipmentHandler(), playerStats);
+        equipAction = new EquipAction(av, playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
     }
 
     @Override
-    public void receiveTakeableItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
+    public void receiveAllInventoryItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
         renderItems(equippableItems, nonEquippableItems, activationItems);
     }
 

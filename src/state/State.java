@@ -5,9 +5,12 @@
  */
 package state;
 
+import controller.keyControllers.KeyController;
 import view.viewport.Viewport;
 
 public abstract class State {
+    
+    protected KeyController controller;
 
     protected Viewport viewPort;
 
@@ -20,9 +23,13 @@ public abstract class State {
         }
     }
 
-    public abstract void onEnter();
+    public void onEnter(){
+        viewPort.addKeyListener(controller);
+    }
 
-    public abstract void onExit();
+    public void onExit(){
+        viewPort.removeKeyListener(controller);
+    }
 
     public Viewport getViewport() {
         return viewPort;

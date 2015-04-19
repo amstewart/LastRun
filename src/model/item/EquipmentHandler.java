@@ -20,10 +20,15 @@ public class EquipmentHandler {
         observers = new ArrayList<EquipmentHandlerObserver>();
         equipment = new HashMap<String, EquippableItem>();
         this.occupation = o;
+        
 
         updateSlots(slots);
         this.inventory = inventory;
         this.playerStats = playerStats;
+    }
+    
+    public void setEquipmentManager(){
+    	occupation.getSkillBook().registerEquipmentHandlers(observers);
     }
 
     public void updateSlots(ArrayList<String> slots) {

@@ -7,8 +7,8 @@ package model.stat;
 
 import java.util.ArrayList;
 import model.enums.StatsCategory;
-import view.viewport.StatisticsViewport;
-
+import view.viewport.DialogueViewport;
+import view.viewport.StatsViewport;
 public class Stats {
 	private int livesLeft;
 	private int strength;
@@ -28,23 +28,24 @@ public class Stats {
 	private int defensiveRating;
 	private int armorRating;
 
-	private ArrayList<StatisticsViewport> registeredViews = new ArrayList<>();
+	private ArrayList<StatsViewport> registeredViews = new ArrayList<>();
         private ArrayList<StatsCategory> statsCategory = new ArrayList<>();
 
-	public void registerView(StatisticsViewport view) {
+	public void registerView(StatsViewport view) {
 		registeredViews.add(view);
 		notifyViews();
 	}
 
 	private void notifyViews() {
-		for (StatisticsViewport views : registeredViews) {
+		for (StatsViewport views : registeredViews) {
 			views.receive(this.getStats(), statsCategory );
 		}
 	}
 
 	private ArrayList<Integer> getStats() {
+            
 		ArrayList<Integer> stats = new ArrayList<>();
-		stats.add(livesLeft); statsCategory.add(StatsCategory.LIVES_LEFT);
+		
 		stats.add(strength); statsCategory.add(StatsCategory.STRENGTH);
 		stats.add(agility); statsCategory.add(StatsCategory.AGILITY);
 		stats.add(intellect); statsCategory.add(StatsCategory.INTELLECT);
@@ -54,24 +55,24 @@ public class Stats {
 		stats.add(equippedArmor); statsCategory.add(StatsCategory.EQUIPPED_ARMOR);
 		stats.add(equippedWeapon); statsCategory.add(StatsCategory.EQUIPPED_WEAPON);
 		stats.add(level); statsCategory.add(StatsCategory.LEVEL);
-		stats.add(life); statsCategory.add(StatsCategory.LIFE);
-		stats.add(mana); statsCategory.add(StatsCategory.MANA);
 		stats.add(offensiveRating); statsCategory.add(StatsCategory.OFFENSIVE_RATING);
 		stats.add(defensiveRating); statsCategory.add(StatsCategory.DEFENSIVE_RATING);
 		stats.add(armorRating); statsCategory.add(StatsCategory.ARMOR_RATING);
+                stats.add(livesLeft); statsCategory.add(StatsCategory.LIVES_LEFT);
+                stats.add(life); statsCategory.add(StatsCategory.LIFE);
+		stats.add(mana); statsCategory.add(StatsCategory.MANA);
 		return stats;
 	}
         
         
 	
-	public Stats(){
-		
-	}
+
+
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
 		super();
-		setStats(livesLeft, strength, agility, intellect, hardiness,
+		setStatsInit(livesLeft, strength, agility, intellect, hardiness,
 				experience, movement, equippedArmor, equippedWeapon);
 	}
 
@@ -90,6 +91,20 @@ public class Stats {
 		deriveStats();
 	}
 	
+	private void setStatsInit(int livesLeft, int strength, int agility,
+			int intellect, int hardiness, int experience, int movement,
+			int equippedArmor, int equippedWeapon) {
+		this.livesLeft = livesLeft;
+		this.strength = strength;
+		this.agility = agility;
+		this.intellect = intellect;
+		this.hardiness = hardiness;
+		this.experience = experience;
+		this.movement = movement;
+		this.equippedArmor = equippedArmor;
+		this.equippedWeapon = equippedWeapon;
+	}
+	
 	public void setStats(Stats stat){
 		this.livesLeft = stat.livesLeft;
 		this.strength = stat.strength;
@@ -102,9 +117,9 @@ public class Stats {
 		this.equippedWeapon = stat.equippedWeapon;
 		deriveStats();
 	}
-	private void setStats(int livesLeft, int strength, int agility,
-			int intellect, int hardiness, int experience, int movement,
-			int equippedArmor, int equippedWeapon) {
+	private void setStats(final int livesLeft, final int strength, final int agility,
+			final int intellect, final int hardiness, final int experience, final int movement,
+			final int equippedArmor, final int equippedWeapon) {
 		this.livesLeft = livesLeft;
 		this.strength = strength;
 		this.agility = agility;
@@ -150,12 +165,12 @@ public class Stats {
 	}
 
 	public void setLife(int life) {
-		this.life = life;
+		this.life += life;
 		deriveStats();
 	}
 
 	public void setLevel(int level) {
-		this.level = level;
+		this.level += level;
 		deriveStats();
 	}
 
@@ -204,7 +219,32 @@ public class Stats {
 		notifyViews();
 	}
 
-	private void deriveStats() {
+	public void deriveStats() {
+		this.level = experience/100 + 1;
+		this.life = hardiness * level;
+		this.mana = intellect * level;
+		this.offensiveRating = (equippedWeapon + strength)*level;
+		this.defensiveRating = (agility)*level;
+		this.armorRating = (equippedArmor + hardiness);
+		notifyViews();
+		if(this.life <= 0){
+			this.kill();
+		}
+	}
+
+	private void kill() {
+		this.livesLeft--;
+		if(this.livesLeft <= 0){
+			this.die();
+			return;
+		}else{
+			this.hardiness = 10;
+		}
+		deriveStats();
+		notifyViews();
+	}
+	private void die() {
+		DialogueViewport.getInstance().print("You died. You are now a zombie.");
 		notifyViews();
 	}
 

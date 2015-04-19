@@ -21,12 +21,11 @@ public class GameBundle {
         avatar = new Avatar();
 
         avatar.setName("PLAYER");
-        avatar.setMana(45);
+        //avatar.setMana(45);
+        //avatar.setHardiness(-10);
         
         map.addEntity(avatar,new Vector2(0,0));
-     
 
-  
     }
  
 

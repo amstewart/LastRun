@@ -7,10 +7,6 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-/**
- *
- * @author ChrisMoscoso
- */
 public abstract class Viewport extends JPanel{
     
     protected ImageIcon backgroundImage;

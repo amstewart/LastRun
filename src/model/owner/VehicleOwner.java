@@ -4,6 +4,7 @@ package model.owner;
 import java.util.HashSet;
 import java.util.Set;
 import model.entity.Entity;
+import model.entity.Status;
 import model.entity.vehicle.Vehicle;
 
 /**
@@ -12,29 +13,59 @@ import model.entity.vehicle.Vehicle;
  */
 public class VehicleOwner {
     
-    public Set<Vehicle> slaves;
+    private Vehicle slave;
+    private Entity rider;
     
     public VehicleOwner(){
-        slaves = new HashSet<Vehicle>();
+    }
+
+    public void adopt(Vehicle v){
+        slave = v;
+        if (isMounted())
+            unmount();
     }
     
     public int getNumberOwned(){
-        return slaves.size();
+        if (slave == null) return 0;
+        else return 1;
     }
-    
-    public void adopt(Vehicle v){
-        slaves.add(v);
-    }
-    
-    public void release(Vehicle v){
-        slaves.remove(v);
-    }
-    
+
+    public Entity getRider() { return rider; }
+
     public Vehicle getVehicle(){
-        Vehicle v=null;
-        for(Vehicle vehicle : slaves){
-            v=vehicle;
+        return slave;
+    }
+
+    public boolean isMounted() {
+        if (rider == null) return false;
+        else return true;
+    }
+
+    public void mount(Entity new_rider) {
+        if (rider != null) {
+            unmount();
         }
-        return v;
+
+        rider = new_rider;
+        rider.addStatus(Status.MOUNTED);
+    }
+
+    public void release(){
+        slave = null;
+        if (isMounted())
+            unmount();
+    }
+
+    public void toggleMount(Entity new_rider) {
+        if (isMounted()) {
+            unmount();
+        } else {
+            mount(new_rider);
+        }
+    }
+
+    public void unmount() {
+        if (rider != null) { rider.removeStatus(Status.MOUNTED); }
+        rider = null;
     }
 }

@@ -13,11 +13,11 @@ import model.stat.Stats;
 public class EquipAction extends Action {
 
     private EquippableItem equippableItem;
-    private EquipmentHandler equipmentHandler;
+    private Avatar avatar;
     private Stats stats;
 
-    public EquipAction(EquipmentHandler equipmentHandler, Stats stats) {
-        this.equipmentHandler = equipmentHandler;
+    public EquipAction(Avatar avatar, Stats stats) {
+        this.avatar = avatar;
         this.stats = stats;
     }
 
@@ -28,7 +28,7 @@ public class EquipAction extends Action {
     @Override
     public void perform() {
         if(equippableItem != null) {
-            if(!equippableItem.equip(equipmentHandler)){
+            if(!equippableItem.equip(avatar)){
             	DialogueViewport ins =  DialogueViewport.getInstance();
             	ins.print("It looks like I can't equip items of type " + equippableItem.getSlotCategory());
             }     

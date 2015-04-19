@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.map;
 
+import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
-import model.item.Item;
-
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
@@ -27,9 +21,45 @@ public class MapBuilder {
     private int height=30;
 
     public MapBuilder(){
-
-    	generateMapDebug();
+    	//generateMapDebug();
     	//generateMapRandom();
+        generateMapDemo();
+    }
+
+    public static void addVehicle(GameMap map, Vector2 pos, String name, String art_asset, int speed) {
+        Vehicle vic = new Vehicle(art_asset, name, speed);
+        map.addVehicle(vic, pos);
+    }
+
+    public void generateMapDemo() {
+        tiles = new Tile[width][height];
+        GrassTerrain grassTerrain = new GrassTerrain(ImageUtil.TERRAIN_GRASS);
+        MountainTerrain mountainTerrain = new MountainTerrain(ImageUtil.TERRAIN_MOUNTAIN);
+        WaterTerrain waterTerrain = new WaterTerrain(ImageUtil.TERRAIN_WATER);
+
+        TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
+        LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
+
+        for(int i = 0; i < width; i ++) {
+            for(int j = 0; j < height; j++) {
+                tiles[i][j] = new Tile(new Vector2(i, j));
+                if ( j % 5 == 0 && i != j) {
+                    tiles[i][j].addTerrain(mountainTerrain);
+                } else if ( j > 5 && j < 10) {
+                    tiles[i][j].addTerrain(waterTerrain);
+                } else {
+                    tiles[i][j].addTerrain(grassTerrain);
+                }
+                double chance = Math.random();
+                if(chance > 0.99) {
+                    tiles[i][j].addItem(ItemFactory.getRandomItem());
+                }
+            }
+        }
+
+        tiles[26][4].addItem(ItemFactory.newKey1());
+        tiles[4][4].addItem(ItemFactory.newWaterWine());
+        tiles[8][13].addItem(ItemFactory.newClosedChest());
     }
 
     public void generateMapDebug() {
@@ -88,7 +118,6 @@ public class MapBuilder {
         tiles[6][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
         tiles[3][3].addTrap(new SpikeTrap(ImageUtil.SPIKETRAP));
     }
-    
     
     public void generateMapRandom(){
         tiles= new Tile[width][height];

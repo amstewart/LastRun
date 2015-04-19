@@ -31,7 +31,7 @@ public class Tile {
     private ItemOwner myItems;
     private PetOwner myPets;
     private TerrainOwner myTerrains;
-    private VehicleOwner myVehicles;
+    private VehicleOwner myVehicle;
     private ProjectileOwner myProjectiles;
     private TrapOwner myTrap;
 
@@ -59,6 +59,16 @@ public class Tile {
         } else {
             Util.dbgOut("I can't release " + a + " because I am not an entity owner", 3);
         }
+    }
+
+    public void toggleMount() {
+        myVehicle.toggleMount(myEntities.getEntity());
+    }
+
+    public boolean vehicleMounted() {
+        if (this.isVehicleOwner()) {
+            return myVehicle.isMounted();
+        } else return false;
     }
 
     public void addProjectile(Projectile p) {
@@ -153,16 +163,16 @@ public class Tile {
 
     public void addVehicle(Vehicle v) {
         if (!isVehicleOwner()) {
-            myVehicles = new VehicleOwner();
+            myVehicle = new VehicleOwner();
         }
-        myVehicles.adopt(v);
+        myVehicle.adopt(v);
     }
 
     public void removeVehicle(Vehicle v) {
         if (isVehicleOwner()) {
-            myVehicles.release(v);
-            if (myVehicles.getNumberOwned() == 0) {
-                myVehicles = null;
+            myVehicle.release();
+            if(myVehicle.getNumberOwned() == 0){
+                myVehicle = null;
             }
         } else {
             Util.dbgOut("I can't release " + v + " because I am not an vehicle owner", 3);
@@ -208,7 +218,7 @@ public class Tile {
     }
 
     public boolean isVehicleOwner() {
-        return myVehicles != null;
+        return myVehicle != null;
     }
 
     public boolean isProjectileOwner() {
@@ -235,8 +245,9 @@ public class Tile {
         return myEntities.getEntity();
     }
 
-    public Vehicle getVehicle() {
-        return myVehicles.getVehicle();
+    public Vehicle getVehicle(){
+        if (myVehicle == null) return null;
+        else return myVehicle.getVehicle();
     }
 
     public Item getItem() {
@@ -258,18 +269,22 @@ public class Tile {
     protected AreaEffectOwner getAreaEffectOwner() {
         return myAreaEffects;
     }
-
-    protected TerrainOwner getTerrainOwner() {
-        return myTerrains;
+    
+    protected TerrainOwner getTerrainOwner(){
+         return myTerrains;
     }
-
-    protected VehicleOwner getVehicleOwner() {
-        return myVehicles;
+     
+    protected VehicleOwner getVehicleOwner(){
+          return myVehicle;
     }
-
+      
     protected ItemOwner getItemOwner() {
         return myItems;
     }
+
+	public Projectile getProjectile() {
+		return myProjectiles.getProjectile();
+	}
 
     protected EntityOwner getEntityOwner() {
         return myEntities;
@@ -296,9 +311,4 @@ public class Tile {
             }
         }
     }
-
-    public Projectile getProjectile() {
-        return myProjectiles.getProjectile();
-    }
-
 }

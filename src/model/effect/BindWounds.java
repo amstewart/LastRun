@@ -1,6 +1,9 @@
 package model.effect;
 
+import java.util.HashMap;
+
 import model.entity.Entity;
+import model.item.EquippableItem;
 
 public class BindWounds implements InternalEffect{
 
@@ -15,6 +18,12 @@ public class BindWounds implements InternalEffect{
 	@Override
 	public void applyEffect(Entity entity) {
 		entity.setStrength(strengthIncrease);
+	}
+
+	@Override
+	public void applyEffect(HashMap<String, EquippableItem> equipment) {
+		// mixed Instance :(
+		
 	}
 
 }
