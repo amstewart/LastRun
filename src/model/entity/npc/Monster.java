@@ -7,8 +7,13 @@ import state.NPCBehaviour.NPCHostile;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
+=======
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
+>>>>>>> juan
 
 public class Monster extends NPC {
 
@@ -35,4 +40,8 @@ public class Monster extends NPC {
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
     }
+
+    
+    
+>>>>>>> juan
 }

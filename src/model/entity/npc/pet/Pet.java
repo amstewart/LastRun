@@ -1,7 +1,12 @@
 package model.entity.npc.pet;
 
+<<<<<<< HEAD
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
+=======
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
+>>>>>>> juan
 import model.entity.Entity;
 import model.entity.npc.NPC;
 
@@ -27,7 +32,6 @@ public class Pet extends NPC {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
     @Override
     public void accept(EntityVisitor visitor, VisitorContainer container) {
