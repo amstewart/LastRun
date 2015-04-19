@@ -442,108 +442,53 @@ public class GameMap {
     	return list;
     }
 	public ArrayList<Tile> createLocalAreaRadial(int radius, Vector2 center) {
-		ArrayList<Tile> list = new ArrayList();
-		Tile t = getTile(center);
-		Tile oldt = null;
-		boolean addTile = true;
-		list.add(t);
-		for (int i = 0; i != radius; ++i) {
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheNorth(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheNorthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouth(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthWest(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);//added
-		}
-	
-		return list;
+		ArrayList<Tile> tileList= new ArrayList<Tile>();
+    	boolean [][]visited= new boolean[getHeight()][getWidth()];
+    	Queue<Tile> queue= new LinkedList<Tile>();
+    	tileList.add(getTile(center));
+    	Tile currTile= getTile(center);
+    	int count=0;
+    	int loops=0;
+    	if(radius==1){
+    		loops=7;
+    	}
+    	else{
+    	for(int i=0;i<radius;i++){
+    		loops+=(i*6);
+    	}
+    	loops++;
+    	}
+    	visited[currTile.getLocation().X][currTile.getLocation().Y]=true;
+    	if(radius==0){
+    		return tileList;
+    	}
+    	
+    	queue.add(currTile);
+    	Tile tileToAdd=null;
 
+    	while(!queue.isEmpty() &&  count<loops){
+    		
+    		currTile = queue.remove();
+    		tileList.add(currTile);
+    		for(int i=0;i<6;++i){
+    			if(i==0)tileToAdd=getTileToTheNorth(currTile);
+				if(i==1)tileToAdd=getTileToTheNorthEast(currTile);
+				if(i==2)tileToAdd=getTileToTheSouthEast(currTile);
+				if(i==3)tileToAdd=getTileToTheSouth(currTile);
+				if(i==4)tileToAdd=getTileToTheSouthWest(currTile);
+				if(i==5)tileToAdd=getTileToTheNorthWest(currTile);
+				
+				
+				int x=tileToAdd.getLocation().X;
+    			int y=tileToAdd.getLocation().Y;
+    			if(!visited[x][y]){
+    				queue.add(tileToAdd);
+    				visited[x][y]=true;
+    			}
+    			
+    		}
+    		count++;
+    	}
+    	return tileList;
 	}
-
 }
