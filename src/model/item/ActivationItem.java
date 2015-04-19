@@ -1,5 +1,6 @@
 package model.item;
 
+import model.bank.BankAccount;
 import model.entity.Entity;
 import model.tile.Tile;
 
@@ -20,6 +21,12 @@ public class ActivationItem extends TakeableItem {
     public void accept(Entity e, Tile tile) {
         tile.removeItem(this);
         e.visit(this);
+    }
+
+    @Override
+    public void sell(BankAccount bankAccount, Inventory inventory) {
+        bankAccount.deposit(getValue());
+        inventory.remove(this);
     }
 
     public void setInteractionID(int id) {

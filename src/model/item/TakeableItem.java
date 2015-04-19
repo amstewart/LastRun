@@ -1,5 +1,6 @@
 package model.item;
 
+import model.bank.BankAccount;
 import model.entity.Entity;
 import model.stat.Stats;
 // These items are characterized by their behvaior of being added to the
@@ -25,14 +26,23 @@ public abstract class TakeableItem extends Item {
         return value;
     }
 
+    public void boostValue(int value) {
+        this.value += value;
+    }
+
     public Stats getItemStats() {
         return stats;
     }
 
-    public abstract void touch(Inventory inventory);
-
     public void drop(Entity entity) {
         //entity.dropItem
     }
+
+    // All takeableItems can be sold
+    // TODO: Take into account the bargain skill level which all avatars have
+    public abstract void sell(BankAccount bankAccount, Inventory inventory);
+
+    public abstract void touch(Inventory inventory);
+
 }
 

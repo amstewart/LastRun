@@ -22,7 +22,7 @@ public class GameViewport extends Viewport{
         Stats stats = a.getStats();
         
         this.mapVP = mapVP;
-        invVP = new InventoryViewport(inventory, occupation.getEquipmentHandler(), a.getStats(), a);
+        invVP = new InventoryViewport(inventory, occupation.getEquipmentHandler(), a.getStats());
         inventory.addObserver(invVP);
         a.addObserver(invVP);
         statsVP = new StatsViewport(stats);
