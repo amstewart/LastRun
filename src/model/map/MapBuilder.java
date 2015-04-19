@@ -6,6 +6,8 @@
 package model.map;
 
 import model.terrain.Terrain;
+import model.item.Item;
+
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
@@ -19,16 +21,13 @@ import model.terrain.WaterTerrain;
 
 import java.util.LinkedList;
 
-/**
- *
- * @author
- */
 public class MapBuilder {
     private Tile[][] tiles;
     private int width=30;
     private int height=30;
 
     public MapBuilder(){
+
     	generateMapDebug();
     	//generateMapRandom();
     }
@@ -57,11 +56,16 @@ public class MapBuilder {
             for (int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(new Vector2(i, j));
                 tiles[i][j].addTerrain(new GrassTerrain(ImageUtil.TERRAIN_GRASS));
-
+                double chance = Math.random();
+                if(i != j && chance < 0.05){
+                    tiles[i][j].addItem(ItemFactory.getRandomItem());
+                }
 
             }
         }
 
+        tiles[25][25].addItem(ItemFactory.newClosedChest());
+        
         for (Vector2 loc : lmm) { // Add mountain terrains to map
             tiles[loc.X][loc.Y].addTerrain(new MountainTerrain(ImageUtil.TERRAIN_MOUNTAIN));
         }
@@ -108,10 +112,9 @@ public class MapBuilder {
             }
         }
 
-
-      tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
-      tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
-      tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
+        tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
+        tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
+        tiles[3][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
 
      
     }

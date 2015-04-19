@@ -6,6 +6,8 @@ import model.entity.occupation.Smasher;
 import model.entity.occupation.Sneak;
 import model.entity.occupation.Summoner;
 import model.enums.DefinedStats;
+import model.map.GameMap;
+import model.map.MapBuilder;
 import model.stat.Stats;
 import utility.ImageUtil;
 
@@ -25,15 +27,6 @@ public class ItemFactory {
         Stats itemStats = DefinedStats.ADDINTELLECT.getStats();
         item.setItemStats(itemStats);
         item.setAssetID(ImageUtil.BOOK);
-
-        return item;
-    }
-
-    public static NonEquippableItem newKey(){
-        NonEquippableItem item = new NonEquippableItem("Key");
-        Stats itemStats = DefinedStats.DEFAULTSTATS.getStats();
-        item.setItemStats(itemStats);
-        item.setAssetID(ImageUtil.KEY);
 
         return item;
     }
@@ -66,13 +59,18 @@ public class ItemFactory {
     public static NonEquippableItem newManaPotion(){
         NonEquippableItem item = new NonEquippableItem("Mana Potion");
         Stats itemStats = DefinedStats.DEFAULTSTATS.getStats();
-        itemStats.setMana(10);
         item.setItemStats(itemStats);
         item.setAssetID(ImageUtil.MANA_POTION);
         return item;
     }
 
+    public static NonEquippableItem newGoldBar() {
+        NonEquippableItem item = new NonEquippableItem("Secret Gold Bar");
+        Stats itemStats = DefinedStats.DEFAULTSTATS.getStats();
+        item.setAssetID(ImageUtil.GOLDBAR);
 
+        return item;
+    }
     //=========== 3 types of Basic Head Equipment ===========
     public static EquippableItem  newHelmet(){
         EquippableItem item = new EquippableItem("Helmet", Occupation.HEAD);
@@ -253,8 +251,52 @@ public class ItemFactory {
 
         return item;
     }
-    
 
+    // =========== Activation Items ========================
+
+    public static ActivationItem newKey1() {
+        ActivationItem item = new ActivationItem("Key to Open chest");
+        item.setInteractionID(1);
+        item.setAssetID(ImageUtil.KEY);
+
+        return item;
+    }
+
+    public static ActivationItem newKey2() {
+        ActivationItem item = new ActivationItem("Key to Open chest");
+        item.setInteractionID(2);
+        item.setAssetID(ImageUtil.KEY);
+
+        return item;
+    }
+
+    public static ActivationItem newKey3() {
+        ActivationItem item = new ActivationItem("Key to Open chest");
+        item.setInteractionID(3);
+        item.setAssetID(ImageUtil.KEY);
+
+        return item;
+    }
+
+    // ============ Interaction Item =======================
+
+    public static InteractiveItem newClosedChest() {
+        InteractiveItem item = new InteractiveItem("Door");
+        item.setAssetID(ImageUtil.CLOSEDCHEST);
+        item.setActivationId(1);
+
+        return item;
+    }
+
+    public static InteractiveItem newOpenedChest() {
+        InteractiveItem item = new InteractiveItem("Door");
+        item.setAssetID(ImageUtil.OPENCHEST);
+        item.setActivationId(1);
+
+        return item;
+    }
+
+    // ============ Random Item Generator ===================
      public static Item getRandomItem(){
          double chance = Math.random();
          if(chance < 0.10){
@@ -271,7 +313,17 @@ public class ItemFactory {
          }
      }
      
-     
+     public static ActivationItem getRandomKey() {
+         double change = Math.random();
+         if(change < 0.30) {
+             return newKey1();
+         } else if(change < 0.50) {
+             return newKey2();
+         } else {
+             return newKey3();
+         }
+     }
+
      public static EquippableItem getRandomHeadEquipment(){
          double chance = Math.random();
          if(chance < 0.50){
@@ -327,8 +379,6 @@ public class ItemFactory {
              return newMushroom();
          }else if(chance < 0.625){
              return newTorch();
-         }else if(chance < 0.75){
-             return newKey();
          }else if(chance < 0.875){
              return newBook();
          }else {

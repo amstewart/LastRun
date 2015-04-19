@@ -135,7 +135,10 @@ public class ImageUtil {
     public static final String SPIKETRAP = DIR_ITEMS + "SpikeTrap.png";
     
     //Projectiles//
-    
+
+    public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";
+    public static final String CLOSEDCHEST = DIR_ITEMS + "treasure_chest_closed.png";
+    public static final String OPENCHEST = DIR_ITEMS + "treasure_chest_open.jpg";
     public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
     
     //Stati//

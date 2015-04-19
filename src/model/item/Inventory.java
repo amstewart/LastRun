@@ -7,14 +7,19 @@ import java.util.*;
 public class Inventory {
 
     private ArrayList<InventoryObserver> observers;
+
     private ArrayList<NonEquippableItem> nonEquippableItems;
     private ArrayList<EquippableItem> equippableItems;
+    private ArrayList<ActivationItem> activationItems;
 
     public Inventory() {
-        observers = new ArrayList<InventoryObserver>();
+        observers = new ArrayList<>();
+
         nonEquippableItems = new ArrayList<>();
         equippableItems = new ArrayList<>();
+        activationItems = new ArrayList<>();
 
+        this.add(ItemFactory.newKey1());
         this.add(ItemFactory.newBFSword());
         this.add(ItemFactory.newHealthPotion());
         this.add(ItemFactory.getRandomSmasherWeapon());
@@ -32,46 +37,54 @@ public class Inventory {
 
     public void add(EquippableItem equippableItem) {
         equippableItems.add(equippableItem);
-        notifyObserversEquippableItemsHaveChanged();
+        notifyObservers();
     }
 
     public void add(NonEquippableItem nonEquippableItem) {
         nonEquippableItems.add(nonEquippableItem);
-        notifyObserversNonEquippableItemsHaveChanged();
+        notifyObservers();
+    }
+
+    public void add(ActivationItem activationItem) {
+        activationItems.add(activationItem);
+        notifyObservers();
     }
 
     public void remove(EquippableItem equippableItem) {
         if(equippableItems.contains(equippableItem)) {
             equippableItems.remove(equippableItem);
-            notifyObserversEquippableItemsHaveChanged();
+            notifyObservers();
         }
     }
 
     public void remove(NonEquippableItem nonEquippableItem) {
         if(nonEquippableItems.contains(nonEquippableItem)) {
             nonEquippableItems.remove(nonEquippableItem);
-            notifyObserversNonEquippableItemsHaveChanged();
+            notifyObservers();
+        }
+    }
+
+    public void remove(ActivationItem activationItem) {
+        if(activationItems.contains(activationItem)) {
+            activationItems.remove(activationItem);
+            notifyObservers();
         }
     }
 
     public void addObserver(InventoryObserver inventoryObserver){
         observers.add(inventoryObserver);
-        notifyObserversNonEquippableItemsHaveChanged();
-        notifyObserversEquippableItemsHaveChanged();
+        notifyObservers();
     }
 
-    private void notifyObserversNonEquippableItemsHaveChanged() {
-        for(InventoryObserver observer : observers){
-            observer.receiveNonEquippableItems(getNonEquippableItems());
+    private void notifyObservers() {
+        for(InventoryObserver observer: observers) {
+            observer.receiveTakeableItems(getEquippableItems(), getNonEquippableItems(), getActivationItems());
         }
     }
 
-    private void notifyObserversEquippableItemsHaveChanged() {
-        for(InventoryObserver observer : observers){
-            observer.receiveEquippableItems(getEquippableItems());
-        }
+    public ArrayList<ActivationItem> getActivationItems() {
+        return activationItems;
     }
-    
 
     //TODO: Give observers the items it needs
     private EquippableItem[] getEquippableItems() {
@@ -91,6 +104,8 @@ public class Inventory {
         });
         return nonEquippableItems.toArray(new NonEquippableItem[nonEquippableItems.size()]);
     }
+
+
 }
 
 
