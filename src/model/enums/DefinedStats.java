@@ -27,15 +27,16 @@ public enum DefinedStats {
 	ADDLEGARMOR(new Stats(0, 0, -4, 0 ,0 ,0 ,0 ,0, 10)),
 	ADDWEAPON(new Stats(0, 0, 0, 0, 0, 0, 0, 0, 10)),
 	ENTITYSTATS(new Stats(10,10,10,10,10,10,10,10,10));
-	
-	
+
 	Stats stat;
+
 	DefinedStats(Stats stat){
 		this.stat = stat;
 	}
 	
 	public Stats getStats(){
-		return this.stat;
+		return new Stats(stat.getLivesLeft(), stat.getStrength(), stat.getAgility(), stat.getIntellect(), stat.getHardiness(),
+				stat.getExperience(), stat.getMovement(), stat.getEquippedArmor(), stat.getEquippedWeapon());
 	}
 
 }

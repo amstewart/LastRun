@@ -33,15 +33,9 @@ public class MountAction extends Action {
         }
 
         Tile tt = map.getTile(eMove.getPosition());
-        if (tt.isVehicleOwner()) { // if there is a vehicle here
-
-            // if the entity is already mounted, unmount
-            Entity e = eMove.getEntity();
-            if (e.is(Status.MOUNTED)) {
-                e.unmount();
-            } else { // otherwise, mount the vehicle
-                e.mount(tt.getVehicle());
-            }
+        if (tt.isVehicleOwner()) {
+            // if a vehicle is here, toggle the entity on the tile to mount or unmount
+            tt.toggleMount();
         } else { // if there is no vehicle
             Util.dbgOut("No vehicle to mount here.", 4);
             return;

@@ -63,36 +63,38 @@ public class MoveDownAction extends Action {
 
     @Override
     public void perform() {
+        // Get the source tile
         Vector2 sourceLocation = map.getAvatarMovement().getPosition();
-        Vector2 destLocation = map.getTileToTheSouth(sourceLocation).getLocation();
-
         Tile source = map.getTile(sourceLocation);
-        Tile dest = map.getTile(destLocation);
 
-        ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
-        Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
-        Entity e=source.getEntity();
-        if(avatarsAllowableTerrainTypes.contains(destTerrain)){
-        	map.moveAvatarTo(destLocation);
-        	if(!e.is(Status.INVISIBLE)){
+        // Collect the speed (based on mounted/not-mounted) and get dest tile
+        int speed;
+        Entity mover;
+        if (source.vehicleMounted()) {
+            speed = source.getVehicle().getMovement();
+            mover = source.getVehicle();
+        } else {
+            speed = source.getEntity().getMovement();
+            mover = source.getEntity();
+        }
+
+        for (int s = 0; s < speed; s++) {
+            Tile dest = map.getTileInDirection(Direction.SOUTH, source);
+
+            // if the mover CANNOT move to the new tile
+            if (!mover.getTerrainTypesAllowedToMoveOn().contains(dest.getTerrain().getTerrainType())) {
+                MapViewport.drawCantMove(dest.getLocation());
+                break;
+            } else {
+                map.moveTileEntities(source, dest);
+                //map.moveAvatarTo(dest.getLocation());
+            }
+
+            if (!mover.is(Status.INVISIBLE)) {
                 map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
             }
-        	updateEntityTileLocation(e, source, dest);
-            if(dest.isAreaEffectOwner()){
-            	applyAreaEffect(e,dest);
-            }
-            if(dest.isTrapOwner()){
-            	applyTrapEffect(e,dest);
-            }
-            
-          visitor.visit(e,container);
-          Occupation o= container.getOccupation();  
-          //think of something to do detect Trap here
-        } else {
-            MapViewport.drawCantMove(destLocation);
-        }
-        if(!e.is(Status.INVISIBLE)){
-            map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
+
+            source = dest;
         }
     }
 }

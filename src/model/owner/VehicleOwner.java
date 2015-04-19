@@ -4,6 +4,7 @@ package model.owner;
 import java.util.HashSet;
 import java.util.Set;
 import model.entity.Entity;
+import model.entity.Status;
 import model.entity.vehicle.Vehicle;
 
 /**
@@ -12,25 +13,55 @@ import model.entity.vehicle.Vehicle;
  */
 public class VehicleOwner {
     
-    public Vehicle slave;
+    private Vehicle slave;
+    private Entity rider;
     
     public VehicleOwner(){
+    }
+
+    public void adopt(Vehicle v){
+        slave = v;
     }
     
     public int getNumberOwned(){
         if (slave == null) return 0;
         else return 1;
     }
-    
-    public void adopt(Vehicle v){
-        slave = v;
+
+    public Entity getRider() { return rider; }
+
+    public Vehicle getVehicle(){
+        return slave;
     }
-    
+
+    public boolean isMounted() {
+        if (rider == null) return false;
+        else return true;
+    }
+
+    public void mount(Entity new_rider) {
+        if (rider != null) {
+            unmount();
+        }
+
+        rider = new_rider;
+        rider.addStatus(Status.MOUNTED);
+    }
+
     public void release(){
         slave = null;
     }
-    
-    public Vehicle getVehicle(){
-        return slave;
+
+    public void toggleMount(Entity new_rider) {
+        if (isMounted()) {
+            unmount();
+        } else {
+            mount(new_rider);
+        }
+    }
+
+    public void unmount() {
+        if (rider != null) { rider.removeStatus(Status.MOUNTED); }
+        rider = null;
     }
 }

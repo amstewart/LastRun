@@ -60,6 +60,16 @@ public class Tile {
             Util.dbgOut("I can't release " + a + " because I am not an entity owner", 3);
         }        
     }
+
+    public void toggleMount() {
+        myVehicle.toggleMount(myEntities.getEntity());
+    }
+
+    public boolean vehicleMounted() {
+        if (this.isVehicleOwner()) {
+            return myVehicle.isMounted();
+        } else return false;
+    }
     
     public void addProjectile(Projectile p) {
         if (!isProjectileOwner()) {
@@ -114,7 +124,6 @@ public class Tile {
             Util.dbgOut("I can't release " + i.getName() + " because I am not an item owner", 3);
         }
     }
-    
 
     public void addPet(Pet p) {
         if (!isPetOwner()) {
@@ -239,7 +248,8 @@ public class Tile {
     }
     
     public Vehicle getVehicle(){
-        return myVehicle.getVehicle();
+        if (myVehicle == null) return null;
+        else return myVehicle.getVehicle();
     }
     
     public Item getItem(){
@@ -278,7 +288,6 @@ public class Tile {
           return myEntities;
     }
 
-
 	public void accept(Entity e) {
 		if(myItems != null){
 			Set<Item> items = myItems.getItems();
@@ -287,7 +296,6 @@ public class Tile {
 			}
 		}
 	}
-
 
 	public void accept(Projectile p, Boolean affect) {
 		if(myEntities != null){
@@ -298,7 +306,6 @@ public class Tile {
 			}
 		}
 	}
-
 
 	public Projectile getProjectile() {
 		return myProjectiles.getProjectile();
