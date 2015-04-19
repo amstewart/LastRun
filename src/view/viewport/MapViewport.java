@@ -15,6 +15,7 @@ import javax.swing.JButton;
 
 import model.Vector2;
 import model.map.GameMap;
+import model.map.Trap;
 import model.movement.EntityMovement;
 import utility.ImageUtil;
 
@@ -116,6 +117,12 @@ public class MapViewport extends Viewport {
                 	 drawAreaEffect(g, i,j,positionX,positionY, offsetY);
                 }
                 
+                if(map.getTile(i,j).isTrapOwner()){
+                	if(map.getTile(i,j).getTrap().isVisible()){
+                		drawTrap(g, i,j,positionX,positionY, offsetY);
+                	}
+                }
+                
                 if(map.getTile(i,j).isItemOwner()){
                 	 drawItem(g, i,j,positionX,positionY, offsetY);
                 }
@@ -165,6 +172,12 @@ public class MapViewport extends Viewport {
         ImageIcon image= ImageUtil.getImage(img); //this function has not been tested. Just prematurely made
         g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
    }
+    
+   private void drawTrap(Graphics g, int i,int j, int positionX, int positionY, int offsetY){
+   	String img= map.getTile(i,j).getTrap().getAssetID();
+    ImageIcon image= ImageUtil.getImage(img);
+    g.drawImage(image.getImage(),positionX,positionY+offsetY, hexWidth, hexHeight, this);
+}
 
     private void drawEntities(Graphics g) {
         int windowWidth = (int) (this.getSize().width);

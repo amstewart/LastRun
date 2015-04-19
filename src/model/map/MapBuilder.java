@@ -82,6 +82,7 @@ public class MapBuilder {
         tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
         tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));
         tiles[6][4].addAreaEffect(new HealDamageAreaEffect(ImageUtil.REDCROSS));
+        tiles[3][3].addTrap(new SpikeTrap(ImageUtil.SPIKETRAP));
     }
     
     
