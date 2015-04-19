@@ -37,6 +37,7 @@ public abstract class Entity implements Describable, Assetable{
 	private EntityOwner pets = new EntityOwner();
     private String name = "NONAME";
     private Stats stats;
+ 
     private Stats saving_stats = DefinedStats.ENTITYSTATS.getStats();
 	private LinkedList<Status> statuses = new LinkedList<Status>();
 	private BankAccount bankAccount;
@@ -45,6 +46,7 @@ public abstract class Entity implements Describable, Assetable{
 
 	public Entity() {
 		this.stats = saving_stats;
+		stats.deriveStats();
 		setCanMoveOnGrass(true);
 		bankAccount = new BankAccount(initialAmount);
 	}

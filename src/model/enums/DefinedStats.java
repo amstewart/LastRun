@@ -26,7 +26,8 @@ public enum DefinedStats {
 	ADDCHESTARMOR(new Stats(0, 0, 0, 0, 0, 0, 0, 10, 0)),
 	ADDLEGARMOR(new Stats(0, 0, -4, 0 ,0 ,0 ,0 ,0, 10)),
 	ADDWEAPON(new Stats(0, 0, 0, 0, 0, 0, 0, 0, 10)),
-	ENTITYSTATS(new Stats(10,10,10,10,10,10,1,10,10));
+	ENTITYSTATS(new Stats(3,10,10,10,10,10,1,10,10));
+	
 
 	Stats stat;
 
