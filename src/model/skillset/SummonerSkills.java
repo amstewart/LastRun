@@ -27,7 +27,7 @@ public class SummonerSkills extends BasicSkills {
     	Bane baneEffect1 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHARDINESS.getStats());
     	Bane baneEffect2 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDHEALTH.getStats());
     	Bane baneEffect3 = new Bane(ImageUtil.FIREBALL, DefinedStats.ADDINTELLECT.getStats());
-    	bane = new SpellSkill("Bane", 2, baneEffect1, baneEffect2, baneEffect3, 1);
+    	bane = new SpellSkill("Bane", 2, baneEffect1, baneEffect2, baneEffect3, 3);
   
       //  enchantment = new SpellSkill("Enchantment", 1);
        // staff = new ExternalSkill("Staff", 1);
