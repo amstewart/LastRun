@@ -46,7 +46,7 @@ public class GameState extends State {
     public void onEnter() {
         render();
 
-        KeyController kc = new KeyController(map, player, mapVP);
+        GameController kc = new GameController(map, player, mapVP);
         getViewport().addKeyListener(kc);
 
         MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 2);
