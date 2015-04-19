@@ -69,11 +69,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
             }
         }
 
-        //TEMPORARY
         if (activationItems != null) {
             for (ActivationItem item : activationItems) {
                 this.add(new ActivationItemButton(item));
-                System.out.println(item.getName()+ " WAS ADDED");
             }
         }
     }
@@ -210,7 +208,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
             }
         }
     }
-
+    // TODO: Add drop action
     public class ActivationItemButton extends JButton {
         private ActivationItem item;
 
