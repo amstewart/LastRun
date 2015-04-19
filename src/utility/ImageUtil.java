@@ -145,8 +145,8 @@ public class ImageUtil {
     public static final String LEGS1 = DIR_ITEMS + "Legs1.png";
     public static final String LEGS2 = DIR_ITEMS + "Legs2.png";
     public static final String LEGS3 = DIR_ITEMS + "Legs3.png";
-    public static final String CHEST2 = DIR_ITEMS + "Chest2.png";
-    public static final String CHEST3 = DIR_ITEMS + "Chest3.png";
+    public static final String CHEST2 = DIR_ITEMS + "Chest2.jpeg";
+    public static final String CHEST3 = DIR_ITEMS + "Chest3.jpeg";
     //Projectiles//
 
     public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";

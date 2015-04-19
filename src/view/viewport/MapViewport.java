@@ -141,6 +141,11 @@ public class MapViewport extends Viewport {
                     if (map.getTile(i, j).isAreaEffectOwner()) {
                         drawAreaEffect(g, i, j, positionX, positionY, offsetY);
                     }
+                    
+                    if(map.getTile(i,j).isTrapOwner()){
+                    	if(map.getTile(i,j).getTrap().isVisible())
+                    	drawTrap(g, i, j, positionX, positionY, offsetY);
+                    }
 
                     if (map.getTile(i, j).isItemOwner()) {
                         drawItem(g, i, j, positionX, positionY, offsetY);
@@ -156,7 +161,7 @@ public class MapViewport extends Viewport {
                 if (i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0) {
                     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
                     coordinate = "Cant Go Here";
-                    //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
+                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
                     cantMoveTimer -= 0.02;
                 } else {
                    // g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
@@ -181,6 +186,12 @@ public class MapViewport extends Viewport {
 
     private void drawAreaEffect(Graphics g, int i, int j, int positionX, int positionY, int offsetY) {
         String img = map.getTile(i, j).getAreaEffect().getAssetID();
+        ImageIcon image = ImageUtil.getImage(img);
+        g.drawImage(image.getImage(), positionX, positionY + offsetY, hexWidth, hexHeight, this);
+    }
+    
+    private void drawTrap(Graphics g, int i, int j, int positionX, int positionY, int offsetY) {
+        String img = map.getTile(i, j).getTrap().getAssetID();
         ImageIcon image = ImageUtil.getImage(img);
         g.drawImage(image.getImage(), positionX, positionY + offsetY, hexWidth, hexHeight, this);
     }

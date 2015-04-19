@@ -5,6 +5,7 @@ import model.bank.BankAccount;
 import model.entity.Entity;
 import model.stat.Stats;
 import model.tile.Tile;
+import view.viewport.DialogueViewport;
 
 public class NonEquippableItem extends TakeableItem {
 
@@ -30,7 +31,7 @@ public class NonEquippableItem extends TakeableItem {
     }
 
     public void use(Stats stats) {
-        System.out.println("You just used " + this.getName());
+        DialogueViewport.getInstance().print("You just used " + this.getName());
         stats.mergeStats(getItemStats());
     }
 }

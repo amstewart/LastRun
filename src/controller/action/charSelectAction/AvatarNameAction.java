@@ -1,7 +1,6 @@
 package controller.action.charSelectAction;
 
 import controller.action.Action;
-import javax.swing.JTextField;
 import model.entity.Avatar;
 
 public class AvatarNameAction extends Action {

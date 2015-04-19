@@ -3,6 +3,7 @@ package model.item;
 import model.bank.BankAccount;
 import model.entity.Entity;
 import model.tile.Tile;
+import view.viewport.DialogueViewport;
 
 public class ActivationItem extends TakeableItem {
 
@@ -14,6 +15,7 @@ public class ActivationItem extends TakeableItem {
 
     @Override
     public void touch(Inventory inventory) {
+        DialogueViewport.getInstance().print("Added Activation Item: " + this.getName());
         inventory.add(this);
     }
 

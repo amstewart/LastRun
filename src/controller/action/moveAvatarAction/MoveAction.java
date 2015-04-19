@@ -44,13 +44,28 @@ public abstract class MoveAction extends Action {
                 map.moveTileEntities(source, dest);
             }
 
-            if (!mover.is(Status.INVISIBLE)) {
+            /*if (!mover.is(Status.INVISIBLE)) {
                 refaceAvatar();
-            }
-
+            }*/
+            
             source = dest;
+            Entity e= source.getEntity();
+            if(source.isAreaEffectOwner()){
+            	applyAreaEffect(e,source);
+            }
+            if(source.isTrapOwner()){
+            	applyTrapEffect(e,source);
+            }
+            
         }
+        
+        refaceAvatar();
     }
-
+    private void applyAreaEffect(Entity e, Tile dest) {
+        dest.getAreaEffect().apply(e);
+    }
+    private void applyTrapEffect(Entity e, Tile dest){
+    	dest.getTrap().apply(e);
+    }
     protected abstract void refaceAvatar();
 }

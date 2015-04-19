@@ -2,7 +2,6 @@ package model.entity.npc;
 
 import model.entity.Entity;
 import model.skill.Skill;
-import state.NPCBehaviour.NPCHostile;
 import state.stateMachine.NPCBehaviourMachine;
 
 import java.util.ArrayList;

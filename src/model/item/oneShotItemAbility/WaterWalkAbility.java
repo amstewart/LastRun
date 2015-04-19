@@ -1,6 +1,7 @@
 package model.item.oneShotItemAbility;
 
 import model.entity.Entity;
+import view.viewport.DialogueViewport;
 
 public class WaterWalkAbility implements Ability {
     private boolean walkAbility;
@@ -11,6 +12,7 @@ public class WaterWalkAbility implements Ability {
 
     @Override
     public void perform(Entity e) {
+        DialogueViewport.getInstance().print("Looks like I can walk on water like...");
         e.setCanMoveOnWater(walkAbility);
     }
 }

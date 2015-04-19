@@ -24,7 +24,7 @@ public class RPGStateMachine extends StateMachine{
         charSelect = new CharacterSelectionState(gameBundle.getAvatar());
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
         intro = new IntroState(gameBundle.getAvatar().getOccupation());
-        merchant = new MerchantState();
+        merchant = new MerchantState(gameBundle.getAvatar().getInventory(), gameBundle.getAvatar().getBankAccount());
         pause = new PauseState();
         
         this.add("menu", menu);

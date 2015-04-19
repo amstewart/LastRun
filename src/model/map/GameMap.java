@@ -37,7 +37,7 @@ public class GameMap {
     private EntityMovement avatarMovement;
 
     public GameMap() {
-        m = new MapBuilder();
+        m = new MapBuilder(this);
         map = m.getMap();
         miniMap = new MiniMap();
         addMapObserver(miniMap);
@@ -392,12 +392,25 @@ public class GameMap {
             o.receiveMap(this);
         }
     }
+    
+    public ArrayList<Tile> createLocalAreaLinear(int radius, Vector2 center){
+    	Vector2 facingDir=getAvatarMovement().getFacingDir();
+    	ArrayList<Tile> tileList = new ArrayList<Tile>();
+    	tileList.add(getTile(center));
+    	Tile currTile=getTile(center);
+    	for(int i=0;i<radius;++i){
+    		currTile=getTileInDirection(facingDir,getTile(currTile.getLocation()));
+    		tileList.add(currTile);
+    	}
+    	return tileList;
+    }
 
     public ArrayList<Tile> createLocalAreaAngular(int radius, Vector2 center) {
     	ArrayList<Tile> tileList= new ArrayList<Tile>();
     	boolean [][]visited= new boolean[getHeight()][getWidth()];
     	Vector2 facingDir=getAvatarMovement().getFacingDir();
     	ArrayList<Integer> list= returnIndex(facingDir);
+    	int absoluteDirection= list.get(0);
     	Queue<Tile> queue= new LinkedList<Tile>();
     	Queue<Integer> ind = new LinkedList<Integer>();
     	tileList.add(getTile(center));
@@ -440,7 +453,7 @@ public class GameMap {
     				if(index==5)tileToAdd=getTileToTheNorthWest(currTile);
     			}
     			else{
-    				if(index!=tileOrientation || tileOrientation==0 || tileOrientation==3){
+    				if(index!=tileOrientation || index==absoluteDirection){
     					if(index==0)tileToAdd=getTileToTheNorth(currTile);
         				if(index==1)tileToAdd=getTileToTheNorthEast(currTile);
         				if(index==2)tileToAdd=getTileToTheSouthEast(currTile);

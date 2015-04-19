@@ -1,11 +1,13 @@
 package model.map;
 
+import model.areaEffect.TeleportAreaEffect;
 import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
 import utility.ImageUtil;
 import model.Vector2;
 import model.tile.Tile;
 import model.areaEffect.HealDamageAreaEffect;
+import model.areaEffect.InstantDeathAreaEffect;
 import model.areaEffect.LevelUpAreaEffect;
 import model.areaEffect.TakeDamageAreaEffect;
 import model.item.ItemFactory;
@@ -19,8 +21,10 @@ public class MapBuilder {
     private Tile[][] tiles;
     private int width=30;
     private int height=30;
+    private GameMap gameMap;
 
-    public MapBuilder(){
+    public MapBuilder(GameMap gameMap){
+        this.gameMap = gameMap;
     	//generateMapDebug();
     	//generateMapRandom();
         generateMapDemo();
@@ -28,6 +32,7 @@ public class MapBuilder {
 
     public static void addVehicle(GameMap map, Vector2 pos, String name, String art_asset, int speed) {
         Vehicle vic = new Vehicle(art_asset, name, speed);
+        vic.addTerrainMovement(Terrain.TerrainType.Mountain);
         map.addVehicle(vic, pos);
     }
 
@@ -39,6 +44,9 @@ public class MapBuilder {
 
         TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
         LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
+        HealDamageAreaEffect healDamageAreaEffect= new HealDamageAreaEffect(ImageUtil.REDCROSS);
+        InstantDeathAreaEffect instantDeathAreaEffect = new InstantDeathAreaEffect(ImageUtil.CROSSBONE);
+        SpikeTrap spikeTrap = new SpikeTrap(ImageUtil.SPIKETRAP);
 
         for(int i = 0; i < width; i ++) {
             for(int j = 0; j < height; j++) {
@@ -51,7 +59,8 @@ public class MapBuilder {
                     tiles[i][j].addTerrain(grassTerrain);
                 }
                 double chance = Math.random();
-                if(chance > 0.99) {
+                if(chance > 0.65) {
+                	if(i>5 && i!=8 && i!=26 && j>2 && j!=4 && j!=13)
                     tiles[i][j].addItem(ItemFactory.getRandomItem());
                 }
             }
@@ -60,6 +69,12 @@ public class MapBuilder {
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
         tiles[8][13].addItem(ItemFactory.newClosedChest());
+        tiles[2][2].addAreaEffect(takeDamageAreaEffect);
+        tiles[3][2].addAreaEffect(levelUpAreaEffect);
+        tiles[4][2].addAreaEffect(healDamageAreaEffect);
+        tiles[5][2].addAreaEffect(instantDeathAreaEffect);
+        tiles[4][4].addTrap(spikeTrap);
+        
     }
 
     public void generateMapDebug() {
