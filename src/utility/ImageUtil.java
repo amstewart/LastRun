@@ -195,7 +195,13 @@ public class ImageUtil {
     
     /*** CHARACTER SELECTION VIEW PORT ***/
     public static final String INTRO_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
-
+    
+     /*** GAME VIEW SELECTION VIEW PORT ***/   
+    public static final String GAME_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
+    
+    /*** CHARACTER SELECTION VIEW PORT ***/
+    public static final String SKILLS_DECAL = DIR_DECALS + "GoldStart.png";
+    
     /**
      * * MAP VIEW PORT **
      */

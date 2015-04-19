@@ -6,10 +6,10 @@ import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
 import model.skill.SpellSkill;
-import view.viewport.SkillPtAllocationViewport;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import view.viewport.SkillsViewport;
 
 public abstract class BasicSkills {
 
@@ -18,15 +18,15 @@ public abstract class BasicSkills {
 	private ExternalSkill observation;
 
 	private int skillPoints = 5;
-	private ArrayList<SkillPtAllocationViewport> registeredViews;
+	private ArrayList<SkillsViewport> registeredViews;
 
-	public void registerView(SkillPtAllocationViewport view) {
+	public void registerView(SkillsViewport view) {
 		registeredViews.add(view);
 	}
 
 	public void notifyViews() {
             try{
-		for (SkillPtAllocationViewport view : registeredViews) {
+		for (SkillsViewport view : registeredViews) {
 			view.receiveSkillInfo(getSkills(), skillPoints);
 		}
             }catch(ConcurrentModificationException ex){}
@@ -46,7 +46,7 @@ public abstract class BasicSkills {
 	}
 
 	public BasicSkills() {
-		registeredViews = new ArrayList<SkillPtAllocationViewport>();
+		registeredViews = new ArrayList<SkillsViewport>();
 		// bargain = new ExternalSkill("Bargain", 1);
 		BindWounds bw = new BindWounds();
 		bindWound = new InternalSkill("BindWound", 1, bw, false);

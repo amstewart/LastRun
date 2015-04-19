@@ -8,10 +8,13 @@ package view.viewport;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import model.entity.Avatar;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.stat.Stats;
+import utility.ImageUtil;
 
 /**
  *
@@ -23,17 +26,20 @@ public class GViewport extends Viewport {
     /**
      * Creates new form GViewport
      */
+    
     private Viewport mapVP;
     private StatsViewport statsVP;
     private InventoryViewport invVP;
     private EquipmentViewport equipVP;
-    private SkillPtAllocationViewport skillPtAllocationVP;
+    private SkillsViewport skillsViewport;
     private DialogueViewport dialogueViewport;
     
     public GViewport(MapViewport mapVP, Inventory inventory, Avatar a) {
         Occupation occupation = a.getOccupation();
         Stats stats = a.getStats();
         initComponents();
+        
+        backgroundImage = new ImageIcon(ImageUtil.GAME_BACKGROUND);
         
         // This create View ports
         this.mapVP = mapVP;
@@ -43,12 +49,12 @@ public class GViewport extends Viewport {
         equipVP = new EquipmentViewport(occupation.getEquipmentHandler(), a.getStats());
         a.addObserver(equipVP);
         statsVP = new StatsViewport(stats);
-        skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillBook());
         dialogueViewport = DialogueViewport.getInstance();
         mapVP.setBackground(Color.lightGray);
         statsVP.setBackground(Color.lightGray);
-        skillPtAllocationVP.setBackground(Color.yellow);
+       
         dialogueViewport.setBackground(Color.yellow);
+        skillsViewport = new SkillsViewport(occupation.getSkillBook());
         
         addViewPorts();
     }
@@ -57,23 +63,30 @@ public class GViewport extends Viewport {
         gamePanel.setLayout( new BorderLayout() );
         gamePanel.add( mapVP , BorderLayout.CENTER );
         
-        iventoryPanel.setLayout( new BorderLayout() );
-        iventoryPanel.add( invVP , BorderLayout.CENTER );
+        inventoryPanel.setLayout( new BorderLayout() );
+        inventoryPanel.add( invVP , BorderLayout.CENTER );
         
-        equipedInventoryPanel.setLayout( new BorderLayout() );
-        equipedInventoryPanel.add( equipVP , BorderLayout.CENTER );
         
         statsPanel.setLayout( new BorderLayout() );
         statsPanel.add( statsVP , BorderLayout.CENTER );
         
         skillsPanel.setLayout( new BorderLayout() );
-        skillsPanel.add( dialogueViewport , BorderLayout.CENTER );
+        skillsPanel.add( skillsViewport , BorderLayout.CENTER );
         
         dialoguePanel.setLayout( new BorderLayout() );
         dialoguePanel.add( dialogueViewport , BorderLayout.CENTER );
         
+        
+        
         this.revalidate();
         this.repaint();
+    }
+    
+     @Override
+    public void paintComponent(Graphics g){
+    
+        super.paintComponent(g);
+        g.drawImage(backgroundImage.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
     }
     
     @Override
@@ -86,20 +99,21 @@ public class GViewport extends Viewport {
         invVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         dialogueViewport.setPreferredSize(new Dimension((int) (width * 0.4), (int) (height * 0.25)));
         statsVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
-        skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.25)));
         
         revalidate();
         this.repaint();
         mapVP.render();
         statsVP.render();
-        skillPtAllocationVP.render();
+        skillsViewport.render();
         dialogueViewport.render();
         this.requestFocusInWindow();
     }
     
     public void updateOccupation(Occupation o){
-    	skillPtAllocationVP.updateOccupation(o.getSkillBook());
+    	skillsViewport.updateOccupation(o.getSkillBook());
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,9 +127,7 @@ public class GViewport extends Viewport {
         gamePanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         statsPanel = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        iventoryPanel = new javax.swing.JPanel();
-        equipedInventoryPanel = new javax.swing.JPanel();
+        inventoryPanel = new javax.swing.JPanel();
         skillsPanel = new javax.swing.JPanel();
         dialoguePanel = new javax.swing.JPanel();
 
@@ -135,6 +147,7 @@ public class GViewport extends Viewport {
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 0));
+        jPanel2.setOpaque(false);
 
         javax.swing.GroupLayout statsPanelLayout = new javax.swing.GroupLayout(statsPanel);
         statsPanel.setLayout(statsPanelLayout);
@@ -147,45 +160,20 @@ public class GViewport extends Viewport {
             .addGap(0, 172, Short.MAX_VALUE)
         );
 
-        jPanel5.setBackground(new java.awt.Color(51, 0, 51));
+        inventoryPanel.setBackground(new java.awt.Color(51, 0, 51));
 
-        javax.swing.GroupLayout iventoryPanelLayout = new javax.swing.GroupLayout(iventoryPanel);
-        iventoryPanel.setLayout(iventoryPanelLayout);
-        iventoryPanelLayout.setHorizontalGroup(
-            iventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 191, Short.MAX_VALUE)
+        javax.swing.GroupLayout inventoryPanelLayout = new javax.swing.GroupLayout(inventoryPanel);
+        inventoryPanel.setLayout(inventoryPanelLayout);
+        inventoryPanelLayout.setHorizontalGroup(
+            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 374, Short.MAX_VALUE)
         );
-        iventoryPanelLayout.setVerticalGroup(
-            iventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        inventoryPanelLayout.setVerticalGroup(
+            inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 162, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout equipedInventoryPanelLayout = new javax.swing.GroupLayout(equipedInventoryPanel);
-        equipedInventoryPanel.setLayout(equipedInventoryPanelLayout);
-        equipedInventoryPanelLayout.setHorizontalGroup(
-            equipedInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
-        );
-        equipedInventoryPanelLayout.setVerticalGroup(
-            equipedInventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(iventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(equipedInventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(iventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(equipedInventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
+        skillsPanel.setOpaque(false);
         skillsPanel.setPreferredSize(new java.awt.Dimension(300, 203));
 
         javax.swing.GroupLayout skillsPanelLayout = new javax.swing.GroupLayout(skillsPanel);
@@ -204,7 +192,7 @@ public class GViewport extends Viewport {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(statsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(inventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(skillsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -212,7 +200,7 @@ public class GViewport extends Viewport {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(statsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(inventoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(skillsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -252,11 +240,9 @@ public class GViewport extends Viewport {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel dialoguePanel;
-    private javax.swing.JPanel equipedInventoryPanel;
     private javax.swing.JPanel gamePanel;
-    private javax.swing.JPanel iventoryPanel;
+    private javax.swing.JPanel inventoryPanel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel skillsPanel;
     private javax.swing.JPanel statsPanel;
     // End of variables declaration//GEN-END:variables

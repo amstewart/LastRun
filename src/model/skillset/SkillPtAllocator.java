@@ -1,31 +1,31 @@
 package model.skillset;
 
 import model.skill.Skill;
-import view.viewport.SkillPtAllocationViewport;
 
 import java.util.ArrayList;
+import view.viewport.SkillsViewport;
 // Responsible for allocating points to any skill within that set.
 
 public class SkillPtAllocator {
 
-    private ArrayList<SkillPtAllocationViewport> registeredViews;
+    private ArrayList<SkillsViewport> registeredViews;
 
     private int skillPoints;
     private Skill[] skills;
 
     public SkillPtAllocator(int skillPoints, Skill[] skills) {
-        registeredViews = new ArrayList<SkillPtAllocationViewport>();
+        registeredViews = new ArrayList<SkillsViewport>();
 
         this.skillPoints = skillPoints;
         this.skills = skills;
     }
 
-    public void registerView(SkillPtAllocationViewport view) {
+    public void registerView(SkillsViewport view) {
         registeredViews.add(view);
     }
 
     public void notifyViews() {
-        for(SkillPtAllocationViewport view: registeredViews) {
+        for(SkillsViewport view: registeredViews) {
             view.receiveSkillInfo(skills, skillPoints);
         }
     }
