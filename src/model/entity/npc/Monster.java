@@ -35,4 +35,7 @@ public class Monster extends NPC {
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
     }
+
+    
+    
 }

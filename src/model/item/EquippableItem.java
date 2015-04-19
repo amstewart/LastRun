@@ -42,4 +42,8 @@ public class EquippableItem extends TakeableItem {
 		
 	}
 
+    public String getSlotCategory() {
+        return slotCategory;
+    }
+
 }
