@@ -2,6 +2,7 @@ package model.skillset;
 
 import model.effect.BindWounds;
 import model.effect.Observe;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -70,5 +71,8 @@ public abstract class BasicSkills {
 
 	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);
+
+	public abstract void registerEquipmentHandlers(
+			ArrayList<EquipmentHandlerObserver> observers);
 
 }

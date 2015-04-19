@@ -22,8 +22,9 @@ public class Sneak extends Occupation {
     private SneakSkills skills;
 
     public Sneak(Inventory inventory, Stats playerStats) {
-        super(inventory, playerStats);
-        skills = new SneakSkills();
+        super(inventory, playerStats);   
+    	skills = new SneakSkills();
+    	getEquipmentHandler().setEquipmentManager();
         setSneakItemSlots();
     }
 
@@ -82,6 +83,11 @@ public class Sneak extends Occupation {
 	@Override
 	public void performPassiveExternalSkill(String s, Entity e, GameMap map) {
 		skills.performPassiveExternalSkill(s,e,map);
+		
+	}
+	@Override
+	public void performWeaponSkills(Entity e) {
+		skills.performWeaponSkills(e);
 		
 	}
 

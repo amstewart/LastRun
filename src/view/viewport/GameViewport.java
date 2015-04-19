@@ -43,10 +43,10 @@ public class GameViewport extends Viewport {
         
         // This create View ports
         this.mapVP = mapVP;
-        invVP = new InventoryViewport(inventory, occupation.getEquipmentHandler(), a.getStats());
+        invVP = new InventoryViewport(inventory, occupation.getEquipmentHandler(), a.getStats(),a);
         inventory.addObserver(invVP);
         a.addObserver(invVP);
-        equipVP = new EquipmentViewport(occupation.getEquipmentHandler(), a.getStats());
+        equipVP = new EquipmentViewport(occupation.getEquipmentHandler(), a.getStats(),a);
         a.addObserver(equipVP);
         statsVP = new StatsViewport(stats);
         dialogueViewport = DialogueViewport.getInstance();

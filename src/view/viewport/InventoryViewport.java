@@ -51,10 +51,11 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
 
     private JMenuItem cancel = new JMenuItem("Cancel");
     private JMenuItem cancel2 = new JMenuItem("Cancel");
+    Avatar av;
 
-    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats) {
-
-        equipAction = new EquipAction(eH, playerStats);
+    public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats, Avatar av) {
+    	this.av = av;
+        equipAction = new EquipAction(av, playerStats);
         useAction = new UseAction(inventory, playerStats);
         inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
@@ -74,7 +75,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         
         
         
-        equipmentViewport = new EquipmentViewport(eH, playerStats);
+        equipmentViewport = new EquipmentViewport(eH, playerStats, av);
         add(equipmentViewport);
         
         panel.setBackground(Color.WHITE);
@@ -136,9 +137,9 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     @Override
     public void receiveOccupation(Occupation o, Stats playerStats) {
         remove(equipmentViewport);
-        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats);
+        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats, null);
         add(equipmentViewport);
-        equipAction = new EquipAction(o.getEquipmentHandler(), playerStats);
+        equipAction = new EquipAction(av, playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));
     }
 
