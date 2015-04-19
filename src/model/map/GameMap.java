@@ -308,11 +308,11 @@ public class GameMap {
         notifyObserversMapHasChanged();
     }
     
-   public void addMapObserver(MapObserver o) {
-       observers.add(o);
+    public void addMapObserver(MapObserver o) {
+        observers.add(o);
         notifyObserversMapHasChanged();
     }
-    
+
     private void notifyObserversMapHasChanged(){
         for(MapObserver o : observers){
             o.receiveMap(this);

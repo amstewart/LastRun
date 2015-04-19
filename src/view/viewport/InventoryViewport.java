@@ -8,22 +8,18 @@ import controller.action.inventoryAction.UseAction;
 import java.awt.IllegalComponentStateException;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import model.item.EquippableItem;
-import model.item.Inventory;
-import model.item.NonEquippableItem;
+import java.util.ArrayList;
+
+import model.item.*;
 import model.observer.InventoryObserver;
 
 import javax.swing.*;
 import model.entity.occupation.Occupation;
-import model.item.EquipmentHandler;
 import model.observer.AvatarObserver;
 import model.stat.Stats;
 import utility.ImageUtil;
 
 public class InventoryViewport extends Viewport implements InventoryObserver, AvatarObserver {
-
-    private EquippableItem[] equippableItems = null;
-    private NonEquippableItem[] nonEquippableItems = null;
 
     private EquipAction equipAction;
     private EquipmentDropAction equipmentDropAction;
@@ -55,29 +51,33 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     }
 
     @Override
-    public void receiveEquippableItems(EquippableItem[] equippableItems) {
-        this.equippableItems = equippableItems;
-        renderItems();
+    public void receiveTakeableItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems,
+                                     ArrayList<ActivationItem> activationItems) {
+        // Receives items and partitions them properly.
+        renderItems(equippableItems, nonEquippableItems, activationItems);
     }
 
-    @Override
-    public void receiveNonEquippableItems(NonEquippableItem[] nonEquippableItems) {
-        this.nonEquippableItems = nonEquippableItems;
-        renderItems();
-    }
-
-    private void renderItems() {
+    private void renderItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems,
+                             ArrayList<ActivationItem> activationItems) {
         this.removeAll();
         this.add(new JLabel("Inventory"));
         if (equippableItems != null) {
-            for (EquippableItem i : this.equippableItems) {
+            for (EquippableItem i : equippableItems) {
                 this.add(new EquippableItemButton(i));
             }
         }
 
         if (nonEquippableItems != null) {
-            for (NonEquippableItem i : this.nonEquippableItems) {
+            for (NonEquippableItem i : nonEquippableItems) {
                 this.add(new NonEquippableItemButton(i));
+            }
+        }
+
+        //TEMPORARY
+        if (activationItems != null) {
+            for (ActivationItem item : activationItems) {
+                this.add(new ActivationItemButton(item));
+                System.out.println(item.getName()+ " WAS ADDED");
             }
         }
     }
@@ -212,6 +212,16 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
             @Override
             public void mouseExited(MouseEvent e) {
             }
+        }
+    }
+
+    public class ActivationItemButton extends JButton {
+        private ActivationItem item;
+
+        public ActivationItemButton(ActivationItem activationItem) {
+            super(ImageUtil.getImage(activationItem.getAssetID()));
+            this.item = activationItem;
+            this.setToolTipText(item.getName());
         }
     }
 
