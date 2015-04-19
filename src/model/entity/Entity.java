@@ -284,5 +284,17 @@ public abstract class Entity implements Describable, Assetable{
 	
 	public abstract void accept(EntityVisitor visitor,VisitorContainer container);
 
+	public void rob(Entity e) {
+		e.giveItems(this.inventory);
+		
+	}
+
+	private void giveItems(Inventory inventory2) {
+		EquippableItem i = inventory.getEquippableItem();
+		if( i != null){
+			inventory2.add(i);
+		}
+	}
+
 
 }

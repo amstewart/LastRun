@@ -1,11 +1,15 @@
 package model.skill;
 
+import java.util.HashMap;
+
 import controller.KeyController;
 import model.effect.InternalEffect;
 import model.entity.Entity;
+import model.item.EquippableItem;
 import model.map.LocalArea;
+import model.observer.EquipmentHandlerObserver;
 
-public class InternalSkill extends Skill{
+public class InternalSkill extends Skill implements EquipmentHandlerObserver{
 	InternalEffect effect;
 
 
@@ -23,6 +27,14 @@ public class InternalSkill extends Skill{
 		applyMultiplier();
 		effect.applyEffect(entity);
 	}
+	@Override
+	public void receiveEquipment(HashMap<String, EquippableItem> equipment) {
+		effect.applyEffect(equipment);
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -5,9 +5,13 @@ import java.util.HashMap;
 
 import model.effect.Creep;
 import model.effect.DetectTrap;
+import model.effect.WeaponBasedStatModifier;
 import model.entity.Entity;
+import model.entity.occupation.Occupation;
+import model.entity.occupation.Sneak;
 import model.enums.SkillStrings;
 import model.map.GameMap;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -27,7 +31,8 @@ public class SneakSkills extends BasicSkills {
 		creep = new InternalSkill("Creep", 1, creepEffect, false);
 		trapDetectionRemoval = new ExternalSkill("TrapRemoval", 1, detectTrap,
 				5, true);
-		// range = new InternalSkill("Range", 1);
+		WeaponBasedStatModifier wp = new WeaponBasedStatModifier(Sneak.CHEST,1);
+		range = new InternalSkill("Range",1, wp,true);
 
 		passiveSkills_int.put(SkillStrings.RANGE, range);
 		passiveSkills_ex.put(SkillStrings.DETECTTRAP, trapDetectionRemoval);
@@ -78,4 +83,18 @@ public class SneakSkills extends BasicSkills {
 		skill.performSkill(e);
 
 	}
+
+	@Override
+	public void registerEquipmentHandlers(
+			ArrayList<EquipmentHandlerObserver> observers) {
+		observers.add(range);
+		
+	}
+
+	public void performWeaponSkills(Entity e) {
+		range.performSkill(e);
+
+		
+	}
+
 }

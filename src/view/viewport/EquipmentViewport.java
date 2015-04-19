@@ -31,11 +31,13 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     private JMenuItem equipmentUnEquip = new JMenuItem("UnEquip");
 
     private UnequipAction unequipAction;
+    Avatar av;
 
-    public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats) {
+    public EquipmentViewport(EquipmentHandler equipmentHandler, Stats playerStats, Avatar av) {
         equipmentHandler.addObserver(this);
+        this.av = av;
 
-        unequipAction = new UnequipAction(equipmentHandler, playerStats);
+        unequipAction = new UnequipAction(av, playerStats);
         setUpMenu();
     }
 
@@ -95,7 +97,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
 
     @Override
     public void receiveOccupation(Occupation o, Stats playerStats) {
-        unequipAction = new UnequipAction(o.getEquipmentHandler(), playerStats);
+        unequipAction = new UnequipAction(av, playerStats);
         equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
         o.getEquipmentHandler().addObserver(this);
     }

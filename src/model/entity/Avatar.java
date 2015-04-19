@@ -112,10 +112,10 @@ public class Avatar extends Entity {
 	}
 
 	public boolean equip(EquippableItem equippableItem, String slotCategory) {
-		return occupation.equip(equippableItem, slotCategory);
+		return occupation.equip(equippableItem, slotCategory, this);
 	}
 
 	public boolean unequip(EquippableItem equippableItem, String slotCategory) {
-		return occupation.unequip(equippableItem, slotCategory);
+		return occupation.unequip(equippableItem, slotCategory, this);
 	}
 }
