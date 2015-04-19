@@ -40,7 +40,7 @@ public class EntityStatusModifier extends Spell implements SpellEffect, Projecti
 	}
 
 	@Override
-	public void fire(GameMap area, Entity entity, EntityMovement emov, int radius) {
+	public void fire(final GameMap area, Entity entity, EntityMovement emov, final int radius) {
 
 		final Timer timer = new Timer();
 		final Vector2 faceDir = emov.getFacingDir();
