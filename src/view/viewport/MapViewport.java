@@ -224,11 +224,14 @@ public class MapViewport extends Viewport {
     }
 
     private void drawMiniMap(Graphics g) {
-        int draw_x = this.getWidth() - (int)(MMAP_PERC * this.getWidth());
-        int draw_y = 0;
+        // First, calculate the width and height
         int draw_width = (int)(this.getWidth() * MMAP_PERC);
-        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; }
+        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; } // eforce a minimum size
         int draw_height = draw_width;
+
+        // position the minimap in the upper-right
+        int draw_x = this.getWidth() - draw_width;
+        int draw_y = 0;
 
         g.drawImage(this.map.getMiniMap().getBitmap(), draw_x, draw_y, draw_width, draw_height, this);
     }
