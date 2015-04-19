@@ -25,7 +25,7 @@ public class ActivationItem extends TakeableItem {
     public void setInteractionID(int id) {
         this.interactionID = id;
     }
-
+    // Checks if passed in interactive item works with this key
     public boolean activates(InteractiveItem interactiveItem) {
         return interactionID == interactiveItem.getActivationId();
     }

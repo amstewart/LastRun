@@ -1,5 +1,7 @@
 package model.entity.vehicle;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
 import model.entity.npc.NPC;
 
 public class Vehicle extends NPC {
@@ -21,4 +23,9 @@ public class Vehicle extends NPC {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    @Override
+    public void accept(EntityVisitor visitor, VisitorContainer container) {
+
+    }
 }

@@ -1,5 +1,7 @@
 package model.entity.npc;
 
+import Visitor.EntityVisitor;
+import Visitor.VisitorContainer;
 import model.skill.Skill;
 import state.NPCBehaviour.NPCHostile;
 
@@ -25,6 +27,9 @@ public class Monster extends NPC {
 		// TODO Auto-generated method stub
 		return null;
 	}
-    
-    
+
+    @Override
+    public void accept(EntityVisitor visitor, VisitorContainer container) {
+
+    }
 }

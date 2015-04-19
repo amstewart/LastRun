@@ -2,7 +2,8 @@ package model.item;
 
 import model.entity.Entity;
 import model.stat.Stats;
-
+// These items are characterized by their behvaior of being added to the
+// inventory in touch. These items also have a value to be sold.
 public abstract class TakeableItem extends Item {
 
     private Stats stats;
