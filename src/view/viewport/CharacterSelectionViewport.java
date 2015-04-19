@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.entity.Avatar;
 import utility.ImageUtil;
+import utility.StringUtilEnum;
 
 public class CharacterSelectionViewport extends Viewport {
 
@@ -32,9 +33,9 @@ public class CharacterSelectionViewport extends Viewport {
      */
     Avatar avatar;
     DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
-    private String SUMMONER_DESCRIPTION = "Summmoner is the best";
-    private String SMASHER_DESCRIPTION = "Smasher is the best";
-    private String SNEAK_DESCRIPTION = "Sneak is the best";
+    private String SUMMONER_DESCRIPTION = StringUtilEnum.SUMMONER_DESCRIPTION.getDescription();
+    private String SMASHER_DESCRIPTION = StringUtilEnum.SMASHER_DESCRIPTION.getDescription();
+    private String SNEAK_DESCRIPTION = StringUtilEnum.SNEAK_DESCRIPTION.getDescription();
     
     public static void main(String[] args) {
 
