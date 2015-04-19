@@ -101,12 +101,10 @@ public class Avatar extends Entity {
 	}
 	
 	public void accept(EntityVisitor entityVisitor,VisitorContainer container){
-		System.out.println("Inside Avatar accept EntityVisitor");
 		accept(new AvatarVisitor(),container);
 	}
 	
 	public void accept(AvatarVisitor avatarVisitor, VisitorContainer container) {
-		System.out.println("Inside Avatar accept avatarVisitor");
 		OccupationVisitor occVisitor= new OccupationVisitor();
 		occVisitor.visit(getOccupation(),container);
 	}
