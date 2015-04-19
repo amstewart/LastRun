@@ -21,24 +21,13 @@ public abstract class BasicSkills {
 	private int skillPoints = 5;
 	private ArrayList<SkillsViewport> registeredViews;
 
-	public void registerView(SkillsViewport view) {
-		registeredViews.add(view);
-	}
-
-	public void notifyViews() {
-            try{
-		for (SkillsViewport view : registeredViews) {
-			view.receiveSkillInfo(getSkills(), skillPoints);
-		}
-            }catch(ConcurrentModificationException ex){}
-	}
+	
 
 	// some skill was incremented give all the skills to the view
 	public void increment(Skill skill) {
 		if (skillPoints > 0) {
 			skill.increment();
 			skillPoints--;
-			notifyViews();
 		}
 	}
 
