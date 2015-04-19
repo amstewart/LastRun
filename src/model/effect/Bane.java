@@ -56,7 +56,7 @@ public class Bane extends Spell implements SpellEffect, Projectile {
         Tile t = area.getTile(pos);
         t.addProjectile(this);
         
-        final GameTimer gameTimer = new GameTimer(10, true);
+        final GameTimer gameTimer = new GameTimer(2, true);
         GameTimerListener l = new GameTimerListener() {
 
             private Tile oldt = null;
@@ -65,14 +65,13 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 
             @Override
             public void trigger() {
-                System.out.println("FIRE APPLE!");
                 oldt = t;
                 t.removeProjectile(p);
                 t = area.getTileInDirection(faceDir, t);
                 if (oldt == t) {
                     t.removeProjectile(p);
                     ++num;
-                    gameTimer.pause();
+                    gameTimer.destroy();
                 }
                 t.addProjectile(p);
                 boolean affect = false;
@@ -80,12 +79,12 @@ public class Bane extends Spell implements SpellEffect, Projectile {
                 if (affect == true) {
                     t.removeProjectile(p);
                     ++num;
-                    gameTimer.pause();
+                    gameTimer.destroy();
                 }
                 if (radius == numTimes) {
                     t.removeProjectile(p);
                     ++num;
-                    gameTimer.pause();
+                    gameTimer.destroy();
                 }
 
                 numTimes++;
