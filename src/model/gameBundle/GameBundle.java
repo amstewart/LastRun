@@ -9,13 +9,6 @@ import model.item.EquipmentHandler;
 import model.item.Inventory;
 import model.map.GameMap;
 
-/*
-    Game class that holds all necessary components that
-    states will use
-
-    Might violate TDA as clients that use the accessors will for sure
-    change the state outside of this game bundle. Shit. lol.
- */
 public class GameBundle {
     
     private GameMap map;
