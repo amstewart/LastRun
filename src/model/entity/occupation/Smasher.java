@@ -21,7 +21,9 @@ public class Smasher extends Occupation {
 
 	public static final String SHIELD = "Shield";
 
-	public static final String SMASHER_WEAPON = "SmasherWeapon";
+	public static final String TWOHAND = "TWOHAND";
+	public static final String ONEHAND = "ONEHAND";
+	public static final String BRAWL = "BRAWL";
 
 	private SmasherSkills skills;
 
@@ -35,7 +37,9 @@ public class Smasher extends Occupation {
 	private void setSmasherItemSlots() {
 		ArrayList<String> slots = getBasicSlots();
 
-		slots.add(SMASHER_WEAPON);
+		slots.add(ONEHAND);
+		slots.add(TWOHAND);
+		slots.add(BRAWL);
 		slots.add(SHIELD);
 
 		updateEquipmentHandler(slots);
