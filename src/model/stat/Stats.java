@@ -66,6 +66,7 @@ public class Stats {
 	public Stats(){
 		
 	}
+
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
@@ -144,7 +145,7 @@ public class Stats {
 	}
 
 	public void setLivesLeft(int livesLeft) {
-		this.livesLeft += livesLeft;
+		this.livesLeft = livesLeft;
 		deriveStats();
 	}
 
@@ -159,47 +160,47 @@ public class Stats {
 	}
 
 	public void setStrength(int strength) {
-		this.strength += strength;
+		this.strength = strength;
 		deriveStats();
 	}
 
 	public void setAgility(int agility) {
-		this.agility += agility;
+		this.agility = agility;
 		deriveStats();
 	}
 
 	public void setIntellect(int intellect) {
-		this.intellect += intellect;
+		this.intellect = intellect;
 		deriveStats();
 	}
 
 	public void setHardiness(int hardiness) {
-		this.hardiness += hardiness;
+		this.hardiness = hardiness;
 		deriveStats();
 	}
 
 	public void setExperience(int experience) {
-		this.experience += experience;
+		this.experience = experience;
 		deriveStats();
 	}
 
 	public void setMovement(int movement) {
-		this.movement += movement;
+		this.movement = movement;
 		deriveStats();
 	}
 
 	public void setEquippedArmor(int equippedArmor) {
-		this.equippedArmor += equippedArmor;
+		this.equippedArmor = equippedArmor;
 		deriveStats();
 	}
 
 	public void setEquippedWeapon(int equippedWeapon) {
-		this.equippedWeapon += equippedWeapon;
+		this.equippedWeapon = equippedWeapon;
 		deriveStats();
 	}
 
 	public void setMana(int mana) {
-		this.mana += mana;
+		this.mana = mana;
 		notifyViews();
 	}
 

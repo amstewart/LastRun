@@ -6,8 +6,10 @@ import java.util.TimerTask;
 
 import model.bank.BankAccount;
 import model.entity.npc.pet.Pet;
+import model.entity.vehicle.Vehicle;
 import model.item.*;
 import model.owner.EntityOwner;
+import model.owner.VehicleOwner;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -18,11 +20,12 @@ import visitor.EntityVisitor;
 import visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
+import utility.Util;
 
 /**
  * Entities are all game objects which have the ability to move and manipulate
  * items on the map. Entities have simple skills which they can use, can
- * attack, and use other abilities. Entities all have a coin pouch which holds
+ * attack, and use other abilities. Entities all have a bank account which holds
  * their money.
  */
 public abstract class Entity implements Describable, Assetable{
@@ -278,6 +281,7 @@ public abstract class Entity implements Describable, Assetable{
 		timer.schedule(ttask, 4 * 1000);
 		
 	}
+
 	public boolean holds(String s){
 		return false;
 	}
@@ -295,6 +299,4 @@ public abstract class Entity implements Describable, Assetable{
 			inventory2.add(i);
 		}
 	}
-
-
 }

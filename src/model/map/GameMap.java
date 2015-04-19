@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Queue;
 
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
+import model.entity.vehicle.Vehicle;
 import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
@@ -44,23 +46,21 @@ public class GameMap {
         addMapObserver(miniMap);
     }
 
-    public void addEntity(Avatar a) {
-        this.addEntity(a, new Vector2());
-    }
-
     public void addEntity(Avatar a, Vector2 location) {
         getTile(location).addEntity(a);
         avatarMovement = new EntityMovement(a, this, location);
         entityMovements.add(avatarMovement);
     }
 
-    public void addEntity(Entity e) {
-        this.addEntity(e, new Vector2());
-    }
-
     public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
+        notifyObserversMapHasChanged();
+    }
+
+    public void addVehicle(Vehicle vic, Vector2 location) {
+        getTile(location).addVehicle(vic);
+        entityMovements.add(new EntityMovement(vic, this, location));
         notifyObserversMapHasChanged();
     }
 
@@ -83,29 +83,43 @@ public class GameMap {
         itemMovements.add(new ItemMovement(item, location));
         notifyObserversMapHasChanged();
     }
-    
-    public Tile getTileInDirection(Vector2 dir, Tile t){
-    	if(dir.X == Direction.NORTH.X && dir.Y == Direction.NORTH.Y){
-    		return getTileToTheNorth(t.getLocation());
-    	}else if(dir.X == Direction.SOUTH.X && dir.Y == Direction.SOUTH.Y){
-    		return getTileToTheSouth(t);
-    	}if(dir.X == Direction.NORTHEAST.X && dir.Y == Direction.NORTHEAST.Y){
-    		return getTileToTheNorthEast(t);
-    	}if(dir.X == Direction.NORTHWEST.X && dir.Y == Direction.NORTHWEST.Y){
-    		return getTileToTheNorthWest(t);
-    	}if(dir.X == Direction.SOUTHEAST.X && dir.Y == Direction.SOUTHEAST.Y){
-    		return getTileToTheSouthEast(t);
-    	}if(dir.X == Direction.SOUTHWEST.X && dir.Y == Direction.SOUTHWEST.Y){
-    		return getTileToTheSouthWest(t);
-    	}
-    	return null;
-    }
 
     public EntityMovement getAvatarMovement() {
         return avatarMovement;
     }
 
     public MiniMap getMiniMap() { return miniMap; }
+
+    public Tile getTileInDirection(Vector2 dir, Tile source){
+        if(dir.X == Direction.NORTH.X && dir.Y == Direction.NORTH.Y){
+            return getTileToTheNorth(source.getLocation());
+        }else if(dir.X == Direction.SOUTH.X && dir.Y == Direction.SOUTH.Y){
+            return getTileToTheSouth(source);
+        }if(dir.X == Direction.NORTHEAST.X && dir.Y == Direction.NORTHEAST.Y){
+            return getTileToTheNorthEast(source);
+        }if(dir.X == Direction.NORTHWEST.X && dir.Y == Direction.NORTHWEST.Y){
+            return getTileToTheNorthWest(source);
+        }if(dir.X == Direction.SOUTHEAST.X && dir.Y == Direction.SOUTHEAST.Y){
+            return getTileToTheSouthEast(source);
+        }if(dir.X == Direction.SOUTHWEST.X && dir.Y == Direction.SOUTHWEST.Y){
+            return getTileToTheSouthWest(source);
+        }
+        return null;
+    }
+
+    public Tile getTileInDirection(Vector2 dir, Tile source, int distance) {
+        if (distance < 0) {
+            // fatally error if the distance is < 0
+            Util.errOut(new Exception("Requested tile at negative distance"), true);
+            return null;
+        }
+
+        Tile ret_tile = source;
+        for (int i = 0; i < distance; i++) {
+            ret_tile = this.getTileInDirection(dir, ret_tile);
+        }
+        return ret_tile;
+    }
 
      public Tile getTileToTheNorth(Vector2 location) {
         int newX = location.X;
@@ -308,14 +322,50 @@ public class GameMap {
     }
 
     public void moveAvatarTo(Vector2 dest) {
-        //Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 4);
+        Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 5);
+        Entity av = avatarMovement.getEntity();
         Vector2 source = avatarMovement.getPosition();
         avatarMovement.changePosition(dest);
-        //avatarMovement.reface(Direction.getDirection(source, dest));
+
         notifyObserversMapHasChanged();
         if(avatarMovement.getEntity().is(Status.INVISIBLE)){
             notifyHostileNPC();
         }
+    }
+
+    public void moveEntityTo(Entity entity, Vector2 dest) {
+        for (EntityMovement em : this.entityMovements) {
+            if (em.getEntity() == entity) {
+                this.getTile(em.getPosition()).removeEntity(entity);
+                this.getTile(dest).addEntity(entity);
+                this.getTile(dest).accept(entity);
+                em.changePosition(dest);
+            }
+        }
+        notifyObserversMapHasChanged();
+    }
+
+    public void moveEntityTo(Vehicle vehicle, Vector2 dest, boolean mounted) {
+        for (EntityMovement em : this.entityMovements) {
+            if (em.getEntity() == vehicle) {
+                this.getTile(em.getPosition()).removeVehicle(vehicle);
+                this.getTile(dest).addVehicle(vehicle);
+                this.getTile(dest).toggleMount();
+                em.changePosition(dest);
+            }
+        }
+        notifyObserversMapHasChanged();
+    }
+
+    public void moveTileEntities(Tile source, Tile destination) {
+        Entity e = source.getEntity();
+        Vehicle v = null;
+        if (source.vehicleMounted())
+            v = source.getVehicle();
+
+        moveEntityTo(e, destination.getLocation());
+        if (v != null)
+            moveEntityTo(v, destination.getLocation(), true);
     }
     
     public void addMapObserver(MapObserver o) {

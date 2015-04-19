@@ -20,10 +20,6 @@ import model.movement.EntityMovement;
 import model.tile.Tile;
 import utility.ImageUtil;
 
-/**
- *
- * @author =ChrisMoscoso
- */
 public class MapViewport extends Viewport {
 
     private double scale = 1.0;
@@ -114,6 +110,8 @@ public class MapViewport extends Viewport {
                 drawTerrain(g, i, j, positionX, positionY, offsetY);
 
                 ArrayList<Tile> lightTiles = map.getAvatarMovement().getLightMap(map);
+                
+                ArrayList<Tile> ringAround = map.getAvatarMovement().getRingAroundAvatar(map);
 
                 boolean currentTileShouldBeDark = true;
 
@@ -122,6 +120,13 @@ public class MapViewport extends Viewport {
                         currentTileShouldBeDark = false;
                         break;
                     }
+                }
+                
+                for(Tile t : ringAround){
+                	 if (t.getLocation().X == i && t.getLocation().Y == j) {
+                         currentTileShouldBeDark = false;
+                         break;
+                     }
                 }
 
                 Polygon p = new Polygon();
@@ -220,6 +225,8 @@ public class MapViewport extends Viewport {
             for (int i = startX; i < Math.min(startX + windowWidthInTiles, mapWidthInTiles); i++) {
                 for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
                     if (e.getPosition().X == i && e.getPosition().Y == j) {
+                        // skip drawing the avatar in this pass
+                        if (e == map.getAvatarMovement()) { continue; }
 
                         int offsetX = hexRadius;
                         int offsetY = (int) (hexRadius * 0.8);
@@ -240,16 +247,35 @@ public class MapViewport extends Viewport {
                 }
             }
         }
+
+        // Draw the avatar last
+        EntityMovement em = map.getAvatarMovement();
+        int offsetX = hexRadius;
+        int offsetY = (int) (hexRadius * 0.8);
+
+        if (em.getPosition().X % 2 != 0) {
+            offsetY += (int) (hexRadius * 0.84);
+        }
+
+        int positionX = (em.getPosition().X - startX) * hexRadius * 2;
+        int positionY = (int) ((em.getPosition().Y - startY) * hexRadius * 1.748);
+
+        positionX -= (em.getPosition().X - startX) * hexRadius / 2;
+        g.setColor(Color.ORANGE);
+        //g.fillRect(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        Rectangle rect = new Rectangle(offsetX + positionX - hexRadius / 2, offsetY + positionY - hexRadius / 2, hexRadius, hexRadius);
+        g.drawImage(ImageUtil.getImage(em.getEntity().getAssetID()).getImage(), rect.x, rect.y, rect.width, rect.height, this);
     }
 
     private void drawMiniMap(Graphics g) {
-        int draw_x = this.getWidth() - (int) (MMAP_PERC * this.getWidth());
-        int draw_y = 0;
-        int draw_width = (int) (this.getWidth() * MMAP_PERC);
-        if (draw_width < mmap_min_xy) {
-            draw_width = mmap_min_xy;
-        }
+        // First, calculate the width and height
+        int draw_width = (int)(this.getWidth() * MMAP_PERC);
+        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; } // eforce a minimum size
         int draw_height = draw_width;
+
+        // position the minimap in the upper-right
+        int draw_x = this.getWidth() - draw_width;
+        int draw_y = 0;
 
         g.drawImage(this.map.getMiniMap().getBitmap(), draw_x, draw_y, draw_width, draw_height, this);
     }
@@ -333,5 +359,4 @@ public class MapViewport extends Viewport {
     public int getWindowHeightInTiles() {
         return windowHeightInTiles;
     }
-
 }
