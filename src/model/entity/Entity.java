@@ -2,9 +2,7 @@ package model.entity;
 
 import java.util.ArrayList;
 
-import model.item.EquippableItem;
-import model.item.TakeableItem;
-import model.item.NonEquippableItem;
+import model.item.*;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -12,7 +10,6 @@ import model.Describable;
 import java.util.LinkedList;
 
 import model.enums.DefinedStats;
-import model.item.Inventory;
 import model.terrain.Terrain.TerrainType;
 
 /**
@@ -234,5 +231,13 @@ public abstract class Entity implements Describable, Assetable{
 	public void visit(EquippableItem equippableItem) {
 		equippableItem.touch(inventory);
 		
+	}
+
+	public void visit(ActivationItem activationItem) {
+		activationItem.touch(inventory);
+	}
+
+	public boolean visit(InteractiveItem interactiveItem) {
+		return interactiveItem.receiveKey(getInventory(), getInventory().getActivationItems());
 	}
 }

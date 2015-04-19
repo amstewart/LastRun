@@ -131,7 +131,9 @@ public class ImageUtil {
     public static final String SWORD = DIR_ITEMS + "sword2.png";
     public static final String TORCH = DIR_ITEMS + "torch.png";
     public static final String WATERMELON = DIR_ITEMS + "watermelon.png";
-    
+    public static final String GOLDBAR = DIR_ITEMS + "bar_gold.png";
+    public static final String CLOSEDCHEST = DIR_ITEMS + "treasure_chest_closed.png";
+    public static final String OPENCHEST = DIR_ITEMS + "treasure_chest_open.jpg";
     public static final String FIREBALL = DIR_PROJECTILES + "apple.png";
     
 
