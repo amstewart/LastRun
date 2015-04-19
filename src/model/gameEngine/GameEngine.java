@@ -53,7 +53,9 @@ public class GameEngine implements Runnable {
         while (true) {
             updateGame();
             renderGame();
-            notifyObserversGameEngineHasTicked();
+            if (RPGStateMachine.getInstance().gameStateIsActive()) {
+                notifyObserversGameEngineHasTicked();
+            }
             try {
                 Thread.sleep(33);
             } catch (InterruptedException ex) {

@@ -65,7 +65,6 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
         this.setLayout(new GridLayout(0,2));
         panel.setLayout(new GridLayout(0, 3));
 
-        //panel.setSize(new Dimension(300,300));
         setUpMenu();
         
 
@@ -144,7 +143,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     }
 
     @Override
-    public void receiveTakeableItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
+    public void receiveAllInventoryItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
         renderItems(equippableItems, nonEquippableItems, activationItems);
     }
 

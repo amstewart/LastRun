@@ -2,7 +2,7 @@ package model.skill;
 
 import java.util.HashMap;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 import model.effect.InternalEffect;
 import model.entity.Entity;
 import model.item.EquippableItem;

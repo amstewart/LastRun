@@ -1,12 +1,13 @@
 package state;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 import model.Vector2;
 import model.entity.Avatar;
 import model.entity.npc.pet.Pet;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
+import state.stateMachine.RPGStateMachine;
 import utility.ImageUtil;
 import view.viewport.GameViewport;
 import view.viewport.MapViewport;
@@ -15,6 +16,7 @@ import view.viewport.MapViewport;
 public class GameState extends State {
 
     // All temporary because stats will get the stuff from game bundle later
+    private GameController controller;
     private Inventory inventory;
     private Avatar player;
     private Occupation occupation;
@@ -27,6 +29,8 @@ public class GameState extends State {
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
         viewPort =  new GameViewport(mapVP, inventory, player);
+        
+        controller = new GameController(map, player, mapVP);
     }
 
     @Override
@@ -39,35 +43,17 @@ public class GameState extends State {
     public void onEnter() {
         render();
         
-        getViewport().addKeyListener(new KeyController(map, player, mapVP));
+        getViewport().addKeyListener(controller);
         Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         map.addEntity(en_puddles, new Vector2(1, 3));
         map.getAvatarMovement().getEntity().addPet(en_puddles);
 
         
-        /*ArrayList<Action> a = new ArrayList<Action>();
-        a.add(new MoveUp());
-        a.add(new MoveDown());
-        a.add(new MoveLU());
-        a.add(new MoveLD());
-        a.add(new MoveRU());
-        a.add(new MoveRD());*/
-        
-
-        //getController().setGameSet(a);
-        //getViewport().setListeners(a);
     }
 
     @Override
     public void onExit() {
+        getViewport().removeKeyListener(controller);
         
     }
-
-    private void setAllowedMoves(){
-        //if(map.getTileToTheNorth().getTerrain().equals(grass)){
-          //  mu.
-        //}
-
-    }
-
 }

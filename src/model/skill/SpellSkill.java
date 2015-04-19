@@ -2,7 +2,7 @@ package model.skill;
 
 import java.util.Random;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 import model.effect.ExternalEffect;
 import model.effect.SpellEffect;
 import model.entity.Entity;

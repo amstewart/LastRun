@@ -1,5 +1,5 @@
 
-package controller;
+package controller.keyControllers;
 
 import controller.action.Action;
 import controller.action.mapAction.ZoomInMapAction;
@@ -13,6 +13,8 @@ import controller.action.moveAvatarAction.MoveUpRightAction;
 import controller.action.skillAction.ExternalSkillAction;
 import controller.action.skillAction.InternalSkillAction;
 import controller.action.skillAction.SpellSkillAction;
+import controller.action.stateMachineAction.GoToMerchantAction;
+import controller.action.stateMachineAction.GoToPauseAction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -32,13 +34,13 @@ import view.viewport.MapViewport;
  *
  * @author ChrisMoscoso
  */
-public class KeyController implements KeyListener{
+public class GameController implements KeyListener{
     
     Map<Integer, Action> actionSet;
     Map<Integer, Integer> skillSet;
     int skillNumber = 0;
 
-    public KeyController(GameMap map, Avatar avatar, MapViewport mapVP){
+    public GameController(GameMap map, Avatar avatar, MapViewport mapVP){
         actionSet = new HashMap();
         skillSet = new HashMap();
         skillSet.put(0, KeyEvent.VK_1);
@@ -56,6 +58,9 @@ public class KeyController implements KeyListener{
         actionSet.put(KeyEvent.VK_A, new MoveDownLeftAction(map));
         actionSet.put(KeyEvent.VK_S, new MoveDownAction(map));
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
+        
+        actionSet.put(KeyEvent.VK_ESCAPE, new GoToPauseAction());
+        actionSet.put(KeyEvent.VK_M, new GoToMerchantAction());
         
         actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
         actionSet.put(KeyEvent.VK_EQUALS, new ZoomInMapAction(mapVP));
@@ -83,7 +88,8 @@ public class KeyController implements KeyListener{
     	   }
        }
     }
-    
+
+   
     @Override
     public void keyTyped(KeyEvent e) {
         
