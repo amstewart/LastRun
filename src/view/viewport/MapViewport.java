@@ -7,7 +7,9 @@ import controller.action.mapAction.ZoomOutMapAction;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +17,7 @@ import javax.swing.JButton;
 import model.Vector2;
 import model.map.GameMap;
 import model.movement.EntityMovement;
+import model.tile.Tile;
 import utility.ImageUtil;
 
 /**
@@ -78,26 +81,28 @@ public class MapViewport extends Viewport {
         if (startX > mapWidthInTiles - windowWidthInTiles) {
             startX = mapWidthInTiles - windowWidthInTiles;
         }
-        
+
         if (startX < 0) {
             startX = 0;
         }
-        
-         if (startY > mapHeightInTiles - windowHeightInTiles) {
+
+        if (startY > mapHeightInTiles - windowHeightInTiles) {
             startY = mapHeightInTiles - windowHeightInTiles;
         }
-        
+
         if (startY < 0) {
             startY = 0;
-        } 
+        }
 
         for (int i = startX; i < Math.min(startX + windowWidthInTiles, mapWidthInTiles); i++) {
             for (int j = startY; j < Math.min(startY + windowHeightInTiles, mapHeightInTiles); j++) {
 
                 int offsetX = hexRadius;
+                int polygonOffsetY = (int) (hexRadius * 0.8);
                 int offsetY = 0;//(int) (hexRadius * 0.8);
 
                 if (i % 2 != 0) {
+                    polygonOffsetY += (int) (hexRadius * 0.84);
                     offsetY += (int) (hexRadius * 0.84);
                 }
 
@@ -105,33 +110,47 @@ public class MapViewport extends Viewport {
                 int positionY = (int) ((j - startY) * hexHeight);
 
                 positionX -= (i - startX) * hexRadius / 2;
-                /*
-                 Polygon p = new Polygon();
-                 for (int k = 0; k < 6; k++) {
-                 g.setColor(java.awt.Color.BLACK);
-                 p.addPoint((int) (offsetX + positionX + hexRadius * Math.cos(k * 2 * Math.PI / 6)),
-                 (int) (offsetY + positionY + hexRadius * Math.sin(k * 2 * Math.PI / 6)));
-                 if (k > 0) {
-                 g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
-                 }
-
-                 }
-                 */
 
                 drawTerrain(g, i, j, positionX, positionY, offsetY);
 
-                if (map.getTile(i, j).isAreaEffectOwner()) {
-                    drawAreaEffect(g, i, j, positionX, positionY, offsetY);
+                ArrayList<Tile> lightTiles = map.getAvatarMovement().getLightMap(map);
+
+                boolean currentTileShouldBeDark = true;
+
+                for (Tile t : lightTiles) {
+                    if (t.getLocation().X == i && t.getLocation().Y == j) {
+                        currentTileShouldBeDark = false;
+                        break;
+                    }
                 }
 
-                if (map.getTile(i, j).isItemOwner()) {
-                    drawItem(g, i, j, positionX, positionY, offsetY);
+                Polygon p = new Polygon();
+                for (int k = 0; k < 6; k++) {
+                    g.setColor(new Color(0, 0, 0, 128));
+                    p.addPoint((int) (offsetX + positionX + hexRadius * Math.cos(k * 2 * Math.PI / 6)),
+                            (int) (polygonOffsetY + positionY + hexRadius * Math.sin(k * 2 * Math.PI / 6)));
+                    if (k > 0) {
+                        g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
+                    }
+
+                }
+                if (currentTileShouldBeDark) {
+                    g.fillPolygon(p);
                 }
 
-                if (map.getTile(i, j).isProjectileOwner()) {
-                    drawProjectile(g, i, j, positionX, positionY, offsetY);
-                }
+                if (!currentTileShouldBeDark) {
+                    if (map.getTile(i, j).isAreaEffectOwner()) {
+                        drawAreaEffect(g, i, j, positionX, positionY, offsetY);
+                    }
 
+                    if (map.getTile(i, j).isItemOwner()) {
+                        drawItem(g, i, j, positionX, positionY, offsetY);
+                    }
+
+                    if (map.getTile(i, j).isProjectileOwner()) {
+                        drawProjectile(g, i, j, positionX, positionY, offsetY);
+                    }
+                }
                 g.setColor(java.awt.Color.WHITE);
                 g.setFont(new Font("TimesRoman", Font.PLAIN, 14));
                 String coordinate = "(" + i + "," + j + ")";
@@ -224,10 +243,12 @@ public class MapViewport extends Viewport {
     }
 
     private void drawMiniMap(Graphics g) {
-        int draw_x = this.getWidth() - (int)(MMAP_PERC * this.getWidth());
+        int draw_x = this.getWidth() - (int) (MMAP_PERC * this.getWidth());
         int draw_y = 0;
-        int draw_width = (int)(this.getWidth() * MMAP_PERC);
-        if (draw_width < mmap_min_xy) { draw_width = mmap_min_xy; }
+        int draw_width = (int) (this.getWidth() * MMAP_PERC);
+        if (draw_width < mmap_min_xy) {
+            draw_width = mmap_min_xy;
+        }
         int draw_height = draw_width;
 
         g.drawImage(this.map.getMiniMap().getBitmap(), draw_x, draw_y, draw_width, draw_height, this);

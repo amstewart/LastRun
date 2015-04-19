@@ -1,8 +1,10 @@
 package model.movement;
 
+import java.util.ArrayList;
 import model.Vector2;
 import model.entity.Entity;
 import model.map.GameMap;
+import model.tile.Tile;
 import utility.Direction;
 import utility.Util;
 
@@ -59,5 +61,9 @@ public class EntityMovement extends Movement {
 
     public void setAsset(String new_asset) {
         entity.setAssetID(new_asset);
+    }
+    
+    public ArrayList<Tile> getLightMap(GameMap map){
+        return map.createLocalAreaRadial(3, getPosition());
     }
 }

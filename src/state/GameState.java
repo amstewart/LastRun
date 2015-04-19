@@ -1,10 +1,13 @@
 package state;
 
 import controller.KeyController;
+import model.Vector2;
 import model.entity.Avatar;
+import model.entity.npc.pet.Pet;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
 import model.map.GameMap;
+import utility.ImageUtil;
 import view.viewport.GameViewport;
 import view.viewport.MapViewport;
 
@@ -40,9 +43,9 @@ public class GameState extends State {
         render();
         
         getViewport().addKeyListener(new KeyController(map, player, mapVP));
-        //Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
-        //map.addEntity(en_puddles, new Vector2(1, 3));
-        //map.getAvatarMovement().getEntity().addPet(en_puddles);
+        Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
+        map.addEntity(en_puddles, new Vector2(1, 3));
+        map.getAvatarMovement().getEntity().addPet(en_puddles);
 
         
         /*ArrayList<Action> a = new ArrayList<Action>();
