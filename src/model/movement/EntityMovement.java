@@ -65,11 +65,11 @@ public class EntityMovement extends Movement {
     
     public ArrayList<Tile> getLightMap(GameMap map){
         ArrayList<Tile> tileList = new ArrayList();
-        for(Tile tile : map.createLocalAreaAngular(7, getPosition())){
+        for(Tile tile : map.createLocalAreaAngular(3, getPosition())){
             tileList.add(tile);
         }
         for(Tile tile : map.createLocalAreaRadial(1, getPosition())){
-            tileList.add(tile);
+           tileList.add(tile);
         }
         return tileList;
     }

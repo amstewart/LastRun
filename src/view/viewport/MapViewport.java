@@ -111,10 +111,9 @@ public class MapViewport extends Viewport {
 
                 ArrayList<Tile> lightTiles = map.getAvatarMovement().getLightMap(map);
                 
-                ArrayList<Tile> ringAround = map.getAvatarMovement().getRingAroundAvatar(map);
-
+              
                 boolean currentTileShouldBeDark = true;
-
+                
                 for (Tile t : lightTiles) {
                     if (t.getLocation().X == i && t.getLocation().Y == j) {
                         currentTileShouldBeDark = false;
@@ -122,13 +121,8 @@ public class MapViewport extends Viewport {
                     }
                 }
                 
-                for(Tile t : ringAround){
-                	 if (t.getLocation().X == i && t.getLocation().Y == j) {
-                         currentTileShouldBeDark = false;
-                         break;
-                     }
-                }
-
+               
+                 
                 Polygon p = new Polygon();
                 for (int k = 0; k < 6; k++) {
                     g.setColor(new Color(0, 0, 0, 128));

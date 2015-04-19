@@ -2,7 +2,6 @@ package model.map;
 
 import java.util.ArrayList;
 import java.util.Queue;
-
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
@@ -62,7 +61,8 @@ public class GameMap {
         notifyObserversMapHasChanged();
     }
 
-    public ArrayList<Entity> getEntities() {
+    public ArrayList<Entity> getEntities() 
+    {
         ArrayList<Entity> arrayList = new ArrayList<>();
         for (EntityMovement e : entityMovements) {
             arrayList.add(e.getEntity());
@@ -394,242 +394,155 @@ public class GameMap {
     }
 
     public ArrayList<Tile> createLocalAreaAngular(int radius, Vector2 center) {
-        ArrayList<Tile> tileList = new ArrayList<Tile>();
-        boolean[][] visited = new boolean[getHeight()][getWidth()];
-        Vector2 facingDir = getAvatarMovement().getFacingDir();
-        ArrayList<Integer> list = returnIndex(facingDir);
-        Queue<Tile> queue = new LinkedList<Tile>();
-        Queue<Integer> ind = new LinkedList<Integer>();
-        tileList.add(getTile(center));
-        Tile currTile = getTileInDirection(facingDir, getTile(center));
-        queue.add(currTile);
-        ind.add(Direction.dirNum(Direction.facingDir(facingDir)));
-        int count = 0;
-        Tile tileToAdd = null;
-        int tileOrientation = 0;
-        int loops = 0;
-        if (radius == 0) {
-            return tileList;
-        }
-        if (radius == 1) {
-            loops = 1;
-        }
-        if (radius == 2) {
-            loops = 4;
-        }
-        if (radius == 3) {
-            loops = 7;
-        }
-        if (radius == 4) {
-            loops = 12;
-        }
-        if (radius == 5) {
-            loops = 17;
-        }
-        if (radius == 6) {
-            loops = 24;
-        }
-        if (radius == 7) {
-            loops = 31;
-        }
-        while (!queue.isEmpty() && count < loops) {
-            currTile = queue.remove();
-            tileOrientation = ind.remove();
-            tileList.add(currTile);
-            for (int i = 0; i < list.size(); i++) {
-                int index = list.get(i);
-                if (count % 2 == 0) {
-                    if (index == 0) {
-                        tileToAdd = getTileToTheNorth(currTile);
-                    }
-                    if (index == 1) {
-                        tileToAdd = getTileToTheNorthEast(currTile);
-                    }
-                    if (index == 2) {
-                        tileToAdd = getTileToTheSouthEast(currTile);
-                    }
-                    if (index == 3) {
-                        tileToAdd = getTileToTheSouth(currTile);
-                    }
-                    if (index == 4) {
-                        tileToAdd = getTileToTheSouthWest(currTile);
-                    }
-                    if (index == 5) {
-                        tileToAdd = getTileToTheNorthWest(currTile);
-                    }
-                } else {
-                    if (index != tileOrientation || tileOrientation == 0 || tileOrientation == 3) {
-                        if (index == 0) {
-                            tileToAdd = getTileToTheNorth(currTile);
-                        }
-                        if (index == 1) {
-                            tileToAdd = getTileToTheNorthEast(currTile);
-                        }
-                        if (index == 2) {
-                            tileToAdd = getTileToTheSouthEast(currTile);
-                        }
-                        if (index == 3) {
-                            tileToAdd = getTileToTheSouth(currTile);
-                        }
-                        if (index == 4) {
-                            tileToAdd = getTileToTheSouthWest(currTile);
-                        }
-                        if (index == 5) {
-                            tileToAdd = getTileToTheNorthWest(currTile);
-                        }
-                    }
-                }
-                int x = tileToAdd.getLocation().X;
-                int y = tileToAdd.getLocation().Y;
-                if (!visited[x][y]) {
-                    queue.add(tileToAdd);
-                    ind.add(index);
-                    visited[x][y] = true;
-                }
-
-            }
-            count++;
-        }
-        return tileList;
+    	ArrayList<Tile> tileList= new ArrayList<Tile>();
+    	boolean [][]visited= new boolean[getHeight()][getWidth()];
+    	Vector2 facingDir=getAvatarMovement().getFacingDir();
+    	ArrayList<Integer> list= returnIndex(facingDir);
+    	Queue<Tile> queue= new LinkedList<Tile>();
+    	Queue<Integer> ind = new LinkedList<Integer>();
+    	tileList.add(getTile(center));
+    	Tile currTile=getTileInDirection(facingDir, getTile(center));
+    	queue.add(currTile);
+    	ind.add(Direction.dirNum(Direction.facingDir(facingDir)));
+    	int count=0;
+    	Tile tileToAdd=null;
+    	int tileOrientation=0;
+    	int loops=0;
+    	if(radius==0){
+    		return tileList;
+    	}
+    	if(radius==1)
+    		loops=1;
+    	if(radius==2)
+    		loops=4;
+    	if(radius==3)
+    		loops=7;
+    	if(radius==4)
+    		loops=12;
+    	if(radius==5)
+    		loops=17;
+    	if(radius==6)
+    		loops=24;
+    	if(radius==7)
+    		loops=31;
+    	while(!queue.isEmpty() &&  count<loops){
+    		currTile = queue.remove();
+    		tileOrientation=ind.remove();
+    		tileList.add(currTile);
+    		for(int i=0;i<list.size();i++){
+    			int index= list.get(i);
+    			if(count%2==0){
+    				if(index==0)tileToAdd=getTileToTheNorth(currTile);
+    				if(index==1)tileToAdd=getTileToTheNorthEast(currTile);
+    				if(index==2)tileToAdd=getTileToTheSouthEast(currTile);
+    				if(index==3)tileToAdd=getTileToTheSouth(currTile);
+    				if(index==4)tileToAdd=getTileToTheSouthWest(currTile);
+    				if(index==5)tileToAdd=getTileToTheNorthWest(currTile);
+    			}
+    			else{
+    				if(index!=tileOrientation || tileOrientation==0 || tileOrientation==3){
+    					if(index==0)tileToAdd=getTileToTheNorth(currTile);
+        				if(index==1)tileToAdd=getTileToTheNorthEast(currTile);
+        				if(index==2)tileToAdd=getTileToTheSouthEast(currTile);
+        				if(index==3)tileToAdd=getTileToTheSouth(currTile);
+        				if(index==4)tileToAdd=getTileToTheSouthWest(currTile);
+        				if(index==5)tileToAdd=getTileToTheNorthWest(currTile);
+    				}
+    			}
+    			int x=tileToAdd.getLocation().X;
+    			int y=tileToAdd.getLocation().Y;
+    			if(!visited[x][y]){
+    				queue.add(tileToAdd);
+    				ind.add(index);
+    				visited[x][y]=true;
+    			}
+    			
+    		}
+    		count++;
+    	}
+    	return tileList;
     }
-
-    private ArrayList<Integer> returnIndex(Vector2 facingDir) {
-        String s = Direction.facingDir(facingDir);
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        if (s == "NORTH") {
-            list.add(0);
-            list.add(1);
-            list.add(5);
-        }
-        if (s == "NORTHEAST") {
-            list.add(1);
-            list.add(0);
-            list.add(2);
-        }
-        if (s == "SOUTHEAST") {
-            list.add(2);
-            list.add(1);
-            list.add(3);
-        }
-
-        if (s == "SOUTH") {
-            list.add(3);
-            list.add(2);
-            list.add(4);
-        }
-        if (s == "SOUTHWEST") {
-            list.add(4);
-            list.add(3);
-            list.add(5);
-        }
-        if (s == "NORTHWEST") {
-            list.add(5);
-            list.add(4);
-            list.add(0);
-        }
-        return list;
+    
+    private ArrayList<Integer> returnIndex(Vector2 facingDir){
+    	String s= Direction.facingDir(facingDir);
+    	ArrayList<Integer> list= new ArrayList<Integer>();
+    	if(s=="NORTH"){
+    		list.add(0);
+    		list.add(1);
+    		list.add(5);
+    	}
+    	if(s=="NORTHEAST"){
+    		list.add(1);
+    		list.add(0);
+    		list.add(2);
+    	}
+    	if(s=="SOUTHEAST"){
+    		list.add(2);
+    		list.add(1);
+    		list.add(3);
+    	}
+    	
+    	if(s=="SOUTH"){
+    		list.add(3);
+    		list.add(2);
+    		list.add(4);
+    	}
+    	if(s=="SOUTHWEST"){
+    		list.add(4);
+    		list.add(3);
+    		list.add(5);
+    	}
+    	if(s=="NORTHWEST"){
+    		list.add(5);
+    		list.add(4);
+    		list.add(0);
+    	}
+    	return list;
     }
+	public ArrayList<Tile> createLocalAreaRadial(int radius, Vector2 center) {
+		ArrayList<Tile> tileList= new ArrayList<Tile>();
+    	boolean [][]visited= new boolean[getHeight()][getWidth()];
+    	Queue<Tile> queue= new LinkedList<Tile>();
+    	tileList.add(getTile(center));
+    	Tile currTile= getTile(center);
+    	int count=0;
+    	int loops=0;
+    	
+    	for(int i=1;i<=radius;i++){
+    		loops+=(i*6);
+    	}
+    	loops++;
+    	visited[currTile.getLocation().X][currTile.getLocation().Y]=true;
+    	if(radius==0){
+    		return tileList;
+    	}
+    	
+    	queue.add(currTile);
+    	Tile tileToAdd=null;
 
-    public ArrayList<Tile> createLocalAreaRadial(int radius, Vector2 center) {
-        ArrayList<Tile> list = new ArrayList();
-        Tile t = getTile(center);
-        Tile oldt = null;
-        boolean addTile = true;
-        list.add(t);
-        for (int i = 0; i != radius; ++i) {
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheNorth(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);
-
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheNorthEast(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);
-
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheSouthEast(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);
-
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheSouth(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);
-
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheSouthWest(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);
-
-            for (int j = 0; j != i + 1; ++j) {
-                oldt = t;
-                t = getTileToTheSouthEast(center);
-                if (oldt == t) {
-                    addTile = false;
-                    break;
-                }
-            }
-            if (addTile) {
-                list.add(t);
-            } else {
-                addTile = true;
-            }
-            t = getTile(center);//added
-        }
-
-        return list;
-
-    }
-
+    	while(!queue.isEmpty() &&  count<loops){
+    		
+    		currTile = queue.remove();
+    		tileList.add(currTile);
+    		for(int i=0;i<6;++i){
+    			if(i==0)tileToAdd=getTileToTheNorth(currTile);
+				if(i==1)tileToAdd=getTileToTheNorthEast(currTile);
+				if(i==2)tileToAdd=getTileToTheSouthEast(currTile);
+				if(i==3)tileToAdd=getTileToTheSouth(currTile);
+				if(i==4)tileToAdd=getTileToTheSouthWest(currTile);
+				if(i==5)tileToAdd=getTileToTheNorthWest(currTile);
+				
+				
+				int x=tileToAdd.getLocation().X;
+    			int y=tileToAdd.getLocation().Y;
+    			if(!visited[x][y]){
+    				queue.add(tileToAdd);
+    				visited[x][y]=true;
+    			}
+    			
+    		}
+    		count++;
+    	}
+    	return tileList;
+	}
 }
