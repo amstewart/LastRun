@@ -2,6 +2,10 @@ package model.entity;
 
 import java.util.ArrayList;
 
+import Visitor.AvatarVisitor;
+import Visitor.EntityVisitor;
+import Visitor.OccupationVisitor;
+import Visitor.VisitorContainer;
 import model.entity.occupation.Occupation;
 import model.entity.occupation.Sneak;
 import model.entity.npc.pet.Pet;
@@ -94,5 +98,16 @@ public class Avatar extends Entity {
 	public String talk() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void accept(EntityVisitor entityVisitor,VisitorContainer container){
+		System.out.println("Inside Avatar accept EntityVisitor");
+		accept(new AvatarVisitor(),container);
+	}
+	
+	public void accept(AvatarVisitor avatarVisitor, VisitorContainer container) {
+		System.out.println("Inside Avatar accept avatarVisitor");
+		OccupationVisitor occVisitor= new OccupationVisitor();
+		occVisitor.visit(getOccupation(),container);
 	}
 }

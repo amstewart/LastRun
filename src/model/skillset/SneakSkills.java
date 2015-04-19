@@ -3,6 +3,7 @@ package model.skillset;
 import java.util.ArrayList;
 
 import model.effect.Creep;
+import model.effect.DetectTrap;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -16,8 +17,9 @@ public class SneakSkills extends BasicSkills {
 
     public SneakSkills() {
     Creep creepEffect = new Creep();
+    DetectTrap detectTrap= new DetectTrap();
     creep = new InternalSkill("Creep", 1, creepEffect, false);
-    //    trapDetectionRemoval = new ExternalSkill("Trap Removal/Detection", 1);
+    trapDetectionRemoval = new ExternalSkill("TrapRemoval", 1,detectTrap, 5, true);
      //   range = new InternalSkill("Range", 1);
     }
 

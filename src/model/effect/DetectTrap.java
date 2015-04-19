@@ -25,9 +25,11 @@ public class DetectTrap implements ExternalEffect{
 	@Override
 	public void applyEffect(GameMap map, Entity entity, EntityMovement emov,
 			int radius) {
-		ArrayList<Tile> tiles = map.createLocalAreaRadial(radius, emov.getPosition());
-		for(Tile t : tiles){
-			
+			ArrayList<Tile> tiles = map.createLocalAreaRadial(radius, emov.getPosition());
+			for(Tile t : tiles){
+				if(t.isTrapOwner()){
+					t.getTrap().makeVisible();
+				}
 		}
 		
 	}
