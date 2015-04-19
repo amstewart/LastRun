@@ -6,6 +6,7 @@ import model.stat.Stats;
 public abstract class TakeableItem extends Item {
 
     private Stats stats;
+    private int value;
 
     public TakeableItem(String name) {
         super(name);
@@ -13,6 +14,14 @@ public abstract class TakeableItem extends Item {
 
     public void setItemStats(Stats stats) {
         this.stats = stats;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     public Stats getItemStats() {
