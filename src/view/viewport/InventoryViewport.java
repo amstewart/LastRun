@@ -137,7 +137,7 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     @Override
     public void receiveNewOccupation(Occupation o, Stats playerStats) {
         remove(equipmentViewport);
-        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats, null);
+        equipmentViewport = new EquipmentViewport(o.getEquipmentHandler(), playerStats, av);
         add(equipmentViewport);
         equipAction = new EquipAction(av, playerStats);
         equipmentEquip.addActionListener(Action.getActionListener(equipAction));

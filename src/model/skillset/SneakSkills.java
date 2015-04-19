@@ -31,7 +31,7 @@ public class SneakSkills extends BasicSkills {
 		creep = new InternalSkill("Creep", 1, creepEffect, false);
 		trapDetectionRemoval = new ExternalSkill("TrapRemoval", 1, detectTrap,
 				5, true);
-		WeaponBasedStatModifier wp = new WeaponBasedStatModifier(Sneak.CHEST,1);
+		WeaponBasedStatModifier wp = new WeaponBasedStatModifier(Sneak.RANGED,1);
 		range = new InternalSkill("Range",1, wp,true);
 
 		passiveSkills_int.put(SkillStrings.RANGE, range);
