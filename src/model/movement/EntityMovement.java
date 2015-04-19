@@ -66,4 +66,8 @@ public class EntityMovement extends Movement {
     public ArrayList<Tile> getLightMap(GameMap map){
         return map.createLocalAreaAngular(3, getPosition());
     }
+    
+    public ArrayList<Tile> getRingAroundAvatar(GameMap map){
+    	return map.createLocalAreaRadial(1,getPosition());
+    }
 }

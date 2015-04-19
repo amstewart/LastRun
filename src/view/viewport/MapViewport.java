@@ -114,6 +114,8 @@ public class MapViewport extends Viewport {
                 drawTerrain(g, i, j, positionX, positionY, offsetY);
 
                 ArrayList<Tile> lightTiles = map.getAvatarMovement().getLightMap(map);
+                
+                ArrayList<Tile> ringAround = map.getAvatarMovement().getRingAroundAvatar(map);
 
                 boolean currentTileShouldBeDark = true;
 
@@ -122,6 +124,13 @@ public class MapViewport extends Viewport {
                         currentTileShouldBeDark = false;
                         break;
                     }
+                }
+                
+                for(Tile t : ringAround){
+                	 if (t.getLocation().X == i && t.getLocation().Y == j) {
+                         currentTileShouldBeDark = false;
+                         break;
+                     }
                 }
 
                 Polygon p = new Polygon();
