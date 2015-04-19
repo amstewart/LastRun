@@ -26,7 +26,6 @@ public class SpellSkill extends Skill{
 	@Override
 	public void applyMultiplier() {
 		this.radius = baseRadius * getLevel();
-		int m;
 		effect1.applyMultiplier(getLevel());
 		effect2.applyMultiplier(getLevel());
 		effect3.applyMultiplier(getLevel());

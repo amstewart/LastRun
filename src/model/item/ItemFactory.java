@@ -39,7 +39,7 @@ public class ItemFactory {
     }
 
     public static NonEquippableItem newMushroom(){
-        NonEquippableItem item = new NonEquippableItem("Mushroom");
+        NonEquippableItem item = new NonEquippableItem("Magic Mushroom");
         Stats itemStats = DefinedStats.MINUSHEALTH.getStats();
         item.setItemStats(itemStats);
         item.setAssetID(ImageUtil.MUSHROOM);
