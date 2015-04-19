@@ -24,9 +24,7 @@ public class GameBundle {
         avatar.setMana(45);
         
         map.addEntity(avatar,new Vector2(0,0));
-     
 
-  
     }
  
 
