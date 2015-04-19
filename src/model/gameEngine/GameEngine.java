@@ -16,7 +16,7 @@ import state.stateMachine.RPGStateMachine;
  */
 public class GameEngine implements Runnable {
 
-    private ArrayList<GameEngineObserver> observers;
+    private ArrayList<GameEngineObserver> observers = new ArrayList();
     private RPGStateMachine rpgStateMachine;
     private static GameEngine gameEngineInstance;
     private Thread thread;
@@ -51,7 +51,6 @@ public class GameEngine implements Runnable {
     public void run() {
         while (true) {
             updateGame();
-
             renderGame();
             try {
                 Thread.sleep(33);

@@ -2,8 +2,6 @@ package model.gameTimer;
 
 import java.util.ArrayList;
 import model.observer.GameEngineObserver;
-import java.util.Observable;
-import java.util.Observer;
 import model.gameEngine.GameEngine;
 
 /**
@@ -21,7 +19,7 @@ public class GameTimer implements GameEngineObserver{
     private int delay; // in frames
     private boolean shouldLoop;
     private boolean paused;
-    private ArrayList<model.gameTimer.GameTimerListener> listeners;
+    private ArrayList<GameTimerListener> listeners = new ArrayList();
 
 
     /**
@@ -39,7 +37,6 @@ public class GameTimer implements GameEngineObserver{
      */
     public GameTimer(int delay) {
         this(delay, false);
-        GameEngine.getInstance().addObserver(this);
     }
 
     /**
@@ -107,6 +104,7 @@ public class GameTimer implements GameEngineObserver{
     
     
     public void start() {
+        GameEngine.getInstance().addObserver(this);
         paused = false;
     }
 
