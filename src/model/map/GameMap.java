@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.Vector2;
 import model.entity.Entity;
+import model.entity.Status;
 import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
@@ -306,13 +307,22 @@ public class GameMap {
         avatarMovement.changePosition(dest);
         //avatarMovement.reface(Direction.getDirection(source, dest));
         notifyObserversMapHasChanged();
+        if(avatarMovement.getEntity().is(Status.INVISIBLE)){
+            notifyHostileNPC();
+        }
     }
     
    public void addMapObserver(MapObserver o) {
        observers.add(o);
         notifyObserversMapHasChanged();
     }
-    
+
+    private void notifyHostileNPC(){
+        for(MapObserver o : observers){
+            o.receiveNonStealthAvatarPosition(avatarMovement.getPosition());
+        }
+    }
+
     private void notifyObserversMapHasChanged(){
         for(MapObserver o : observers){
             o.receiveMap(this);
