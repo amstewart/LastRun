@@ -337,7 +337,6 @@ public class GameMap {
 
     public ArrayList<Tile> createLocalAreaAngular(int radius, Vector2 center) {
     	ArrayList<Tile> tileList= new ArrayList<Tile>();
-    	//Tile []tileLocations= {getTileToTheNorth(currTile),getTileToTheNorthEast(currTile),getTileToTheSouthEast(currTile),getTileToTheSouth(currTile),getTileToTheSouthWest(currTile),getTileToTheNorthWest(currTile)};
     	boolean [][]visited= new boolean[getHeight()][getWidth()];
     	Vector2 facingDir=getAvatarMovement().getFacingDir();
     	ArrayList<Integer> list= returnIndex(facingDir);
@@ -371,7 +370,6 @@ public class GameMap {
     	while(!queue.isEmpty() &&  count<loops){
     		currTile = queue.remove();
     		tileOrientation=ind.remove();
-    		System.out.println(tileOrientation);
     		tileList.add(currTile);
     		for(int i=0;i<list.size();i++){
     			int index= list.get(i);
@@ -403,9 +401,6 @@ public class GameMap {
     			
     		}
     		count++;
-    	}
-    	for(Tile t : tileList){
-    		System.out.println(t.getLocation().toString());
     	}
     	return tileList;
     }
