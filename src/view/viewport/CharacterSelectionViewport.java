@@ -5,17 +5,16 @@
  */
 package view.viewport;
 
-
-import controller.action.charSelectAction.AvatarNameAction;
 import model.enums.OcupationCategory;
 import utility.DoubleLinkedList;
 import controller.action.Action;
 import controller.action.charSelectAction.CreateAvatarAction;
 import controller.action.stateMachineAction.GoBackAction;
+import model.entity.Avatar;
+import utility.ImageUtil;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -32,7 +31,7 @@ public class CharacterSelectionViewport extends Viewport {
      * Creates new form MenuViewport
      */
     Avatar avatar;
-    DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
+    
     private String SUMMONER_DESCRIPTION = StringUtilEnum.SUMMONER_DESCRIPTION.getDescription();
     private String SMASHER_DESCRIPTION = StringUtilEnum.SMASHER_DESCRIPTION.getDescription();
     private String SNEAK_DESCRIPTION = StringUtilEnum.SNEAK_DESCRIPTION.getDescription();
@@ -48,13 +47,14 @@ public class CharacterSelectionViewport extends Viewport {
 
     }
     
+    DoubleLinkedList<OcupationCategory> ocupationList = new DoubleLinkedList();
+    
     public CharacterSelectionViewport(Avatar avatar) {
         
-        this.avatar = avatar;
         backgroundImage = new ImageIcon(ImageUtil.CHARACTER_SELECTION_BACKGROUND);
         initComponents();
         addAvatarOcupations();
-        addActionListeners();
+        addActionListeners(avatar);
     }
     
     public JButton getStartGameButton(){
@@ -89,9 +89,9 @@ public class CharacterSelectionViewport extends Viewport {
         Image rightImage = getImageFromList(ocupationList.getPreviousData());
         Image centerImage = getImageFromList(ocupationList.getData());
       
-        centerImage = ImageUtil.rescaleImage( new ImageIcon(centerImage), panel.getWidth()/6, panel.getHeight() ).getImage();
-        leftImage = ImageUtil.rescaleImage( new ImageIcon(leftImage), panel.getWidth()/12, panel.getHeight()/2 ).getImage();
-        rightImage = ImageUtil.rescaleImage( new ImageIcon(rightImage), panel.getWidth()/12, panel.getHeight()/2 ).getImage();
+        centerImage = ImageUtil.rescaleImage(new ImageIcon(centerImage), panel.getWidth() / 6, panel.getHeight()).getImage();
+        leftImage = ImageUtil.rescaleImage(new ImageIcon(leftImage), panel.getWidth() / 12, panel.getHeight() / 2).getImage();
+        rightImage = ImageUtil.rescaleImage(new ImageIcon(rightImage), panel.getWidth() / 12, panel.getHeight() / 2).getImage();
         
         g.drawImage( centerImage , panel.getWidth()/2 - centerImage.getWidth(panel)/2, 0, panel);
         
@@ -107,17 +107,17 @@ public class CharacterSelectionViewport extends Viewport {
         switch (ocupation){
         
             case SMASHER:
-                image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_SMASHER).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SMASHER).getImage();
                 avatarOcuppationNameLabel.setText("Smasher");
                 avatarDescriptionTextArea.setText(SMASHER_DESCRIPTION);
                 break;
             case SUMMONER:
-                image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_SUMMONER).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SUMMONER).getImage();
                 avatarOcuppationNameLabel.setText("Summoner");
                 avatarDescriptionTextArea.setText(SUMMONER_DESCRIPTION);
                 break;
             default:
-                image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_SNEAK).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SNEAK).getImage();
                 avatarOcuppationNameLabel.setText("Sneak");
                 avatarDescriptionTextArea.setText(SNEAK_DESCRIPTION);
                 break;
@@ -126,14 +126,7 @@ public class CharacterSelectionViewport extends Viewport {
         return image;
     }
     
-    private void addActionListeners(){
-        mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
-        startGameButton.addActionListener(Action.getActionListener(new CreateAvatarAction(avatar,ocupationList.getData()) ));
-        ocupationPanel.addMouseListener(changeOcupationAction);
-        avatarNickNameTextField.addActionListener( Action.getActionListener(new AvatarNameAction(avatar, avatarNickNameTextField.getText())));
-    }
- 
-     private final MouseListener changeOcupationAction = new MouseListener() {
+    private final MouseListener changeOcupationAction = new MouseListener() {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -172,7 +165,14 @@ public class CharacterSelectionViewport extends Viewport {
         public void mouseExited(MouseEvent e) {
         }
     };
-     
+    
+    private void addActionListeners(Avatar avatar){
+        mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
+        startGameButton.addActionListener(Action.getActionListener(new CreateAvatarAction(avatar, ocupationList.getData())));
+        ocupationPanel.addMouseListener(changeOcupationAction);
+        
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,24 +181,24 @@ public class CharacterSelectionViewport extends Viewport {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        startGameButton = new javax.swing.JButton(){
+        startGameButton = new JButton(){
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON,this.getWidth(), this.getHeight()).getImage();
+                Image image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_NEW_GAME_BUTTON, this.getWidth(), this.getHeight()).getImage();
                 g.drawImage( image , 0, 0, this);
             }
         };
-        mainMenuButton = new javax.swing.JButton(){
+        mainMenuButton = new JButton(){
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_MENU_BUTTON, this.getWidth(), this.getHeight()).getImage();
+                Image image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_MENU_BUTTON, this.getWidth(), this.getHeight()).getImage();
                 g.drawImage( image , 0, 0, this);
             }
         };
-        jPanel1 = new javax.swing.JPanel();
-        ocupationPanel = new javax.swing.JPanel() {
+        jPanel1 = new JPanel();
+        ocupationPanel = new JPanel() {
             @Override
             public void paintComponent(Graphics g){
 
@@ -209,21 +209,21 @@ public class CharacterSelectionViewport extends Viewport {
         };
         jScrollPane1 = new javax.swing.JScrollPane();
         avatarDescriptionTextArea = new javax.swing.JTextArea();
-        avatarOcuppationNameLabel = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel(){
+        avatarOcuppationNameLabel = new JLabel();
+        jPanel3 = new JPanel();
+        jPanel5 = new JPanel();
+        jPanel2 = new JPanel(){
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.CHARACTER_SELECTION_PET,this.getWidth()/6,this.getHeight()).getImage();
+                Image image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_PET, this.getWidth() / 6, this.getHeight()).getImage();
                 g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
             }
         };
-        jPanel4 = new javax.swing.JPanel();
-        avatarNickNameLabel = new javax.swing.JLabel();
-        avatarNickNameTextField = new javax.swing.JTextField(); 
-        setBackground(new java.awt.Color(202, 175, 149));
+        jPanel4 = new JPanel();
+        avatarNickNameLabel = new JLabel();
+        avatarNickNameTextField = new javax.swing.JTextField();
+        setBackground(new Color(202, 175, 149));
 
         startGameButton.setText("Start Game");
         startGameButton.setPreferredSize(new java.awt.Dimension(148, 65));
@@ -231,10 +231,10 @@ public class CharacterSelectionViewport extends Viewport {
         mainMenuButton.setText("Menu");
         mainMenuButton.setPreferredSize(new java.awt.Dimension(148, 65));
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel1.setBackground(new Color(255, 0, 0));
         jPanel1.setOpaque(false);
 
-        ocupationPanel.setBackground(new java.awt.Color(0, 0, 204));
+        ocupationPanel.setBackground(new Color(0, 0, 204));
 
         javax.swing.GroupLayout ocupationPanelLayout = new javax.swing.GroupLayout(ocupationPanel);
         ocupationPanel.setLayout(ocupationPanelLayout);
@@ -247,21 +247,21 @@ public class CharacterSelectionViewport extends Viewport {
             .addGap(0, 103, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setBackground(new Color(0, 0, 0));
         jScrollPane1.setOpaque(false);
 
-        avatarDescriptionTextArea.setBackground(new java.awt.Color(0, 51, 51));
+        avatarDescriptionTextArea.setBackground(new Color(0, 51, 51));
         avatarDescriptionTextArea.setColumns(20);
-        avatarDescriptionTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        avatarDescriptionTextArea.setForeground(new Color(255, 255, 255));
         avatarDescriptionTextArea.setRows(5);
         avatarDescriptionTextArea.setText("\tAvatar description goes here");
-        avatarDescriptionTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(163, 43, 43)));
+        avatarDescriptionTextArea.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new Color(163, 43, 43)));
         avatarDescriptionTextArea.setMargin(new java.awt.Insets(0, 0, 0, 0));
         avatarDescriptionTextArea.setMaximumSize(new java.awt.Dimension(853, 2147483647));
         jScrollPane1.setViewportView(avatarDescriptionTextArea);
 
         avatarOcuppationNameLabel.setFont(new java.awt.Font("Yu Mincho", 1, 18)); // NOI18N
-        avatarOcuppationNameLabel.setForeground(new java.awt.Color(240, 240, 240));
+        avatarOcuppationNameLabel.setForeground(new Color(240, 240, 240));
         avatarOcuppationNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         avatarOcuppationNameLabel.setText("Hello");
 
@@ -343,14 +343,14 @@ public class CharacterSelectionViewport extends Viewport {
         jPanel4.setOpaque(false);
 
         avatarNickNameLabel.setFont(new java.awt.Font("Yu Mincho", 2, 36)); // NOI18N
-        avatarNickNameLabel.setForeground(new java.awt.Color(240, 240, 240));
+        avatarNickNameLabel.setForeground(new Color(240, 240, 240));
         avatarNickNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         avatarNickNameLabel.setText("Nickname:");
 
         avatarNickNameTextField.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
-        avatarNickNameTextField.setForeground(new java.awt.Color(255, 255, 255));
+        avatarNickNameTextField.setForeground(new Color(255, 255, 255));
         avatarNickNameTextField.setText("Marie");
-        avatarNickNameTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new java.awt.Color(163, 43, 43)));
+        avatarNickNameTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new Color(163, 43, 43)));
         avatarNickNameTextField.setOpaque(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -411,18 +411,18 @@ public class CharacterSelectionViewport extends Viewport {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea avatarDescriptionTextArea;
-    private javax.swing.JLabel avatarNickNameLabel;
+    private JLabel avatarNickNameLabel;
     private javax.swing.JTextField avatarNickNameTextField;
-    private javax.swing.JLabel avatarOcuppationNameLabel;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    private JLabel avatarOcuppationNameLabel;
+    private JPanel jPanel1;
+    private JPanel jPanel2;
+    private JPanel jPanel3;
+    private JPanel jPanel4;
+    private JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton mainMenuButton;
-    private javax.swing.JPanel ocupationPanel;
-    private javax.swing.JButton startGameButton;
+    private JButton mainMenuButton;
+    private JPanel ocupationPanel;
+    private JButton startGameButton;
     // End of variables declaration//GEN-END:variables
 
 }

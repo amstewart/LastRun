@@ -11,4 +11,7 @@ public interface Describable {
     public String getDescription();
 
     public String getName();
+    
+    public String talk();
+    
 }

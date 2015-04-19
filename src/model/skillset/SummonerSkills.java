@@ -7,6 +7,7 @@ import model.effect.Bane;
 import model.effect.Boon;
 import model.effect.EntityStatusModifier;
 import model.effect.Spell;
+import model.effect.Staff;
 import model.entity.Status;
 import model.enums.DefinedStats;
 import model.skill.ExternalSkill;
@@ -35,8 +36,9 @@ public class SummonerSkills extends BasicSkills {
     	EntityStatusModifier emod2 = new EntityStatusModifier(ImageUtil.AXE, Status.SLEEPING, ImageUtil.SMELLY);
     	
     	enchantment = new SpellSkill("Enchant", 1, emod, emod1, emod2, 3);
-
-       // staff = new ExternalSkill("Staff", 1);
+    	
+    	Staff staf = new Staff();
+       staff = new ExternalSkill("Staff", 1, staf, 1, false);
     }
 
     protected SpellSkill getBoon() {

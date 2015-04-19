@@ -2,7 +2,6 @@ package controller.action.charSelectAction;
 
 import model.enums.OcupationCategory;
 import controller.action.Action;
-import controller.action.stateMachineAction.GoToGameAction;
 import model.entity.Avatar;
 import model.entity.occupation.Smasher;
 import utility.ImageUtil;
@@ -37,7 +36,7 @@ public class CreateAvatarAction extends Action {
                 break;
         }
         
-        nextState = new GoToGameAction();
+        nextState = new GoToIntroAction();
         nextState.perform();
     }
 }

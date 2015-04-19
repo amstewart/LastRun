@@ -1,6 +1,7 @@
 
 package model.observer;
 
+import model.Vector2;
 import model.map.GameMap;
 
 /**
@@ -9,4 +10,6 @@ import model.map.GameMap;
  */
 public interface MapObserver {
     public void receiveMap(GameMap map);
+
+    public void receiveNonStealthAvatarPosition(Vector2 v);
 }

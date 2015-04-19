@@ -17,6 +17,7 @@ public class GameViewport extends Viewport{
     private InventoryViewport invVP;
     private EquipmentViewport equipVP;
     private SkillPtAllocationViewport skillPtAllocationVP;
+    private DialogueViewport dialogueViewport;
 
 
     public GameViewport(MapViewport mapVP, Inventory inventory, Avatar a){
@@ -31,16 +32,21 @@ public class GameViewport extends Viewport{
         a.addObserver(equipVP);
         statsVP = new StatsViewport(stats);
         skillPtAllocationVP = new SkillPtAllocationViewport(occupation.getSkillBook());
+        dialogueViewport = DialogueViewport.getInstance();
         this.setBackground(Color.white);
         mapVP.setBackground(Color.lightGray);
         statsVP.setBackground(Color.lightGray);
         skillPtAllocationVP.setBackground(Color.yellow);
+        dialogueViewport.setBackground(Color.yellow);
+        
 
         this.add(mapVP);
         this.add(invVP);
         this.add(equipVP);
         this.add(statsVP);
+        this.add(dialogueViewport);
         this.add(skillPtAllocationVP);
+     
     }
     @Override
     public void render() {
@@ -50,14 +56,17 @@ public class GameViewport extends Viewport{
         mapVP.setPreferredSize(new Dimension((int) (width * 0.40), (int) (height * 0.70)));
         equipVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
         invVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
+        dialogueViewport.setPreferredSize(new Dimension((int) (width * 0.4), (int) (height * 0.25)));
         statsVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
-        skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.70)));
+        skillPtAllocationVP.setPreferredSize(new Dimension((int) (width * 0.15), (int) (height * 0.25)));
+       
 
         revalidate();
         this.repaint();
         mapVP.render();
         statsVP.render();
         skillPtAllocationVP.render();
+        dialogueViewport.render();
         this.requestFocusInWindow();
     }
 

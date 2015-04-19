@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.item.EquipmentHandler;
 import model.item.Inventory;
+import model.observer.EquipmentHandlerObserver;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
 import model.skill.Skill;
@@ -12,7 +13,7 @@ import model.skillset.BasicSkills;
 import model.stat.Stats;
 
 
-public abstract class Occupation {
+public abstract class Occupation{
 
     public static final String HEAD = "Head";
     public static final String CHEST = "Chest";
@@ -25,10 +26,10 @@ public abstract class Occupation {
     public Occupation(Inventory inventory, Stats playerStats) {
         // points is hardcoded until we figure out where to get it
         initialSkillPoints = 5;
-        equipmentHandler = new EquipmentHandler(inventory, getBasicSlots(), playerStats);
+        equipmentHandler = new EquipmentHandler(inventory, getBasicSlots(), playerStats, this);
     }
 
-
+ 
     public EquipmentHandler getEquipmentHandler() {
         return equipmentHandler;
     }
@@ -62,5 +63,12 @@ public abstract class Occupation {
 
 	public abstract void sortSkills(ArrayList<ExternalSkill> eSkills,
 			ArrayList<InternalSkill> iSkills, ArrayList<SpellSkill> sSkills);
+
+
+	public boolean holds(String s) {
+		return equipmentHandler.holds(s);
+	}
+
+
 
 }

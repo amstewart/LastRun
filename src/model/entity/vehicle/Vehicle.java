@@ -15,4 +15,10 @@ public class Vehicle extends NPC {
         ret += ". You can ride it.";
         return ret;
     }
+
+	@Override
+	public String talk() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

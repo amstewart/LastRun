@@ -38,16 +38,12 @@ public class InventoryViewport extends Viewport implements InventoryObserver, Av
     private JMenuItem cancel2 = new JMenuItem("Cancel");
 
     public InventoryViewport(Inventory inventory, EquipmentHandler eH, Stats playerStats) {
-
         equipAction = new EquipAction(eH, playerStats);
         useAction = new UseAction(inventory, playerStats);
         inventory.addObserver(this);
         inventoryDropAction = new InventoryDropAction(inventory);
-
         equipmentDropAction = new EquipmentDropAction(inventory);
-
         setUpMenu();
-
     }
 
     @Override

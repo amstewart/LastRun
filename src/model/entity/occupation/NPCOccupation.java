@@ -47,4 +47,6 @@ public class NPCOccupation extends Occupation {
 
 	}
 
+	
+
 }
