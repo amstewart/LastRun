@@ -55,6 +55,8 @@ public class GameViewport extends Viewport {
        
         dialogueViewport.setBackground(Color.yellow);
         skillsViewport = new SkillsViewport(occupation.getSkillBook());
+                a.addObserver(skillsViewport);
+
         
         addViewPorts();
     }
@@ -110,12 +112,6 @@ public class GameViewport extends Viewport {
         this.requestFocusInWindow();
     }
     
-    public void updateOccupation(Occupation o){
-    	skillsViewport.updateOccupation(o.getSkillBook());
-    }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

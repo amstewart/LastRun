@@ -87,7 +87,7 @@ public class Avatar extends Entity {
 
 	private void notifyObserversOccupationHasChanged() {
 		for (AvatarObserver o : observers) {
-			o.receiveOccupation(occupation, getStats());
+			o.receiveNewOccupation(occupation, getStats());
 		}
 	}
 	

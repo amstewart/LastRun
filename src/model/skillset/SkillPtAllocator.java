@@ -24,17 +24,11 @@ public class SkillPtAllocator {
         registeredViews.add(view);
     }
 
-    public void notifyViews() {
-        for(SkillsViewport view: registeredViews) {
-            view.receiveSkillInfo(skills, skillPoints);
-        }
-    }
     // some skill was incremented give all the skills to the view
     public void increment(Skill skill) {
-        if(skillPoints > 0) {
+        if (skillPoints > 0) {
             skill.increment();
             skillPoints--;
-            notifyViews();
         }
     }
 
@@ -44,11 +38,10 @@ public class SkillPtAllocator {
 
     public int getSkillPoints() {
         return skillPoints;
-        
+
     }
 
-	public void setSkills(Skill[] skills) {
-		this.skills = skills;
-		notifyViews();
-	}
+    public void setSkills(Skill[] skills) {
+        this.skills = skills;
+    }
 }

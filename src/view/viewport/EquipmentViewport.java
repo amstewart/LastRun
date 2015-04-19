@@ -96,7 +96,7 @@ public class EquipmentViewport extends Viewport implements EquipmentHandlerObser
     }
 
     @Override
-    public void receiveOccupation(Occupation o, Stats playerStats) {
+    public void receiveNewOccupation(Occupation o, Stats playerStats) {
         unequipAction = new UnequipAction(av, playerStats);
         equipmentUnEquip.addActionListener(Action.getActionListener(unequipAction));
         o.getEquipmentHandler().addObserver(this);
