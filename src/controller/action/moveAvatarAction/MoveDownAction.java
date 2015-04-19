@@ -23,11 +23,7 @@ import view.viewport.MapViewport;
  *
  * @author ChrisMoscoso
  */
-public class MoveDownAction extends Action {
-
-    private GameMap map;
-    EntityVisitor visitor = new EntityVisitor();
-    VisitorContainer container = new VisitorContainer();
+public class MoveDownAction extends MoveAction {
 
     public MoveDownAction() {
         Util.dbgOut("Dont forget to set the map for the action.", 3);
@@ -63,38 +59,11 @@ public class MoveDownAction extends Action {
 
     @Override
     public void perform() {
-        // Get the source tile
-        Vector2 sourceLocation = map.getAvatarMovement().getPosition();
-        Tile source = map.getTile(sourceLocation);
+        this.moveDirection(Direction.SOUTH);
+    }
 
-        // Collect the speed (based on mounted/not-mounted) and get dest tile
-        int speed;
-        Entity mover;
-        if (source.vehicleMounted()) {
-            speed = source.getVehicle().getMovement();
-            mover = source.getVehicle();
-        } else {
-            speed = source.getEntity().getMovement();
-            mover = source.getEntity();
-        }
-
-        for (int s = 0; s < speed; s++) {
-            Tile dest = map.getTileInDirection(Direction.SOUTH, source);
-
-            // if the mover CANNOT move to the new tile
-            if (!mover.getTerrainTypesAllowedToMoveOn().contains(dest.getTerrain().getTerrainType())) {
-                MapViewport.drawCantMove(dest.getLocation());
-                break;
-            } else {
-                map.moveTileEntities(source, dest);
-                //map.moveAvatarTo(dest.getLocation());
-            }
-
-            if (!mover.is(Status.INVISIBLE)) {
-                map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
-            }
-
-            source = dest;
-        }
+    @Override
+    protected void refaceAvatar() {
+        map.refaceAvatar(Direction.SOUTH, ImageUtil.inEffect[2]);
     }
 }

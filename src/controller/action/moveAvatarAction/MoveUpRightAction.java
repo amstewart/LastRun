@@ -19,9 +19,7 @@ import view.viewport.MapViewport;
  *
  * @author ChrisMoscoso
  */
-public class MoveUpRightAction extends Action {
-
-    private GameMap map;
+public class MoveUpRightAction extends MoveAction {
 
     public MoveUpRightAction() {
         Util.dbgOut("Dont forget to set the map for the action.", 3);
@@ -57,32 +55,11 @@ public class MoveUpRightAction extends Action {
 
     @Override
     public void perform() {
-        Vector2 sourceLocation = map.getAvatarMovement().getPosition();
-        Vector2 destLocation = map.getTileToTheNorthEast(sourceLocation).getLocation();
+        this.moveDirection(Direction.NORTHEAST);
+    }
 
-        Tile source = map.getTile(sourceLocation);
-        Tile dest = map.getTile(destLocation);
-
-        ArrayList<Terrain.TerrainType> avatarsAllowableTerrainTypes = map.getAvatarMovement().getEntity().getTerrainTypesAllowedToMoveOn();
-        Terrain.TerrainType destTerrain = map.getTile(destLocation).getTerrain().getTerrainType();
-     	Entity e=source.getEntity();
-        if(avatarsAllowableTerrainTypes.contains(destTerrain)){
-        	map.moveAvatarTo(destLocation);
-        	if(!e.is(Status.INVISIBLE)){
-                map.refaceAvatar(Direction.NORTHEAST, ImageUtil.inEffect[9]);
-            }
-        	updateEntityTileLocation(e, source, dest);
-            if(dest.isAreaEffectOwner()){
-            	applyAreaEffect(e,dest);
-            }
-            if(dest.isTrapOwner()){
-            	applyTrapEffect(e,dest);
-            }
-        } else {
-            MapViewport.drawCantMove(destLocation);
-        }
-        if(!e.is(Status.INVISIBLE)){
-            map.refaceAvatar(Direction.NORTHEAST, ImageUtil.inEffect[9]);
-        }
+    @Override
+    protected void refaceAvatar() {
+        map.refaceAvatar(Direction.NORTHEAST, ImageUtil.inEffect[9]);
     }
 }

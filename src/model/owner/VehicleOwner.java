@@ -21,6 +21,8 @@ public class VehicleOwner {
 
     public void adopt(Vehicle v){
         slave = v;
+        if (isMounted())
+            unmount();
     }
     
     public int getNumberOwned(){
@@ -50,6 +52,8 @@ public class VehicleOwner {
 
     public void release(){
         slave = null;
+        if (isMounted())
+            unmount();
     }
 
     public void toggleMount(Entity new_rider) {

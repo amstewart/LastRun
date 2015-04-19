@@ -46,7 +46,7 @@ public class GameState extends State {
         KeyController kc = new KeyController(map, player, mapVP);
         getViewport().addKeyListener(kc);
 
-        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, -8);
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 2);
         //Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         //map.addEntity(en_puddles, new Vector2(1, 3));
         //map.getAvatarMovement().getEntity().addPet(en_puddles);

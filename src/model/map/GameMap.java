@@ -339,11 +339,12 @@ public class GameMap {
         notifyObserversMapHasChanged();
     }
 
-    public void moveEntityTo(Vehicle vehicle, Vector2 dest) {
+    public void moveEntityTo(Vehicle vehicle, Vector2 dest, boolean mounted) {
         for (EntityMovement em : this.entityMovements) {
             if (em.getEntity() == vehicle) {
                 this.getTile(em.getPosition()).removeVehicle(vehicle);
                 this.getTile(dest).addVehicle(vehicle);
+                this.getTile(dest).toggleMount();
                 em.changePosition(dest);
             }
         }
@@ -352,11 +353,13 @@ public class GameMap {
 
     public void moveTileEntities(Tile source, Tile destination) {
         Entity e = source.getEntity();
-        Vehicle v = source.getVehicle();
+        Vehicle v = null;
+        if (source.vehicleMounted())
+            v = source.getVehicle();
 
         moveEntityTo(e, destination.getLocation());
         if (v != null)
-            moveEntityTo(v, destination.getLocation());
+            moveEntityTo(v, destination.getLocation(), true);
     }
     
     public void addMapObserver(MapObserver o) {
