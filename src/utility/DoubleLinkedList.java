@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-<<<<<<< HEAD:depreciated/DoubleLinkedList.java
-package src.utility;
+package utility;
 
 /**
  *
