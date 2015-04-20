@@ -10,6 +10,7 @@ import model.item.ItemFactory;
 import model.item.NonEquippableItem;
 import model.map.GameMap;
 import model.map.MapBuilder;
+import model.terrain.Terrain;
 import utility.ImageUtil;
 import view.viewport.GameViewport;
 import view.viewport.MapViewport;
