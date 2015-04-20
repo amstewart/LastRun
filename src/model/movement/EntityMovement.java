@@ -8,9 +8,6 @@ import model.tile.Tile;
 import utility.Direction;
 import utility.Util;
 
-/**
- * Created by Alex Stewart on 15/04/09.
- */
 public class EntityMovement extends Movement {
 
     private Entity entity;

@@ -31,6 +31,7 @@ public class MapBuilder {
 
     public static void addVehicle(GameMap map, Vector2 pos, String name, String art_asset, int speed) {
         Vehicle vic = new Vehicle(art_asset, name, speed);
+        vic.addTerrainMovement(Terrain.TerrainType.Mountain);
         map.addVehicle(vic, pos);
     }
 

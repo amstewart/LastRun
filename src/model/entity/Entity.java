@@ -6,10 +6,8 @@ import java.util.TimerTask;
 
 import model.bank.BankAccount;
 import model.entity.npc.pet.Pet;
-import model.entity.vehicle.Vehicle;
 import model.item.*;
 import model.owner.EntityOwner;
-import model.owner.VehicleOwner;
 import model.stat.Stats;
 import model.Assetable;
 import model.Describable;
@@ -20,7 +18,6 @@ import visitor.EntityVisitor;
 import visitor.VisitorContainer;
 import model.enums.DefinedStats;
 import model.terrain.Terrain.TerrainType;
-import utility.Util;
 
 /**
  * Entities are all game objects which have the ability to move and manipulate
@@ -30,7 +27,7 @@ import utility.Util;
  */
 public abstract class Entity implements Describable, Assetable{
     // Fields
-    private ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
+    protected ArrayList<TerrainType> terrainTypesAllowedToMoveOn = new ArrayList();
 
 	private Inventory inventory = new Inventory();
 	private String id;
@@ -235,13 +232,18 @@ public abstract class Entity implements Describable, Assetable{
         return terrainTypesAllowedToMoveOn;
     }
 
-    private void setCanMoveOnGrass(boolean b) {
+    protected void setCanMoveOnGrass(boolean b) {
         if(b){
             terrainTypesAllowedToMoveOn.add(TerrainType.Grass);
         }else{
             terrainTypesAllowedToMoveOn.remove(TerrainType.Grass);
         }
     }
+
+	protected void setCanMove_Mountain(boolean b) {
+		if (b) { terrainTypesAllowedToMoveOn.add(TerrainType.Mountain); }
+		else { terrainTypesAllowedToMoveOn.remove(TerrainType.Mountain); }
+	}
     
     public String getAssetID(){
     	return id;

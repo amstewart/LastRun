@@ -10,6 +10,7 @@ import model.item.ItemFactory;
 import model.item.NonEquippableItem;
 import model.map.GameMap;
 import model.map.MapBuilder;
+import model.terrain.Terrain;
 import utility.ImageUtil;
 import view.viewport.GameViewport;
 import view.viewport.MapViewport;
@@ -59,6 +60,13 @@ public class GameState extends State {
     public void onEnter() {
         render();
 
+        GameController kc = new GameController(map, player, mapVP);
+        getViewport().addKeyListener(kc);
+
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SMILE, 1);
+        NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
+
+        Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         
     }
 
