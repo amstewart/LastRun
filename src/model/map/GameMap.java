@@ -398,6 +398,7 @@ public class GameMap {
     	boolean [][]visited= new boolean[getHeight()][getWidth()];
     	Vector2 facingDir=getAvatarMovement().getFacingDir();
     	ArrayList<Integer> list= returnIndex(facingDir);
+    	int absoluteDirection= list.get(0);
     	Queue<Tile> queue= new LinkedList<Tile>();
     	Queue<Integer> ind = new LinkedList<Integer>();
     	tileList.add(getTile(center));
@@ -440,7 +441,7 @@ public class GameMap {
     				if(index==5)tileToAdd=getTileToTheNorthWest(currTile);
     			}
     			else{
-    				if(index!=tileOrientation || tileOrientation==0 || tileOrientation==3){
+    				if(index!=tileOrientation || index==absoluteDirection){
     					if(index==0)tileToAdd=getTileToTheNorth(currTile);
         				if(index==1)tileToAdd=getTileToTheNorthEast(currTile);
         				if(index==2)tileToAdd=getTileToTheSouthEast(currTile);
