@@ -1,5 +1,7 @@
 package model.entity.vehicle;
 
+import model.map.GameMap;
+import model.movement.NPCMovement;
 import model.terrain.Terrain;
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
@@ -38,5 +40,9 @@ public class Vehicle extends NPC {
     @Override
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
+    }
+
+    @Override
+    public void initMachine(NPCMovement em, GameMap gm) {
     }
 }

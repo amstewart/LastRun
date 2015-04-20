@@ -1,5 +1,8 @@
 package model.entity.npc;
 
+import model.map.GameMap;
+import model.movement.NPCMovement;
+import model.skill.ExternalSkill;
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
 import model.skill.Skill;
@@ -14,13 +17,18 @@ public class Monster extends NPC {
 
     private static final String DESC = "FAWYRYSYR!";
 
-    public Monster(String art_asset, String name, ArrayList<Skill> s) {
+    public Monster(String art_asset, String name) {
         super(art_asset);
         setName(name);
-        setSkills(s);
+        setSkills();
+
+    }
+
+    private void setSkills() {
+        ArrayList<ExternalSkill> monster = new ArrayList<ExternalSkill>();
 
 
-        this.machine = new NPCHostile(s);
+       // this.skills.addAll(monster);
     }
 
     public String getDescription() { return getName() + ": " + DESC; }
@@ -36,6 +44,9 @@ public class Monster extends NPC {
 
     }
 
-    
-    
+
+    @Override
+    public void initMachine(NPCMovement em, GameMap gm) {
+        this.machine = new NPCHostile(em, gm);
+    }
 }

@@ -1,36 +1,39 @@
 package state.NPCBehaviour;
 
 import model.Vector2;
+import model.gameTimer.GameTimer;
 import model.map.GameMap;
+import model.movement.EntityMovement;
+import model.movement.NPCMovement;
 import model.observer.MapObserver;
+import model.skill.ExternalSkill;
 import model.skill.Skill;
 import state.stateMachine.NPCBehaviourMachine;
 
 import java.util.ArrayList;
 
-/**
- * Created by TubbyLumpkins on 4/18/15.
- */
+
 public class NPCHostile extends NPCBehaviourMachine implements MapObserver {
 
-    ArrayList<Skill> skill;
+    ArrayList<ExternalSkill> skill;
     Vector2 target;
+    NPCMovement self;
     ArrayList<Behaviour> bs;
     boolean targetSpotted = false;
     private int counter;
 
-    public NPCHostile(ArrayList<Skill> s){
+    public NPCHostile(NPCMovement e, GameMap gm){
+        this.self = e;
+        this.map = gm;
+        this.gt = new GameTimer(30, true);
+        gt.addGameTimerListener(this);
+        //this.skill = s;
 
-        for(Skill skillz: s){
-           // bs.add(new MoveUp)
-        }
-
-        this.skill = s;
-
-        this.add("death", new Death());
-        this.add("flee", new Flee());
-        this.add("wander", new Wander());
-
+        Wander w = new Wander(e.getnpc());
+        this.add("wander", w);
+        this.changeToState("wander");
+        //this.add("flee", w);
+        //this.changeToState("flee");
 
     }
 
@@ -42,7 +45,7 @@ public class NPCHostile extends NPCBehaviourMachine implements MapObserver {
     }
 
     private void affectState(){
-
+        /*
         if(counter == 3){
             this.counter = 0;
         }
@@ -66,7 +69,9 @@ public class NPCHostile extends NPCBehaviourMachine implements MapObserver {
 
             }
         }
+        */
         doBehaviour(); //always called atm
+        //2
     }
 
     @Override

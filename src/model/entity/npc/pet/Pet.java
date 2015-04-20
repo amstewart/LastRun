@@ -1,7 +1,11 @@
 package model.entity.npc.pet;
 
 
+import model.map.GameMap;
+import model.movement.NPCMovement;
 import model.terrain.Terrain;
+import state.NPCBehaviour.PetBehaviour;
+import state.stateMachine.NPCBehaviourMachine;
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
 import model.entity.Entity;
@@ -10,6 +14,8 @@ import model.entity.npc.NPC;
 import java.util.ArrayList;
 
 public class Pet extends NPC {
+
+    NPCBehaviourMachine pb;
 
     private static final String DESC = "This is your pet.";
 
@@ -35,5 +41,11 @@ public class Pet extends NPC {
     @Override
     public void accept(EntityVisitor visitor, VisitorContainer container) {
 
+    }
+
+    @Override
+    public void initMachine(NPCMovement em, GameMap gm) {
+        if(pb == null){
+            this.pb = new PetBehaviour(em, gm);}
     }
 }

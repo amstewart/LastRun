@@ -1,6 +1,9 @@
 package state.stateMachine;
 
+import model.Vector2;
+import model.gameTimer.GameTimer;
 import model.gameTimer.GameTimerListener;
+import model.map.GameMap;
 import state.NPCBehaviour.Behaviour;
 import utility.Util;
 
@@ -12,6 +15,8 @@ public abstract class NPCBehaviourMachine implements GameTimerListener {
 
     protected HashMap<String, Behaviour> behaviour = new HashMap<String, Behaviour>();
     protected Stack<Behaviour> behaveStack = new Stack<Behaviour>();
+    protected GameMap map;
+    protected GameTimer gt;
 
 
     public void add(String stateName, Behaviour i) {
@@ -31,7 +36,9 @@ public abstract class NPCBehaviourMachine implements GameTimerListener {
     }
 
     protected void doBehaviour(){
-        behaveStack.peek().update();
+
+        behaveStack.peek().update(map);
+        System.out.println(behaveStack.peek().toString());
     }
 
     protected void changeToState(String behaviourName) {
@@ -43,9 +50,9 @@ public abstract class NPCBehaviourMachine implements GameTimerListener {
         Behaviour nextBehaviour = behaviour.get(behaviourName);
         nextBehaviour.onEnter();
         push(behaviourName);
-
+        //gt.addGameTimerListener(this);
     }
 
     @Override
-    public abstract void trigger() ;
+    public abstract void trigger();
 }

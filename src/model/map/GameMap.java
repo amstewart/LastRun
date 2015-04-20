@@ -5,10 +5,12 @@ import java.util.Queue;
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
+import model.entity.npc.NPC;
 import model.entity.vehicle.Vehicle;
 import model.item.Item;
 import model.movement.EntityMovement;
 import model.movement.ItemMovement;
+import model.movement.NPCMovement;
 import model.tile.Tile;
 
 import java.util.LinkedList;
@@ -26,6 +28,7 @@ public class GameMap {
     private Tile[][] map;
     private MiniMap miniMap;
     private LinkedList<EntityMovement> entityMovements = new LinkedList<>();
+    private LinkedList<NPCMovement> NPCMovements = new LinkedList<>();
     private LinkedList<ItemMovement> itemMovements = new LinkedList<>();
 
     private MapBuilder m;
@@ -52,6 +55,18 @@ public class GameMap {
     public void addEntity(Entity e, Vector2 location) {
         getTile(location).addEntity(e);
         entityMovements.add(new EntityMovement(e, this, location));
+        notifyObserversMapHasChanged();
+    }
+
+    public void addNPC(NPC e) {
+        this.addEntity(e, new Vector2());
+    }
+
+    public void addNPC(NPC e, Vector2 location) {
+        getTile(location).addEntity(e);
+        NPCMovement npcmv = new NPCMovement(e, this, location);
+        NPCMovements.add(npcmv);
+        e.initMachine(npcmv, this);
         notifyObserversMapHasChanged();
     }
 
@@ -327,6 +342,15 @@ public class GameMap {
         return entityMovements;
     }
 
+    public NPCMovement getNPCLocation(NPC npc){
+        for(NPCMovement e: getNPCMovements()){
+            if(npc == e.getnpc()){
+                return e;
+            }
+        }
+        return null;
+    }
+
     public void moveAvatarTo(Vector2 dest) {
         Util.dbgOut("GameMap: Move avatar to " + dest.toString(), 5);
         Entity av = avatarMovement.getEntity();
@@ -349,6 +373,16 @@ public class GameMap {
             }
         }
         notifyObserversMapHasChanged();
+    }
+
+    public void moveNPCTo(Vector2 dest, NPC npc) {
+
+        NPCMovement em = getNPCLocation(npc);
+        if(em != null) {
+            em.changePosition(dest);
+
+            notifyObserversMapHasChanged();
+        }
     }
 
     public void moveEntityTo(Vehicle vehicle, Vector2 dest, boolean mounted) {
@@ -392,7 +426,11 @@ public class GameMap {
             o.receiveMap(this);
         }
     }
-    
+
+    public Iterable<NPCMovement> getNPCMovements(){
+        return NPCMovements;
+    }
+
     public ArrayList<Tile> createLocalAreaLinear(int radius, Vector2 center){
     	Vector2 facingDir=getAvatarMovement().getFacingDir();
     	ArrayList<Tile> tileList = new ArrayList<Tile>();

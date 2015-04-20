@@ -3,6 +3,8 @@ package state;
 import controller.keyControllers.GameController;
 import model.Vector2;
 import model.entity.Avatar;
+import model.entity.npc.NPC;
+import model.entity.npc.Villager;
 import model.entity.npc.pet.Pet;
 import model.entity.occupation.Occupation;
 import model.item.Inventory;
@@ -10,10 +12,13 @@ import model.item.ItemFactory;
 import model.item.NonEquippableItem;
 import model.map.GameMap;
 import model.map.MapBuilder;
+import model.movement.NPCMovement;
 import model.terrain.Terrain;
 import utility.ImageUtil;
 import view.viewport.GameViewport;
 import view.viewport.MapViewport;
+
+import java.util.ArrayList;
 
 
 public class GameState extends State {
@@ -41,11 +46,19 @@ public class GameState extends State {
         MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SMILE, 1);
         NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
 
+
         Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         
         en_puddles.addToInventory(i);
-        map.addEntity(en_puddles, new Vector2(1, 3));
+        Vector2 start = new Vector2(1, 3);
+        map.addNPC(en_puddles, start);
+        NPCMovement startMove = map.getNPCLocation(en_puddles);
+        en_puddles.initMachine(startMove, map);
         map.getAvatarMovement().getEntity().addPet(en_puddles);
+        ArrayList<Terrain> a= new ArrayList<>();
+        en_puddles.setCanMoveOnWater(false);
+        
+
     }
 
     @Override
@@ -57,7 +70,6 @@ public class GameState extends State {
     @Override
     public void onEnter() {
         render();
-
         
     }
 

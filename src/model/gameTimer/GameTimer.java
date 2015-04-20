@@ -49,6 +49,7 @@ public class GameTimer implements GameEngineObserver{
     public GameTimer(int delay, boolean shouldLoop) {
         this.delay = Math.abs(delay);
         this.shouldLoop = shouldLoop;
+        start();
     }
 
     /**

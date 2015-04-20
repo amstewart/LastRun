@@ -1,6 +1,9 @@
 package model.entity.npc;
 
 
+import model.map.GameMap;
+import model.movement.NPCMovement;
+import state.NPCBehaviour.NPCHostile;
 import visitor.EntityVisitor;
 import visitor.VisitorContainer;
 
@@ -29,4 +32,10 @@ public class Villager extends NPC {
 
     }
 
+    @Override
+    public void initMachine(NPCMovement em, GameMap gm) {
+        if(this.machine == null) {
+            this.machine = new NPCHostile(em, gm);
+        }
+    }
 }

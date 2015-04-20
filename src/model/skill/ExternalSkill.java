@@ -30,7 +30,9 @@ public class ExternalSkill extends Skill{
 		if(emov == null){
 			return;
 		}
-		effect.applyEffect(map, entity, emov,radius);
+        if(effect != null) {
+            effect.applyEffect(map, entity, emov, radius);
+        }
 	}
 	
 	protected EntityMovement getMovement(Entity entity, GameMap area) {
