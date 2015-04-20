@@ -42,6 +42,7 @@ public class MapBuilder {
 
         TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
         LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
+
         TeleportAreaEffect teleportAreaEffect = new TeleportAreaEffect(new Vector2(10,10));
         teleportAreaEffect.setAssetID(ImageUtil.REDCROSS);
         teleportAreaEffect.setGame(gameMap);
@@ -57,11 +58,12 @@ public class MapBuilder {
                     tiles[i][j].addTerrain(grassTerrain);
                 }
                 double chance = Math.random();
-                if(chance > 0.70) {
+                if(chance > 0.90) {
                     tiles[i][j].addItem(ItemFactory.getRandomItem());
                 }
             }
         }
+
         tiles[4][3].addAreaEffect(teleportAreaEffect);
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
