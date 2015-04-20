@@ -1,6 +1,7 @@
 
 package controller.keyControllers;
 
+import controller.action.Action;
 import controller.action.stateMachineAction.GoBackAction;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,10 +10,10 @@ import java.awt.event.KeyListener;
  *
  * @author ChrisMoscoso
  */
-public class GeneralMenuController extends KeyController implements KeyListener{
+public class GeneralMenuController extends KeyController{
 
-    public GeneralMenuController(){
-        actionSet.put(KeyEvent.VK_ESCAPE, new GoBackAction());
+    public GeneralMenuController(Action a){
+        actionSet.put(KeyEvent.VK_ESCAPE, a);
     }
     
     @Override
@@ -23,7 +24,6 @@ public class GeneralMenuController extends KeyController implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
-        //System.out.println("CMON");
     }
 
     @Override
