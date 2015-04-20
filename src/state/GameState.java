@@ -49,7 +49,7 @@ public class GameState extends State {
         GameController kc = new GameController(map, player, mapVP);
         getViewport().addKeyListener(kc);
 
-        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SAD, 2);
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SMILE, 2);
         NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
 
         Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
