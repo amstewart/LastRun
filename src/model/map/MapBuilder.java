@@ -1,5 +1,6 @@
 package model.map;
 
+import model.areaEffect.TeleportAreaEffect;
 import model.entity.vehicle.Vehicle;
 import model.terrain.Terrain;
 import utility.ImageUtil;
@@ -19,8 +20,10 @@ public class MapBuilder {
     private Tile[][] tiles;
     private int width=30;
     private int height=30;
+    private GameMap gameMap;
 
-    public MapBuilder(){
+    public MapBuilder(GameMap gameMap){
+        this.gameMap = gameMap;
     	//generateMapDebug();
     	//generateMapRandom();
         generateMapDemo();
@@ -40,6 +43,10 @@ public class MapBuilder {
         TakeDamageAreaEffect takeDamageAreaEffect = new TakeDamageAreaEffect(ImageUtil.CROSSBONE);
         LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
 
+        TeleportAreaEffect teleportAreaEffect = new TeleportAreaEffect(new Vector2(10,10));
+        teleportAreaEffect.setAssetID(ImageUtil.REDCROSS);
+        teleportAreaEffect.setGame(gameMap);
+
         for(int i = 0; i < width; i ++) {
             for(int j = 0; j < height; j++) {
                 tiles[i][j] = new Tile(new Vector2(i, j));
@@ -51,12 +58,13 @@ public class MapBuilder {
                     tiles[i][j].addTerrain(grassTerrain);
                 }
                 double chance = Math.random();
-                if(chance > 0.99) {
+                if(chance > 0.90) {
                     tiles[i][j].addItem(ItemFactory.getRandomItem());
                 }
             }
         }
 
+        tiles[4][3].addAreaEffect(teleportAreaEffect);
         tiles[26][4].addItem(ItemFactory.newKey1());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
         tiles[8][13].addItem(ItemFactory.newClosedChest());

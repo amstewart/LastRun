@@ -1,6 +1,7 @@
 package model.item.oneShotItemAbility;
 
 import model.entity.Entity;
+import view.viewport.DialogueViewport;
 
 public class StrengthBoostAbility implements Ability {
 
@@ -12,6 +13,7 @@ public class StrengthBoostAbility implements Ability {
 
     @Override
     public void perform(Entity e) {
+        DialogueViewport.getInstance().print("Got SWOLE!");
         e.setStrength(strengthBoost);
     }
 }
