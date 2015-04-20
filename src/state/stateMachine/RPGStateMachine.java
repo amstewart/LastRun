@@ -1,6 +1,7 @@
 
 package state.stateMachine;
 
+import controller.keyControllers.GameController;
 import model.gameBundle.GameBundle;
 import state.*;
 import view.viewport.Viewport;
@@ -15,7 +16,7 @@ public class RPGStateMachine extends StateMachine{
     private GameBundle gameBundle;
     private GameWindow window = new GameWindow();
     
-    State menu, charSelect, petSelect, game, HUD, intro;
+    State menu, charSelect, petSelect, game, HUD, intro, merchant, pause;
     
     private RPGStateMachine(){
         gameBundle = new GameBundle();
@@ -23,12 +24,16 @@ public class RPGStateMachine extends StateMachine{
         charSelect = new CharacterSelectionState(gameBundle.getAvatar());
         game = new GameState(gameBundle.getMap(), gameBundle.getAvatar());
         intro = new IntroState(gameBundle.getAvatar().getOccupation());
+        merchant = new MerchantState();
+        pause = new PauseState();
         
         this.add("menu", menu);
         this.add("charSelect", charSelect);
         this.add("petSelect", petSelect);
         this.add("game", game);
+        this.add("merchant", merchant);
         this.add("intro", intro);
+        this.add("pause", pause);
     }
     
      public void render() {
@@ -75,5 +80,21 @@ public class RPGStateMachine extends StateMachine{
     protected void changeToState(String stateName){
         super.changeToState(stateName);
         window.displayState(stateStack.peek().getViewport());
+    }
+
+    public void changeToMerchantState() {
+        this.changeToState("merchant");
+    }
+
+    public void changeToPauseState() {
+        this.changeToState("pause");
+    }
+
+    public boolean gameStateIsActive() {
+        return stateStack.peek().equals(game);
+    }
+
+    public void setKeyController(GameController gameController) {
+        
     }
 }

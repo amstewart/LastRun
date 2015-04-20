@@ -1,6 +1,6 @@
 package state;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 import model.Vector2;
 import model.entity.Avatar;
 import model.entity.npc.pet.Pet;
@@ -18,6 +18,7 @@ import view.viewport.MapViewport;
 public class GameState extends State {
 
     // All temporary because stats will get the stuff from game bundle later
+    private GameController controller;
     private Inventory inventory;
     private Avatar player;
     private Occupation occupation;
@@ -31,6 +32,8 @@ public class GameState extends State {
         inventory = player.getInventory();
         mapVP = new MapViewport(map);
         viewPort =  new GameViewport(mapVP, inventory, player);
+        
+        controller = new GameController(map, player, mapVP);
     }
 
     @Override
@@ -43,10 +46,10 @@ public class GameState extends State {
     public void onEnter() {
         render();
 
-        KeyController kc = new KeyController(map, player, mapVP);
+        GameController kc = new GameController(map, player, mapVP);
         getViewport().addKeyListener(kc);
 
-        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 2);
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SMILE, 1);
         NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
 
         Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
@@ -58,6 +61,7 @@ public class GameState extends State {
 
     @Override
     public void onExit() {
+        getViewport().removeKeyListener(controller);
         
     }
 }

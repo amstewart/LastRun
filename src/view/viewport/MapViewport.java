@@ -111,10 +111,9 @@ public class MapViewport extends Viewport {
 
                 ArrayList<Tile> lightTiles = map.getAvatarMovement().getLightMap(map);
                 
-                ArrayList<Tile> ringAround = map.getAvatarMovement().getRingAroundAvatar(map);
-
+              
                 boolean currentTileShouldBeDark = true;
-
+                
                 for (Tile t : lightTiles) {
                     if (t.getLocation().X == i && t.getLocation().Y == j) {
                         currentTileShouldBeDark = false;
@@ -122,20 +121,15 @@ public class MapViewport extends Viewport {
                     }
                 }
                 
-                for(Tile t : ringAround){
-                	 if (t.getLocation().X == i && t.getLocation().Y == j) {
-                         currentTileShouldBeDark = false;
-                         break;
-                     }
-                }
-
+               
+                 
                 Polygon p = new Polygon();
                 for (int k = 0; k < 6; k++) {
                     g.setColor(new Color(0, 0, 0, 128));
                     p.addPoint((int) (offsetX + positionX + hexRadius * Math.cos(k * 2 * Math.PI / 6)),
                             (int) (polygonOffsetY + positionY + hexRadius * Math.sin(k * 2 * Math.PI / 6)));
                     if (k > 0) {
-                        g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
+                        //g.drawLine(p.xpoints[k - 1], p.ypoints[k - 1], p.xpoints[k], p.ypoints[k]);
                     }
 
                 }
@@ -162,7 +156,7 @@ public class MapViewport extends Viewport {
                 if (i == cantMoveLocation.X && j == cantMoveLocation.Y && cantMoveTimer > 0) {
                     g.setFont(new Font("TimesRoman", Font.PLAIN, 12));
                     coordinate = "Cant Go Here";
-                    g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
+                    //g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + (int) (hexRadius * 0.8) + g.getFontMetrics().getHeight() / 2);
                     cantMoveTimer -= 0.02;
                 } else {
                    // g.drawString(coordinate, offsetX + positionX - g.getFontMetrics().stringWidth(coordinate) / 2, offsetY + positionY + g.getFontMetrics().getHeight() / 2);
@@ -325,8 +319,8 @@ public class MapViewport extends Viewport {
         zoomOut = new JButton(zoomOutIcon);
         zoomOut.addActionListener(Action.getActionListener(new ZoomOutMapAction(this)));
 
-        zoomIn.setBounds(this.getSize().width - 100, 0, 50, 50);
-        zoomOut.setBounds(this.getSize().width - 50, 0, 50, 50);
+        zoomIn.setBounds(this.getSize().width - 100, 300, 50, 50);
+        zoomOut.setBounds(this.getSize().width - 50, 300, 50, 50);
 
         zoomIn.repaint();
         zoomOut.repaint();

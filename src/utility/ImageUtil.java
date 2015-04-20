@@ -82,6 +82,12 @@ public class ImageUtil {
      * *****************************
      */
 
+    /** VEHICLES **/
+    public static final String VEH_DONKEY_ANGRY = DIR_SPRITES + "veh_donkey_angry.png";
+    public static final String VEH_DONKEY_NORM = DIR_SPRITES + "veh_donkey_normal.png";
+    public static final String VEH_DONKEY_SAD = DIR_SPRITES + "veh_donkey_sad.png";
+    public static final String VEH_DONKEY_SMILE = DIR_SPRITES + "veh_donkey_smile.png";
+
     public static final String[] smasherSprites = {null, SMASHER_SW, SMASHER_S, SMASHER_SE, null, null, null, SMASHER_NW, SMASHER_N, SMASHER_NE};
     public static final String[] sneakSprites = {null, SNEAK_SW, SNEAK_S, SNEAK_SE, null, null, null, SNEAK_NW, SNEAK_N, SNEAK_NE};
     public static final String[] summonerSprites = {null, SUMMONER_SW, SUMMONER_S, SUMMONER_SE, null, null, null, SUMMONER_NW, SUMMONER_N, SUMMONER_NE};

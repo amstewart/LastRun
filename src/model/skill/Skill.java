@@ -1,6 +1,6 @@
 package model.skill;
 
-import controller.KeyController;
+import controller.keyControllers.GameController;
 
 public abstract class Skill {
     private String name;

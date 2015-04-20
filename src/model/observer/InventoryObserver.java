@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 public interface InventoryObserver {
 
-    void receiveTakeableItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems,
+    void receiveAllInventoryItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems,
                                  ArrayList<ActivationItem> activationItems);
 }

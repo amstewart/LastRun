@@ -78,7 +78,7 @@ public class Inventory {
 
     private void notifyObservers() {
         for(InventoryObserver observer: observers) {
-            observer.receiveTakeableItems(getEquippableItems(), getNonEquippableItems(), getActivationItems());
+            observer.receiveAllInventoryItems(getEquippableItems(), getNonEquippableItems(), getActivationItems());
         }
     }
 

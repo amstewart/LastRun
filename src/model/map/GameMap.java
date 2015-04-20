@@ -2,9 +2,6 @@ package model.map;
 
 import java.util.ArrayList;
 import java.util.Queue;
-
-
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
@@ -64,7 +61,8 @@ public class GameMap {
         notifyObserversMapHasChanged();
     }
 
-    public ArrayList<Entity> getEntities() {
+    public ArrayList<Entity> getEntities() 
+    {
         ArrayList<Entity> arrayList = new ArrayList<>();
         for (EntityMovement e : entityMovements) {
             arrayList.add(e.getEntity());
@@ -74,7 +72,9 @@ public class GameMap {
 
     public void refaceAvatar(Vector2 facing, String new_asset) {
         avatarMovement.reface(facing);
-        if (new_asset != null) avatarMovement.setAsset(new_asset);
+        if (new_asset != null) {
+            avatarMovement.setAsset(new_asset);
+        }
         notifyObserversMapHasChanged();
     }
 
@@ -88,20 +88,26 @@ public class GameMap {
         return avatarMovement;
     }
 
-    public MiniMap getMiniMap() { return miniMap; }
+    public MiniMap getMiniMap() {
+        return miniMap;
+    }
 
-    public Tile getTileInDirection(Vector2 dir, Tile source){
-        if(dir.X == Direction.NORTH.X && dir.Y == Direction.NORTH.Y){
+    public Tile getTileInDirection(Vector2 dir, Tile source) {
+        if (dir.X == Direction.NORTH.X && dir.Y == Direction.NORTH.Y) {
             return getTileToTheNorth(source.getLocation());
-        }else if(dir.X == Direction.SOUTH.X && dir.Y == Direction.SOUTH.Y){
+        } else if (dir.X == Direction.SOUTH.X && dir.Y == Direction.SOUTH.Y) {
             return getTileToTheSouth(source);
-        }if(dir.X == Direction.NORTHEAST.X && dir.Y == Direction.NORTHEAST.Y){
+        }
+        if (dir.X == Direction.NORTHEAST.X && dir.Y == Direction.NORTHEAST.Y) {
             return getTileToTheNorthEast(source);
-        }if(dir.X == Direction.NORTHWEST.X && dir.Y == Direction.NORTHWEST.Y){
+        }
+        if (dir.X == Direction.NORTHWEST.X && dir.Y == Direction.NORTHWEST.Y) {
             return getTileToTheNorthWest(source);
-        }if(dir.X == Direction.SOUTHEAST.X && dir.Y == Direction.SOUTHEAST.Y){
+        }
+        if (dir.X == Direction.SOUTHEAST.X && dir.Y == Direction.SOUTHEAST.Y) {
             return getTileToTheSouthEast(source);
-        }if(dir.X == Direction.SOUTHWEST.X && dir.Y == Direction.SOUTHWEST.Y){
+        }
+        if (dir.X == Direction.SOUTHWEST.X && dir.Y == Direction.SOUTHWEST.Y) {
             return getTileToTheSouthWest(source);
         }
         return null;
@@ -121,18 +127,18 @@ public class GameMap {
         return ret_tile;
     }
 
-     public Tile getTileToTheNorth(Vector2 location) {
+    public Tile getTileToTheNorth(Vector2 location) {
         int newX = location.X;
-        int newY = location.Y  - 1;
+        int newY = location.Y - 1;
         newX = this.applyBoundaryX(newX);
         newY = this.applyBoundaryY(newY);
         return map[newX][newY];
     }
-    
-     public Tile getTileToTheNorth(Tile t){
-    	 return getTileToTheNorth(t.getLocation());
-     }
-    
+
+    public Tile getTileToTheNorth(Tile t) {
+        return getTileToTheNorth(t.getLocation());
+    }
+
     public Tile getTileToTheNorthEast(Vector2 location) {
         int newX = location.X + 1;
         int newY = location.Y - 1;
@@ -328,7 +334,7 @@ public class GameMap {
         avatarMovement.changePosition(dest);
 
         notifyObserversMapHasChanged();
-        if(avatarMovement.getEntity().is(Status.INVISIBLE)){
+        if (avatarMovement.getEntity().is(Status.INVISIBLE)) {
             notifyHostileNPC();
         }
     }
@@ -360,27 +366,29 @@ public class GameMap {
     public void moveTileEntities(Tile source, Tile destination) {
         Entity e = source.getEntity();
         Vehicle v = null;
-        if (source.vehicleMounted())
+        if (source.vehicleMounted()) {
             v = source.getVehicle();
+        }
 
         moveEntityTo(e, destination.getLocation());
-        if (v != null)
+        if (v != null) {
             moveEntityTo(v, destination.getLocation(), true);
+        }
     }
-    
+
     public void addMapObserver(MapObserver o) {
         observers.add(o);
         notifyObserversMapHasChanged();
     }
-    
-    private void notifyHostileNPC(){
-        for(MapObserver o : observers){
+
+    private void notifyHostileNPC() {
+        for (MapObserver o : observers) {
             o.receiveNonStealthAvatarPosition(avatarMovement.getPosition());
         }
     }
 
-    private void notifyObserversMapHasChanged(){
-        for(MapObserver o : observers){
+    private void notifyObserversMapHasChanged() {
+        for (MapObserver o : observers) {
             o.receiveMap(this);
         }
     }
@@ -492,108 +500,49 @@ public class GameMap {
     	return list;
     }
 	public ArrayList<Tile> createLocalAreaRadial(int radius, Vector2 center) {
-		ArrayList<Tile> list = new ArrayList();
-		Tile t = getTile(center);
-		Tile oldt = null;
-		boolean addTile = true;
-		list.add(t);
-		for (int i = 0; i != radius; ++i) {
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheNorth(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheNorthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouth(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthWest(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);
-			
-			for (int j = 0; j != i + 1; ++j) {
-				oldt = t;
-				t = getTileToTheSouthEast(center);
-				if (oldt == t) {
-					addTile = false;
-					break;
-				}
-			}
-			if (addTile) {
-				list.add(t);
-			} else {
-				addTile = true;
-			}
-			t = getTile(center);//added
-		}
-	
-		return list;
+		ArrayList<Tile> tileList= new ArrayList<Tile>();
+    	boolean [][]visited= new boolean[getHeight()][getWidth()];
+    	Queue<Tile> queue= new LinkedList<Tile>();
+    	tileList.add(getTile(center));
+    	Tile currTile= getTile(center);
+    	int count=0;
+    	int loops=0;
+    	
+    	for(int i=1;i<=radius;i++){
+    		loops+=(i*6);
+    	}
+    	loops++;
+    	visited[currTile.getLocation().X][currTile.getLocation().Y]=true;
+    	if(radius==0){
+    		return tileList;
+    	}
+    	
+    	queue.add(currTile);
+    	Tile tileToAdd=null;
 
+    	while(!queue.isEmpty() &&  count<loops){
+    		
+    		currTile = queue.remove();
+    		tileList.add(currTile);
+    		for(int i=0;i<6;++i){
+    			if(i==0)tileToAdd=getTileToTheNorth(currTile);
+				if(i==1)tileToAdd=getTileToTheNorthEast(currTile);
+				if(i==2)tileToAdd=getTileToTheSouthEast(currTile);
+				if(i==3)tileToAdd=getTileToTheSouth(currTile);
+				if(i==4)tileToAdd=getTileToTheSouthWest(currTile);
+				if(i==5)tileToAdd=getTileToTheNorthWest(currTile);
+				
+				
+				int x=tileToAdd.getLocation().X;
+    			int y=tileToAdd.getLocation().Y;
+    			if(!visited[x][y]){
+    				queue.add(tileToAdd);
+    				visited[x][y]=true;
+    			}
+    			
+    		}
+    		count++;
+    	}
+    	return tileList;
 	}
-
 }

@@ -12,9 +12,9 @@ import javax.swing.JButton;
  *
  * @author darien
  */
-public class PauseGameViewport extends Viewport {
+public class PauseViewport extends Viewport {
 
-    public PauseGameViewport() {
+    public PauseViewport() {
         initComponents();
     }
     
