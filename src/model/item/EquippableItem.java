@@ -5,6 +5,7 @@ import model.bank.BankAccount;
 import model.entity.Avatar;
 import model.entity.Entity;
 import model.tile.Tile;
+import view.viewport.DialogueViewport;
 
 public class EquippableItem extends TakeableItem {
 
@@ -21,12 +22,20 @@ public class EquippableItem extends TakeableItem {
     }
 
    public boolean equip(Avatar avatar) {
-        return avatar.equip(this, slotCategory);
+        if (avatar.equip(this, slotCategory)) {
+            DialogueViewport.getInstance().print("Equipped: " + this.getName());
+            return true;
+        }
+       return false;
         // stats.mergeStats(getItemStats());
     }
 
     public boolean unequip(Avatar avatar) {
-        return avatar.unequip(this, slotCategory);
+        if(avatar.unequip(this, slotCategory)) {
+            DialogueViewport.getInstance().print("Unequipped: " + this.getName());
+            return true;
+        }
+        return false;
         // stats.unMergeStats(getItemStats());
     }
 
