@@ -44,12 +44,14 @@ public abstract class MoveAction extends Action {
                 map.moveTileEntities(source, dest);
             }
 
-            if (!mover.is(Status.INVISIBLE)) {
+            /*if (!mover.is(Status.INVISIBLE)) {
                 refaceAvatar();
-            }
+            }*/
 
             source = dest;
         }
+        
+        refaceAvatar();
     }
 
     protected abstract void refaceAvatar();
