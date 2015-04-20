@@ -10,6 +10,7 @@ public abstract class Skill {
     public Skill(String name, int level, boolean passive) {
         this.name = name;
         this.level = level;
+        this.passive = passive;
     }
 
     public String getName() {
