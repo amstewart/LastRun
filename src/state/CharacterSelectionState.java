@@ -1,6 +1,7 @@
 
 package state;
 
+import controller.keyControllers.GeneralMenuController;
 import model.entity.Avatar;
 import view.viewport.CharacterSelectionViewport;
 import view.viewport.Viewport;
@@ -14,6 +15,7 @@ public class CharacterSelectionState extends State{
     public CharacterSelectionState(Avatar avatar){
         this.avatar = avatar;
         viewPort =  new CharacterSelectionViewport(avatar);
+        controller = new GeneralMenuController();
     }
 
     @Override

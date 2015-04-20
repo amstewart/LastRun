@@ -7,6 +7,7 @@ package model.stat;
 
 import java.util.ArrayList;
 
+import view.viewport.DialogueViewport;
 import view.viewport.StatsViewport;
 
 public class Stats {
@@ -63,15 +64,13 @@ public class Stats {
 		return string;
 	}
 	
-	public Stats(){
-		
-	}
+
 
 	public Stats(int livesLeft, int strength, int agility, int intellect,
 			int hardiness, int experience, int movement, int equippedArmor,
 			int equippedWeapon) {
 		super();
-		setStats(livesLeft, strength, agility, intellect, hardiness,
+		setStatsInit(livesLeft, strength, agility, intellect, hardiness,
 				experience, movement, equippedArmor, equippedWeapon);
 	}
 
@@ -90,6 +89,20 @@ public class Stats {
 		deriveStats();
 	}
 	
+	private void setStatsInit(int livesLeft, int strength, int agility,
+			int intellect, int hardiness, int experience, int movement,
+			int equippedArmor, int equippedWeapon) {
+		this.livesLeft = livesLeft;
+		this.strength = strength;
+		this.agility = agility;
+		this.intellect = intellect;
+		this.hardiness = hardiness;
+		this.experience = experience;
+		this.movement = movement;
+		this.equippedArmor = equippedArmor;
+		this.equippedWeapon = equippedWeapon;
+	}
+	
 	public void setStats(Stats stat){
 		this.livesLeft = stat.livesLeft;
 		this.strength = stat.strength;
@@ -102,9 +115,9 @@ public class Stats {
 		this.equippedWeapon = stat.equippedWeapon;
 		deriveStats();
 	}
-	private void setStats(int livesLeft, int strength, int agility,
-			int intellect, int hardiness, int experience, int movement,
-			int equippedArmor, int equippedWeapon) {
+	private void setStats(final int livesLeft, final int strength, final int agility,
+			final int intellect, final int hardiness, final int experience, final int movement,
+			final int equippedArmor, final int equippedWeapon) {
 		this.livesLeft = livesLeft;
 		this.strength = strength;
 		this.agility = agility;
@@ -145,66 +158,91 @@ public class Stats {
 	}
 
 	public void setLivesLeft(int livesLeft) {
-		this.livesLeft = livesLeft;
+		this.livesLeft += livesLeft;
 		deriveStats();
 	}
 
 	public void setLife(int life) {
-		this.life = life;
+		this.life += life;
 		deriveStats();
 	}
 
 	public void setLevel(int level) {
-		this.level = level;
+		this.level += level;
 		deriveStats();
 	}
 
 	public void setStrength(int strength) {
-		this.strength = strength;
+		this.strength += strength;
 		deriveStats();
 	}
 
 	public void setAgility(int agility) {
-		this.agility = agility;
+		this.agility += agility;
 		deriveStats();
 	}
 
 	public void setIntellect(int intellect) {
-		this.intellect = intellect;
+		this.intellect += intellect;
 		deriveStats();
 	}
 
 	public void setHardiness(int hardiness) {
-		this.hardiness = hardiness;
+		this.hardiness += hardiness;
 		deriveStats();
 	}
 
 	public void setExperience(int experience) {
-		this.experience = experience;
+		this.experience += experience;
 		deriveStats();
 	}
 
 	public void setMovement(int movement) {
-		this.movement = movement;
+		this.movement += movement;
 		deriveStats();
 	}
 
 	public void setEquippedArmor(int equippedArmor) {
-		this.equippedArmor = equippedArmor;
+		this.equippedArmor += equippedArmor;
 		deriveStats();
 	}
 
 	public void setEquippedWeapon(int equippedWeapon) {
-		this.equippedWeapon = equippedWeapon;
+		this.equippedWeapon += equippedWeapon;
 		deriveStats();
 	}
 
 	public void setMana(int mana) {
-		this.mana = mana;
+		this.mana += mana;
 		notifyViews();
 	}
 
-	private void deriveStats() {
+	public void deriveStats() {
+		this.level = experience/100 + 1;
+		this.life = hardiness * level;
+		this.mana = intellect * level;
+		this.offensiveRating = (equippedWeapon + strength)*level;
+		this.defensiveRating = (agility)*level;
+		this.armorRating = (equippedArmor + hardiness);
+		notifyViews();
+		if(this.life <= 0){
+			this.kill();
+		}
+	}
+
+	private void kill() {
+		this.livesLeft--;
+		if(this.livesLeft <= 0){
+			this.die();
+			return;
+		}else{
+			this.hardiness = 10;
+		}
+		deriveStats();
+		notifyViews();
+	}
+	private void die() {
+		DialogueViewport.getInstance().print("You died. You are now a zombie.");
 		notifyViews();
 	}
 

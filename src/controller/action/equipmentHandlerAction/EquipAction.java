@@ -30,7 +30,7 @@ public class EquipAction extends Action {
         if(equippableItem != null) {
             if(!equippableItem.equip(avatar)){
             	DialogueViewport ins =  DialogueViewport.getInstance();
-            	ins.print("You can't equip Items of this type");
+            	ins.print("It looks like I can't equip items of type " + equippableItem.getSlotCategory());
             }     
         }
     }

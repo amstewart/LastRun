@@ -1,5 +1,6 @@
 package state;
 
+import controller.keyControllers.GeneralMenuController;
 import view.viewport.MerchantViewport;
 import view.viewport.Viewport;
 
@@ -9,6 +10,7 @@ public class MerchantState extends State {
 
     public MerchantState() {
         viewPort = new MerchantViewport();
+        controller = new GeneralMenuController();
     }
 
     @Override
@@ -18,16 +20,6 @@ public class MerchantState extends State {
 
     @Override
     public void render() {
-
-    }
-
-    @Override
-    public void onEnter() {
-
-    }
-
-    @Override
-    public void onExit() {
 
     }
 

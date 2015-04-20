@@ -2,7 +2,6 @@ package model.map;
 
 import java.util.ArrayList;
 import java.util.Queue;
-
 import model.Vector2;
 import model.entity.Entity;
 import model.entity.Status;
