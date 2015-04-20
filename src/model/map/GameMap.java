@@ -392,6 +392,18 @@ public class GameMap {
             o.receiveMap(this);
         }
     }
+    
+    public ArrayList<Tile> createLocalAreaLinear(int radius, Vector2 center){
+    	Vector2 facingDir=getAvatarMovement().getFacingDir();
+    	ArrayList<Tile> tileList = new ArrayList<Tile>();
+    	tileList.add(getTile(center));
+    	Tile currTile=getTile(center);
+    	for(int i=0;i<radius;++i){
+    		currTile=getTileInDirection(facingDir,getTile(currTile.getLocation()));
+    		tileList.add(currTile);
+    	}
+    	return tileList;
+    }
 
     public ArrayList<Tile> createLocalAreaAngular(int radius, Vector2 center) {
     	ArrayList<Tile> tileList= new ArrayList<Tile>();
