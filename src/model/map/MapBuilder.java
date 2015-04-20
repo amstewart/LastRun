@@ -59,22 +59,30 @@ public class MapBuilder {
                     tiles[i][j].addTerrain(grassTerrain);
                 }
                 double chance = Math.random();
-                if(chance > 0.65) {
+                if(chance > 0.95) {
                 	if(i>5 && i!=8 && i!=26 && j>2 && j!=4 && j!=13)
                     tiles[i][j].addItem(ItemFactory.getRandomItem());
                 }
             }
         }
 
-        tiles[26][4].addItem(ItemFactory.newKey1());
+      //  tiles[3][8].addItem(ItemFactory.newKey1());
+        tiles[6][8].addItem(ItemFactory.newClosedChest());
         tiles[4][4].addItem(ItemFactory.newWaterWine());
-        tiles[8][13].addItem(ItemFactory.newClosedChest());
+        tiles[8][5].addItem(ItemFactory.newKey1());
+
+        tiles[1][11].addItem(ItemFactory.getRandomSmasherWeapon());
+        tiles[2][11].addItem(ItemFactory.getRandomSummonerWeapon());
+        tiles[3][11].addItem(ItemFactory.getRandomSneakWeapon());
+        tiles[6][11].addAreaEffect(levelUpAreaEffect);
+/*
         tiles[2][2].addAreaEffect(takeDamageAreaEffect);
         tiles[3][2].addAreaEffect(levelUpAreaEffect);
         tiles[4][2].addAreaEffect(healDamageAreaEffect);
         tiles[5][2].addAreaEffect(instantDeathAreaEffect);
+
         tiles[4][4].addTrap(spikeTrap);
-        
+*/
     }
 
     public void generateMapDebug() {
@@ -155,6 +163,10 @@ public class MapBuilder {
                     }
             }
         }
+
+        tiles[1][11].addItem(ItemFactory.getRandomSmasherWeapon());
+        tiles[2][11].addItem(ItemFactory.getRandomSummonerWeapon());
+        tiles[3][11].addItem(ItemFactory.getRandomSneakWeapon());
 
         tiles[2][2].addAreaEffect(new TakeDamageAreaEffect(ImageUtil.CROSSBONE));
         tiles[1][1].addAreaEffect(new LevelUpAreaEffect(ImageUtil.GOLDSTAR));

@@ -18,7 +18,7 @@ public class Inventory {
         nonEquippableItems = new ArrayList<>();
         equippableItems = new ArrayList<>();
         activationItems = new ArrayList<>();
-
+    /* Debug purposes
         this.add(ItemFactory.newKey1());
         this.add(ItemFactory.newBFSword());
         this.add(ItemFactory.newHealthPotion());
@@ -33,6 +33,7 @@ public class Inventory {
         this.add(ItemFactory.getRandomNonEquippableItem());
         this.add(ItemFactory.getRandomNonEquippableItem());
         this.add(ItemFactory.getRandomNonEquippableItem());
+     */
     }
 
     public void add(EquippableItem equippableItem) {
