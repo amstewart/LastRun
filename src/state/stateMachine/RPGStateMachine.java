@@ -93,8 +93,4 @@ public class RPGStateMachine extends StateMachine{
     public boolean gameStateIsActive() {
         return stateStack.peek().equals(game);
     }
-
-    public void setKeyController(GameController gameController) {
-        
-    }
 }

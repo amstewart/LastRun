@@ -6,6 +6,9 @@
 package view.viewport;
 
 
+import controller.action.Action;
+import controller.action.stateMachineAction.GoToGameAction;
+import controller.action.stateMachineAction.GoToMainMenuAction;
 import javax.swing.JButton;
 
 /**
@@ -69,10 +72,13 @@ public class PauseViewport extends Viewport {
         );
 
         backToMenu.setText("Back To Menu");
+        backToMenu.addActionListener(Action.getActionListener(new GoToMainMenuAction()));
 
         loadSaveButton.setText("Load/Save");
+        //backToMenu.addActionListener(Action.getActionListener(new GoToLoadSaveAction()));
 
         backToGameButton.setText("Back To Game");
+        backToMenu.addActionListener(Action.getActionListener(new GoToGameAction()));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -131,6 +137,7 @@ public class PauseViewport extends Viewport {
     @Override
     public void render() {
         this.repaint();
+        this.requestFocusInWindow();
     }
 
     

@@ -27,7 +27,11 @@ public abstract class StateMachine {
     }
 
     public void pop() {
-        Util.dbgOut("State popped: " + stateStack.peek(), 1);
+        System.out.print("States in stack: ");
+        for(State s : stateStack){
+            System.out.print(s.getClass()+ " ");
+        }
+        System.out.println();
         stateStack.peek().onExit();
         stateStack.pop();
     }

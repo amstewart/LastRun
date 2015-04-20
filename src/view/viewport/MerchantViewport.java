@@ -1,6 +1,5 @@
 package view.viewport;
 
-
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -20,23 +19,26 @@ import utility.ImageUtil;
 public class MerchantViewport extends Viewport implements InventoryObserver, AvatarObserver {
 
     private JPanel bankPanel, merchantPanel, inventoryPanel;
-    
+
     public MerchantViewport() {
         initComponents();
     }
+
     private void initComponents() {
-    
-        this.setLayout(new GridLayout(0,3));
-        
+
+        this.setLayout(new GridLayout(0, 3));
+
         JPanel inventoryPanel = new JPanel();
-        inventoryPanel.setLayout(new GridLayout(0,5));
+        inventoryPanel.setLayout(new GridLayout(0, 5));
         JPanel bankPanel = new JPanel();
         JPanel merchantPanel = new JPanel();
-        
+
     }
 
     @Override
-    public void render() { this.revalidate(); }
+    public void render() {
+        this.requestFocusInWindow();
+    }
 
     @Override
     public void receiveAllInventoryItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
@@ -58,11 +60,12 @@ public class MerchantViewport extends Viewport implements InventoryObserver, Ava
 
     @Override
     public void receiveNewOccupation(Occupation o, Stats playerStats) {
-        
+
     }
 
     private class MerchantItemButton extends JButton {
-        public MerchantItemButton(TakeableItem i){
+
+        public MerchantItemButton(TakeableItem i) {
             super(ImageUtil.getImage(i.getAssetID()));
             this.setToolTipText("Gold value: " + i.getValue());
             this.setOpaque(false);

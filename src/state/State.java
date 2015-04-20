@@ -24,6 +24,7 @@ public abstract class State {
     }
 
     public void onEnter(){
+        render();
         viewPort.addKeyListener(controller);
     }
 
