@@ -53,7 +53,7 @@ public class Bane extends Spell implements SpellEffect, Projectile {
 		Tile t = area.getTile(pos);
 		t.addProjectile(this);
 
-		final GameTimer gameTimer = new GameTimer(30, true);//30 = 1 sec
+		final GameTimer gameTimer = new GameTimer(2, true);//30 = 1 sec
 		GameTimerListener l = new GameTimerListener() {
 
 			private Tile oldt = null;

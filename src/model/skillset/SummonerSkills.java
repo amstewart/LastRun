@@ -43,7 +43,7 @@ public class SummonerSkills extends BasicSkills {
 		Bane baneEffect3 = new Bane(ImageUtil.FIREBALL,
 				DefinedStats.MINUSINTELLECT.getStats());
 		bane = new SpellSkill("Bane", 1, baneEffect1, baneEffect2, baneEffect3,
-				3);
+				7);
 		EntityStatusModifier emod = new EntityStatusModifier(ImageUtil.AXE,
 				Status.SLEEPING, ImageUtil.SINGING);
 		EntityStatusModifier emod1 = new EntityStatusModifier(ImageUtil.AXE,
@@ -51,7 +51,7 @@ public class SummonerSkills extends BasicSkills {
 		EntityStatusModifier emod2 = new EntityStatusModifier(ImageUtil.AXE,
 				Status.SLEEPING, ImageUtil.SMELLY);
 
-		enchantment = new SpellSkill("Enchant", 1, emod, emod1, emod2, 3);
+		enchantment = new SpellSkill("Enchant", 1, emod, emod1, emod2, 7);
 
 		Staff staf = new Staff();
 		staff = new ExternalSkill("Staff", 1, staf, 1, false);

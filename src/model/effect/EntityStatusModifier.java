@@ -81,7 +81,7 @@ public class EntityStatusModifier extends Spell implements SpellEffect, Projecti
 
 		};
 
-		timer.schedule(timertask, 0, 1000);
+		timer.schedule(timertask, 0, 66);
 
 	}
 
