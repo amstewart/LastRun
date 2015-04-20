@@ -34,6 +34,19 @@ public class GameState extends State {
         viewPort =  new GameViewport(mapVP, inventory, player);
         
         controller = new GameController(map, player, mapVP);
+        GameController kc = new GameController(map, player, mapVP);
+        getViewport().addKeyListener(kc);
+
+        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 2);
+        NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
+
+        Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
+        
+        en_puddles.addToInventory(i);
+        map.addEntity(en_puddles, new Vector2(1, 3));
+        map.getAvatarMovement().getEntity().addPet(en_puddles);
+        
+        
     }
 
     @Override
@@ -46,17 +59,7 @@ public class GameState extends State {
     public void onEnter() {
         render();
 
-        GameController kc = new GameController(map, player, mapVP);
-        getViewport().addKeyListener(kc);
-
-        MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.NULL_ASSET, 2);
-        NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
-
-        Pet en_puddles = new Pet(ImageUtil.EN_SKEL_S, "Puddles");
         
-        en_puddles.addToInventory(i);
-        map.addEntity(en_puddles, new Vector2(1, 3));
-        map.getAvatarMovement().getEntity().addPet(en_puddles);
     }
 
     @Override
