@@ -9,9 +9,9 @@ import java.awt.event.KeyListener;
  *
  * @author ChrisMoscoso
  */
-public class PauseController extends KeyController implements KeyListener{
+public class GeneralMenuController extends KeyController implements KeyListener{
 
-    public PauseController(){
+    public GeneralMenuController(){
         actionSet.put(KeyEvent.VK_ESCAPE, new GoBackAction());
     }
     
@@ -23,6 +23,7 @@ public class PauseController extends KeyController implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
+        //System.out.println("CMON");
     }
 
     @Override

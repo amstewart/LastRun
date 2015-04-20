@@ -1,29 +1,21 @@
 package state;
 
+import controller.keyControllers.GeneralMenuController;
 import view.viewport.PauseViewport;
 import view.viewport.Viewport;
 
 public class PauseState extends State {
 
-    private PauseViewport viewPort;
 
     public PauseState() {
         viewPort = new PauseViewport();
+        controller = new GeneralMenuController();
+        viewPort.addKeyListener(controller);
     }
 
     @Override
     public Viewport getViewport() {
         return viewPort;
-    }
-
-    @Override
-    public void onExit() {
-
-    }
-
-    @Override
-    public void onEnter() {
-
     }
 
     @Override

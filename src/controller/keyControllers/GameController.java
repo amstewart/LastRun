@@ -12,6 +12,7 @@ import controller.action.moveAvatarAction.MoveUpLeftAction;
 import controller.action.moveAvatarAction.MoveUpRightAction;
 import controller.action.skillAction.ExternalSkillAction;
 import controller.action.skillAction.InternalSkillAction;
+import controller.action.skillAction.MountAction;
 import controller.action.skillAction.SpellSkillAction;
 import controller.action.stateMachineAction.GoToMerchantAction;
 import controller.action.stateMachineAction.GoToPauseAction;
@@ -59,7 +60,8 @@ public class GameController extends KeyController{
         actionSet.put(KeyEvent.VK_D, new MoveDownRightAction(map));
         
         actionSet.put(KeyEvent.VK_ESCAPE, new GoToPauseAction());
-        actionSet.put(KeyEvent.VK_M, new GoToMerchantAction());
+        actionSet.put(KeyEvent.VK_B, new GoToMerchantAction());
+        actionSet.put(KeyEvent.VK_M, new MountAction(map, map.getAvatarMovement()));
 
         
         actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
