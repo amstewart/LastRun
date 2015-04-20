@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import model.entity.Avatar;
+import model.entity.occupation.Smasher;
 import model.map.GameMap;
 import model.skill.ExternalSkill;
 import model.skill.InternalSkill;
@@ -66,7 +67,10 @@ public class GameController extends KeyController{
         
         actionSet.put(KeyEvent.VK_MINUS, new ZoomOutMapAction(mapVP));
         actionSet.put(KeyEvent.VK_EQUALS, new ZoomInMapAction(mapVP));
-        
+        skillNumber = 0;
+        if(avatar.getOccupation() instanceof Smasher){
+        	System.out.println("sadfas");
+        }
        ArrayList <ExternalSkill> eSkills = new ArrayList();
        ArrayList <InternalSkill> iSkills = new ArrayList();
        ArrayList <SpellSkill> sSkills = new ArrayList();

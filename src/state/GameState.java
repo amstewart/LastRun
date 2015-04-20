@@ -35,8 +35,7 @@ public class GameState extends State {
         viewPort =  new GameViewport(mapVP, inventory, player);
         
         controller = new GameController(map, player, mapVP);
-        GameController kc = new GameController(map, player, mapVP);
-        getViewport().addKeyListener(kc);
+        
 
         MapBuilder.addVehicle(map, new Vector2(6, 1), "Donkey", ImageUtil.VEH_DONKEY_SMILE, 1);
         NonEquippableItem i = ItemFactory.getRandomNonEquippableItem();
@@ -56,6 +55,8 @@ public class GameState extends State {
 
     @Override
     public void onEnter() {
+    	GameController kc = new GameController(map, player, mapVP);
+        getViewport().addKeyListener(kc);
         render();
 
         

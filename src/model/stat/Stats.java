@@ -244,7 +244,7 @@ public class Stats {
 		notifyViews();
 	}
 	private void die() {
-		DialogueViewport.getInstance().print("You died. You are now a zombie.");
+		//DialogueViewport.getInstance().print("You died. You are now a zombie.");
 		notifyViews();
 	}
 
