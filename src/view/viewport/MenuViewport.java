@@ -64,8 +64,8 @@ public class MenuViewport extends Viewport {
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_LOAD_BUTTON).getImage();
-                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+                //Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_LOAD_BUTTON).getImage();
+                //g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
             }
         };
         jPanel1 = new javax.swing.JPanel();
@@ -74,8 +74,8 @@ public class MenuViewport extends Viewport {
 
             @Override
             public void paintComponent(Graphics g){
-                Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_EXIT_BUTTON).getImage();
-                g.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
+                //Image image = ImageUtil.getImage( ImageUtil.MAIN_MENU_EXIT_BUTTON).getImage();
+                //ojectsg.drawImage( image , this.getWidth()/2 - image.getWidth(this)/2, 0, this);
             }
         };
 

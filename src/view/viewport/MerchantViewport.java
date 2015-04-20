@@ -5,11 +5,16 @@ import controller.action.equipmentHandlerAction.UnequipAction;
 import controller.action.merchantAction.SellEquippableItemAction;
 import controller.action.merchantAction.SellNonEquippableItemAction;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.IllegalComponentStateException;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,70 +38,84 @@ public class MerchantViewport extends Viewport implements InventoryObserver {
 
     private BankAccount bankAccount;
     private JPanel bankPanel, merchantPanel, inventoryPanel;
-    
+
     private JPopupMenu merchantEquippableItemMenu = new JPopupMenu("Popup");
     private JPopupMenu merchantNonEquippableItemMenu = new JPopupMenu("Popup");
     private JMenuItem cancel = new JMenuItem("Cancel");
-        private JMenuItem cancel2 = new JMenuItem("Cancel");
+    private JMenuItem cancel2 = new JMenuItem("Cancel");
 
     private JMenuItem sellEquippableItem = new JMenuItem("Sell Equip");
-        private JMenuItem sellNonEquippableItem = new JMenuItem("Sell Non");
-
+    private JMenuItem sellNonEquippableItem = new JMenuItem("Sell Non");
 
     private SellEquippableItemAction sellEquippableAction;
     private SellNonEquippableItemAction sellNonEquippableAction;
-    
 
     public MerchantViewport(Inventory inventory, BankAccount bankAccount) {
         this.bankAccount = bankAccount;
         initComponents();
         this.requestFocusInWindow();
         inventory.addObserver(this);
-        
+
         sellEquippableAction = new SellEquippableItemAction(inventory, bankAccount);
         sellNonEquippableAction = new SellNonEquippableItemAction(inventory, bankAccount);
-        
+
         merchantEquippableItemMenu.add(sellEquippableItem);
         merchantEquippableItemMenu.addSeparator();
         merchantEquippableItemMenu.add(cancel);
-        
+
         sellEquippableItem.addActionListener(Action.getActionListener(sellEquippableAction));
-        
+
         merchantNonEquippableItemMenu.add(sellNonEquippableItem);
         merchantNonEquippableItemMenu.addSeparator();
         merchantNonEquippableItemMenu.add(cancel2);
-        
+
         sellNonEquippableItem.addActionListener(Action.getActionListener(sellNonEquippableAction));
-        
+
     }
 
     private void initComponents() {
 
         this.setLayout(new GridLayout(0, 2));
 
-        
-        add(new JLabel("Inventory"));
-        add(new JLabel("Bank Account Balance"));
+        JLabel invLabel = new JLabel("Inventory");
+        JLabel bankLabel = new JLabel("Bank Account Balance");
+        invLabel.setForeground(Color.WHITE);
+        bankLabel.setForeground(Color.WHITE);
 
-        
+        invLabel.setFont(new Font(invLabel.getFont().getName(), Font.PLAIN, 30));
+        bankLabel.setFont(new Font(bankLabel.getFont().getName(), Font.PLAIN, 30));
+
+        add(invLabel);
+        add(bankLabel);
+
         inventoryPanel = new JPanel();
         inventoryPanel.setLayout(new GridLayout(0, 5));
         bankPanel = new JPanel();
-        
+
+        inventoryPanel.setOpaque(false);
+        bankPanel.setOpaque(false);
+
         add(inventoryPanel);
         add(bankPanel);
-        
+
     }
 
     @Override
     public void render() {
         this.requestFocusInWindow();
         this.revalidate();
+        this.repaint();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        Image img = ImageUtil.getImage(ImageUtil.RED_BACKGROUND).getImage();
+        g.drawImage(img, 0, 0, null);
     }
 
     @Override
     public void receiveAllInventoryItems(EquippableItem[] equippableItems, NonEquippableItem[] nonEquippableItems, ArrayList<ActivationItem> activationItems) {
-        
+
         inventoryPanel.setSize(new Dimension(this.getSize()));
 
         inventoryPanel.removeAll();
@@ -111,15 +130,19 @@ public class MerchantViewport extends Viewport implements InventoryObserver {
                 inventoryPanel.add(new MerchantNonEquippableItemButton(i));
             }
         }
-        
+
         bankPanel.removeAll();
-        bankPanel.add(new JLabel(""+bankAccount.getAccountBalance()));
+        JLabel goldValue = new JLabel("" + bankAccount.getAccountBalance());
+        bankPanel.add(goldValue);
+        goldValue.setForeground(Color.YELLOW);
+        goldValue.setFont(new Font(goldValue.getFont().getName(), Font.PLAIN, 30));
+
     }
 
     private class MerchantEquippableItemButton extends JButton {
 
         EquippableItem item;
-        
+
         public MerchantEquippableItemButton(EquippableItem i) {
             super(ImageUtil.getImage(i.getAssetID()));
             item = i;
@@ -128,9 +151,9 @@ public class MerchantViewport extends Viewport implements InventoryObserver {
             this.setContentAreaFilled(false);
             this.setBorderPainted(false);
             this.addMouseListener(new MerchantItemButtonListener());
-            
+
         }
-        
+
         public TakeableItem getItem() {
             return item;
 
@@ -168,11 +191,11 @@ public class MerchantViewport extends Viewport implements InventoryObserver {
 
         }
     }
-    
+
     private class MerchantNonEquippableItemButton extends JButton {
 
         TakeableItem item;
-        
+
         public MerchantNonEquippableItemButton(TakeableItem i) {
             super(ImageUtil.getImage(i.getAssetID()));
             item = i;
@@ -181,9 +204,9 @@ public class MerchantViewport extends Viewport implements InventoryObserver {
             this.setContentAreaFilled(false);
             this.setBorderPainted(false);
             this.addMouseListener(new MerchantItemButtonListener());
-            
+
         }
-        
+
         public TakeableItem getItem() {
             return item;
 

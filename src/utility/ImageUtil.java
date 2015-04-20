@@ -164,6 +164,7 @@ public class ImageUtil {
     
 
     public static String[] inEffect = new String[10];
+    public static String RED_BACKGROUND = DIR_SPRITES + "st_background.jpg";
 
     public static void initSmasher() {
         for (int i = 0; i < 10; ++i) {
@@ -192,17 +193,17 @@ public class ImageUtil {
      */
     public static final String MAIN_MENU_EXIT_BUTTON = DIR_SPRITES + "mm_exit_game_button.jpg";
     public static final String MAIN_MENU_LOAD_BUTTON = DIR_SPRITES + "mm_load_game_button.jpg";
-    public static final String MAIN_MENU_NEW_GAME_BUTTON = DIR_SPRITES + "mm_new_game_button.jpg";
+    public static final String MAIN_MENU_NEW_GAME_BUTTON = DIR_SPRITES + "mm_new_game_button.png";
     public static final String MAIN_MENU_BACKGROUND = DIR_SPRITES + "main_menu_background.jpg";
     
     
     /*** CHARACTER SELECTION VIEW PORT ***/    
-    public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_main_menu_button.jpg";
-    public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_new_game_button.jpg";
+    public static final String CHARACTER_SELECTION_MENU_BUTTON = DIR_SPRITES + "cs_new_game_button.png";
+    public static final String CHARACTER_SELECTION_NEW_GAME_BUTTON = DIR_SPRITES + "cs_main_menu_button.png";
     public static final String CHARACTER_SELECTION_PET = DIR_SPRITES + "cs_pet.jpg";
-    public static final String CHARACTER_SELECTION_SMASHER = DIR_SPRITES  + "cs_smasher.jpg";
-    public static final String CHARACTER_SELECTION_SUMMONER = DIR_SPRITES + "cs_summoner.jpg";
-    public static final String CHARACTER_SELECTION_SNEAK = DIR_SPRITES + "cs_sneak.jpg";
+    public static final String CHARACTER_SELECTION_SMASHER = DIR_SPRITES  + "cs_smasher.gif";
+    public static final String CHARACTER_SELECTION_SUMMONER = DIR_SPRITES + "cs_summoner.gif";
+    public static final String CHARACTER_SELECTION_SNEAK = DIR_SPRITES + "cs_sneak.gif";
     public static final String CHARACTER_SELECTION_BACKGROUND = DIR_SPRITES + "dialogue_background.jpg";
     
     /*** CHARACTER SELECTION VIEW PORT ***/

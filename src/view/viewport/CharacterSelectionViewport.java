@@ -13,6 +13,7 @@ import controller.action.charSelectAction.SelectSmasherAction;
 import controller.action.charSelectAction.SelectSneakAction;
 import controller.action.charSelectAction.SelectSummonerAction;
 import controller.action.stateMachineAction.GoBackAction;
+import controller.action.stateMachineAction.GoToGameAction;
 import controller.action.stateMachineAction.GoToIntroAction;
 
 import javax.swing.*;
@@ -76,43 +77,43 @@ public class CharacterSelectionViewport extends Viewport {
     
     private void paintAvatarOcupation(JPanel panel, Graphics g){
         
-        Image leftImage = getImageFromList(ocupationList.getNextData());
-        Image rightImage = getImageFromList(ocupationList.getPreviousData());
-        Image centerImage = getImageFromList(ocupationList.getData());
+        ImageIcon leftImage = getImageFromList(ocupationList.getNextData());
+        ImageIcon rightImage = getImageFromList(ocupationList.getPreviousData());
+        ImageIcon centerImage = getImageFromList(ocupationList.getData());
       
-        centerImage = ImageUtil.rescaleImage(new ImageIcon(centerImage), panel.getWidth() / 6, panel.getHeight()).getImage();
-        leftImage = ImageUtil.rescaleImage(new ImageIcon(leftImage), panel.getWidth() / 12, panel.getHeight() / 2).getImage();
-        rightImage = ImageUtil.rescaleImage(new ImageIcon(rightImage), panel.getWidth() / 12, panel.getHeight() / 2).getImage();
+        centerImage = ImageUtil.rescaleImage(centerImage, panel.getWidth() / 6, panel.getHeight());
+        leftImage = ImageUtil.rescaleImage(leftImage, panel.getWidth() / 12, panel.getHeight() / 2);
+        rightImage = ImageUtil.rescaleImage(rightImage, panel.getWidth() / 12, panel.getHeight() / 2);
         
-        g.drawImage( centerImage , panel.getWidth()/2 - centerImage.getWidth(panel)/2, 0, panel);
+        g.drawImage( centerImage.getImage() , panel.getWidth()/2 - centerImage.getImage().getWidth(panel)/2, 0, panel);
         
-        g.drawImage( leftImage , panel.getWidth()/3 - centerImage.getWidth(panel)/2, 0, panel);
-        g.drawImage( rightImage , panel.getWidth()*2/3, 0, panel);
+        g.drawImage( leftImage.getImage() , panel.getWidth()/3 - centerImage.getImage().getWidth(panel)/2, 0, panel);
+        g.drawImage( rightImage.getImage() , panel.getWidth()*2/3, 0, panel);
         
         this.updateUI();
     }
     
-    public Image getImageFromList(OcupationCategory ocupation){
+    public ImageIcon getImageFromList(OcupationCategory ocupation){
         
         Action action;
          if (avatar == null) System.out.println("0000000000000000000000000000000000000000000000000000");
-        Image image;
+        ImageIcon image;
         switch (ocupation){
         
             case SMASHER:
-                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SMASHER).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SMASHER);
                 avatarOcuppationNameLabel.setText("Smasher");
                 avatarDescriptionTextArea.setText(SMASHER_DESCRIPTION);
                 action = new SelectSmasherAction(avatar);
                 break;
             case SUMMONER:
-                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SUMMONER).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SUMMONER);
                 avatarOcuppationNameLabel.setText("Summoner");
                 avatarDescriptionTextArea.setText(SUMMONER_DESCRIPTION);
                 action = new SelectSummonerAction(avatar);
                 break;
             default:
-                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SNEAK).getImage();
+                image = ImageUtil.getImage(ImageUtil.CHARACTER_SELECTION_SNEAK);
                 avatarOcuppationNameLabel.setText("Sneak");
                 avatarDescriptionTextArea.setText(SNEAK_DESCRIPTION);
                 action = new SelectSneakAction(avatar);
@@ -166,7 +167,7 @@ public class CharacterSelectionViewport extends Viewport {
     
     private void addActionListeners(Avatar avatar){
         mainMenuButton.addActionListener(Action.getActionListener(new GoBackAction()));
-        startGameButton.addActionListener(Action.getActionListener(new GoToIntroAction()));
+        startGameButton.addActionListener(Action.getActionListener(new GoToGameAction()));
         ocupationPanel.addMouseListener(changeOcupationAction);
         
     }
@@ -342,7 +343,7 @@ public class CharacterSelectionViewport extends Viewport {
 
         avatarNickNameTextField.setFont(new java.awt.Font("Yu Mincho", 3, 36)); // NOI18N
         avatarNickNameTextField.setForeground(new Color(255, 255, 255));
-        avatarNickNameTextField.setText("Marie");
+        avatarNickNameTextField.setText("Tubby Lumpkins");
         avatarNickNameTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 3, new Color(163, 43, 43)));
         avatarNickNameTextField.setOpaque(false);
 
