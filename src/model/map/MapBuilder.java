@@ -46,6 +46,7 @@ public class MapBuilder {
         LevelUpAreaEffect levelUpAreaEffect = new LevelUpAreaEffect(ImageUtil.GOLDSTAR);
         HealDamageAreaEffect healDamageAreaEffect= new HealDamageAreaEffect(ImageUtil.REDCROSS);
         InstantDeathAreaEffect instantDeathAreaEffect = new InstantDeathAreaEffect(ImageUtil.CROSSBONE);
+        SpikeTrap spikeTrap = new SpikeTrap(ImageUtil.SPIKETRAP);
 
         for(int i = 0; i < width; i ++) {
             for(int j = 0; j < height; j++) {
@@ -72,6 +73,7 @@ public class MapBuilder {
         tiles[3][2].addAreaEffect(levelUpAreaEffect);
         tiles[4][2].addAreaEffect(healDamageAreaEffect);
         tiles[5][2].addAreaEffect(instantDeathAreaEffect);
+        tiles[4][4].addTrap(spikeTrap);
         
     }
 
